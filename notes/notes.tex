@@ -6,16 +6,12 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{xymatrix}
+\usepackage{tikz-cd}
 \usepackage{mathtools}
 \usepackage{pigpen}
 
 \titleformat{\section}[hang]{\Large\scshape\centering}{§\thesection}{1em}{}
 \titleformat{\subsection}[hang]{\large\scshape}{§\thesubsection}{1em}{}
-
-%Pushout commands
-\newcommand{\po}{\ar@{}[dr]|{\text{\pigpenfont R}}}
-\newcommand{\pb}{\ar@{}[dr]|{\text{\pigpenfont J}}}
 
 \begin{document}
 
@@ -57,8 +53,6 @@ and $D^k = \{ x \in \mathbb{R}^k : \lVert x \rVert \leq 1 \}$ be the $k$-disk.
 Let $M$ and $N$ be manifolds, then $N$ is created from $M$ by atteching a k-cell,
 if $N$ is of the same homotopy type as a topological space $X$ s.th. there exists 
 a pushout square
-\[
-   \xymatrix{X\ar[r]\ar[d]_{i_0}\po &\ast\ar[d]\\
-      X\times I\ar[r]&CX}
-\]
+
+
 \end{document}

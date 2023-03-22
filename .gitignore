@@ -1,4 +1,5 @@
-**/.DS-Store
-**/*.fls
-**/*.log
-**/*.fdb_latexmk
+**/*
+!**/*.tex
+!.gitignore
+!.github/**/*
+!**/resources/**/*
