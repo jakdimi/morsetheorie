@@ -2,4 +2,4 @@
 
 ## notes
 
-General Notes
+General Notes - mostly taken (relatively) directly from Milner - Morse Theory

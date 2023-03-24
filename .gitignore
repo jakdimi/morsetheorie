@@ -1,5 +1,6 @@
 **/*
-!**/*.tex
 !.gitignore
 !.github/**/*
+!README.md
+!**/*.tex
 !**/resources/**/*

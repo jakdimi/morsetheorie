@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage[T1]{fontenc}
+\usepackage{float}
 \usepackage{titlesec}
+\usepackage{subcaption}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -20,10 +22,9 @@
 \subsection{Introduction}
 
 Let us consider a Torus $M$ tangent to a plane $V$:
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{resources/Diagram1.png}
-    \caption{Diagram 1}
     \label{fig:diagram1}
 \end{figure}
 Let $f: M \rightarrow \mathbb{R}$ be the distance of a point to the plane $V$. 
@@ -43,7 +44,7 @@ homotopy type rather than homeomorphism type.
    \item[(1) $\rightarrow$ (2)]: In case (1), $M^a$ has the same homotopy type as a point, so this step is the attaching of a 0-cell. 
    \item[(2) $\rightarrow$ (3)]: Is the operation of attaching a 1-cell. 
    \item[(3) $\rightarrow$ (4)]: Again is the operation of attaching a 1-cell. 
-   \item[(4) $\rightarrow$ (5)]: Is the action of attaching a 2-cell. 
+   \item[(4) $\rightarrow$ (5)]: Is the operation of attaching a 2-cell. 
 \end{enumerate}
 
 The definition of attaching a k-cell can be given as follows: \\
@@ -52,7 +53,47 @@ and $D^k = \{ x \in \mathbb{R}^k : \lVert x \rVert \leq 1 \}$ be the $k$-disk.
 
 Let $M$ and $N$ be manifolds, then $N$ is created from $M$ by atteching a k-cell,
 if $N$ is of the same homotopy type as a topological space $X$ s.th. there exists 
-a pushout square
+a pushout square in Top
 
+\begin{figure}[H]
+   \centering
+   \begin{tikzcd}
+      S^{k-1} \arrow[r] \arrow[d] \arrow[dr, phantom, "\ulcorner", very near end] & M \arrow[d] \\
+      D^k \arrow[r]                                                               & X
+   \end{tikzcd}
+\end{figure}
+
+A pushout square in a category $\mathcal{C}$ is a commutative square 
+
+\begin{figure}[H]
+   \centering
+   \begin{tikzcd}
+      A \arrow[r, "f_0"] \arrow[d, "f_1"] & B \arrow[d, "g_0"] \\
+      C \arrow[r, "g_0"]                  & D 
+   \end{tikzcd}
+\end{figure}      
+   
+s.th if there is another commutative diagram
+
+\begin{figure}[H]
+   \centering
+   \begin{tikzcd}
+      A \arrow[r, "f_0"] \arrow[d, "f_1"] & B \arrow[d, "h_0"] \\
+      C \arrow[r, "h_1"]                  & \tilde{D}
+   \end{tikzcd}
+\end{figure}
+
+Then 
+
+\begin{figure}[H]
+   \centering
+   \begin{tikzcd}
+      A \arrow[r, "f_0"] \arrow[d, "f_1"] & B \arrow[d, "g_0"] \arrow[rdd, "h_0", bend left] & \\
+      C \arrow[r, "g_1"] \arrow[drr, "h_1", bend right] & D & \\
+        &   & \tilde{D} \arrow[ul, "\exists!h", dashed]
+   \end{tikzcd}
+\end{figure}
+
+which commutes everywhere.
 
 \end{document}
