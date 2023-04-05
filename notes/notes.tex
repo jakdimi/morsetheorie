@@ -13,9 +13,9 @@
 \usepackage{mathtools}
 \usepackage{pigpen}
 
-\titleformat{\section}[hang]{\Large\scshape\centering}{§\thesection}{1em}{}
-\titleformat{\subsection}[hang]{\large\scshape}{§\thesubsection}{1em}{}
-\titleformat{\subsubsection}[hang]{\scshape}{§\thesubsubsection}{1em}{}
+\titleformat{\section}[hang]{\Large\centering}{§\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\large}{§\thesubsection}{1em}{}
+\titleformat{\subsubsection}[hang]{}{§\thesubsubsection}{1em}{}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[subsection]
@@ -122,9 +122,9 @@ which commutes everywhere.
    \label{def:critical point}
 
    Let $M$ be a (smooth) manifold and $f: M \rightarrow \mathbb{R}$ be a smooth function.
-   Then $p \in M$ is called a critical point, if the tangent map 
+   Then $p \in M$ is called a \textit{critical point}, if the tangent map 
    $f_*: TM_p \rightarrow R$ is not zero. \\
-   A critical point is called non-degenerate, if for some local coordinates $\varphi = (x_1, ..., x_n)$
+   A critical point is called \textit{non-degenerate}, if for some local coordinates $\varphi = (x_1, ..., x_n)$
    the matrix 
    \[ H_p^{\varphi}f := \left(\frac{\partial^2 f}{\partial x_i \partial x_j}(p)\right)_{1 \leq i,j \leq n} \]
    is non-singular, i.e. invertable. \\
@@ -178,31 +178,94 @@ which commutes everywhere.
    \[ \text{det}(H_p^{\psi}f) = \text{det}(D_p^T \cdot H_p^{\varphi} \cdot D_p) = \text{det}(D^T) \cdot \text{det}(H_p^{\varphi}) \cdot \text{det}(D_p) \neq 0 \]
 \end{proof}
 
-\begin{definition}[Index of a Matrix]
+\begin{definition}[Index]
    \label{def:index}
 
-   The index of a Matrix $A$ is the number of (not necessarily destinct) negative Eigenvalues of $A$ and is denoted by
-   $\text{index}(A)$
+   The \textit{index} of a Matrix $A$ is the number of (not necessarily destinct) negative Eigenvalues of $A$ and is denoted by
+   $\text{index}(A)$. \\ The \textit{index} of a critical point $p$ of a function $f: M \rightarrow \mathbb{R}$ (wrt. a chart $\varphi$)
+   is the index of the matrix $H_p^{\varphi}f$.
 \end{definition}
 
 \begin{lemma}[Invariance of the Index]
    \label{lemma:index}
-   For a smooth map $f: M \rightarrow \mathbb{R}$, acritical point $p$ of $f$ and 
-   local coordinates $\varphi = (x_1, ..., x_n)$, $\psi = (y_1, ... , y_n)$, it holds that 
-   \[ \text{index}(H_p^{\varphi}f) = \text{index}(H_p^{\psi}f) \]
+   The index of a critical point does not depend on the chosen local coordinates.
 \end{lemma}
 
 \begin{proof}
-   As seen in lemma~\ref{lemma:congruency}, $H_p^{\varphi} = D^T \cdot H_p^{\psi} \cdot D$, i.e.
-   $H_p^{\varphi}$ is congruent to $H_p^{\psi}$, because $D$ is invertable. Then by Sylvester's Law
-   the assertion follows.
+   Let $f: M \rightarrow \mathbb{R}$ be a smooth function, $p$ a critical point of $f$
+   and $\varphi$, $\psi$ two charts around $p$.
+   As seen in lemma~\ref{lemma:congruency}, $H_p^{\varphi}f = D^T \cdot H_p^{\psi}f \cdot D$, i.e.
+   $H_p^{\varphi}$ is congruent to $H_p^{\psi}$, because $D$ is invertable. Then by Sylvester's Law, 
+   \[ \text{{index}}(H_p^{\varphi}f) = \text{{index}}(H_p^{\varphi}f) \]
+\end{proof}
+
+\begin{theorem}[Morse's Lemma]
+   \label{theorem:morse lemma}
+
+   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ smooth and $p$ a non-degenerate 
+   critical point of $f$ of index $k$. Then there exist local coordinates $\varphi = (x_1, ..., x_n)$, s.th,
+   \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k+1}^2 + ... + x_n^2 \]
+\end{theorem}
+
+\begin{proof}
+   This is the proof of Morse's Lemma <3 . It's true i swear
 \end{proof}
 
 \begin{definition}[Morse Function]
    \label{def:morse function}
 
-   Let $M$ be a manifold, $f:M \rightarrow \mathbb{R}$ a smooth map. $f$ is called a Morse Function,
+   Let $M$ be a manifold, $f:M \rightarrow \mathbb{R}$ a smooth map. $f$ is called a \textit{Morse Function},
    if all critical values of $f$ are non-degenerate.   
 \end{definition}
+
+\subsection{Homotopy Type in Terms of critical Values}
+
+\begin{theorem}[First deformation Lemma]
+   \label{theorem:1st deformation lemma}
+   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ smooth. Let $a < b \in \mathbb{R}$, s.th. 
+   $f^{-1}[a, b]$ is compact and contains no critical points of $f$. Then $M^a$ is diffeomorphic
+   to $M^b$. \\ 
+   Furthermore, $M^a$ is a nbhd. deformation retract of $M^b$, s.th. the inclusion
+   $M^a \rightarrow M^b$ is a homotopy equivalence.
+\end{theorem}
+
+\begin{proof}
+   Also the first deformation lemma is true, really
+\end{proof}
+
+\begin{theorem}[Second deformation Lemma]
+   \label{theorem:2nd deformation lemma}
+   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ smooth and $p$ be a non-degenerate critical point
+   of $f$ of index $k$. Let $c := f(p)$ and $\epsilon > 0$, s.th. $f^{-1}[c-\epsilon, c+\epsilon]$
+   is compact and contains no critical points of $f$. Then $M^{c+\epsilon}$ is obtained from $M^{c-\epsilon}$
+   by attaching a $k$-cell.
+\end{theorem}
+
+\begin{proof}
+   I'm not so sure if this is true but i guess
+\end{proof}
+
+\subsection{Examples}
+
+\subsection{The Morse Inequalities}
+
+\begin{lemma}[Weak morse Inequalities]
+   \label{lemma:weak morse inequalities}
+
+\end{lemma}
+
+\begin{proof}
+
+
+\end{proof}
+
+\begin{lemma}[Strong morse Inequalities]
+   \label{lemma:strung morse inequalities}
+
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
 
 \end{document}
