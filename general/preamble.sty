@@ -1,0 +1,37 @@
+\ProvidesPackage{preamble}
+
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{pigpen}
+
+\titleformat{\section}[hang]{\Large\centering}{§\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\large}{§\thesubsection}{1em}{}
+\titleformat{\subsubsection}[hang]{}{§\thesubsubsection}{1em}{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[subsection]
+
+\theoremstyle{plain}
+\newtheorem{corr}{Corr.}[subsection]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[subsection]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Def.}[subsection]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\pderive}[2][]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pdderive}[3][]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
