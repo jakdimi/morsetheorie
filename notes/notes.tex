@@ -14,8 +14,8 @@ Let us consider a Torus $M$ tangent to a plane $V$:
     \includegraphics[width=0.4\linewidth]{resources/Diagram1.png}
     \label{fig:diagram1}
 \end{figure}
-Let $f: M \rightarrow \mathbb{R}$ be the distance of a point to the plane $V$. 
-For a Number $a \in \mathbb{R} $, let $M^a$ be the set of all points $p \in M$, s.th. $f(p) \leq a$.
+Let $f: M \rightarrow \R$ be the distance of a point to the plane $V$. 
+For a Number $a \in \R $, let $M^a$ be the set of all points $p \in M$, s.th. $f(p) \leq a$.
 Then the following are true:
 \begin{enumerate}
    \item[(1)] If $a < 0 < f(p)$, then $M^a = \varnothing$
@@ -35,8 +35,8 @@ homotopy type rather than homeomorphism type.
 \end{enumerate}
 
 The definition of attaching a k-cell can be given as follows: \\
-Let $S^k = \{x \in \mathbb{R}^{k+1} : \lVert x \rVert = 1\}$ be the $k$-sphere \\
-and $D^k = \{ x \in \mathbb{R}^k : \lVert x \rVert \leq 1 \}$ be the $k$-disk.
+Let $S^k = \{x \in \R^{k+1} : \lVert x \rVert = 1\}$ be the $k$-sphere \\
+and $D^k = \{ x \in \R^k : \lVert x \rVert \leq 1 \}$ be the $k$-disk.
 
 Let $M$ and $N$ be manifolds, then $N$ is created from $M$ by atteching a k-cell,
 if $N$ is of the same homotopy type as a topological space $X$ s.th. there exists 
@@ -88,7 +88,7 @@ which commutes everywhere.
 \begin{definition}[critical Point, non-degenerate critical Point]
    \label{def:critical point}
 
-   Let $M$ be a (smooth) manifold and $f: M \rightarrow \mathbb{R}$ be a smooth function.
+   Let $M$ be a (smooth) manifold and $f: M \rightarrow \R$ be a smooth function.
    Then $p \in M$ is called a \textit{critical point}, if the tangent map 
    $f_*: TM_p \rightarrow R$ is not zero. \\
    A critical point is called \textit{non-degenerate}, if for some local coordinates $\varphi = (x_1, ..., x_n)$
@@ -102,7 +102,7 @@ which commutes everywhere.
 \begin{lemma}[Congruency of Hessians]
    \label{lemma:congruency}   
 
-   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$, $p$ a critical point of $f$
+   Let $M$ be a manifold, $f: M \rightarrow \R$, $p$ a critical point of $f$
    and $\varphi := (x_1, ..., x_n)$ and $\psi := (y_1, ..., y_n)$ local coordinates
    aroud $p$. Let 
    \[ D_p = \left( \frac{\partial x_i}{\partial y_j}(p) \right)_{1 \leq i, j \leq n}\].
@@ -113,7 +113,7 @@ which commutes everywhere.
 
 \begin{proof}
 
-   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ a smooth function.
+   Let $M$ be a manifold, $f: M \rightarrow \R$ a smooth function.
    Let $p \in M$ be a critical point of $f$ and $\varphi = (x_1, ..., x_n)$, $\psi = (y_1, ..., y_n)$
    local coordinates in a nbhd. around $p$.
    From functoriality of the tangent space, we know that 
@@ -140,7 +140,7 @@ which commutes everywhere.
 \end{lemma}
 
 \begin{proof}
-   Let $f: M \rightarrow \mathbb{R}$ be smooth, $p$ a critical point of $f$ and $\varphi = (x_1, ..., x_n)$, $\psi = (y_1, ..., y_n)$ 
+   Let $f: M \rightarrow \R$ be smooth, $p$ a critical point of $f$ and $\varphi = (x_1, ..., x_n)$, $\psi = (y_1, ..., y_n)$ 
    local coordinates around $p$. Assume that $p$ is non-non degenerate wrt. $\varphi$ Note that $D_p$ from lemma~\ref{lemma:congruency} is invertable. Then
    \[ \text{det}(H_p^{\psi}f) = \text{det}(D_p^T \cdot H_p^{\varphi} \cdot D_p) = \text{det}(D^T) \cdot \text{det}(H_p^{\varphi}) \cdot \text{det}(D_p) \neq 0 \]
 \end{proof}
@@ -149,7 +149,7 @@ which commutes everywhere.
    \label{def:index}
 
    The \textit{index} of a Matrix $A$ is the number of (not necessarily destinct) negative Eigenvalues of $A$ and is denoted by
-   $\text{index}(A)$. \\ The \textit{index} of a critical point $p$ of a function $f: M \rightarrow \mathbb{R}$ (wrt. a chart $\varphi$)
+   $\text{index}(A)$. \\ The \textit{index} of a critical point $p$ of a function $f: M \rightarrow \R$ (wrt. a chart $\varphi$)
    is the index of the matrix $H_p^{\varphi}f$.
 \end{definition}
 
@@ -159,7 +159,7 @@ which commutes everywhere.
 \end{lemma}
 
 \begin{proof}
-   Let $f: M \rightarrow \mathbb{R}$ be a smooth function, $p$ a critical point of $f$
+   Let $f: M \rightarrow \R$ be a smooth function, $p$ a critical point of $f$
    and $\varphi$, $\psi$ two charts around $p$.
    As seen in lemma~\ref{lemma:congruency}, $H_p^{\varphi}f = D^T \cdot H_p^{\psi}f \cdot D$, i.e.
    $H_p^{\varphi}$ is congruent to $H_p^{\psi}$, because $D$ is invertable. Then by Sylvester's Law, 
@@ -169,7 +169,7 @@ which commutes everywhere.
 \begin{theorem}[Morse's Lemma]
    \label{theorem:morse lemma}
 
-   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ smooth and $p$ a non-degenerate 
+   Let $M$ be a manifold, $f: M \rightarrow \R$ smooth and $p$ a non-degenerate 
    critical point of $f$ of index $k$. Then there exist local coordinates $\varphi = (x_1, ..., x_n)$, s.th,
    \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k+1}^2 + ... + x_n^2 \]
 \end{theorem}
@@ -183,23 +183,23 @@ which commutes everywhere.
 \begin{definition}[Morse Function]
    \label{def:morse function}
 
-   Let $M$ be a manifold, $f:M \rightarrow \mathbb{R}$ a smooth map. $f$ is called a \textit{Morse Function},
+   Let $M$ be a manifold, $f:M \rightarrow \R$ a smooth map. $f$ is called a \textit{Morse Function},
    if all critical values of $f$ are non-degenerate.   
 \end{definition}
 
 \begin{definition}[Riemannian Metric, grad]
    \label{def:riemannian metric, grad}
-   A \textit{riemannian metric} $g$ is a smoothly chosen scalar product $g_p: T_pM \times T_pM \rightarrow \mathbb{R}$
+   A \textit{riemannian metric} $g$ is a smoothly chosen scalar product $g_p: T_pM \times T_pM \rightarrow \R$
    for every point $p \in M$, s.th. for any vector fields $ X, Y: M \rightarrow TM $ the map 
    $ p \mapsto g_p(X(p), Y(p)) $ is smooth. \\
-   The \textit{gradient} (wrt. to a riemannian metric $g$) of a smooth map $f: M \rightarrow \mathbb{R}$ is the vector field
+   The \textit{gradient} (wrt. to a riemannian metric $g$) of a smooth map $f: M \rightarrow \R$ is the vector field
    which is characterized by the identity 
    \[ g(X, \text{grad} f) = X(f) \] .
 \end{definition}
 
 \begin{theorem}[First deformation Lemma]
    \label{theorem:1st deformation lemma}
-   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ smooth. Let $a < b \in \mathbb{R}$, s.th. 
+   Let $M$ be a manifold, $f: M \rightarrow \R$ smooth. Let $a < b \in \R$, s.th. 
    $f^{-1}[a, b]$ is compact and contains no critical points of $f$. Then $M^a$ is diffeomorphic
    to $M^b$. \\ 
    Furthermore, $M^a$ is a nbhd. deformation retract of $M^b$, s.th. the inclusion
@@ -212,7 +212,7 @@ which commutes everywhere.
 
 \begin{theorem}[Second deformation Lemma]
    \label{theorem:2nd deformation lemma}
-   Let $M$ be a manifold, $f: M \rightarrow \mathbb{R}$ smooth and $p$ be a non-degenerate critical point
+   Let $M$ be a manifold, $f: M \rightarrow \R$ smooth and $p$ be a non-degenerate critical point
    of $f$ of index $k$. Let $c := f(p)$ and $\epsilon > 0$, s.th. $f^{-1}[c-\epsilon, c+\epsilon]$
    is compact and contains no critical points of $f$. Then $M^{c+\epsilon}$ is obtained from $M^{c-\epsilon}$
    by attaching a $k$-cell.
@@ -228,7 +228,7 @@ which commutes everywhere.
 
 \begin{lemma}[Weak Morse Inequalities]
    \label{lemma:weak morse inequalities}
-   Let $f: M \rightarrow \mathbb{R}$ be a smooth map from a compact smooth manifold. Let $C_{\lambda}$
+   Let $f: M \rightarrow \R$ be a smooth map from a compact smooth manifold. Let $C_{\lambda}$
    be the number of critical points of $f$ of degree $\lambda$.
    \begin{enumerate}
       \item $R_{\lambda} (M) \leq C_{\lambda}$
