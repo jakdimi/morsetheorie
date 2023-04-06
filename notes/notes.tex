@@ -1,39 +1,6 @@
 \documentclass{article}
-\usepackage[T1]{fontenc}
-\usepackage{float}
-\usepackage{titlesec}
-\usepackage{subcaption}
-\usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{tikz-cd}
-\usepackage{mathtools}
-\usepackage{pigpen}
 
-\titleformat{\section}[hang]{\Large\centering}{§\thesection}{1em}{}
-\titleformat{\subsection}[hang]{\large}{§\thesubsection}{1em}{}
-\titleformat{\subsubsection}[hang]{}{§\thesubsubsection}{1em}{}
-
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[subsection]
-
-\theoremstyle{plain}
-\newtheorem{corr}{Corr.}[subsection]
-
-\theoremstyle{plain}
-\newtheorem{lemma}{Lemma}[subsection]
-
-\theoremstyle{definition}
-\newtheorem{definition}{Def.}[subsection]
-
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-
-\newcommand{\pderive}[2][]{\frac{\partial #1 }{\partial #2}}
-\newcommand{\pdderive}[3][]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
+\usepackage{../general/preamble}
 
 \begin{document}
 
@@ -211,6 +178,8 @@ which commutes everywhere.
    This is the proof of Morse's Lemma <3 . It's true i swear
 \end{proof}
 
+\subsection{Homotopy Type in Terms of critical Values}
+
 \begin{definition}[Morse Function]
    \label{def:morse function}
 
@@ -218,7 +187,15 @@ which commutes everywhere.
    if all critical values of $f$ are non-degenerate.   
 \end{definition}
 
-\subsection{Homotopy Type in Terms of critical Values}
+\begin{definition}[Riemannian Metric, grad]
+   \label{def:riemannian metric, grad}
+   A \textit{riemannian metric} $g$ is a smoothly chosen scalar product $g_p: T_pM \times T_pM \rightarrow \mathbb{R}$
+   for every point $p \in M$, s.th. for any vector fields $ X, Y: M \rightarrow TM $ the map 
+   $ p \mapsto g_p(X(p), Y(p)) $ is smooth. \\
+   The \textit{gradient} (wrt. to a riemannian metric $g$) of a smooth map $f: M \rightarrow \mathbb{R}$ is the vector field
+   which is characterized by the identity 
+   \[ g(X, \text{grad} f) = X(f) \] .
+\end{definition}
 
 \begin{theorem}[First deformation Lemma]
    \label{theorem:1st deformation lemma}
@@ -249,9 +226,14 @@ which commutes everywhere.
 
 \subsection{The Morse Inequalities}
 
-\begin{lemma}[Weak morse Inequalities]
+\begin{lemma}[Weak Morse Inequalities]
    \label{lemma:weak morse inequalities}
-
+   Let $f: M \rightarrow \mathbb{R}$ be a smooth map from a compact smooth manifold. Let $C_{\lambda}$
+   be the number of critical points of $f$ of degree $\lambda$.
+   \begin{enumerate}
+      \item $R_{\lambda} (M) \leq C_{\lambda}$
+      \item $\sum_{\lambda} (-1)^{\lambda} \cdot R_{\lambda}(M) = \sum_{\lambda} (-1)^{\lambda} \cdot C_{\lambda} $
+   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
@@ -259,9 +241,13 @@ which commutes everywhere.
 
 \end{proof}
 
-\begin{lemma}[Strong morse Inequalities]
+\begin{lemma}[Morse Inequalities]
    \label{lemma:strung morse inequalities}
-
+   Something Something
+   \begin{enumerate}
+      \item $ S_{\lambda}(M) \leq \sum_{i = 1}^k S_{\lambda}(M^{a_i}, M^{a_{i-1}}) = C_{\lambda} - C_{\lambda - 1} + ... \pm C_0 $
+      \item $ R_{\lambda}(M) - R_{\lambda - 1}(M) + ... \pm R_0(M) \leq C_{\lambda} - C_{\lambda - 1} ... \pm C_0 $
+   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
