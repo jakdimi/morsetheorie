@@ -175,10 +175,33 @@ which commutes everywhere.
 \end{theorem}
 
 \begin{proof}
+   %TODO
+   \textbf{TODO}
    This is the proof of Morse's Lemma <3 . It's true i swear
 \end{proof}
 
 \subsection{Homotopy Type in Terms of critical Values}
+
+\begin{definition}[1-parameter group of diffeomorphisms]
+   \label{def:1-param group}
+   A \textit{1-parameter group of diffeomorphisms} of a manifold $M$ is a smooth map
+   \[ \varphi: \R \times M \rightarrow M \text{ ; } (t, p) \mapsto \varphi_t(p) \]
+   where $ \varphi_t $ is a diffeomorphism on $M$, and s.th. \[ \varphi_{t+s} = \varphi_t \circ \varphi_s \] \\
+   A vector field $X$ is said to generate a 1-parameter group of diffeomorphisms $ \varphi $, if for every
+   smooth real valued function the identity 
+   \[ dfX(p) = \lim_{h \to 0} \frac{f(\varphi_h(p)) - f(p)}{h} \]
+   holds for all points $p$ in $M$.
+\end{definition}
+
+\begin{lemma}[compactly supported vectorfields generate 1-parameter groups]
+   \label{lemma:vectorfields generate 1-parameter groups}
+   A compactly supported vectorfield generates a unique 1-parameter group of diffeomorphisms on $M$.
+\end{lemma}
+
+\begin{proof}
+   %TODO
+   \textbf{TODO}
+\end{proof}
 
 \begin{definition}[Morse Function]
    \label{def:morse function}
@@ -187,14 +210,22 @@ which commutes everywhere.
    if all critical values of $f$ are non-degenerate.   
 \end{definition}
 
-\begin{definition}[Riemannian Metric, grad]
-   \label{def:riemannian metric, grad}
+\begin{definition}[Riemannian Metric]
+   \label{def:riemannian metric}
    A \textit{riemannian metric} $g$ is a smoothly chosen scalar product $g_p: T_pM \times T_pM \rightarrow \R$
    for every point $p \in M$, s.th. for any vector fields $ X, Y: M \rightarrow TM $ the map 
    $ p \mapsto g_p(X(p), Y(p)) $ is smooth. \\
-   The \textit{gradient} (wrt. to a riemannian metric $g$) of a smooth map $f: M \rightarrow \R$ is the vector field
+   A different definition can be given follows: \\
+   A \textit{riemannian metric} $g$ on a smooth manifold $M$ is a smooth map $g: M \rightarrow T^*M \otimes T^*M$; $p \mapsto g_p$,
+   s.th. $g_p$ is a scalar product $T_pM \times T_pM \rightarrow \R$. \\
+   A manifold together with a riemannian metric is called a \textit{riemannian manifold}.
+\end{definition}
+
+\begin{definition}[gradient]
+   \label{def:gradient}
+   Let $(M, g^{TM})$ be a riemannian manifold. The \textit{gradient} of a smooth map $f: M \rightarrow \R$ is the vector field
    which is characterized by the identity 
-   \[ g(X, \text{grad} f) = X(f) \] .
+   \[ g(X, \text{grad} f) = X(f) \text{, where } X(f) = dfX \]
 \end{definition}
 
 \begin{theorem}[First deformation Lemma]
@@ -207,7 +238,30 @@ which commutes everywhere.
 \end{theorem}
 
 \begin{proof}
-   Also the first deformation lemma is true, really
+   Let $\rho: M \rightarrow \R$ be a smooth function where 
+   \[ \rho(p) = \frac{1}{g(\text{grad} f, \text{grad} f)} \]
+   for all $p \in f^{-1}[a, b]$ and which vanishes outside of a compact neighborhood of $f^{-1}[a, b]$, i.e. which is 
+   compactly supported.  
+   Note $\rho$ is well defined inside $f^{-1}[a, b]$, because there are no critical points in $f^{-1}[a, b]$. \\ 
+   Then the vector field $X$ which is defined by
+   \[ X(p) = \rho(p) \cdot \text{grad} f (p) \]
+   is compactly supported as well, i.e satisfies the conditions of lemma~\ref{lemma:vectorfields generate 1-parameter groups},
+   hence X generates a unique 1-parameter group of diffeomorphisms on $M$
+   \[ \varphi_t : M \rightarrow M \]. 
+   For fixed $p \in M$, consider the function $ t \mapsto f(\varphi_t(p)) $. If $\varphi_t(p)$ lies in $f^{-1}[a, b]$, then
+   \[ \frac{d}{dt}f (\varphi_t(p)) = g(d\varphi_t(p), \text{grad}f) = g(X, \text{grad}f) = + 1 \].
+   Thus the correnspondence 
+   \[ t \rightarrow f(\varphi_t(p)) \]
+   is linear with derivative $+1$, if $p \in \varphi_t^{-1}(f^{-1}[a, b])$. 
+
+   Now consider the diffeomorphism 
+   \[ \varphi_{b-a}: M \rightarrow M \].
+   Not very clearly this carries $M^a$ diffeomorphically to $M^b$. 
+   \[ \varphi_{b-a}(M^a) = \varphi_b \circ \varphi_a^{-1}(M^a) = \varphi_b \circ \varphi_a^{-1}(f^{-1}(-\infty, a]) \]
+   %TODO
+   \textbf{TODO}
+   Now we still have to show that $M^a$ is a deformation retract of $M^b$, and that the inclusion
+   $M^a \rightarrow M^b$ is a homotopy equivalence. 
 \end{proof}
 
 \begin{theorem}[Second deformation Lemma]
@@ -219,6 +273,8 @@ which commutes everywhere.
 \end{theorem}
 
 \begin{proof}
+   %TODO
+   \textbf{TODO}
    I'm not so sure if this is true but i guess
 \end{proof}
 
@@ -237,8 +293,8 @@ which commutes everywhere.
 \end{lemma}
 
 \begin{proof}
-
-
+   %TODO
+   \textbf{TODO}
 \end{proof}
 
 \begin{lemma}[Morse Inequalities]
@@ -251,7 +307,8 @@ which commutes everywhere.
 \end{lemma}
 
 \begin{proof}
-
+   %TODO
+   \textbf{TODO}
 \end{proof}
 
 %\printbibliography[title={Whole bibliography}]
