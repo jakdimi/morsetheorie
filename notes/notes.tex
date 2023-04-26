@@ -301,12 +301,21 @@ which commutes everywhere.
    \[ <X, \text{grad} f> = X(f) \text{, where } X(f) = dfX \]
 \end{definition}
 
+\begin{definition}[smooth deformation retract]
+   \label{def:deformation retract}
+   Let $M$ be a smooth manifold. A smooth map $r: M \times \R \rightarrow M$ is 
+   a \textit{smooth deformation retraction} onto a subspace $A$, if for every 
+   \[ r(\cdot,0) = \text{id}_M \text{ , } f(M, 1) \subseteq A \text{ , } f(\cdot, 1) = \text{id}_A\]
+   $A$ is called a \textit{smooth deformation retract} of $M$, if there exists a
+   smooth deformation retraction from $M$ onto $A$.
+\end{definition}
+
 \begin{theorem}[First deformation Lemma]
    \label{theorem:1st deformation lemma}
    Let $M$ be a manifold, $f: M \rightarrow \R$ smooth. Let $a < b \in \R$, 
    s.th. $f^{-1}[a, b]$ is compact and contains no critical points of $f$. Then 
    $M^a$ is diffeomorphic to $M^b$. \\ 
-   Furthermore, $M^a$ is a nbhd. deformation retract of $M^b$, s.th. the 
+   Furthermore, $M^a$ is a deformation retract of $M^b$, s.th. the 
    inclusion $M^a \rightarrow M^b$ is a homotopy equivalence.
 \end{theorem}
 
@@ -329,24 +338,40 @@ which commutes everywhere.
    Thus the correnspondence 
    \[ t \rightarrow f(\varphi_t(p)) \]
    is linear with derivative $+1$, if $p \in \varphi_t^{-1}(f^{-1}[a, b])$. 
-
-   Now consider the path 
-   \[ \psi_p:[a, b] \rightarrow M; \psi_p(t) = f(\varphi_{t - a}(p)) \]
-   For $p \in f^{-1}(a)$ we have $\psi_p(a) = f(p)$, and then 
-   \[ \psi_p(a + t) = f(p) + t = f(\varphi_t(p)) \], So 
-   \[ \psi_p(b) = \psi_p(a + (b - a)) = f(p) + b - a = a + b - a = b \].
-   And for $p \in M^a$, we have 
-   \[ \psi_p(b) = \psi_p(a + (b - a)) \leq f(p) + b - a \leq a + b - a = b \]
-   , since $\psi_p$ is monotone.
-   This means that 
-   \[ \varphi_{b-a}(M^a) = M^b \].
-   But since $\varphi_t$ is a diffeomorphism for all $t$, $\varphi_{b-a}$ maps 
-   $M^a$ diffeomorphically onto $M^b$. 
-   
-   %TODO
-   \textbf{TODO}
+   Note that $f \circ \varphi_t$ is "strictly increasing" in the following sense:
+   \[ f(p) > f(q) \Leftrightarrow f(\varphi_t(p)) > f(\varphi_t(p)) \]
+   , as long as $p$, $q$, $\varphi_t(p)$ and $\varphi_t(q)$ are in the interior
+   of the support of $X$. Also the map $t \mapsto f(\varphi_t(p))$ is strictly
+   increasing, as long as $p$ and $\varphi_t(p)$ are in the interior of the
+   support of $X$. This is true because the paths $t \mapsto \varphi_t(p)$ move
+   parallel to the gradient of $f$ and have velocity $>0$ inside the interior 
+   of the support of $X$. \\
+   Then the set $f^{-1}(a)$ is diffeomorphically mapped onto $f^{-1}(b)$ by $\varphi_{b-a}$: \\
+   Let $p \in f^{-1}(a)$. then for $t \in [0, b-a]$, The condition 
+   $\varphi_t(p) \in f^{-1}([a, b])$ from above is satisfied, because
+   $t \mapsto \varphi_t(p)$ is strictly increasing in the above interval, so 
+   \[ f(\varphi_t(p)) = f(p) + t = a + t \Rightarrow f(\varphi_{b-a}(p)) = b \]
+   Similarly, if $p \in f^{-1}(b)$, 
+   $f((\varphi_{b-a})^{-1}(p)) = f(\varphi_{a-b}(p)) = a$. 
+   Now let $p \in f^{-1}(-\infty, a)$ wlog. let p be in the interior of the 
+   support of $X$, otherwise $\varphi_{b-a}(p) = p \in M^b$. \\
+   If we now show that for $p \in f^{-1}(-\infty, a)$, $\varphi_{b-a}(p) \in M^b$,
+   then by the same argument as before, we use the inverse $\varphi_{b-a}$ and
+   this then implies the first assertion of the theorem. For this, choose such a
+   $p$. Assume $\varphi_{b-a}(p) \notin M^b$. Then 
+   $f(\varphi_{b-a}(p)) > b = f(\varphi_{b-a}(q))$ for some $q \in f^{-1}(a)$.
+   But then $f(p) > f(q) \Rightarrow p \notin M^a$. \\
    Now we still have to show that $M^a$ is a deformation retract of $M^b$, and 
-   that the inclusion $M^a \rightarrow M^b$ is a homotopy equivalence. 
+   that the inclusion $M^a \rightarrow M^b$ is a homotopy equivalence. \\
+   Take $r: M^b \times \R \rightarrow M^b$, 
+   \[ 
+      r(p, t) = \begin{cases}
+         p & \text{if } f(p) \leq a \\
+         \varphi_{a - f(p)}(p) & \text{else}
+      \end{cases}
+   \]
+   Then $r(\cdot, 0)$ is the identity and $r(\cdot, 1)$ restricted to $M^a$ is
+   the identity and $r(1, p) \in M^a$ for all $p \in M^b$. 
 \end{proof}
 
 \begin{theorem}[Second deformation Lemma]
