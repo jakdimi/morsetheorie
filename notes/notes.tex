@@ -260,7 +260,7 @@ which commutes everywhere.
    and $s \in (-\varepsilon_0, \varepsilon_0)$. \\ 
    We now need to define $\varphi_t(p)$ for $t \geq \varepsilon_0$. Any Number 
    can be expressed as $t = k \cdot \frac{\varepsilon_0}{2} + r$, where 
-   $0 < r < \varepsilon_0/2$. Then set 
+   $0 \leq r < \varepsilon_0/2$. Then set 
    \[ \varphi_t = 
    \varphi_{\varepsilon_0/2} \circ \varphi_{\varepsilon_0/2} \circ ... \circ \varphi_r \]
    , where $\varphi_{\varepsilon_0}$ is iterated $k$ times. For 
@@ -310,7 +310,7 @@ which commutes everywhere.
    smooth deformation retraction from $M$ onto $A$.
 \end{definition}
 
-\begin{theorem}[First deformation Lemma]
+\begin{theorem}[First deformation Lemma, Milnor]
    \label{theorem:1st deformation lemma}
    Let $M$ be a manifold, $f: M \rightarrow \R$ smooth. Let $a < b \in \R$, 
    s.th. $f^{-1}[a, b]$ is compact and contains no critical points of $f$. Then 
@@ -350,8 +350,9 @@ which commutes everywhere.
    Let $p \in f^{-1}(a)$. then for $t \in [0, b-a]$, The condition 
    $\varphi_t(p) \in f^{-1}([a, b])$ from above is satisfied, because
    $t \mapsto \varphi_t(p)$ is strictly increasing in the above interval, so 
-   \[ f(\varphi_t(p)) = f(p) + t = a + t \Rightarrow f(\varphi_{b-a}(p)) = b \]
-   Similarly, if $p \in f^{-1}(b)$, 
+   \[ f(\varphi_t(p)) = f(\varphi_0(p)) + t = f(p) + t 
+   = a + t \Rightarrow f(\varphi_{b-a}(p)) = b \]
+   Similarly, if $p \in f^{-1}(b)$, then 
    $f((\varphi_{b-a})^{-1}(p)) = f(\varphi_{a-b}(p)) = a$. 
    Now let $p \in f^{-1}(-\infty, a)$ wlog. let p be in the interior of the 
    support of $X$, otherwise $\varphi_{b-a}(p) = p \in M^b$. \\
@@ -367,14 +368,45 @@ which commutes everywhere.
    \[ 
       r(p, t) = \begin{cases}
          p & \text{if } f(p) \leq a \\
-         \varphi_{a - f(p)}(p) & \text{else}
+         \varphi_{t(a - f(p))}(p) & \text{if } a \leq f(p) \leq b
       \end{cases}
    \]
    Then $r(\cdot, 0)$ is the identity and $r(\cdot, 1)$ restricted to $M^a$ is
    the identity and $r(1, p) \in M^a$ for all $p \in M^b$. 
 \end{proof}
 
-\begin{theorem}[Second deformation Lemma]
+\begin{remark}
+   Note that for $M^a$ and $M^b$ to be $C^r$ diffeomorphic, $f$ needs only to be
+   $C^{r+1}$.
+\end{remark}
+
+\begin{corollary}[Hirsch]
+   Let $f: M \rightarrow [a, b]$ be a $C^{r+1}$-map on a compact manifold with 
+   boundary, $1 \leq r \leq \omega$. Suppose $f$ has no critical values and 
+   $f(\partial M) = \{a, b\}$. Then there is a $C^r$ diffeomorphism such that the 
+   following diagram commutes:
+   \begin{figure}[H]
+      \centering
+      \begin{tikzcd}
+         f^{-1}(a) \times [a, b] \arrow[rr, "F"] \arrow[dr] & & M \arrow[dl, "f"] \\
+         & \left[ a, b \right] &
+      \end{tikzcd}
+   \end{figure}
+\end{corollary}
+
+\begin{proof}
+   Take $F(p,t) = r(p, t)$, where $r$ is the deformation retraction from the 
+   proof above.
+\end{proof}
+
+\begin{corollary}[Hirsch]
+   Let $M$ be a compact manifold with boundary, such that $\partial M = A \cup B$
+   and $A$ and $B$ are disjoint. If there exists a $C^2$ map $f: M \rightarrow [0,1]$
+   with no critical points, such that $f(A) = 0$ and $f(B) = 1$, then $M$ is 
+   $C^1$-diffeomorphic to the cylinders $A \times [0, 1]$ and $B \times [0, 1]$.
+\end{corollary}
+    
+\begin{theorem}[Second deformation Lemma, Milnor]
    \label{theorem:2nd deformation lemma}
    Let $M$ be a manifold, $f: M \rightarrow \R$ smooth and $p$ be a 
    non-degenerate critical point of $f$ of index $k$. Let $c := f(p)$ and 
