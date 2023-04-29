@@ -11,8 +11,8 @@
 Let us consider a Torus $M$ tangent to a plane $V$:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\linewidth]{resources/Diagram1.png}
-    \label{fig:diagram1}
+    \includegraphics[width=0.4\linewidth]{resources/Mil-Diagram1.png}
+    \label{fig:mil-diagram1}
 \end{figure}
 Let $f: M \rightarrow \R$ be the distance of a point to the plane $V$. 
 For a Number $a \in \R $, let $M^a$ be the set of all points $p \in M$, s.th. 
@@ -49,8 +49,10 @@ there exists a pushout square in Top
 \begin{figure}[H]
    \centering
    \begin{tikzcd}
-      S^{k-1} \arrow[r] \arrow[d] \arrow[dr, phantom, "\ulcorner", very near end] & M \arrow[d] \\
-      D^k \arrow[r]                                                               & X
+      S^{k-1} \arrow[r] \arrow[d] \arrow[dr, phantom, "\ulcorner", very near end] 
+         & M \arrow[d] \\
+      D^k \arrow[r] 
+         & X
    \end{tikzcd}
 \end{figure}
 
@@ -305,7 +307,7 @@ which commutes everywhere.
    \label{def:deformation retract}
    Let $M$ be a smooth manifold. A smooth map $r: M \times \R \rightarrow M$ is 
    a \textit{smooth deformation retraction} onto a subspace $A$, if for every 
-   \[ r(\cdot,0) = \text{id}_M \text{ , } f(M, 1) \subseteq A \text{ , } f(\cdot, 1) = \text{id}_A\]
+   \[ r(\cdot,0) = \text{id}_M \text{ , } f(M, 1) \subseteq A \text{ , } f(\cdot, 1)|_A = \text{id}_A\]
    $A$ is called a \textit{smooth deformation retract} of $M$, if there exists a
    smooth deformation retraction from $M$ onto $A$.
 \end{definition}
@@ -377,7 +379,8 @@ which commutes everywhere.
 
 \begin{remark}
    Note that for $M^a$ and $M^b$ to be $C^r$ diffeomorphic, $f$ needs only to be
-   $C^{r+1}$.
+   $C^{r+1}$. Also we have proved that the level sets between $a$ and $b$ are
+   diffeomorphic.
 \end{remark}
 
 \begin{corollary}[Hirsch]
@@ -409,16 +412,43 @@ which commutes everywhere.
 \begin{theorem}[Second deformation Lemma, Milnor]
    \label{theorem:2nd deformation lemma}
    Let $M$ be a manifold, $f: M \rightarrow \R$ smooth and $p$ be a 
-   non-degenerate critical point of $f$ of index $k$. Let $c := f(p)$ and 
-   $\varepsilon > 0$, s.th. $f^{-1}[c-\varepsilon, c+\varepsilon]$ is compact and 
-   contains no critical points of $f$. Then $M^{c+\varepsilon}$ is obtained from 
-   $M^{c-\varepsilon}$ by attaching a $k$-cell.
+   non-degenerate critical point of $f$ of index $\lambda$. Let $c := f(p)$ and 
+   $\varepsilon > 0$, s.th. $f^{-1}[c-\varepsilon, c+\varepsilon]$ is compact 
+   and contains no critical points of $f$. Then $M^{c+\varepsilon}$ is obtained 
+   from $M^{c-\varepsilon}$ by attaching a $\lambda$-cell.
 \end{theorem}
 
 \begin{proof}
+   The idea of the proof is define a new function $F$, that is equal to $f$
+   exept for in a small neighborhood of $p$, there we take $F < f$ slightly. 
+   Then we get a situation as in the following diagram, where our manifold is
+   the Torus and the map is the hight map, where $c = f(p)$:
+
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\linewidth]{resources/Mil-Diagram4.png}
+      \label{fig:mil-diagram4}
+   \end{figure}
+
+   The heavily shaded region is $M^{c-\varepsilon}$. Then $F^{-1}(-\infty, c]$ is
+   the heavily shaded region together with the horizontally shaded region. We Then
+   construct a homotopy-equivalence that "squishes" the horizontally shaded region
+   along the indicated lines, thus only leaving a $\lambda$-cell.
+
+   By the Morse Lemma \ref{theorem:morse lemma}, we can choose local coordinates
+   $u^1, ..., u^n$ in a neighborhood of $p$ such that 
+   \[ f = c -  (u^1)^2 - ... - (u^{\lambda})^2 + (u^{\lambda + 1})^2 + ... + (u^n)^2 \]
+   in a neighborhood $U$ of $p$. Then for the critical point $p$ we have
+   \[ u^1(p) = ... = u^n(p) = 0 \]
+
+
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\linewidth]{resources/Mil-Diagram5.png}
+      \label{fig:mil-diagram5}
+  \end{figure}
    %TODO
    \textbf{TODO}
-   I'm not so sure if this is true but i guess
 \end{proof}
 
 \subsection{Examples}
