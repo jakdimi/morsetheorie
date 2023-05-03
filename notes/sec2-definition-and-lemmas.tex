@@ -1,0 +1,107 @@
+\subsection{Definitions and Lemmas}
+
+\begin{definition}[critical Point, non-degenerate critical Point]
+   \label{def:critical point}
+
+   Let $M$ be a (smooth) manifold and $f: M \rightarrow \R$ be a smooth 
+   function. Then $p \in M$ is called a \textit{critical point}, if the 
+   tangent map $f_*: TM_p \rightarrow R$ is not zero. \\
+   A critical point is called \textit{non-degenerate}, if for some local 
+   coordinates $\varphi = (x_1, ..., x_n)$
+   the matrix 
+   \[ H_p^{\varphi}f := 
+   \left(\frac{\partial^2 f}{\partial x_i \partial x_j}(p)\right)_{1 \leq i,j \leq n} \]
+   is non-singular, i.e. invertable. \\
+   $H_p^{\varphi}f$ is called the Hessian of $f$ at $p$ (wrt. $\varphi$).
+
+\end{definition}
+
+\begin{lemma}[Congruency of Hessians]
+   \label{lemma:congruency}   
+
+   Let $M$ be a manifold, $f: M \rightarrow \R$, $p$ a critical point of $f$
+   and $\varphi := (x_1, ..., x_n)$ and $\psi := (y_1, ..., y_n)$ local 
+   coordinates aroud $p$. Let 
+   \[ D_p = \left( \frac{\partial x_i}{\partial y_j}(p) \right)_{1 \leq i, j \leq n}\].
+   Then 
+   \[ H_p^{\psi}f = D_p^T H_p^{\varphi}f D_p \]
+
+\end{lemma}
+
+\begin{proof}
+
+   Let $M$ be a manifold, $f: M \rightarrow \R$ a smooth function.
+   Let $p \in M$ be a critical point of $f$ and $\varphi = (x_1, ..., x_n)$, 
+   $\psi = (y_1, ..., y_n)$ local coordinates in a nbhd. around $p$.
+   From functoriality of the tangent space, we know that 
+   \[ \frac{\partial f}{\partial y_k} = 
+   \sum_{i=1}^n \frac{\partial f}{\partial x_i} \cdot \frac{\partial x_i}{\partial y_k} \,t \]
+   so 
+   \[ \pdderive[f]{y_k}{y_l} (p) 
+   = \pderive{y_k} \left( \pderive[f]{y_l} \right) (p) 
+   = \pderive{y_k} \left( \sum_{i=1}^n \pderive[f]{x_i} \cdot \pderive[x_i]{y_l} \right) (p) \]
+   \[ = \sum_{i=1}^n \pderive{y_k} \left( \pderive[f]{x_i} \right) (p) \cdot \pderive[x_i]{y_l} (p) 
+   + \sum_{i=1}^n \pderive[f]{x_i} (p) \cdot \pderive{y_k} \left( \pderive[x_i]{y_l} \right) (p) \]
+   \[ = \sum_{i,j = 1}^n \pdderive[f]{x_i}{x_j} (p) \cdot \pderive[x_j]{y_k} (p) \cdot \pderive[x_i]{y_l}(p)
+   + \sum_{i=1}^n \pderive[f]{x_i} (p) \cdot \pdderive[x_i]{y_k}{y_l}(p)\]
+   
+   Because $p$ is a critical point, $\pderive[f]{x_i} (p) = 0$ for all $i$, so then
+   \[ \left( H_p^{\psi}f \right)_{k,l} 
+   = \sum_{i,j = 1}^n \pdderive[f]{x_i}{x_j} (p) \cdot \pderive[x_j]{y_k}(p) \cdot \pderive[x_i]{y_l} (p) \]
+   \[ = \left( D_p^T \cdot H_p^{\varphi}f \cdot D_p \right)_{k,l} \]
+
+\end{proof}
+
+\begin{lemma}[Invariance of non-degeneracy] 
+   \label{lemma:non-degeneracy}
+   Non-degeneracy does not depend on the chosen local coordinates.
+\end{lemma}
+
+\begin{proof}
+   Let $f: M \rightarrow \R$ be smooth, $p$ a critical point of $f$ and 
+   $\varphi = (x_1, ..., x_n)$, $\psi = (y_1, ..., y_n)$ local coordinates 
+   around $p$. Assume that $p$ is non-non degenerate wrt. $\varphi$ Note that 
+   $D_p$ from lemma~\ref{lemma:congruency} is invertable. Then
+   \[ \text{det}(H_p^{\psi}f) = \text{det}(D_p^T \cdot H_p^{\varphi} \cdot D_p) = 
+   \text{det}(D^T) \cdot \text{det}(H_p^{\varphi}) \cdot \text{det}(D_p) \neq 0 \]
+\end{proof}
+
+\begin{definition}[Index]
+   \label{def:index}
+
+   The \textit{index} of a Matrix $A$ is the number of (not necessarily 
+   destinct) negative Eigenvalues of $A$ and is denoted by $\text{index}(A)$. \\
+    The \textit{index} of a critical point $p$ of a function 
+    $f: M \rightarrow \R$ (wrt. a chart $\varphi$) is the index of the matrix 
+    $H_p^{\varphi}f$.
+\end{definition}
+
+\begin{lemma}[Invariance of the Index]
+   \label{lemma:index}
+   The index of a critical point does not depend on the chosen local coordinates.
+\end{lemma}
+
+\begin{proof}
+   Let $f: M \rightarrow \R$ be a smooth function, $p$ a critical point of $f$
+   and $\varphi$, $\psi$ two charts around $p$.
+   As seen in lemma~\ref{lemma:congruency}, 
+   $H_p^{\varphi}f = D^T \cdot H_p^{\psi}f \cdot D$, i.e.
+   $H_p^{\varphi}$ is congruent to $H_p^{\psi}$, because $D$ is invertable. 
+   Then by Sylvester's Law, 
+   \[ \text{{index}}(H_p^{\varphi}f) = \text{{index}}(H_p^{\varphi}f) \]
+\end{proof}
+
+\begin{theorem}[Morse's Lemma]
+   \label{theorem:morse lemma}
+
+   Let $M$ be a manifold, $f: M \rightarrow \R$ smooth and $p$ a non-degenerate 
+   critical point of $f$ of index $k$. Then there exist local coordinates 
+   $\varphi = (x_1, ..., x_n)$, s.th,
+   \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k+1}^2 + ... + x_n^2 \]
+\end{theorem}
+
+\begin{proof}
+   %TODO
+   \textbf{TODO}
+   This is the proof of Morse's Lemma <3 . It's true i swear
+\end{proof}
