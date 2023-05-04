@@ -101,13 +101,35 @@
    \label{def:deformation retract}
    Let $X$ be a topological space. A continuous map $r: X \times [0, 1] \rightarrow X$ is 
    a \textit{deformation retraction} onto a subspace $A$, if for every 
-   \[ r(\cdot,0) = \text{id}_X \text{ , } f(X, 1) \subseteq A \text{ , } f(\cdot, 1)|_A = \text{id}_A\]
+   \[ r(\cdot,0) = \text{id}_X \text{ , } r(X, 1) \subseteq A \text{ , } r(\cdot, 1)|_A = \text{id}_A\]
    $A \subseteq X$ is called a \textit{deformation retract} of $M$, if there exists a
    deformation retraction from $X$ onto $A$.
    If $X = M$ is a smooth manifold, and there exists a smooth deformation
    retraction from $M$ onto $A$, $A$ is called a \textit{smooth deformation 
    retract}.
 \end{definition}
+
+\begin{lemma}
+   If $A$ is a deformation retract of a space $X$, then $A \simeq X$.
+\end{lemma}
+
+\begin{proof}
+   Let $r$ be the deformation retraction from $X$ onto $A$. Let 
+   $\iota: A \rightarrow X$ be the inclusion. Let 
+   $f: X \rightarrow A$; with $f(x) = r(x, 1)$. This is well defined since 
+   $r(\cdot, 1)$ maps into $A$. Then $f \circ \iota (x) = f(x) = x$. Also, 
+   $\iota \circ f(x) = f(x) = r(x, 1)$, so $r$ is a homotopy between 
+   $f \circ \iota$ and $id_X$, so $A$ and $X$ have the same homotopy type.
+\end{proof}
+
+\begin{remark}
+   The following is also true: \\
+   Let $A$ and $B$ be subspaces of $X$. Then
+   $A$ and $B$ have the same homotopy type, if and only if they both are 
+   deformation retracts of some other subspace $C$. \\
+   "$\Leftarrow$" follows directly from the lemma above, while "$\Rightarrow$"
+   is relatively hard to prove and requires some more topological theory.
+\end{remark}
 
 \begin{theorem}[First deformation Lemma, Milnor]
    \label{theorem:1st deformation lemma}
