@@ -10,7 +10,7 @@
    coordinates $\varphi = (x_1, ..., x_n)$
    the matrix 
    \[ H_p^{\varphi}f := 
-   \left(\frac{\partial^2 f}{\partial x_i \partial x_j}(p)\right)_{1 \leq i,j \leq n} \]
+   \left(\frac{\del^2 f}{\del x_i \del x_j}(p)\right)_{1 \leq i,j \leq n} \]
    is non-singular, i.e. invertable. \\
    $H_p^{\varphi}f$ is called the Hessian of $f$ at $p$ (wrt. $\varphi$).
 
@@ -22,7 +22,7 @@
    Let $M$ be a manifold, $f: M \rightarrow \R$, $p$ a critical point of $f$
    and $\varphi := (x_1, ..., x_n)$ and $\psi := (y_1, ..., y_n)$ local 
    coordinates aroud $p$. Let 
-   \[ D_p = \left( \frac{\partial x_i}{\partial y_j}(p) \right)_{1 \leq i, j \leq n}\].
+   \[ D_p = \left( \frac{\del x_i}{\del y_j}(p) \right)_{1 \leq i, j \leq n}\].
    Then 
    \[ H_p^{\psi}f = D_p^T H_p^{\varphi}f D_p \]
 
@@ -34,8 +34,8 @@
    Let $p \in M$ be a critical point of $f$ and $\varphi = (x_1, ..., x_n)$, 
    $\psi = (y_1, ..., y_n)$ local coordinates in a nbhd. around $p$.
    From functoriality of the tangent space, we know that 
-   \[ \frac{\partial f}{\partial y_k} = 
-   \sum_{i=1}^n \frac{\partial f}{\partial x_i} \cdot \frac{\partial x_i}{\partial y_k} \,t \]
+   \[ \frac{\del f}{\del y_k} = 
+   \sum_{i=1}^n \frac{\del f}{\del x_i} \cdot \frac{\del x_i}{\del y_k} \,t \]
    so 
    \[ \pdderive[f]{y_k}{y_l} (p) 
    = \pderive{y_k} \left( \pderive[f]{y_l} \right) (p) 
@@ -62,15 +62,15 @@
    $\varphi = (x_1, ..., x_n)$, $\psi = (y_1, ..., y_n)$ local coordinates 
    around $p$. Assume that $p$ is non-non degenerate wrt. $\varphi$ Note that 
    $D_p$ from lemma~\ref{lemma:congruency} is invertable. Then
-   \[ \text{det}(H_p^{\psi}f) = \text{det}(D_p^T \cdot H_p^{\varphi} \cdot D_p) = 
-   \text{det}(D^T) \cdot \text{det}(H_p^{\varphi}) \cdot \text{det}(D_p) \neq 0 \]
+   \[ \det(H_p^{\psi}f) = \det(D_p^T \cdot H_p^{\varphi} \cdot D_p) = 
+   \det(D^T) \cdot \det(H_p^{\varphi}) \cdot \det(D_p) \neq 0 \]
 \end{proof}
 
 \begin{definition}[Index]
    \label{def:index}
 
    The \textit{index} of a Matrix $A$ is the number of (not necessarily 
-   destinct) negative Eigenvalues of $A$ and is denoted by $\text{index}(A)$. \\
+   destinct) negative Eigenvalues of $A$ and is denoted by $\Index(A)$. \\
     The \textit{index} of a critical point $p$ of a function 
     $f: M \rightarrow \R$ (wrt. a chart $\varphi$) is the index of the matrix 
     $H_p^{\varphi}f$.
@@ -88,7 +88,7 @@
    $H_p^{\varphi}f = D^T \cdot H_p^{\psi}f \cdot D$, i.e.
    $H_p^{\varphi}$ is congruent to $H_p^{\psi}$, because $D$ is invertable. 
    Then by Sylvester's Law, 
-   \[ \text{{index}}(H_p^{\varphi}f) = \text{{index}}(H_p^{\varphi}f) \]
+   \[ \Index(H_p^{\varphi}f) = \Index(H_p^{\varphi}f) \]
 \end{proof}
 
 \begin{theorem}[Morse's Lemma]

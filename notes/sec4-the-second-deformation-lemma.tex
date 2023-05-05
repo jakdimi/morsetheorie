@@ -5,8 +5,9 @@
    Let $M$ be a manifold, $f: M \rightarrow \R$ smooth and $p$ be a 
    non-degenerate critical point of $f$ of index $\lambda$. Let $c := f(p)$ and 
    $\varepsilon > 0$, s.th. $f^{-1}[c-\varepsilon, c+\varepsilon]$ is compact 
-   and contains no critical points of $f$. Then $M^{c+\varepsilon}$ has the
-   homotopy-type of  $M^{c-\varepsilon}$ with a $\lambda$-cell attached.
+   and contains no critical points of $f$ other then $p$. Then 
+   $M^{c+\varepsilon}$ has the homotopy-type of  $M^{c-\varepsilon}$ with a 
+   $\lambda$-cell attached.
 \end{theorem}
  
 \begin{proof}
@@ -55,9 +56,9 @@
    The heavily shaded area is $M^{c-\varepsilon}$, the area shaded with bigger
    dots is $f^{-1}[c - \varepsilon, c]$ and the area shaded with smaller dots
    is $f^{-1}[c, c + \varepsilon]$. \\
-   The circle is $\{ p \in M : u^1(p) + ... + u^n(p) = \sqrt{2\varepsilon} \}$.
-   Notice that $e^\lambda \cap M^{c - \varepsilon} = \partial e^{\lambda}$, so
-   it is atteched to $M^{c - \varepsilon}$ as required. We now have to show that
+   The circle is $\{ p \in M : (u^1(p))^2 + ... + (u^n(p))^2 = 2\varepsilon \}$.
+   Notice that $e^\lambda \cap M^{c - \varepsilon} = \del e^{\lambda}$, so
+   it is attached to $M^{c - \varepsilon}$ as required. We now have to show that
    $e^{\lambda} \cup M^{c - \varepsilon}$ is a deformation retract of 
    $M^{c + \varepsilon}$. \\
    Define a $C^{\infty}$ function $\mu : \R \rightarrow \R$ with the following
@@ -77,7 +78,7 @@
    \[ \xi, \eta: U \rightarrow [0, \infty) \]
    by
    \begin{align*}
-      & \xi = (u^1)^2 + ... + (u^n)^2 \\
+      & \xi = (u^1)^2 + ... + (u^{\lambda})^2 \\
       & \eta = (u^{\lambda + 1})^2 + ... + (u^n)^2
    \end{align*}
    Then $f = c - \xi + \eta$ and $F|_U = f - \mu(\xi + 2\eta) = c - \xi + \eta - \mu(\xi + 2\eta)$
@@ -99,7 +100,7 @@
    and
    \[ \pderive[F]{\eta} = 1 - 2 \mu'(\xi + 2 \eta) \geq 1 \]
    , so in particular these derivatives are never $0$. Since 
-   \[ \text{d}F = \pderive[F]{\xi}\text{d}\xi + \pderive[F]{\eta} \text{d}\eta \]
+   \[ \opd F = \pderive[F]{\xi}\opd\xi + \pderive[F]{\eta} \opd \eta \]
    And d$\xi$ and d$\eta$ are zero only in $p$, $F$ has no critical points
    in $U$ other then $p$. This proves the second assertion.
 
@@ -140,7 +141,7 @@
    \[ 
       r(q, t) = \begin{cases}
          \varphi^{-1} \circ (u^1, ..., u^{\lambda}, tu^{\lambda + 1}, ..., tu^n) (q) 
-               & \text{ if } \xi(p) \leq \varepsilon \\
+               & \text{ if } \xi(q) \leq \varepsilon \\
          \varphi^{-1} \circ (u^1, ..., u^{\lambda}, s_tu^{\lambda + 1}, ..., s_tu^n) (q) 
                & \text { if } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
          q & \text{ if } \eta(q) + \varepsilon \leq \xi(q)
@@ -150,25 +151,97 @@
    Where 
 
    \[ s_t = t + (1 - t)((\xi - \varepsilon)/\eta)^{1/2} \]
+
+   We have:
+   
+   \begin{itemize}
+      \item[] $\xi(p) \leq \varepsilon$ as case 1,
+      \item[] $\varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon$ as case 2 and
+      \item[] $\eta(q) + \varepsilon \leq \xi(q)$ case 3.
+   \end{itemize}
    
    Note that 
-   \[ \{ q \ M^{c - \varepsilon} \cup H : \xi(q) \leq \epsilon \} \subseteq H \],
-   \[ \{ q \ M^{c - \varepsilon} \cup H : \varepsilon \leq \xi(q) \leq \eta(q) + \epsilon \} \subseteq H \]
-   and
-   \[ \{ q \ M^{c - \varepsilon} \cup H : \eta(q) + \varepsilon \leq \xi(q) \} = M^{c - \varepsilon}\]
+   \[ \text{case 3, i.e. } \eta(q) + \varepsilon \leq \xi(q)
+   \Leftrightarrow c - \xi(q) + \eta(q) \leq c - \varepsilon 
+   \Leftrightarrow q \in M^{c - \varepsilon}\]
+   , so we have the following situation:
 
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.6\linewidth]{./resources/Me-Diagram1.jpeg}
+   \end{figure}
+
+   Where the red is case 1, the green is case 3 and the blue is case 2.
    We now need to verify that
    \begin{enumerate}
-      \item $r$ is continuous
-      \item $r(\cdot, 1) = id_{M^{c - \varepsilon} \cup H}$
+      \item $r$ is well definded and continuous 
+      \item $r(\cdot, 1) = \id_{M^{c - \varepsilon} \cup H}$
       \item $r(M^{c - \varepsilon} \cup H, 0) 
          \subseteq M^{c - \varepsilon} \cup e^{\lambda}$
       \item $r(\cdot, 0)|_{M^{c - \varepsilon} \cup e^{\lambda}} 
-         = id_{M^{c - \varepsilon} \cup e^{\lambda}}$
+         = \id_{M^{c - \varepsilon} \cup e^{\lambda}}$
    \end{enumerate}
 
-   2. and 4. are obvious. 
+   2. and 4. are easiliy verified:
+   $s_1 = 1$, so in all three cases $r(q, 1) = q$. If $q$ is in $e^{\lambda}$,
+   only case 1 will hold for $q$ and then 
+   $r(q, 0) = \varphi^{-1} \circ (u^1, ..., u^{\lambda}, 0, ..., 0) \in e^{\lambda}$,
+   and if $q \in M^{c - \varepsilon}$ then only case 3 holds for $q$ and 
+   $r(q, 0) = q \in M^{c - \varepsilon}$.
+
+   3. is obvious for case 1 and case 3. For $q$ in case 2:
+   \[ s_0(q) = ((\xi(q) - \varepsilon)/\eta(q))^{1/2} \]
+   so
+   \[
+      f(r(0, q)) = 
+         f(\varphi^{-1})(u^1(q), ... , u^{\lambda}(q), 
+            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2} u^{\lambda + 1}(q), ... , 
+            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2} u^n(q)) 
+   \]
+   \[
+      = c - \xi(q) + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2} u^{\lambda + 1} \right)^2
+         + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2} u^n(q) \right)^2
+   \]
+   \[ = c - \xi(q) + \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)\eta(q) \]
+   \[ = c - \varepsilon \]
+   , so $r(0, q) \in f^{-1}(c - \varepsilon)$.
+
+   To check 1. well definedness and continuity, we first need to check 
+   continuity on the edge cases: 
+   \begin{align*}
+      & \text{For } \xi(q) = \varepsilon \text{ : } 
+         & s_t(q) = t + (1 - t)((\varepsilon - \varepsilon)/\eta(q))^{1/2} = t \\
+      & \text{For } \eta(q) + \varepsilon = \xi(q) \text{ : }
+         & s_t(q) = t + (1 - t)((\xi(q) - \varepsilon)/(\xi(q) - \varepsilon)^{1/2} 
+         = 1
+   \end{align*}
+
+   Check continuity of $s_t$:
+   The only problem we may get is if $\eta \rightarrow 0$. Note that, because 
+   $s_t$ is only defined in case 2, we always have $0 \leq \xi - \varepsilon \leq \eta$. 
+   Then we will have to verify that $s_tu^i \rightarrow 0$ for $\lambda + 1 \leq i \leq n$,
+   as $\eta \rightarrow 0$, because 
+   $r(t, q) = \varphi^{-1} \circ (u^1, ..., u^{\lambda}, 0, ..., 0)$ in the other
+   two cases as $\eta = 0$.
    
-   %TODO
-   \textbf{TODO}
+   \[ 
+      \lim\limits_{\eta \to 0} s_t u^i 
+      = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i
+   \]
+
+   wlog. let $u^i \geq 0$. Then $(1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i \geq 0$.
+   We also have $\lim\limits_{\eta \to 0} u^i = 0$, so
+   \[ 
+      \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i  
+      \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}u^i
+      = \lim\limits_{\eta \to 0} (1 - t)u^i = 0
+   \]
+
+   And then $\lim\limits_{\eta \to 0} s_t u^i = 0$.
+   
+   Assertions 3. and 4. together prove the theorem because we get 
+   \[ M^{c + \varepsilon} \simeq M^{c-\varepsilon} \cup H \]
+   by assertion 3 and
+   \[ M^{c-\varepsilon} \cup H \simeq M^{c - \varepsilon} \cup e^{\lambda} \]
+   by assertion 4, so $M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup e^{\lambda}$.
  \end{proof}
