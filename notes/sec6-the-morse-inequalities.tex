@@ -6,42 +6,223 @@
    \[ \betti_{\lambda}(X, Y) = \dim(\Hom_{\lambda}(X, Y; \R)) \]
 
    The Euler-Characteristic of a space-pair $(X, Y)$ where the dimensions of the
-   homology over $\R$ of $(X, Y)$ in every degree is finite is
+   homology over $\R$ of $(X, Y)$ in every degree is finite and $0$ in almost 
+   every degree is
    \[ \chi (X, Y) = \sum_{\lambda \in \Z} (-1)^{\lambda}\betti_{\lambda}(X, Y) \]
 \end{definition}
 
+\begin{lemma}
+   \label{lemma:alternating sum}
+   If we have an exact sequence of vector spaces
+
+   \begin{figure}[H]
+      \centering
+      \begin{tikzcd}
+         V_0 \arrow[r, "\del_0"] &
+         V_1 \arrow[r, "\del_1"] &
+         ... \arrow[r, "\del{n-1}"] &
+         V_n \arrow[r, "\del_n"] &
+         0
+      \end{tikzcd}
+   \end{figure}
+
+   then 
+
+   \[ \sum_{k = 1}^n (-1)^k \dim V_k \geq 0 \].
+
+   If $V_0 = 0$, then
+   \[ \sum_{k = 1}^n (-1)^k \dim V_k \geq 0 \].
+\end{lemma}
+
+\begin{proof}
+   We have $V_k = \ker(\del_k) \oplus \Ima(\del_k) = \Ima(\del_{k - 1}) \oplus \Ima(\del_k)$
+   , so 
+   \[ \bigoplus_{k \text{ odd }}^n V_k = \bigoplus_{k \text{ even }}^n V_k \oplus \Ima (\del_0) \]
+   , and then since almost all $V_k$ are zero
+   \[ \sum_{k \text{ even }}^n \dim V_k - \sum_{k \text{ odd }}^n \dim V_k = \dim \Ima(\del_0) \geq 0\]
+   \[ \Leftrightarrow \sum_{k = 1}^n (-1)^k \dim V_k \geq 0 \].
+   If $V_0 = 0$, then $\dim \Ima(\del_0) = 0$, so
+   \[ \sum_{k = 1}^n (-1)^k \dim V_k = 0 \].
+\end{proof}
+
 \begin{definition}[subadditiv function]
-   A subadditive function $S: $
+   A \textit{subadditive function} $S$ is a function from certain space pairs to
+   the integers, s.th. if we have spaces $Z \subseteq Y \subseteq X$, then 
+   \[ S(X, Z) \leq S(X, Y) + S(Y, Z) \].
+   If equality holds $S$ is called \textit{additive}. \\
+   We write $S(X) := S(X, \varnothing)$.
 \end{definition}
 
-\begin{lemma}[Weak Morse Inequalities]
-   \label{lemma:weak morse inequalities}
-   Let $f: M \rightarrow \R$ be a smooth map from a compact smooth manifold. Let 
-   $C_{\lambda}$ be the number of critical points of $f$ of degree $\lambda$.
-   \begin{enumerate}
-      \item $R_{\lambda} (M) \leq C_{\lambda}$
-      \item $\sum_{\lambda} (-1)^{\lambda} \cdot R_{\lambda}(M) = 
-         \sum_{\lambda} (-1)^{\lambda} \cdot C_{\lambda} $
-   \end{enumerate}
+\begin{lemma}
+   \label{lemma:subadditivity}
+   If $S$ is a subadditive, $X_0 \subseteq ... \subseteq X_n$ admissable for $S$,
+   then 
+   \[ S(X_n, X_0) \leq \sum_i S(X_i, X_{i-1}) \]
+   with equality if $S$ is additive.
 \end{lemma}
 
 \begin{proof}
-   %TODO
-   \textbf{TODO}
+   Proof by induction: For $n=2$ this is exactly the definition of (sub)additivity.
+   If the statement holds for $n - 1$, then
+   \[ S(X_n, X_0) \leq S(X_n, X_{n-1}) + S(X_{n-1}, X_0) \leq \sum_i S(X_i, X_{i-1}) \]
+   with equality if $S$ is additive.
 \end{proof}
 
-\begin{lemma}[Morse Inequalities]
-   \label{lemma:strung morse inequalities}
-   Something Something
-   \begin{enumerate}
-      \item $ S_{\lambda}(M) \leq \sum_{i = 1}^k S_{\lambda}(M^{a_i}, M^{a_{i-1}}) 
-         = C_{\lambda} - C_{\lambda - 1} + ... \pm C_0 $
-      \item $ R_{\lambda}(M) - R_{\lambda - 1}(M) + ... \pm R_0(M) \leq C_{\lambda} - C_{\lambda - 1} ... \pm C_0 $
-   \end{enumerate}
+\begin{lemma}
+   \label{lemma:subadditivity of b}
+   $\betti_{\lambda}$ is subadditive and $\chi$ is additive.
 \end{lemma}
 
 \begin{proof}
-   %TODO
-   \textbf{TODO}
+   For any exact sequence of vector spaces 
+   \begin{figure}[H]
+      \centering
+      \begin{tikzcd}
+         ... \arrow[r, "\del_{-1}"] & 
+         V_0 \arrow[r, "\del_0"] &
+         V_1 \arrow[r, "\del_1"] &
+         V_2 \arrow[r, "\del_2"] &
+         ...
+      \end{tikzcd}
+   \end{figure}
+   we get:
+   \begin{align*}
+      \dim(V_1) 
+      & = \dim(\ker(\del_1)) + \dim (\Ima(\del_1)) \\
+      & = \dim(\Ima(\del_0)) + \dim(\ker(\del_2)) \\
+      & = ( \dim (V_0) - \dim (\ker (\del_0)) ) + ( \dim (V_2) - \dim (\Ima (\del_2)) ) \\
+      & \leq \dim(V_0) + \dim(V_2)
+   \end{align*}
+
+   For spaces $Z \subseteq Y \subseteq X$ we have the following exact sequence 
+   in homology:
+
+   \begin{figure}[H]
+      \centering
+      \begin{tikzcd}[column sep=small]
+         ... \arrow[r] & 
+         \Hom_{\lambda}(Y, Z) \arrow[r] &
+         \Hom_{\lambda}(X, Z) \arrow[r] &
+         \Hom_{\lambda}(X, Y) \arrow[r] &
+         ...
+      \end{tikzcd}
+   \end{figure}
+
+   so $\betti_{\lambda}(X, Z) \leq \betti_{\lambda}(X, Y) + \betti_{\lambda}(Y, Z)$.
+
+   With the same long exact sequence of space triples and with 
+   lemma~\ref{lemma:alternating sum}, i.e. the fact that the alternating sum of
+   the dimensions in a finite exact sequence of vector spaces equals zero, we get
+   \[ 
+      \sum (-1)^{\lambda}\dim(\Hom_{\lambda}(Y, Z)) 
+      - \sum (-1)^{\lambda}\dim(\Hom_{\lambda}(X, Z)) 
+      + \sum (-1)^{\lambda}\dim(\Hom_{\lambda}(X, Y))
+      = 0 
+   \]
+   , so $\chi(X, Z) = \chi(Y, Z) + \chi(X, Y)$.
 \end{proof}
 
+\begin{theorem}[Weak Morse Inequalities]
+   \label{theorem:weak morse inequalities}
+   Let $f: M \rightarrow \R$ be a smooth map from a compact smooth manifold with 
+   only non-degenerate critical points. Let $C_{\lambda}$ be the number of 
+   critical points of $f$ of degree $\lambda$.
+   \begin{enumerate}
+      \item $\betti_{\lambda} (M) \leq C_{\lambda}$
+      \item $\chi(M) = \sum_{\lambda} (-1)^{\lambda} \cdot C_{\lambda} $
+   \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+   Wlog., assume $f$ has only isolated critical points. Let $a_0, ..., a_k \in \R$
+   such that $M^{a_i}$ contains exactly $i$ critical points and $M^{a_k} = M$.
+   Then $M^{a_0} = \varnothing$. Let $\lambda_i$ be the index of the unique 
+   critical point in $M^{a_i}$. We get
+
+   \begin{align*}
+      \Hom_{\lambda}(M^{a_i}, M^{a_{i-1}}) 
+         & = \Hom_{\lambda}(M^{a_{i-1}} \cup e^{\lambda_i}, M^{a_{i-1}}) \\
+         & = \Hom_{\lambda}(e^{\lambda_i}, \del e^{\lambda_i}) \text{ (by excision) } \\
+         & = \Hom_{\lambda}(e^{\lambda_i}/ \del e^{\lambda_i}, \ast) \\
+         & = \Hom_{\lambda}(S^{\lambda_i}, \ast) 
+   \end{align*}
+
+   So
+   \[ 
+      \Hom_{\lambda}(M^{a_i}, M^{a_{i-1}}) = \begin{cases}
+         \R & \text{ if } \lambda = \lambda_i \\
+         0 & \text{ else }
+      \end{cases}
+   \]
+
+   Then because $\betti_{\lambda}$ is subadditive and 
+   lemma~\ref{lemma:subadditivity}:
+   \begin{align*}
+      \betti_{\lambda}(M) 
+         & \leq \sum_i \betti_{\lambda}(M^{a_i}, M^{a_{i-1}}) \\
+         & = \sum_i \dim(\Hom_{\lambda}(M^{a_i}, M^{a_{i-1}})) \\
+         & = C_{\lambda}
+   \end{align*}
+
+   and because $\chi$ is additive and lemma~\ref{lemma:subadditivity}:
+   \begin{align*}
+      \chi(M) 
+         & = \sum_i \chi (M^{a_i}, M^{a_{i-1}}) \\
+         & = \sum_i \sum_{\lambda} (-1)^{\lambda} \dim \Hom_{\lambda} (M^{a_i}, M^{a_{i-1}}) \\
+         & = \sum_{\lambda} (-1)^{\lambda} C_{\lambda}
+   \end{align*}
+\end{proof}
+
+\begin{theorem}[Strong Morse Inequality]
+   \label{theorem:strung morse inequalities}
+   Let $M$ be a compact smooth manifold and $f: M \rightarrow \R$ be a smooth 
+   function with only non-degenerate critical points. Then let $C_{\lambda}$ 
+   denote the number of critical points of $f$ with index $\lambda$. Then
+   
+   \[ 
+      \betti_{\lambda}(M) - \betti_{\lambda - 1}(M) + ... \pm \betti_0(M) 
+      \leq C_{\lambda} - C_{\lambda - 1} ... \pm C_0 
+   \]
+
+\end{theorem}
+
+\begin{proof}
+   We first see that $S_{\lambda}$ is subadditive, where 
+   \[ 
+      S_{\lambda}(X, Y) 
+      = \betti_{\lambda}(X, Y) - \betti_{\lambda - 1}(X, Y) + ... \pm \betti_{0} 
+   \].
+
+   For this, we again look at the long exact sequence of a space triple 
+   $Z \subseteq Y \subseteq X$ in
+    homology. With lemma~\ref{lemma:alternating sum}, we get 
+   \[ \sum_{\lambda} \betti_{\lambda}(Y, Z) 
+   - \sum_{\lambda} \betti_{\lambda}(X, Z) 
+   + \sum_{\lambda} \betti_{\lambda}(X, Y) 
+   \leq 0 \]
+   , and the asserrtion follows. Furthermore, with 
+   theorem~\ref{theorem:weak morse inequalities}: 
+   \[ S_{\lambda}(M^{a_{\lambda}}) = \chi(M^{a_{\lambda}}) = \sum_{i=1}^{\lambda} (-1)^i C_i \]
+   
+   Then with lemma~\ref{lemma:subadditivity}, we have
+   \[ 
+      S_{\lambda} (M) 
+      \leq \sum_{i = 1}^k (-1)^k S_{\lambda}(M^{a_i}, M^{a_{i-1}})
+      = \sum_{i = 1}^k \betti_{\lambda}(M^{a_i}, M^{a_{i-1}}) 
+         - \betti_{\lambda - 1}(M^{a_i}, M^{a_{i-1}})
+         + ... \pm \betti_{0}(M^{a_i}, M^{a_{i-1}})
+   \]
+   , but as we saw above 
+   \[ 
+      \betti_{\lambda}(M^{a_i}, M^{a^{i-1}}) = 
+         \begin{cases}
+            1 & \text{ if } \lambda = i \\
+            0 & \text{ else }
+         \end{cases}
+   \]
+   So 
+   \[ 
+      \sum_{i = 1}^k (-1)^k S_{\lambda}(M^{a_i}, M^{a_{i-1}}) 
+      = C_{\lambda} - C_{\lambda - 1} + ... \pm C_0
+   \]
+\end{proof}

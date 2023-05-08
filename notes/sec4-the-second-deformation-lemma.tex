@@ -228,13 +228,14 @@
       \lim\limits_{\eta \to 0} s_t u^i 
       = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i
    \]
-
-   wlog. let $u^i \geq 0$. Then $(1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i \geq 0$.
    We also have $\lim\limits_{\eta \to 0} u^i = 0$, so
    \[ 
-      \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i  
-      \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}u^i
-      = \lim\limits_{\eta \to 0} (1 - t)u^i = 0
+      \lim\limits_{\eta \to 0} |(1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i| 
+      = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}|u^i| 
+   \]
+   \[ 
+      \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}|u^i| 
+      = \lim\limits_{\eta \to 0} (1 - t)|u^i| = 0 
    \]
 
    And then $\lim\limits_{\eta \to 0} s_t u^i = 0$.
