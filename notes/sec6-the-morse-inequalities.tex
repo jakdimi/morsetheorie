@@ -1,4 +1,4 @@
-\subsection{The Morse Inequalities}
+\section{The Morse Inequalities}
 
 \begin{definition}[Betti number, Euler characteristic]
    The $\lambda$-th Betti number of a space pair 
@@ -205,13 +205,13 @@
    \[ S_{\lambda}(M^{a_{\lambda}}) = \chi(M^{a_{\lambda}}) = \sum_{i=1}^{\lambda} (-1)^i C_i \]
    
    Then with lemma~\ref{lemma:subadditivity}, we have
-   \[ 
+   \begin{align*} 
       S_{\lambda} (M) 
-      \leq \sum_{i = 1}^k (-1)^k S_{\lambda}(M^{a_i}, M^{a_{i-1}})
-      = \sum_{i = 1}^k \betti_{\lambda}(M^{a_i}, M^{a_{i-1}}) 
+         & \leq \sum_{i = 1}^k (-1)^k S_{\lambda}(M^{a_i}, M^{a_{i-1}}) \\
+         & = \sum_{i = 1}^k \betti_{\lambda}(M^{a_i}, M^{a_{i-1}}) 
          - \betti_{\lambda - 1}(M^{a_i}, M^{a_{i-1}})
          + ... \pm \betti_{0}(M^{a_i}, M^{a_{i-1}})
-   \]
+   \end{align*}
    , but as we saw above 
    \[ 
       \betti_{\lambda}(M^{a_i}, M^{a^{i-1}}) = 

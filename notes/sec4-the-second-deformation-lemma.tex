@@ -1,4 +1,9 @@
-\subsection{The second Deformation Lemma}
+\section{The second Deformation Lemma}
+
+\begin{remark}
+   In the following, whenever talking about homology, it will be the homology
+   with coefficients in $\R$.
+\end{remark}
 
 \begin{theorem}[Second deformation Lemma, Milnor]
    \label{theorem:2nd deformation lemma}
@@ -223,20 +228,13 @@
    as $\eta \rightarrow 0$, because 
    $r(t, q) = \varphi^{-1} \circ (u^1, ..., u^{\lambda}, 0, ..., 0)$ in the other
    two cases as $\eta = 0$.
-   
-   \[ 
-      \lim\limits_{\eta \to 0} s_t u^i 
-      = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i
-   \]
-   We also have $\lim\limits_{\eta \to 0} u^i = 0$, so
-   \[ 
-      \lim\limits_{\eta \to 0} |(1 - t)((\xi - \varepsilon)/\eta)^{1/2}u^i| 
-      = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2}|u^i| 
-   \]
-   \[ 
-      \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}|u^i| 
-      = \lim\limits_{\eta \to 0} (1 - t)|u^i| = 0 
-   \]
+
+   \begin{align*}
+      \lim\limits_{\eta \to 0} | s_t u^i |
+         & = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2} | u^i | \\
+         & \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}|u^i| \\
+         & = \lim\limits_{\eta \to 0} (1 - t)|u^i| = 0 
+   \end{align*}
 
    And then $\lim\limits_{\eta \to 0} s_t u^i = 0$.
    
