@@ -30,9 +30,8 @@ $a \in \R$. Dann ist $M^a = f^{-1}(- \infty, a]$ ein \textit{sublevel set} von
 $f$. Das Ziel des Vortrags ist es, die Topologie der sublevel sets einer 
 Abbildung mit ausschließlich nicht degenerierten kritischen Punkten, so genannten
 \textit{Morsefunktionen}, zu verstehen.
-\sectiondone
 Wir Untersuchen die Situation anhand des Torus. Wir stellen uns Morsefuinktionen
-der Einfachheit halbern als "Höhenfunktionen" vor.
+der einfachheitshalber als "Höhenfunktionen" vor.
 
 \textbf{ZEICHNUNG Torus auf Ebene}
 
@@ -40,8 +39,8 @@ Es sei $f$ die Abbildung vom Torus nach $\R$, die jedem Punkt den minimalen
 Abstand zu der eingezeichneten Ebene zuordnet. 
 Die kritischen Punkte dieser Höhenfunktion sind $p$, $q$, $r$ und $s$.
 Man stellt sich vor, dass man den Torus nach und nach mit Wasser befüllt. Dann 
-ist für $a \in \R$ $M^a$ die Menge der Punkte die bei der Wasserhöhe $a$ das 
-Wasser berühren. 
+ist für $a \in \R$ $M^a = f^{-1}(-\infty, a]$ die Menge der Punkte die bei der
+Wasserhöhe $a$ das Wasser berühren. 
 
 \begin{itemize}
     \item Für $a < 0$ ist $M^a = \varnothing$.
@@ -88,12 +87,12 @@ Theorie.
 
 \begin{definition}[Eine $k$-Zelle anbringen]
     Es sei $X$ ein Topologischer Raum. Seien
-    \[ e^{\lambda} = D^{\lambda} = \{(x_1, ..., x_n) \in \R^n: x_1^2 + ... + x_n^2 \leq 1\} \]
-    \[ \varphi: S^{\lambda - 1} = \del e^{\lambda} \rightarrow X \text{ stetig } \]
-    \[ X \cup_{\varphi} e^{\lambda} = (X \amalg e^{\lambda}) / \sim, \text{ wobei } \]
-    \[ \del e^{\lambda} \ni x \sim y \in X \Leftrightarrow \varphi(x) = y \]
-    Dann heißt $e^{\lambda}$ $\lambda$-Zelle, $\varphi$ Anheftungsabbildung 
-    und $X \cup_{\varphi} e^{\lambda}$ heißt $X$ mit einer $\lambda$-Zelle 
+    \[ e^k = D^k = \{(x_1, ..., x_k) \in \R^k: x_1^2 + ... + x_k^2 \leq 1\} \]
+    \[ \varphi: \del e^k \rightarrow X \text{ stetig } \]
+    \[ X \cup_{\varphi} e^k = (X \amalg e^k) / \sim, \text{ wobei } \]
+    \[ \del e^k \ni x \sim y \in X \Leftrightarrow \varphi(x) = y \]
+    Dann heißt $e^k$ $\lambda$-Zelle, $\varphi$ Anheftungsabbildung 
+    und $X \cup_{\varphi} e^k$ heißt $X$ mit einer $k$-Zelle 
     angebracht.
 \end{definition}
 
@@ -150,7 +149,7 @@ Werkzeuge:
 \begin{definition}[Riemannsche Metrik]
     Bemerke: $( TM \otimes TM )^*$ ist Isomorph zu dem Vektorbündel mit Fasern 
     $\operatorname{Bil}(T_pM, \R)$. Eine \textit{Riemannsche Metrik} ist eine glatte
-    Abbildung $g: M \to (T^M \otimes T^M)^*$; $g(p) = g_p = < \cdot, \cdot >$, 
+    Section $g: M \to (T^M \otimes T^M)^*$; $g(p) = g_p = \langle \cdot, \cdot \rangle$, 
     sodass $g_p$ für alle $p \in M$ ein Skalarprodukt ist.
 \end{definition}
 
@@ -169,7 +168,7 @@ Werkzeuge:
     glatten Weg $\gamma: I \to M$, $I \subseteq \R$ ein Intervall, 
     definieren wir
     \[ \dot{\gamma}(t) \in T_pM \text{ für } p = \gamma(t) \text{ für ein } t \in I \text{ durch } 
-    \dot{\gamma}(t) = \left. \derive[\gamma]{t} \right\vert_t = \opd \gamma_t \left(\derive{t}\right) \]
+    \dot{\gamma}(t) = \opd \gamma (t) \left(\derive{t}\right) \]
     wobei $\derive{t} \in T_pM$ das durch die Standardbasis von $\R$
     induzierte Element im Tangentialraum ist.
     Ein Weg $\gamma: I \to \R$ heißt \textit{Flusslinie} eines Vektorfeldes $X$,
@@ -183,6 +182,8 @@ Werkzeuge:
     \[ \varphi: \R \times M \to M \text{, wobei } (t, p) \mapsto \varphi_t(p) = \varphi^p(t) \]
     Sodass für alle $s$, $t \in \R$ gilt:
     \[ \varphi_{t + s} = \varphi_t \circ \varphi_s \]
+    und 
+    \[ \varphi_0 = \id_M \]
     Wir sagen eine 1-Parameter Gruppe aus Diffeomorphismen wird von einem
     Vektorfeld $X$ generiert, falls für alle $p \in M$ gilt
     \[ X(p) = \dot{\varphi^p}(0) \]
@@ -210,6 +211,8 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     $\supp(X)$ kompakt. Dann generiert $X$ eine eindeutige 
     1-Parameter Gruppe aus Diffeomorphismen.
 \end{lemma}
+
+\begin{proof} Der Beweis wird ausgelassen. \end{proof}
 
 \begin{proof}[Erstes Deformations-Lemma]
     Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$. Dies folgt
@@ -246,8 +249,7 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     $\supp (X)$ sogar streng monoton.
 
     Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
-    \[ \left. \frac{d}{dt} f \circ \varphi^p \right|_{t_0} = 1 \]
-
+    \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]
     \sectiondone
 
     \proofheading{Behauptung 2} Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_p(t_0)) \in [a, b]$.
@@ -262,7 +264,6 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
         & \leq \int_0^{b-a} 1 \, \opd t + a \\
         & = b
     \end{align*}
-
     \sectiondone
 
     \textbf{ZEICHNUNG: In $f^{-1}[a, b]$ ist $f \circ \varphi^p$ linear mit Steigung $1$}
@@ -272,43 +273,48 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
      
     Für $p \in f^{-1}(a)$ gilt:
     \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
-    und für $t_0 \in [0, b - a]$ gilt 
-    \[ \left. \derive{t}f(\varphi^p(t-a)) \right|_{t_0} = 1 \]
+    und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 2
+    \[ \derive{t}f(\varphi^p(t-a)) (t_0) = 1 \]
     also
     \[ f(\varphi^p(b-a)) = f(\varphi_{0}(p)) + (b - a) = b \]
     Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
     $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
-
     \sectiondone
 
-    \proofheading{Behauptung 4} Für 
-    $p, q, \varphi_t(p), \varphi_t(q) \in \supp(X)$ gilt:
-    \[ f(p) < f(q) \Leftrightarrow f(\varphi_t(p)) < f(\varphi_t(q)) \]
+    \proofheading{Behauptung 4} Für $p, q \in M$ und $t \in \R$ gilt:
+    \[ f(p) \leq f(q) \Leftrightarrow f(\varphi_t(p)) \leq f(\varphi_t(q)) \]
+
+    Seien oBdA $p, q \in \supp (X)$.
 
     "$\Rightarrow$": $f \circ \varphi^p: {\varphi^p}^{-1}(\supp(X)) \to f(\supp(X))$
-    ist streng monoton und surjektiv. Wegen der Surjektivität von $f \circ \varphi^q $ 
+    ist monoton und surjektiv. Wegen der Surjektivität von $f \circ \varphi^q $ 
     existieren $q' \in \supp(X)$, $s > 0$ sodass
     \[ \varphi_{t + s}(p) = \varphi_t(q') \text{ und } f(\varphi_t(q')) = f(\varphi_t(q)) \]
     Wegen der Monotonie gilt dann
-    \[ f(\varphi_t(q)) = f(\varphi_t(q')) = f(\varphi_t(\varphi_s(p))) = f(\varphi_{t+s}(p)) = f(\varphi^p(t+s)) > f(\varphi^p(t)) = f(\varphi_t(p)) \]
+    \[ 
+        f(\varphi_t(q)) = f(\varphi_t(q')) = f(\varphi_t(\varphi_s(p))) 
+        = f(\varphi_{t+s}(p)) = f(\varphi^p(t+s)) \geq f(\varphi^p(t)) = 
+        f(\varphi_t(p)) \]
 
     "$\Leftarrow$": Setze $\tilde{p} := \varphi_{-t}(p)$ und $\tilde{q} := \varphi_{-t}(q)$.
     Gilt 
     \[ 
-        (f(p) < f(q) \Leftarrow f(\varphi_t(p)) < f(\varphi_t(q)))
-        \Leftrightarrow (f(\varphi_t(\tilde{p})) < f(\varphi_t(\tilde{q}))) \Leftarrow f(\varphi_t(\tilde{p})) < f(\varphi_t(\tilde{q}))
+        (f(p) \leq f(q) \Leftarrow f(\varphi_t(p)) \leq f(\varphi_t(q)))
+        \Leftrightarrow 
+        (f(\varphi_t(\tilde{p})) \leq f(\varphi_t(\tilde{q}))) \Leftarrow f(\varphi_t(\tilde{p})) \leq f(\varphi_t(\tilde{q}))
     \]
     Was schon gezeigt wurde.
 
     \sectiondone
 
-    Dann gilt schon: $\varphi_{b-a}(M^a) = M^b$:
+    \proofheading{Behauptung 5} Es gilt $\varphi_{b-a}(M^a) = M^b$.
    
     "$\subseteq$": Sei $p$ in $M^a$, oBdA. $p \in \supp(X)$, ansonsten gilt
     \[ \varphi_{b-a}(p) = p \in M^b \]
     Sei $q \in f^{-1}(a)$. Dann gilt 
     \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a}(q)) = b \]
     "$\supseteq$": Analog
+    \sectiondone
 
     Damit ist $\left. \varphi_{b-a} \right\vert_{M^a}$ ein Diffeomorphismus zwischen
     $M^a$ und $M^b$. 
@@ -323,8 +329,7 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
 
     Dann ist $r$ stetig, $r(\cdot, 0)$ ist die Identität auf $M^b$, 
     $r(\cdot, 1)|_{M^a}$ ist die Identität auf $M^a$ und 
-    $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$,
-    also ist die Inklusion $M^a \to M^b$ eine Homotopieäquivalenz.
+    $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$.
 
 \end{proof}
 
@@ -338,5 +343,100 @@ Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
 
 Die Hoffnung ist dann, dass der Eingezeichnete "Henkel" Homotopieäquivalent zu
 einer $\lambda$-Zelle ist.
+
+\begin{proof}
+
+    Sei $c := f(p)$. Mit dem Morse Lemma können wir lokale Koordinaten 
+    $\varphi = u_1, ..., u_n)$ in einer Umgebung $U$ von $p$ wählen, sodass
+    \[ f = c - u_1^2 - ... - u_k^2 + u_{k+1}^2 + ... + u_n^2 \]
+    in dieser Umgebung. Dann gilt für den kritischen Punkt $p$:
+    \[ u_1(p) = ... = u_n(p) = 0 \]
+
+    Wähle nun $\varepsilon > 0$ klein genug, sodass 
+    \begin{enumerate}
+        \item $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und keine
+            kritischen Punkte außer $p$ enthält
+        \item $\{ x \in \R^n: \lVert x \rVert \leq 2 \varepsilon \} \subseteq \varphi(U) $
+    \end{enumerate}
+
+    Wähle nun die $k$-Zelle 
+    \[ 
+        e^k := \{ p \in M: (u_1(p))^2 + ... + (u_k(p))^2 \leq \varepsilon 
+        \text{ und } u_{k+1}(p) = ... = u_n(p) = 0 \} 
+    \]
+
+    Wir bekommen die folgende Situation:
+
+    \textbf{ZEICHNUNG: Parametrisierung Sattelpunkt}
+
+    Nun definiere eine glatte Funktion $\mu: \R \to \R$ mit den Eigenschaften:
+
+    \begin{enumerate}
+        \item $ \mu(0) > \varepsilon $
+        \item $ \mu(r) = 0 $ falls $ r \geq 2 \varepsilon $
+        \item $ -1 < \mu'(r) \leq 0 $ für alle $ r \in \R $
+    \end{enumerate}
+
+    Sei nun $F$ außerhalb von $U$ gleich $f$, und sei
+    \[ F = f - \mu(u_1^2 + ... + u_k^2 + 2u_{k+1}^2 + ... + 2u_n^2) \]
+
+    $F$ ist wohldefiniert und glatt, da $F$ außerhalb des Kreises mit Radius 
+    $\sqrt{2\varepsilon}$ mit $f$ übereinstimmt und der gesamte Kreis in $U$ 
+    enthalten ist.
+
+    Wir definieren nun
+
+    \begin{align*}
+        & \eta, \xi: U \to [0, \infty) \\
+        & \xi = u_1^2 + ... + u_k^2 \\
+        & \eta = u_{k + 1}^2 + ... + e_n^2
+    \end{align*}
+
+    Dann gilt innerhalb von $U$:
+    \[ f = c - \xi + \eta \]
+    und 
+    \[ F = f - \mu(\xi + 2 \eta) = c - \xi + \eta - \mu(\xi + 2 \eta) \]
+
+    \proofheading{Behauptung 1} $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$
+
+    Sei $q \in M$. Falls gilt $\xi(q) + 2 \eta(q) > 2 \varepsilon$ gilt $f(p) = F(p)$,
+    also gelte oBdA 
+    \[ \xi(q) + 2 \eta(q) \leq 2 \varepsilon \]
+    Dann:
+    \[ F(q) \leq f(q) = c + \xi(q) + \eta(q) \leq c + \frac{1}{2}\xi(q) + \eta(q) \leq c + \varepsilon \]
+    \sectiondone
+
+    \proofheading{Behauptung 2} Die kritischen Punkte von $F$ stimmen mit denen 
+    von $f$ überein.
+
+    Bemerke, dass
+    \[ \pderive[F]{\xi} = -1 - \mu'(\xi + 2\eta)  < 0 \]
+    und
+    \[ \pderive[F]{\eta} = 1 - 2 \mu'(\xi + 2\eta) \geq 1 \]
+    Insbsondere sind diese beiden Ableitungen also niemals $0$. Da 
+    \[ \opd F = \pderive[F]{\xi}\opd \xi + \pderive[F]{\eta} \opd \eta \]
+    und $\opd \xi$ und $\opd \eta$ nur in $p$ Null sind, haben $f$ und $F$ 
+    dieselben kritischen Punkte.
+    \sectiondone
+
+    \proofheading{Behauptung 3} $F^{-1}(-\infty, c - \varepsilon]$ ist ein
+    Deformationsretrakt von $M^{c + \varepsilon}$.
+
+    Betrachte die Region $F^{-1}[c - \varepsilon, c + \varepsilon]$. Wegen 
+    Behauptung 1 und der Tatsache, dass $F \leq f$ gilt:
+    \[ F^{-1}[c - \varepsilon, c + \varepsilon] \subseteq f^{-1}[c - \varepsilon, c + \varepsilon] \]
+    Da $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und 
+    $F^{-1}[c - \varepsilon, c + \varepsilon]$ abgeschlossen ist, ist 
+    $F^{-1}[c - \varepsilon, c + \varepsilon]$ auch kompakt. Mit Behauptung 2
+    kann diese Menge maximal den kritischen Punkt $p$ enthalten, aber
+    \[ F(p) = c - \mu(0) < c - \varepsilon \]
+    Also gibt es in $F^{-1}[c - \varepsilon, c + \varepsilon]$ keine kritischen
+    Punkte. Mit dem ersten Deformationslemma und Behauptung 1 folgt die 
+    Behauptung.
+    \sectiondone
+
+
+
+\end{proof}
 
 \end{document}
