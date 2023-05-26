@@ -43,26 +43,28 @@
 % cool diagrams
 \usepackage{tikz-cd}
 
-% partial derivative commands
-\newcommand{\pderive}[2][]{\frac{\partial #1 }{\partial #2}}
-\newcommand{\pdderive}[3][]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
-
 % rings and fields
-\newcommand{\N}{{\mathbb N}}
-\newcommand{\Z}{{\mathbb Z}}
-\newcommand{\Q}{{\mathbb Q}}
-\newcommand{\R}{{\mathbb R}}
-\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{ \mathbb N }}
+\newcommand{\Z}{{ \mathbb Z }}
+\newcommand{\Q}{{ \mathbb Q }}
+\newcommand{\R}{{ \mathbb R }}
+\newcommand{\C}{{ \mathbb C }}
 
-\newcommand{\id}{{\operatorname{id}}}
-\newcommand{\opd}{{\operatorname{d}}}
-\newcommand{{\Index}}{{\operatorname{Index}}}
-\newcommand{{\grad}}{{\operatorname{grad}}}
-\newcommand{{\betti}}{{\operatorname{b}}}
-\newcommand{{\Hom}}{{\operatorname{H}}}
-\newcommand{{\Ima}}{{\operatorname{Im}}}
-\newcommand{{\Obj}}{{\mathsf{Obj}}}
-\newcommand{\del}{{\partial}}
+\newcommand{\id}{{ \operatorname{id} }}
+\newcommand{\opd}{{ \operatorname{d} }}
+\newcommand{\Index}{{ \operatorname{Index} }}
+\newcommand{\grad}{{ \operatorname{grad} }}
+\newcommand{\betti}{{ \operatorname{b} }}
+\newcommand{\Hom}{{ \operatorname{H} }}
+\newcommand{\Ima}{{ \operatorname{Im} }}
+\newcommand{\Obj}{{ \mathsf{Obj} }}
+\newcommand{\del}{{ \partial }}
+\newcommand{\supp}{{ \operatorname{supp} }}
+
+% partial derivative commands
+\newcommand{\pderive}[2][]{{ \frac{ \partial #1 }{\partial #2} }}
+\newcommand{\pdderive}[3][]{{ \frac{\partial^2 #1}{\partial #2 \partial #3} }}
+\newcommand{\derive}[2][]{{ \frac{\opd #1}{\opd #2} }}
 
 % =============================================================================
 

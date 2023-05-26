@@ -31,17 +31,17 @@ $f$. Das Ziel des Vortrags ist es, die Topologie der sublevel sets einer
 Abbildung mit ausschließlich nicht degenerierten kritischen Punkten, so genannten
 \textit{Morsefunktionen}, zu verstehen.
 
-Wir Untersuchen die Situation anhand des Torus. Wirt stellen uns Morsefuinktionen
+Wir Untersuchen die Situation anhand des Torus. Wir stellen uns Morsefuinktionen
 der Einfachheit halbern als "Höhenfunktionen" vor.
 
-\textbf{Zeichnung Torus auf Ebene}
+\textbf{ZEICHNUNG Torus auf Ebene}
 
 Es sei $f$ die Abbildung vom Torus nach $\R$, die jedem Punkt den minimalen
 Abstand zu der eingezeichneten Ebene zuordnet. 
-Die kritischen Punkte dieser Höhenfunktion sind $p$, $q$, $r$ u d $s$.
+Die kritischen Punkte dieser Höhenfunktion sind $p$, $q$, $r$ und $s$.
 Man stellt sich vor, dass man den Torus nach und nach mit Wasser befüllt. Dann 
 ist für $a \in \R$ $M^a$ die Menge der Punkte die bei der Wasserhöhe $a$ das 
-Wasser berühren. Diese Mengen wollen wir nun näher betrachten. 
+Wasser berühren. 
 
 \begin{itemize}
     \item Für $a < 0$ ist $M^a = \varnothing$.
@@ -53,15 +53,26 @@ Wasser berühren. Diese Mengen wollen wir nun näher betrachten.
     \item Für $f(s) \leq$ ist $M^a$ der Torus selbst.
 \end{itemize}
 
+Wir bemerken: 
+\begin{itemize}
+    \item Gibt es im Intervall $[a, b]$ keine kritischen Werte, so haben alle
+        $M^c$ für $c \in [a, b]$ denselben Homotopie-Typ
+    \item Gibt es im Intervall $[a, b]$ genau einen kritischen Wert $c$ und ist
+        $ \#f^{-1}(p) = 1$, dann hat $M^b$ den Homotopie-Typ von $M^a$ mit einem 
+        Henkel angebracht (Was auch immer das bedeutet).
+\end{itemize}
+
+Um diese zwei Aussagen zu präzisieren, brauchen wir einige Definitionen:
+
 \begin{definition}[Deformationsretrakt]
     Sei $X$ ein topologischer Raum und $A \subseteq X$ ein Unterraum von $X$.
     Eine stetige Abbildung $r: X \times [0, 1] \rightarrow X$ heißt 
     \textit{Deformationsretraktion} auf $A$, falls gelten:
-    \begin{enumerate}
-        \item $r(\cdot, 0) = \id_X$
-        \item $r(X, 1) \subseteq A$
-        \item $r(\cdot, 1)|_A = \id_A$
-    \end{enumerate}
+    \begin{align*}
+        & r(\cdot, 0) = \id_X \\
+        & r(X, 1) \subseteq A \\
+        & r(\cdot, 1)|_A = \id_A \\
+    \end{align*}
     $A$ heißt \textit{Deformationsretrakt}, falls eine Deformationsretraktion
     von $X$ auf $A$ existiert.
 \end{definition}
@@ -70,19 +81,20 @@ Deformationsretrakte haben einige schöne Eigenschaften. Falls $A$ ein
 Deformationsretrakt von $X$ ist, so ist die Inklusion $A \rightarrow X$ eine
 Homotopieäquivalenz. Da Homotopieäquivalenz transitiv ist, hat ein weiterer
 Deformationsretrakt $B$ von $X$ deshalb denselben Homotopietypen wie $A$. \\
-Tatsächlich ist es eine Tatsache, dass zwei Unterräume $A$ und $B$ genau dann
-denselben Homotopietypen haben, wenn sie beide Deformationsretrakte eines 
-gemeinsamen Oberraumes sind. Um dies einzusehen benötigt man weitere 
-topologische Theorie.
+Es eine Tatsache, dass zwei Unterräume $A$ und $B$ genau dan denselben 
+Homotopietypen haben, wenn sie beide Deformationsretrakte eines gemeinsamen 
+Oberraumes sind. Um dies einzusehen benötigt man weitere topologische 
+Theorie.
 
 \begin{definition}[Eine $k$-Zelle anbringen]
-    Es sei $X$ ein Topologischer Raum. Sei
-    \[ e^{\lambda} = D^{\lambda} = \{(x_1, ..., x_n): x_1^2 + ... + x_n^2 \leq 1\} \]
-    , $\varphi: S^{\lambda - 1} = \del e^{\lambda} \rightarrow X$ stetig
-    und $X \cup_{\varphi} e^{\lambda} = (X \amalg e^{\lambda}) / \sim$, wobei
+    Es sei $X$ ein Topologischer Raum. Seien
+    \[ e^{\lambda} = D^{\lambda} = \{(x_1, ..., x_n) \in \R^n: x_1^2 + ... + x_n^2 \leq 1\} \]
+    \[ \varphi: S^{\lambda - 1} = \del e^{\lambda} \rightarrow X \text{ stetig } \]
+    \[ X \cup_{\varphi} e^{\lambda} = (X \amalg e^{\lambda}) / \sim, \text{ wobei } \]
     \[ \del e^{\lambda} \ni x \sim y \in X \Leftrightarrow \varphi(x) = y \]
-    . Dann heißt $e^{\lambda}$ $\lambda$-Zelle, $\varphi$ Anheftungsabbildung 
-    und $X \cup_{\varphi} e^{\lambda}$ $X$ mit einer $\lambda$-Zelle angebracht.
+    Dann heißt $e^{\lambda}$ $\lambda$-Zelle, $\varphi$ Anheftungsabbildung 
+    und $X \cup_{\varphi} e^{\lambda}$ heißt $X$ mit einer $\lambda$-Zelle 
+    angebracht.
 \end{definition}
 
 \textbf{ZEICHNUNG 1-Zelle, 2-Zelle}
@@ -104,7 +116,8 @@ Eine $k$-Zelle kann also zwei Sachen: "Löcher", die von der $k$-ten Homologie
 Bezug auf solche Zellen bringen können, dann macht es uns das leichter die 
 Topologie (und Homologie) der Mannigfaltigkeit besser zu verstehen. Wenn wir
 sogar die gesamte Mannigfaltigkeit durch iteratives anbringen von $k$-Zellen
-an den leeren Raum "erschaffen" können, dann gibt es viele
+an den leeren Raum "erschaffen" können, dann können wir einigen Aussagen über 
+die Homologie des Raumes machen. 
 
 
 \begin{theorem}[Erstes Deformationslemma]
@@ -115,8 +128,8 @@ an den leeren Raum "erschaffen" können, dann gibt es viele
     $M^a \rightarrow M^b$, und $M^a$ ist ein Deformationsretrakt von $M^b$.
 \end{theorem}
 
-\begin{theorem}[Zweites Deformationslemma]
-    \label{theorem:zweites deformationslemma}
+\begin{theorem}[Zweites Deformations-Lemma]
+    \label{theorem:zweites deformations-lemma}
     Es sei $M$ eine glatte Mannigfaltigkeit, $f: M \rightarrow \R$ eine glatte
     Abbildung und $p$ ein nicht-degenerierter kritischer Punkt mit Index 
     $\lambda$. Sei $c := f(p)$ und $\varepsilon \geq 0$, sd. 
@@ -129,8 +142,177 @@ an den leeren Raum "erschaffen" können, dann gibt es viele
 
 \section{Das erste Deformationslemma}
 
-\textbf{ZEICHNUNG "VASE"}
+Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
+steigt parallel zum "Boden" via eines Diffeomorphismus $\varphi$ "nach oben zu 
+ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$.
 
-Die Idee des Beweises ist es, die 
+\begin{definition}[Riemannsche Metrik]
+    Bemerke: $( TM \otimes TM )^*$ ist Isomorph zu dem Vektorbündel mit Fasern 
+    $\operatorname{Bil}(T_pM, \R)$. Eine \textit{Riemannsche Metrik} ist eine glatte
+    Abbildung $g: M \to (T^M \otimes T^M)^*$; $g(p) = g_p = < \cdot, \cdot >$, 
+    sodass $g_p$ für alle $p \in M$ ein Skalarprodukt ist.
+\end{definition}
+
+\begin{definition}[Gradient]
+    Es sei $M$ \textit{Riemannsche Mannigfaltigkeit}, also eine Mannigfaltigkeit
+    zusammen mit einer Riemannschen Metrik $g$. Außerdem sei $f: M \to \R$ glatt.
+    Dann ist der \textit{Gradient} von $f$ $\grad f$ das (einzigartige) 
+    Vektorfeld, für das gilt:
+    \[ \langle X, \grad f \rangle = \opd fX \]
+
+    \textbf{ZEICHNUNG: gradient einer Höhenfunktion}
+\end{definition}
+
+\begin{definition}[Flusslinie, Wang]
+    Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$. Für einen
+    glatten Weg $\gamma: I \to M$, $I \subseteq \R$ ein Intervall, 
+    definieren wir
+    \[ \dot{\gamma}(t) \in T_pM \text{ für } p = \gamma(t) \text{ für ein } t \in I \text{ durch } 
+    \dot{\gamma}(t) = \left. \derive[\gamma]{t} \right\vert_t = \opd \gamma_t \left(\derive{t}\right) \]
+    wobei $\derive{t} \in T_pM$ das durch die Standardbasis von $\R$
+    induzierte Element im Tangentialraum ist.
+    Ein Weg $\gamma: I \to \R$ heißt \textit{Flusslinie} eines Vektorfeldes $X$,
+    falls für alle $t \in I$ gilt:
+    \[ X(\gamma(t)) = \dot{\gamma}(t) \]
+\end{definition}
+
+\begin{definition}[1-Parameter Gruppe aus Diffeomorphismen]
+    Eine \textit{1-Parameter Gruppe aus Diffeomorphismen} ist eine glatte 
+    Abbildung
+    \[ \varphi: \R \times M \to M \text{, wobei } (t, p) \mapsto \varphi_t(p) = \varphi^p(t) \]
+    Sodass für alle $s$, $t \in \R$ gilt:
+    \[ \varphi_{t + s} = \varphi_t \circ \varphi_s \]
+    Wir sagen eine 1-Parameter Gruppe aus Diffeomorphismen wird von einem
+    Vektorfeld $X$ generiert, falls für alle $p \in M$ gilt
+    \[ X(p) = \dot{\varphi^p}(0) \]
+\end{definition}
+
+Ist $\varphi$ eine 1-Parameter Gruppe aus Diffeomorphismern, so ist für alle 
+$t \in \R$ $\varphi_t$ ein Diffeomorphismus mit Inverse $\varphi_{-t}$.
+
+Bemerke: Falls $X$ eine 1-Parameter Gruppe aus Diffeomorphismen $\varphi$ erzeugt,
+dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
+\begin{align*}
+    X(\varphi^p(t)) 
+    & = \dot{\varphi^{\varphi^p(t)}}(0)
+    = T_0 \varphi^{\varphi^p(t)} \left(\derive{t}\right) \\
+    & = T_0 \varphi_{t + \id_{\R}}(p) \left(\derive{t}\right)
+    = T_t \varphi_{\id_{\R}}(p) \cdot T_0 (t + \id_{\R}) \left(\derive{t}\right) \\
+    & = T_t \varphi_{\id_{\R}}(p) \left(\derive{t}\right)
+    = T_t \varphi^p \left(\derive{t}\right) \\
+    & = \dot{\varphi^p}(t)
+\end{align*}
+
+\begin{lemma}
+    \label{lemma:generierende vektorfelder}
+    Es sei $X$ ein Vektorfels auf einer glatten Mannigfaltigkeit $M$, sodass
+    $\supp(X)$ kompakt. Dann generiert $X$ eine eindeutige 
+    1-Parameter Gruppe aus Diffeomorphismen.
+\end{lemma}
+
+\begin{proof}[Erstes Deformations-Lemma]
+    Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$. Dies folgt
+    aus Whitneys Einbettungssatz und dem Satz von Heine-Borel.
+    Sei $\rho: M \to \R$ eine glatte, positive Funktion, sodass
+    \[ \rho(p) = 1 / \langle \grad f, \grad f \rangle \]
+    für alle $p \in f^{-1}[a, b]$ und die außerhalb von $K$ verschwindet und für
+    die für $p \in K$, die keine kritischen Punkte sind, gilt: 
+    \[ 0 \leq \rho(p) \leq 1 / \langle \grad f, \grad f \rangle \]
+    Bemerke dass $\rho$ innerhalb von $f^{-1}[a, b]$ wohldefiniert 
+    ist, da sich keine kritischen Punkte im Intervall $[a, b]$ befinden. 
+    Definiere ein Vektorfeld $X$ durch
+    \[ X(p) = \rho(p) \cdot \grad f (p) \]
+    Dann hat $X$ kompakten Träger, erfüllt also die Vorraussetzungen von 
+    Lemma~\ref{lemma:generierende vektorfelder}. Sei also $\varphi$ die
+    einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
+    wird. 
+    Wir bekommen für jedes $p \in M$ eine Abbildung $f \circ \varphi^p: \R \to \R$.
+    Für $p \in M$, $t_0 \in \R$ und $q = \varphi^p(t_0)$:
+    \begin{align*}
+        \left. \frac{d}{dt} f \circ \varphi^p \right|_{t_0}
+        & = T_{\varphi^p(t_0)} f \cdot T_{t_0}\varphi^p \left( \derive{t} \right)
+        = \opd f (q) \cdot X(q) \\
+        & = \langle X(q), \grad f (q) \rangle 
+        = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
+    \end{align*}
+
+    $f \circ \varphi^p$ ist also monoton wachsend für alle $p \in M$, und in 
+    $\supp (X)$ sogar streng monoton.
+
+    Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
+    \[ \left. \frac{d}{dt} f \circ \varphi^p \right|_{t_0} = 1 \]
+
+    Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_p(t_0)) \in [a, b]$,
+    denn 
+    \[ f(\varphi_{t_0}(p)) \geq f(\varphi_0(p)) = a \]
+    und
+    \begin{align*}
+        f(\varphi_t(p)) 
+        & \leq f(\varphi_{b-a}(p)) \\
+        & = \int_0^{b-a}\derive{t} f(\varphi_t(p)) \opd t + f(\varphi_0(p)) \\
+        & = \int_0^{b-a}\rho(\varphi_t(p)) \langle \grad f (\varphi_t(p)), \grad f (\varphi_t(p)) \rangle \opd t + a \\
+        & \leq \int_0^{b-a} 1 \, \opd t + a \\
+        & = b
+    \end{align*}
+
+    \textbf{ZEICHNUNG: In $f^{-1}[a, b]$ ist $f \circ \varphi^p$ linear mit Steigung $1$}
+
+    Dann wird unter $\varphi_{b-a}$ das Level-Set $f^{-1}(a)$ auf das Level-Set
+    $f^{-1}(b)$ abgebildet, denn für $p \in f^{-1}(a)$ gilt:
+    \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
+    und für $t_0 \in [0, b - a]$ gilt 
+    \[ \left. \derive{t}f(\varphi^p(t-a)) \right|_{t_0} = 1 \]
+    also
+    \[ f(\varphi^p(b-a)) = f(\varphi_{0}(p)) + (b - a) = b \]
+    Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
+    $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
+
+    Wir zeigen nun die folgende Behauptung für 
+    $p, q, \varphi_t(p), \varphi_t(q) \in \supp(X)$:
+
+    \[ f(p) < f(q) \Leftrightarrow f(\varphi_t(p)) < f(\varphi_t(q)) \]
+
+    "$\Rightarrow$": $f \circ \varphi^p: {\varphi^p}^{-1}(\supp(X)) \to f(\supp(X))$
+    ist streng monoton und surjektiv. Wegen der Surjektivität von $f \circ \varphi^q $ 
+    existieren $q' \in \supp(X)$, $s > 0$ sodass
+    \[ \varphi_{t + s}(p) = \varphi_t(q') \text{ und } f(\varphi_t(q')) = f(\varphi_t(q)) \]
+    Wegen der Monotonie gilt dann
+    \[ f(\varphi_t(q)) = f(\varphi_t(q')) = f(\varphi_t(\varphi_s(p))) = f(\varphi_{t+s}(p)) = f(\varphi^p(t+s)) > f(\varphi^p(t)) = f(\varphi_t(p)) \]
+
+    "$\Leftarrow$": Setze $\tilde{p} := \varphi_{-t}(p)$ und $\tilde{q} := \varphi_{-t}(q)$.
+    Gilt 
+    \[ 
+        (f(p) < f(q) \Leftarrow f(\varphi_t(p)) < f(\varphi_t(q)))
+        \Leftrightarrow (f(\varphi_t(\tilde{p})) < f(\varphi_t(\tilde{q}))) \Leftarrow f(\varphi_t(\tilde{p})) < f(\varphi_t(\tilde{q}))
+    \]
+    Was schon gezeigt wurde.
+
+    Dann gilt schon: $\varphi_{b-a}(M^a) = M^b$:
+   
+    "$\subseteq$": Sei $p$ in $M^a$, oBdA. $p \in \supp(X)$, ansonsten gilt
+    \[ \varphi_{b-a}(p) = p \in M^b \]
+    Sei $q \in f^{-1}(a)$. Dann gilt 
+    \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a}(q)) = b \]
+    "$\supseteq$": Analog
+
+    Damit ist $\left. \varphi_{b-a} \right\vert_{M^a}$ ein Diffeomorphismus zwischen
+    $M^a$ und $M^b$. 
+
+    Betrachte nun $r: M^b \times \R \to M^b$,
+    \[  
+        r(p, t) = \begin{cases}
+            p & \text{ falls } f(p) \leq a \\
+            \varphi_{t(a - f(p))}(p) & \text{ falls } a \leq f(p) \leq b 
+        \end{cases}
+    \]
+
+    Dann ist $r$ stetig, $r(\cdot, 0)$ ist die Identität auf $M^b$, 
+    $r(\cdot, 1)|_{M^a}$ ist die Identität auf $M^a$ und 
+    $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$,
+    also ist die Inklusion $M^a \to M^b$ eine Homotopieäquivalenz.
+
+
+
+\end{proof}
 
 \end{document}
