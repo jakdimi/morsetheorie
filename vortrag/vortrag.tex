@@ -1,6 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 
 \usepackage{../general/preamble}
+\usepackage[onehalfspacing]{setspace}
 
 \begin{document}
 
@@ -20,8 +21,7 @@
         \textbf{Jakob Dimigen}
              
     \end{center}
- \end{titlepage}
- 
+\end{titlepage}
 
 \section{Einführung}
 
@@ -30,7 +30,7 @@ $a \in \R$. Dann ist $M^a = f^{-1}(- \infty, a]$ ein \textit{sublevel set} von
 $f$. Das Ziel des Vortrags ist es, die Topologie der sublevel sets einer 
 Abbildung mit ausschließlich nicht degenerierten kritischen Punkten, so genannten
 \textit{Morsefunktionen}, zu verstehen.
-
+\sectiondone
 Wir Untersuchen die Situation anhand des Torus. Wir stellen uns Morsefuinktionen
 der Einfachheit halbern als "Höhenfunktionen" vor.
 
@@ -143,8 +143,9 @@ die Homologie des Raumes machen.
 \section{Das erste Deformationslemma}
 
 Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
-steigt parallel zum "Boden" via eines Diffeomorphismus $\varphi$ "nach oben zu 
-ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$.
+steigt, also parallel zum "Boden" via eines Diffeomorphismus $\varphi$ "nach oben 
+zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$. Dazu benötigen wir ein paar 
+Werkzeuge:
 
 \begin{definition}[Riemannsche Metrik]
     Bemerke: $( TM \otimes TM )^*$ ist Isomorph zu dem Vektorbündel mit Fasern 
@@ -205,7 +206,7 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
 
 \begin{lemma}
     \label{lemma:generierende vektorfelder}
-    Es sei $X$ ein Vektorfels auf einer glatten Mannigfaltigkeit $M$, sodass
+    Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$, sodass
     $\supp(X)$ kompakt. Dann generiert $X$ eine eindeutige 
     1-Parameter Gruppe aus Diffeomorphismen.
 \end{lemma}
@@ -227,23 +228,30 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
     wird. 
     Wir bekommen für jedes $p \in M$ eine Abbildung $f \circ \varphi^p: \R \to \R$.
-    Für $p \in M$, $t_0 \in \R$ und $q = \varphi^p(t_0)$:
+    
+    \proofheading{Behauptung 1} Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi^p(t_0)$
+    ist $\derive{t} f \circ \varphi^p (t_0) \in [0, 1]$ und falls $f(\varphi^p(t)) \in [a, b]$
+    gilt sogar $\derive{t} f \circ \varphi^p (t_0) = 1$.
+
+    Für $q = \varphi_{t_0}(p)$:
     \begin{align*}
-        \left. \frac{d}{dt} f \circ \varphi^p \right|_{t_0}
+        \derive{t} f \circ \varphi^p (t_0)
         & = T_{\varphi^p(t_0)} f \cdot T_{t_0}\varphi^p \left( \derive{t} \right)
         = \opd f (q) \cdot X(q) \\
         & = \langle X(q), \grad f (q) \rangle 
         = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
     \end{align*}
-
+    
     $f \circ \varphi^p$ ist also monoton wachsend für alle $p \in M$, und in 
     $\supp (X)$ sogar streng monoton.
 
     Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
     \[ \left. \frac{d}{dt} f \circ \varphi^p \right|_{t_0} = 1 \]
 
-    Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_p(t_0)) \in [a, b]$,
-    denn 
+    \sectiondone
+
+    \proofheading{Behauptung 2} Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_p(t_0)) \in [a, b]$.
+    
     \[ f(\varphi_{t_0}(p)) \geq f(\varphi_0(p)) = a \]
     und
     \begin{align*}
@@ -255,10 +263,14 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
         & = b
     \end{align*}
 
+    \sectiondone
+
     \textbf{ZEICHNUNG: In $f^{-1}[a, b]$ ist $f \circ \varphi^p$ linear mit Steigung $1$}
 
-    Dann wird unter $\varphi_{b-a}$ das Level-Set $f^{-1}(a)$ auf das Level-Set
-    $f^{-1}(b)$ abgebildet, denn für $p \in f^{-1}(a)$ gilt:
+    \proofheading{Behauptung 3} Unter $\varphi_{b-a}$ wird das Level-Set 
+    $f^{-1}(a)$ auf das Level-Set $f^{-1}(b)$ abgebildet.
+     
+    Für $p \in f^{-1}(a)$ gilt:
     \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
     und für $t_0 \in [0, b - a]$ gilt 
     \[ \left. \derive{t}f(\varphi^p(t-a)) \right|_{t_0} = 1 \]
@@ -267,9 +279,10 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
     $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
 
-    Wir zeigen nun die folgende Behauptung für 
-    $p, q, \varphi_t(p), \varphi_t(q) \in \supp(X)$:
+    \sectiondone
 
+    \proofheading{Behauptung 4} Für 
+    $p, q, \varphi_t(p), \varphi_t(q) \in \supp(X)$ gilt:
     \[ f(p) < f(q) \Leftrightarrow f(\varphi_t(p)) < f(\varphi_t(q)) \]
 
     "$\Rightarrow$": $f \circ \varphi^p: {\varphi^p}^{-1}(\supp(X)) \to f(\supp(X))$
@@ -286,6 +299,8 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
         \Leftrightarrow (f(\varphi_t(\tilde{p})) < f(\varphi_t(\tilde{q}))) \Leftarrow f(\varphi_t(\tilde{p})) < f(\varphi_t(\tilde{q}))
     \]
     Was schon gezeigt wurde.
+
+    \sectiondone
 
     Dann gilt schon: $\varphi_{b-a}(M^a) = M^b$:
    
@@ -311,8 +326,17 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$,
     also ist die Inklusion $M^a \to M^b$ eine Homotopieäquivalenz.
 
-
-
 \end{proof}
+
+\section{Das zweite Deformationslemma}
+
+Die Idee für den Beweis ist, sich eine neue Funktion $F: M \to \R$ zu definieren,
+die Außerhalb von einer kleinen Umgebung von $p$ $f$ entspricht und in der 
+Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
+
+\textbf{ZEICHNUNG: Torus mit Delle}
+
+Die Hoffnung ist dann, dass der Eingezeichnete "Henkel" Homotopieäquivalent zu
+einer $\lambda$-Zelle ist.
 
 \end{document}

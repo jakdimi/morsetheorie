@@ -31,6 +31,9 @@
 % to include images
 \usepackage{graphicx}
 
+% Steffen's line break
+\newcommand{\sectiondone}{\hfill \break \rightline{\mbox{\rotatebox{145}{${\|}$}}}}
+
 
 % math ========================================================================
 
@@ -85,6 +88,8 @@
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
+
+\newcommand{\proofheading}[1]{\hfill \break {\fontfamily{lmss}\selectfont #1.} }
 
 % =============================================================================
 
