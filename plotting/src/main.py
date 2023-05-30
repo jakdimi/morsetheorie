@@ -61,7 +61,7 @@ def format_axes(ax, epsilon=1):
     ax.yaxis.set_major_locator(locator)
 
 
-def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True, del_x=0.01):
+def plot_fig1_U_parameterized(ax, annotate=True, draw_lines=True, draw_circle=True, del_x=0.01):
     X = list(np.arange(-2, 2, del_x))
     hyperbola1 = ellipse_parameterize(-1, 1, 1, X)
     h1X1, h1Y1 = hyperbola1[0]
@@ -107,25 +107,25 @@ def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True, del_x=0.01):
     format_axes(ax)
 
 
-def plot_fig2(ax, del_x=0.01):
+def plot_fig2_handle(ax, del_x=0.01):
     X = list(np.arange(-2, 2, del_x))
     hyperbola3 = ellipse_parameterize(-0.3, 3, 0.05, X)
     h3X1, h3Y1 = hyperbola3[0]
     h3X2, h3Y2 = hyperbola3[1]
 
-    plot_fig1(ax, annotate=False, draw_lines=False, draw_circle=False, del_x=del_x)
+    plot_fig1_U_parameterized(ax, annotate=False, draw_lines=False, draw_circle=False, del_x=del_x)
 
-    # H
+    # Handle
     plt.fill_between(h3X1, h3Y1, h3Y2, color="LightYellow", zorder=2)
     # H outline
     plt.plot(h3X1, h3Y1, color="black", zorder=2)
     plt.plot(h3X2, h3Y2, color="black", zorder=2)
 
 
-def plot_fig3(ax, del_x=0.01):
+def plot_fig3_handle_ellipse(ax, del_x=0.01):
     X = list(np.arange(-2, 2, del_x))
 
-    plot_fig2(ax, del_x=del_x)
+    plot_fig2_handle(ax, del_x=del_x)
 
     ellipse1 = ellipse_parameterize(1, 2, 2, X)
     eX, eY = ellipse1[0]
@@ -134,7 +134,7 @@ def plot_fig3(ax, del_x=0.01):
 
 
 
-def plot_fig4(ax, del_x=0.01):
+def plot_fig4_handle_cases(ax, del_x=0.01):
     X = list(np.arange(-2, 2, del_x))
 
     ax.tick_params(
@@ -174,14 +174,18 @@ def plot_fig4(ax, del_x=0.01):
 
 if __name__ == "__main__":
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
-    plot_fig1(ax1, del_x=0.001)
+    plot_fig1_U_parameterized(ax1, del_x=0.001)
+    fig.canvas.manager.set_window_title("Me-Diagram6-parametrisierung-sattelpunkt")
     plt.show()
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
-    plot_fig2(ax1, del_x=0.001)
+    plot_fig2_handle(ax1, del_x=0.001)
+    fig.canvas.manager.set_window_title("Me-Diagram7-handle")
     plt.show()
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
-    plot_fig3(ax1, del_x=0.001)
+    plot_fig3_handle_ellipse(ax1, del_x=0.001)
+    fig.canvas.manager.set_window_title("Me-Diagram8-handle-ellipse")
     plt.show()
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
-    plot_fig4(ax1, del_x=0.001)
+    plot_fig4_handle_cases(ax1, del_x=0.001)
+    fig.canvas.manager.set_window_title("Me-Diagram9-handle-cases")
     plt.show()
