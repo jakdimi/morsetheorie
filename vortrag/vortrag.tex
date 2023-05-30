@@ -435,8 +435,34 @@ einer $\lambda$-Zelle ist.
     Behauptung.
     \sectiondone
 
+    Im Beweis von Behauptung 3 haben wir gesehen, dass 
+    $M^{c - \varepsilon} \subseteq f^{-1}(-\infty, c - \varepsilon]$ und im
+    Beweis von Behauptung 1, dass außerhalb des Kreises mit Radius 
+    $\sqrt{2 \varepsilon}$ gilt $f = F$, also haben wir folgende Situation:
+    
+    \textbf{ZEICHNUNG: Handle}
+
+    Wir nennen nun $F^{-1}(-\infty, c-\varepsilon] - M^{c - \varepsilon} := H$.
+
     \proofheading{Behauptung 4} $M^{c - \varepsilon} \cup e^{k}$ ist ein 
     Deformationsretrakt von $M^{c - \varepsilon} \cup H$.
+
+    Dafür konstruieren wir eine Deformationsretraktion
+    $r: M^{c - \varepsilon} \cup H \times [0,1] \to M^{c - \varepsilon} \cup H$
+    für $q \in M^{c - \varepsilon} \cup H, t \in [0, 1]$ wie folgt:
+    \[
+        r(q, t) = \begin{cases}
+            \varphi^{-1} \circ (u_1, ..., u_k, tu_{k + 1}, ..., tu_n)(q)
+                & \text{ , falls } \xi(q) \leq \varepsilon \\
+            \varphi^{-1} \circ (u_1, ..., u_k, s_tu_{k + 1}, ..., s_tu_n)(q)
+                & \text{ , falls } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
+            q & \text{ , falls } \eta(q) + \varepsilon \leq \xi(q)
+        \end{cases}
+    \]
+
+    Wobei 
+
+    \[ s_t = t + (1 -t)((\xi - \varepsilon)/\eta)^{1/2} \]
 
 \end{proof}
 

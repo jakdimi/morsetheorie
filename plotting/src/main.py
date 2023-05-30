@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FixedLocator, FixedFormatter
 import numpy as np
 
 sqrt = np.sqrt
@@ -6,7 +7,7 @@ abs = np.abs
 
 def ellipse_parameterize(a, b, c, X):
     """ 
-    Parameters are from the equation ax^2 + by^2 = c, X is a list of possible x-values. 
+    Parameters are from the equation plt^2 + by^2 = c, X is a list of possible x-values. 
     Returns a list of pairs of x- and y-values
     """
     if c < 0:
@@ -40,12 +41,12 @@ def ellipse_parameterize(a, b, c, X):
         return [(X1 + X2, Y1 + Y2)]
     
     if switched:
-        return [(Y1, X1),(Y2, X2)]
+        return [(Y1, X1), (Y2, X2)]
     
     return [(X1, Y1), (X2, Y2)]
     
 
-def plot_fig1():
+def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True):
     X = list(np.arange(-2, 2, 0.01))
     hyperbola1 = ellipse_parameterize(-1, 1, 1, X)
     h1X1, h1Y1 = hyperbola1[0]
@@ -56,34 +57,55 @@ def plot_fig1():
     circle = ellipse_parameterize(1, 1, 2, X)
     cX, cY = circle[0]
 
-    plt.figure(figsize=(7, 7))
-
     # M^{c + \varepsilon}
-    plt.fill_between(h1X1, h1Y1, h1Y2, color="LightBlue", zorder=1)
+    ax.fill_between(h1X1, h1Y1, h1Y2, color="LightBlue", zorder=1)
     # f = c + \varepsilon
-    plt.plot(h1X1, h1Y1, color="black", zorder=1)
-    plt.plot(h1X2, h1Y2, color="black", zorder=1)
+    ax.plot(h1X1, h1Y1, color="black", zorder=1)
+    ax.plot(h1X2, h1Y2, color="black", zorder=1)
     # M^{c - \varepsilon}
-    plt.fill_betweenx(h2Y1, h2X1, 2, color="LightGreen", zorder=3)
+    ax.fill_betweenx(h2Y1, h2X1, 2, color="LightGreen", zorder=3)
     plt.fill_betweenx(h2Y2, h2X2, -2, color="LightGreen", zorder=3)
     # f = c - \varepsilon
-    plt.plot(h2X1, h2Y1, color="black", zorder=3)
-    plt.plot(h2X2, h2Y2, color="black", zorder=3)
-    # \eta + \xi = 2 \vaepsilon
-    plt.plot(cX, cY, color="black", zorder=4)
+    ax.plot(h2X1, h2Y1, color="black", zorder=3)
+    ax.plot(h2X2, h2Y2, color="black", zorder=3)
+    
+    if draw_lines:
+        ax.plot([-2, 2], [-2, 2], color="blue", zorder= 1)
+        ax.plot([-2, 2], [2, -2], color="blue", zorder= 1)
+
+    if draw_circle:
+        # \eta + \xi = 2 \vaepsilon
+        plt.plot(cX, cY, color="black", zorder=4)
     # p
-    plt.scatter([0],[0], zorder=5)
-    plt.annotate("p", (0.05, -0.05))
-    plt.axis([-2, 2, -2, 2])
+    ax.scatter([0],[0], zorder=5)
+    ax.annotate(r"$p$", (0.05, -0.05))
+
+    if annotate:
+        ax.annotate(r"$M^{c - \varepsilon}$", (-1.9, 0))
+        ax.annotate(r"$M^{c + \varepsilon}$", (-0.4, 0.8))
+        ax.annotate(r"$\xi + \eta = \varepsilon$", (0.4, -1.45))
+        ax.annotate(r"$f = c + \varepsilon$", (-1.45, -1.9))
+        ax.annotate(r"$f = c - \varepsilon$", (1.55, -1.1))
+        ax.annotate(r"$f = c$", (1.9, -1.85), color="blue")
+    
+    ax.set_xlim([-2, 2])
+    ax.set_ylim([-2, 2])
+
+    formatter = FixedFormatter([r"$-\varepsilon$", r"$0$", r"$\varepsilon$"])
+    locator = FixedLocator([-1, 0, 1])
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_major_locator(locator)
+    ax.yaxis.set_major_formatter(formatter)
+    ax.yaxis.set_major_locator(locator)
 
 
-def plot_fig2():
+def plot_fig2(ax):
     X = list(np.arange(-2, 2, 0.01))
     hyperbola3 = ellipse_parameterize(-0.3, 3, 0.05, X)
     h3X1, h3Y1 = hyperbola3[0]
     h3X2, h3Y2 = hyperbola3[1]
 
-    plot_fig1()
+    plot_fig1(ax, annotate=False, draw_lines=False, draw_circle=False)
 
     # H
     plt.fill_between(h3X1, h3Y1, h3Y2, color="LightYellow", zorder=2)
@@ -93,5 +115,7 @@ def plot_fig2():
     
 
 if __name__ == "__main__":
-    plot_fig1()
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7, 7))
+    plot_fig1(ax1)
+    plot_fig2(ax2)
     plt.show()
