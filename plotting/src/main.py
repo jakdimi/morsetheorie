@@ -44,10 +44,25 @@ def ellipse_parameterize(a, b, c, X):
         return [(Y1, X1), (Y2, X2)]
     
     return [(X1, Y1), (X2, Y2)]
-    
 
-def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True):
-    X = list(np.arange(-2, 2, 0.01))
+
+def format_axes(ax, epsilon=1):
+    ax.set_xlim([-2, 2])
+    ax.set_ylim([-2, 2])
+
+    ax.set_xlabel(r"$(u_1, ..., u_k)$")
+    ax.set_ylabel(r"$(u_{k + 1}, ..., u_n)$")
+
+    formatter = FixedFormatter([r"$-\varepsilon$", r"$0$", r"$\varepsilon$"])
+    locator = FixedLocator([-epsilon, 0, epsilon])
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_major_locator(locator)
+    ax.yaxis.set_major_formatter(formatter)
+    ax.yaxis.set_major_locator(locator)
+
+
+def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True, del_x=0.01):
+    X = list(np.arange(-2, 2, del_x))
     hyperbola1 = ellipse_parameterize(-1, 1, 1, X)
     h1X1, h1Y1 = hyperbola1[0]
     h1X2, h1Y2 = hyperbola1[1]
@@ -70,8 +85,9 @@ def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True):
     ax.plot(h2X2, h2Y2, color="black", zorder=3)
     
     if draw_lines:
-        ax.plot([-2, 2], [-2, 2], color="blue", zorder= 1)
-        ax.plot([-2, 2], [2, -2], color="blue", zorder= 1)
+        # f = c
+        ax.plot([-2, 2], [-2, 2], "--",  color="blue", zorder= 1)
+        ax.plot([-2, 2], [2, -2], "--", color="blue", zorder= 1)
 
     if draw_circle:
         # \eta + \xi = 2 \vaepsilon
@@ -88,34 +104,84 @@ def plot_fig1(ax, annotate=True, draw_lines=True, draw_circle=True):
         ax.annotate(r"$f = c - \varepsilon$", (1.55, -1.1))
         ax.annotate(r"$f = c$", (1.9, -1.85), color="blue")
     
-    ax.set_xlim([-2, 2])
-    ax.set_ylim([-2, 2])
-
-    formatter = FixedFormatter([r"$-\varepsilon$", r"$0$", r"$\varepsilon$"])
-    locator = FixedLocator([-1, 0, 1])
-    ax.xaxis.set_major_formatter(formatter)
-    ax.xaxis.set_major_locator(locator)
-    ax.yaxis.set_major_formatter(formatter)
-    ax.yaxis.set_major_locator(locator)
+    format_axes(ax)
 
 
-def plot_fig2(ax):
-    X = list(np.arange(-2, 2, 0.01))
+def plot_fig2(ax, del_x=0.01):
+    X = list(np.arange(-2, 2, del_x))
     hyperbola3 = ellipse_parameterize(-0.3, 3, 0.05, X)
     h3X1, h3Y1 = hyperbola3[0]
     h3X2, h3Y2 = hyperbola3[1]
 
-    plot_fig1(ax, annotate=False, draw_lines=False, draw_circle=False)
+    plot_fig1(ax, annotate=False, draw_lines=False, draw_circle=False, del_x=del_x)
 
     # H
     plt.fill_between(h3X1, h3Y1, h3Y2, color="LightYellow", zorder=2)
     # H outline
     plt.plot(h3X1, h3Y1, color="black", zorder=2)
     plt.plot(h3X2, h3Y2, color="black", zorder=2)
+
+
+def plot_fig3(ax, del_x=0.01):
+    X = list(np.arange(-2, 2, del_x))
+
+    plot_fig2(ax, del_x=del_x)
+
+    ellipse1 = ellipse_parameterize(1, 2, 2, X)
+    eX, eY = ellipse1[0]
+
+    plt.plot(eX, eY, color="black", zorder=10)
+
+
+
+def plot_fig4(ax, del_x=0.01):
+    X = list(np.arange(-2, 2, del_x))
+
+    ax.tick_params(
+        which='both',
+        bottom=False,
+        top=False,
+        left=False,
+        right=False,
+        labelbottom=False,
+        labelleft=False)
+    ax.set_xlim([-2, 2])
+    ax.set_ylim([-2, 2])
+    ax.set_xlabel(r"$(u_1, ..., u_k)$")
+    ax.set_ylabel(r"$(u_{k + 1}, ..., u_n)$")
+
+    hyperbola1 = ellipse_parameterize(1, -1, 1, X)
+    h1X1, h1Y1 = hyperbola1[0]
+    h1X2, h1Y2 = hyperbola1[1]
+    hyperbola2 = ellipse_parameterize(-1, 3, 1, X)
+    h2X1, h2Y1 = hyperbola2[0]
+    h2X2, h2Y2 = hyperbola2[1]
+
+    case1 = [ x >= -1 and x <= 1 for x in h2X1 ]
+
+    # Handle
+    ax.fill_between(h2X1, h2Y1, h2Y2, color="LightYellow", zorder=1)
+    ax.fill_between(h2X1, h2Y1, h2Y2, color="orange", where=case1, zorder=2)
+    ax.plot(h2X1, h2Y1, color="black", zorder=2)
+    ax.plot(h2X2, h2Y2, color="black", zorder=2)
+
+    # M^{c - \varepsilon}
+    ax.fill_betweenx(h1Y1, h1X1, 2,color="LightGreen", zorder=2)
+    ax.fill_betweenx(h1Y2, h1X2, -2, color="LightGreen", zorder=2)
+    ax.plot(h1X1, h1Y1, color="black", zorder=3)
+    ax.plot(h1X2, h1Y2, color="black", zorder=3)
     
 
 if __name__ == "__main__":
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7, 7))
-    plot_fig1(ax1)
-    plot_fig2(ax2)
+    fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
+    plot_fig1(ax1, del_x=0.001)
+    plt.show()
+    fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
+    plot_fig2(ax1, del_x=0.001)
+    plt.show()
+    fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
+    plot_fig3(ax1, del_x=0.001)
+    plt.show()
+    fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
+    plot_fig4(ax1, del_x=0.001)
     plt.show()
