@@ -367,7 +367,11 @@ einer $\lambda$-Zelle ist.
 
     Wir bekommen die folgende Situation:
 
-    \textbf{ZEICHNUNG: Parametrisierung Sattelpunkt}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram6-parametrisierung-sattelpunkt.png}
+        \label{fig:me-diagram6}
+    \end{figure}
 
     Nun definiere eine glatte Funktion $\mu: \R \to \R$ mit den Eigenschaften:
 
@@ -440,7 +444,11 @@ einer $\lambda$-Zelle ist.
     Beweis von Behauptung 1, dass außerhalb des Kreises mit Radius 
     $\sqrt{2 \varepsilon}$ gilt $f = F$, also haben wir folgende Situation:
     
-    \textbf{ZEICHNUNG: Handle}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram7-handle.png}
+        \label{fig:me-diagram7}
+    \end{figure}
 
     Wir nennen nun $F^{-1}(-\infty, c-\varepsilon] - M^{c - \varepsilon} := H$.
 
@@ -453,16 +461,61 @@ einer $\lambda$-Zelle ist.
     \[
         r(q, t) = \begin{cases}
             \varphi^{-1} \circ (u_1, ..., u_k, tu_{k + 1}, ..., tu_n)(q)
-                & \text{ , falls } \xi(q) \leq \varepsilon \\
+                & \text{ im Fall 1: } \xi(q) \leq \varepsilon \\
             \varphi^{-1} \circ (u_1, ..., u_k, s_tu_{k + 1}, ..., s_tu_n)(q)
-                & \text{ , falls } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
-            q & \text{ , falls } \eta(q) + \varepsilon \leq \xi(q)
+                & \text{ im Fall 2: } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
+            q & \text{ im Fall 3: } \eta(q) + \varepsilon \leq \xi(q)
         \end{cases}
     \]
 
     Wobei 
 
     \[ s_t = t + (1 -t)((\xi - \varepsilon)/\eta)^{1/2} \]
+
+    Die Fälle sind wie folgt:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram9-handle-cases.png}
+        \label{me-diagram9}
+    \end{figure}
+
+    Wir müssen überprüfen:
+    \begin{enumerate}
+        \item $r$ ist wohldefiniert und stetig
+        \item $r(M^{c - \varepsilon} \cup H, 0) \subseteq M^{c - \varepsilon} \cup e^k$
+        \item $r(\cdot, 1) = \id_{M^{c - \varepsilon} \cup H}$ und 
+            $\left. r(\cdot , 0) \right\vert_{M^{c - \varepsilon} \cup e^k} 
+            = \id_{M^{c - \varepsilon} \cup e^k}$
+    \end{enumerate}
+
+    3. ist einfach nachzurechnen. In Fall 1 und Fall 3 ist 2. offensichtlich
+    wahr. Für Fall 2 gilt:
+    \begin{align*} 
+        f(r(0, q)) & = 
+            f\left( \varphi^{-1} \left(u_1(q), ..., u_k(q), 
+            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q), ...,
+            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q)
+            \right)
+            \right) \\
+        & = c - \xi(q)
+            + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q) \right)^2 + ... 
+            + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q) \right)^2 \\
+        & = c - \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right) \eta(q) \\
+        & = c - \varepsilon
+    \end{align*}
+    also ist $r(0, q) \in f^{-1}(c - \varepsilon)$. Um 1. zu prüfen müssen wir 
+    Stetigkeit in den Grenzfällen überprüfen:
+    \begin{align*}
+        & \text{For } \xi(q) = \varepsilon \text{ : }
+            & s_t(q)  =t + (1 - t)((\varepsilon - \varepsilon)/\eta(q))^{1/2} = t \\
+        & \text{For } \eta(q) + \varepsilon = \xi(q) \text{ : }
+            & s_t(q) = t + (1 - t)((\xi(q) - \varepsilon)/(\xi(q) - \varepsilon))^{1/2} = 1
+    \end{align*}
+
+    Das einzig andere Problem was wir bekommen könnten ist nun in Fall 2 falls
+    $\eta \to 0$. In Fall 1 und Fall 3 bekommen wir für $q$ mit $\eta(q) = 0$:
+    $r(q, t) = \varphi^{-1} \circ (u_1, ..., u_k, 0, ..., 0)(q)$, 
 
 \end{proof}
 
