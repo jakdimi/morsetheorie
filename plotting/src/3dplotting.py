@@ -34,14 +34,14 @@ def rotation_matrix(axis, theta):
 
 
 def plot_fig1_torus_plane(ax):
-    
+    ax.computed_zorder=False
     x2 = np.linspace(-5, 5, 5)
     y2 = np.linspace(-5, 5, 5)
     x2, y2 = np.meshgrid(x2, y2)
     z2 = np.ones((5, 5))
     z2 = -4*z2
 
-    ax.plot_surface(x2, y2, z2, zorder=1, color="LightGreen")
+    ax.plot_surface(x2, y2, z2, color="LightGreen", zorder=1)
 
     
     N1 = 50
@@ -53,15 +53,22 @@ def plot_fig1_torus_plane(ax):
 
     x1, y1, z1 = torus(1, 3, u, v)
 
-    ax.plot_surface(x1, y1, z1, zorder=2, color="LightBlue")
+    ax.plot_surface(x1, y1, z1, color="LightBlue", zorder=2)
 
-    ax.scatter([0, 0, 0, 0], [0, 0, 0, 0], [-4, -2, 2, 4], color="red")
+    ax.scatter([0, 0, 0, 0], [0, 0, 0, 0], [-4, -2, 2, 4], color="red", zorder=3)
+
+    ax.text(0, 0, -4.5, "p", zorder=3)
+    ax.text(0, 0, -1.5, "q", zorder=3)
+    ax.text(0, 0, 1.5, "r", zorder=3)
+    ax.text(0, 0, 4.5, "s", zorder=3)
 
     ax.set_aspect('equal')
     ax.axis('off')
+    ax.view_init(elev=10, azim=-99, roll=0)
 
 
 def plot_fig4_gradient_of_hightmapping(ax):
+    ax.computed_zorder=False
     N11 = 50
     N12 = 20
 
@@ -71,7 +78,7 @@ def plot_fig4_gradient_of_hightmapping(ax):
 
     x1, y1, z1 = torus(1, 3, u1, v1)
 
-    ax.plot_surface(x1, y1, z1, color="LightBlue")
+    ax.plot_surface(x1, y1, z1, color="LightBlue", zorder=1)
 
     N21 = 20
     N22 = 5
@@ -94,7 +101,7 @@ def plot_fig4_gradient_of_hightmapping(ax):
             dz[i][j] = dz1
 
     # Plot the surface
-    ax.quiver(x2, y2, z2, dx, dy, dz, length=0.5, normalize=True, color="red")
+    ax.quiver(x2, y2, z2, dx, dy, dz, length=0.5, normalize=True, color="red", zorder=2)
 
     # Set an equal aspect ratio
     ax.set_aspect('equal')
@@ -103,15 +110,21 @@ def plot_fig4_gradient_of_hightmapping(ax):
 
 
 if __name__ == "__main__":
+    dpi=500
+    show=False
 
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     plot_fig1_torus_plane(ax)
     fig.canvas.manager.set_window_title("Me-Diagram1-torus-plane")
+    plt.savefig("../results/Me-Diagram1-torus-plane.png", dpi=dpi)
+    if show:
+        plt.show()
     
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     plot_fig4_gradient_of_hightmapping(ax)
     fig.canvas.manager.set_window_title("Me-Diagram4-gradient-of-hightmapping")
-
-    plt.show()
+    plt.savefig("../results/Me-Diagram4-gradient-of-hightmapping.png", dpi=dpi)
+    if show:
+        plt.show()

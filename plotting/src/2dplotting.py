@@ -193,19 +193,33 @@ def plot_fig4_handle_cases(ax, del_x=0.01):
     
 
 if __name__ == "__main__":
+    dpi=300
+    show=False
+
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
     plot_fig1_U_parameterized(ax1, del_x=0.001)
     fig.canvas.manager.set_window_title("Me-Diagram6-U-parameterized")
-    plt.show()
+    plt.savefig("../results/Me-Diagram6-U-parameterized.png", dpi=300)
+    if show:
+        plt.show()
+
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
     plot_fig2_handle(ax1, del_x=0.001)
     fig.canvas.manager.set_window_title("Me-Diagram7-handle")
-    plt.show()
+    plt.savefig("../results/Me-Diagram7-handle.png", dpi=300)
+    if show:
+        plt.show()
+
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
     plot_fig3_handle_ellipse(ax1, del_x=0.001)
     fig.canvas.manager.set_window_title("Me-Diagram8-handle-ellipse")
-    plt.show()
+    plt.savefig("../results/Me-Diagram8-handle-ellipse.png", dpi=300)
+    if show:
+        plt.show()
+
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
     plot_fig4_handle_cases(ax1, del_x=0.001)
     fig.canvas.manager.set_window_title("Me-Diagram9-handle-cases")
-    plt.show()
+    plt.savefig("../results/Me-Diagram9-handle-cases.png", dpi=300)
+    if show:
+        plt.show()
