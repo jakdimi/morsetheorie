@@ -1,0 +1,213 @@
+\section{Das zweite Deformationslemma}
+
+Die Idee für den Beweis ist, sich eine neue Funktion $F: M \to \R$ zu definieren,
+die Außerhalb von einer kleinen Umgebung von $p$ $f$ entspricht und in der 
+Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
+
+\textbf{ZEICHNUNG: Torus mit Delle}
+
+Die Hoffnung ist dann, dass der Eingezeichnete "Henkel" Homotopieäquivalent zu
+einer $k$-Zelle ist.
+
+\begin{proof}
+    Sei $c := f(p)$. Mit dem Morse Lemma können wir lokale Koordinaten 
+    $\varphi = (u_1, ..., u_n)$ in einer Umgebung $U$ von $p$ wählen, sodass
+    \[ f = c - u_1^2 - ... - u_k^2 + u_{k+1}^2 + ... + u_n^2 \]
+    in dieser Umgebung, und sodass für den kritischen Punkt $p$ gilt:
+    \[ u_1(p) = ... = u_n(p) = 0 \]
+
+    Wähle nun $\varepsilon > 0$ klein genug, sodass 
+    \begin{enumerate}
+        \item $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und keine
+            kritischen Punkte außer $p$ enthält
+        \item $\{ x \in \R^n: \lVert x \rVert^2 \leq 2 \varepsilon \} \subseteq \varphi(U) $
+    \end{enumerate}
+
+    Wähle nun die $k$-Zelle 
+    \[ 
+        e^k := \{ p \in M: (u_1(p))^2 + ... + (u_k(p))^2 \leq \varepsilon 
+        \text{ und } u_{k+1}(p) = ... = u_n(p) = 0 \} 
+    \]
+
+    Wir bekommen die folgende Situation:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram6-U-parameterized.png}
+        \label{fig:me-diagram6}
+    \end{figure}
+
+    Nun definiere eine glatte Funktion $\mu: \R \to \R$ mit den Eigenschaften:
+
+    \begin{enumerate}
+        \item $ \mu(0) > \varepsilon $
+        \item $ \mu(r) = 0 $ falls $ r \geq 2 \varepsilon $
+        \item $ -1 < \mu'(r) \leq 0 $ für alle $ r \in \R $
+    \end{enumerate}
+
+    Sei nun $F$ außerhalb von $U$ gleich $f$, und sei
+    \[ F = f - \mu(u_1^2 + ... + u_k^2 + 2u_{k+1}^2 + ... + 2u_n^2) \]
+
+    $F$ ist wohldefiniert und glatt, da $F$ außerhalb des Kreises mit Radius 
+    $\sqrt{2\varepsilon}$ mit $f$ übereinstimmt und der gesamte Kreis in $U$ 
+    enthalten ist.
+
+    Wir definieren nun
+
+    \begin{align*}
+        & \eta, \xi: U \to [0, \infty) \\
+        & \xi = u_1^2 + ... + u_k^2 \\
+        & \eta = u_{k + 1}^2 + ... + e_n^2
+    \end{align*}
+
+    Dann gilt innerhalb von $U$:
+    \[ f = c - \xi + \eta \]
+    und 
+    \[ F = f - \mu(\xi + 2 \eta) = c - \xi + \eta - \mu(\xi + 2 \eta) \]
+
+    \proofheading{Behauptung 1} $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$
+
+    Sei $q \in M$. Falls gilt $\xi(q) + 2 \eta(q) > 2 \varepsilon$ gilt $f(p) = F(p)$,
+    also gelte oBdA 
+    \[ \xi(q) + 2 \eta(q) \leq 2 \varepsilon \]
+    Dann:
+    \[ F(q) \leq f(q) = c + \xi(q) + \eta(q) \leq c + \frac{1}{2}\xi(q) + \eta(q) \leq c + \varepsilon \]
+    \sectiondone
+
+    \proofheading{Behauptung 2} Die kritischen Punkte von $F$ stimmen mit denen 
+    von $f$ überein.
+
+    Bemerke, dass
+    \[ \pderive[F]{\xi} = -1 - \mu'(\xi + 2\eta)  < 0 \]
+    und
+    \[ \pderive[F]{\eta} = 1 - 2 \mu'(\xi + 2\eta) \geq 1 \]
+    Insbsondere sind diese beiden Ableitungen also niemals $0$. Da 
+    \[ \opd F = \pderive[F]{\xi}\opd \xi + \pderive[F]{\eta} \opd \eta \]
+    und $\opd \xi$ und $\opd \eta$ nur in $p$ Null sind, haben $f$ und $F$ 
+    dieselben kritischen Punkte.
+    \sectiondone
+
+    \proofheading{Behauptung 3} $F^{-1}(-\infty, c - \varepsilon]$ ist ein
+    Deformationsretrakt von $M^{c + \varepsilon}$.
+
+    Betrachte die Region $F^{-1}[c - \varepsilon, c + \varepsilon]$. Wegen 
+    Behauptung 1 und der Tatsache, dass $F \leq f$ gilt:
+    \[ F^{-1}[c - \varepsilon, c + \varepsilon] \subseteq f^{-1}[c - \varepsilon, c + \varepsilon] \]
+    Da $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und 
+    $F^{-1}[c - \varepsilon, c + \varepsilon]$ abgeschlossen ist, ist 
+    $F^{-1}[c - \varepsilon, c + \varepsilon]$ auch kompakt. Mit Behauptung 2
+    kann diese Menge maximal den kritischen Punkt $p$ enthalten, aber
+    \[ F(p) = c - \mu(0) < c - \varepsilon \]
+    Also gibt es in $F^{-1}[c - \varepsilon, c + \varepsilon]$ keine kritischen
+    Punkte. Mit dem ersten Deformationslemma und Behauptung 1 folgt die 
+    Behauptung.
+    \sectiondone
+
+    Im Beweis von Behauptung 3 haben wir gesehen, dass 
+    $M^{c - \varepsilon} \subseteq f^{-1}(-\infty, c - \varepsilon]$ und im
+    Beweis von Behauptung 1, dass außerhalb des Kreises mit Radius 
+    $\sqrt{2 \varepsilon}$ gilt $f = F$, also haben wir folgende Situation:
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram7-handle.png}
+        \label{fig:me-diagram7}
+    \end{figure}
+
+    Wir nennen nun $F^{-1}(-\infty, c-\varepsilon] - M^{c - \varepsilon} := H$.
+
+    \proofheading{Behauptung 4} $M^{c - \varepsilon} \cup e^{k}$ ist ein 
+    Deformationsretrakt von $M^{c - \varepsilon} \cup H$.
+
+    Dafür konstruieren wir eine Deformationsretraktion
+    $r: M^{c - \varepsilon} \cup H \times [0,1] \to M^{c - \varepsilon} \cup H$
+    für $q \in M^{c - \varepsilon} \cup H, t \in [0, 1]$ wie folgt:
+    \[
+        r(q, t) = \begin{cases}
+            \varphi^{-1} \circ (u_1, ..., u_k, tu_{k + 1}, ..., tu_n)(q)
+                & \text{ im Fall 1: } \xi(q) \leq \varepsilon \\
+            \varphi^{-1} \circ (u_1, ..., u_k, s_tu_{k + 1}, ..., s_tu_n)(q)
+                & \text{ im Fall 2: } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
+            q & \text{ im Fall 3: } \eta(q) + \varepsilon \leq \xi(q)
+        \end{cases}
+    \]
+
+    Wobei 
+
+    \[ s_t = t + (1 -t)((\xi - \varepsilon)/\eta)^{1/2} \]
+
+    Die Fälle sind wie folgt:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram9-handle-cases.png}
+        \label{me-diagram9}
+    \end{figure}
+
+    Fall 3 ist $M^{c - \varepsilon}$, also die grün eingefärbte Fläche, die
+    orangene Fläche ist Fall 1 und die gelbe ist Fall 2.
+
+    Wir müssen überprüfen:
+    \begin{enumerate}
+        \item $r$ ist wohldefiniert und stetig
+        \item $r(M^{c - \varepsilon} \cup H, 0) \subseteq M^{c - \varepsilon} \cup e^k$
+        \item $r(\cdot, 1) = \id_{M^{c - \varepsilon} \cup H}$ und 
+            $\left. r(\cdot , 0) \right\vert_{M^{c - \varepsilon} \cup e^k} 
+            = \id_{M^{c - \varepsilon} \cup e^k}$
+    \end{enumerate}
+
+    3. ist einfach nachzurechnen. In Fall 1 und Fall 3 ist 2. offensichtlich
+    wahr. Für Fall 2 gilt:
+    \begin{align*} 
+        f(r(0, q)) & = 
+            f\left( \varphi^{-1} \left(u_1(q), ..., u_k(q), 
+            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q), ...,
+            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q)
+            \right)
+            \right) \\
+        & = c - \xi(q)
+            + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q) \right)^2 + ... 
+            + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q) \right)^2 \\
+        & = c - \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right) \eta(q) \\
+        & = c - \varepsilon
+    \end{align*}
+    also ist $r(0, q) \in f^{-1}(c - \varepsilon)$. Um 1. zu prüfen müssen wir 
+    Stetigkeit in den Grenzfällen überprüfen:
+    \begin{align*}
+        & \text{For } \xi(q) = \varepsilon \text{ : }
+            & s_t(q)  =t + (1 - t)((\varepsilon - \varepsilon)/\eta(q))^{1/2} = t \\
+        & \text{For } \eta(q) + \varepsilon = \xi(q) \text{ : }
+            & s_t(q) = t + (1 - t)((\xi(q) - \varepsilon)/(\xi(q) - \varepsilon))^{1/2} = 1
+    \end{align*}
+
+    Das einzig andere Problem was wir bekommen könnten ist nun in Fall 2 falls
+    $\eta \to 0$. In Fall 1 und Fall 3 bekommen wir für $q$ mit $\eta(q) = 0$:
+    $r(q, t) = \varphi^{-1} \circ (u_1, ..., u_k, 0, ..., 0)(q)$, also wollen
+    wir zeigen dass für $\eta \in $ Fall 2 mit $\eta \to 0$ gilt $s_tu_i \to 0$
+    für $i \in \{k+1, ..., n\}$. In Fall 2 gilt
+    $0 \leq \xi - \varepsilon \leq \eta$. Dann gilt:
+
+    \begin{align*}
+        \lim\limits_{\eta \to 0} | s_t u_i |
+           & = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2} | u_i | \\
+           & \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}|u_i| \\
+           & = \lim\limits_{\eta \to 0} (1 - t)|u_i| = 0 
+    \end{align*}
+    
+    Also ist $r$ stetig.
+    \sectiondone
+
+    Mit Behauptung 3 und 4 bekommen wir
+    \[ M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup H \]
+    und 
+    \[ M^{c - \varepsilon} \cup H \simeq M^{c - \varepsilon} \cup e^k \]
+    Also folgt die Behauptung:
+    \[ M^{c + \varepsilon} \simeq H \simeq M^{c - \varepsilon} \cup e^k \]
+
+\end{proof}
+
+\begin{corollary}
+    Allgemeiner gilt sogar: Angenommen es gibt $m$ kritische Punkte 
+    $p_1, ..., p_m$ mit Indizes $k_1, ..., k_m$ in $f^{-1}(c)$. Dann gilt
+    \[ M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup e^{k_1} \cup ... \cup e^{k_m} \]
+\end{corollary}

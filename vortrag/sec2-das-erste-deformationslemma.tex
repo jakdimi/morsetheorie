@@ -1,0 +1,193 @@
+\section{Das erste Deformationslemma}
+
+Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
+steigt, also parallel zum "Boden" via eines Diffeomorphismus $\varphi$ "nach oben 
+zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$. Dazu benötigen wir ein paar 
+Werkzeuge:
+
+\begin{definition}[Riemannsche Metrik]
+    Bemerke: $( TM \otimes TM )^*$ ist Isomorph zu dem Vektorbündel mit Fasern 
+    $\operatorname{Bil}(T_pM, \R)$. Eine \textit{Riemannsche Metrik} ist eine glatte
+    Section $g: M \to (T^M \otimes T^M)^*$; $g(p) = g_p = \langle \cdot, \cdot \rangle$, 
+    sodass $g_p$ für alle $p \in M$ ein Skalarprodukt ist.
+\end{definition}
+
+\begin{definition}[Gradient]
+    Es sei $M$ \textit{Riemannsche Mannigfaltigkeit}, also eine Mannigfaltigkeit
+    zusammen mit einer Riemannschen Metrik $g$. Außerdem sei $f: M \to \R$ glatt.
+    Dann ist der \textit{Gradient} von $f$ $\grad f$ das (einzigartige) 
+    Vektorfeld, für das gilt:
+    \[ \langle X, \grad f \rangle = \opd fX \]
+
+    \textbf{ZEICHNUNG: gradient einer Höhenfunktion}
+\end{definition}
+
+\begin{definition}[Flusslinie, Wang]
+    Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$. Für einen
+    glatten Weg $\gamma: I \to M$, $I \subseteq \R$ ein Intervall, 
+    definieren wir
+    \[ \dot{\gamma}(t) \in T_pM \text{ für } p = \gamma(t) \text{ für ein } t \in I \text{ durch } 
+    \dot{\gamma}(t) = \opd \gamma (t) \left(\derive{t}\right) \]
+    wobei $\derive{t} \in T_pM$ das durch die Standardbasis von $\R$
+    induzierte Element im Tangentialraum ist.
+    Ein Weg $\gamma: I \to \R$ heißt \textit{Flusslinie} eines Vektorfeldes $X$,
+    falls für alle $t \in I$ gilt:
+    \[ X(\gamma(t)) = \dot{\gamma}(t) \]
+\end{definition}
+
+\begin{definition}[1-Parameter Gruppe aus Diffeomorphismen]
+    Eine \textit{1-Parameter Gruppe aus Diffeomorphismen} ist eine glatte 
+    Abbildung
+    \[ \varphi: \R \times M \to M \text{, wobei } (t, p) \mapsto \varphi_t(p) = \varphi^p(t) \]
+    Sodass für alle $s$, $t \in \R$ gilt:
+    \[ \varphi_{t + s} = \varphi_t \circ \varphi_s \]
+    und 
+    \[ \varphi_0 = \id_M \]
+    Wir sagen eine 1-Parameter Gruppe aus Diffeomorphismen wird von einem
+    Vektorfeld $X$ generiert, falls für alle $p \in M$ gilt
+    \[ X(p) = \dot{\varphi^p}(0) \]
+\end{definition}
+
+Ist $\varphi$ eine 1-Parameter Gruppe aus Diffeomorphismern, so ist für alle 
+$t \in \R$ $\varphi_t$ ein Diffeomorphismus mit Inverse $\varphi_{-t}$.
+
+Bemerke: Falls $X$ eine 1-Parameter Gruppe aus Diffeomorphismen $\varphi$ erzeugt,
+dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
+\begin{align*}
+    X(\varphi^p(t)) 
+    & = \dot{\varphi^{\varphi^p(t)}}(0)
+    = T_0 \varphi^{\varphi^p(t)} \left(\derive{t}\right) \\
+    & = T_0 \varphi_{t + \id_{\R}}(p) \left(\derive{t}\right)
+    = T_t \varphi_{\id_{\R}}(p) \cdot T_0 (t + \id_{\R}) \left(\derive{t}\right) \\
+    & = T_t \varphi_{\id_{\R}}(p) \left(\derive{t}\right)
+    = T_t \varphi^p \left(\derive{t}\right) \\
+    & = \dot{\varphi^p}(t)
+\end{align*}
+
+\begin{lemma}
+    \label{lemma:generierende vektorfelder}
+    Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$, sodass
+    $\supp(X)$ kompakt. Dann generiert $X$ eine eindeutige 
+    1-Parameter Gruppe aus Diffeomorphismen.
+\end{lemma}
+
+\begin{proof} Der Beweis wird ausgelassen. \end{proof}
+
+\begin{proof}[Erstes Deformations-Lemma]
+    Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$. Dies folgt
+    aus Whitneys Einbettungssatz und dem Satz von Heine-Borel.
+    Sei $\rho: M \to \R$ eine glatte, positive Funktion, sodass
+    \[ \rho(p) = 1 / \langle \grad f, \grad f \rangle \]
+    für alle $p \in f^{-1}[a, b]$ und die außerhalb von $K$ verschwindet und für
+    die für $p \in K$, die keine kritischen Punkte sind, gilt: 
+    \[ 0 \leq \rho(p) \leq 1 / \langle \grad f, \grad f \rangle \]
+    Bemerke dass $\rho$ innerhalb von $f^{-1}[a, b]$ wohldefiniert 
+    ist, da sich keine kritischen Punkte im Intervall $[a, b]$ befinden. 
+    Definiere ein Vektorfeld $X$ durch
+    \[ X(p) = \rho(p) \cdot \grad f (p) \]
+    Dann hat $X$ kompakten Träger, erfüllt also die Vorraussetzungen von 
+    Lemma~\ref{lemma:generierende vektorfelder}. Sei also $\varphi$ die
+    einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
+    wird. 
+    Wir bekommen für jedes $p \in M$ eine Abbildung $f \circ \varphi^p: \R \to \R$.
+    
+    \proofheading{Behauptung 1} Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi^p(t_0)$
+    ist $\derive{t} f \circ \varphi^p (t_0) \in [0, 1]$ und falls $f(\varphi^p(t)) \in [a, b]$
+    gilt sogar $\derive{t} f \circ \varphi^p (t_0) = 1$.
+
+    Für $q = \varphi_{t_0}(p)$:
+    \begin{align*}
+        \derive{t} f \circ \varphi^p (t_0)
+        & = T_{\varphi^p(t_0)} f \cdot T_{t_0}\varphi^p \left( \derive{t} \right)
+        = \opd f (q) \cdot X(q) \\
+        & = \langle X(q), \grad f (q) \rangle 
+        = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
+    \end{align*}
+    
+    $f \circ \varphi^p$ ist also monoton wachsend für alle $p \in M$, und in 
+    $\supp (X)$ sogar streng monoton.
+
+    Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
+    \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]
+    \sectiondone
+
+    \proofheading{Behauptung 2} Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_p(t_0)) \in [a, b]$.
+    
+    \[ f(\varphi_{t_0}(p)) \geq f(\varphi_0(p)) = a \]
+    und
+    \begin{align*}
+        f(\varphi_t(p)) 
+        & \leq f(\varphi_{b-a}(p)) \\
+        & = \int_0^{b-a}\derive{t} f(\varphi_t(p)) \opd t + f(\varphi_0(p)) \\
+        & = \int_0^{b-a}\rho(\varphi_t(p)) \langle \grad f (\varphi_t(p)), \grad f (\varphi_t(p)) \rangle \opd t + a \\
+        & \leq \int_0^{b-a} 1 \, \opd t + a \\
+        & = b
+    \end{align*}
+    \sectiondone
+
+    \textbf{ZEICHNUNG: In $f^{-1}[a, b]$ ist $f \circ \varphi^p$ linear mit Steigung $1$}
+
+    \proofheading{Behauptung 3} Unter $\varphi_{b-a}$ wird das Level-Set 
+    $f^{-1}(a)$ auf das Level-Set $f^{-1}(b)$ abgebildet.
+     
+    Für $p \in f^{-1}(a)$ gilt:
+    \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
+    und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 2
+    \[ \derive{t}f(\varphi^p(t-a)) (t_0) = 1 \]
+    also
+    \[ f(\varphi^p(b-a)) = f(\varphi_{0}(p)) + (b - a) = b \]
+    Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
+    $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
+    \sectiondone
+
+    \proofheading{Behauptung 4} Für $p, q \in M$ und $t \in \R$ gilt:
+    \[ f(p) \leq f(q) \Leftrightarrow f(\varphi_t(p)) \leq f(\varphi_t(q)) \]
+
+    Seien oBdA $p, q \in \supp (X)$.
+
+    "$\Rightarrow$": $f \circ \varphi^p: {\varphi^p}^{-1}(\supp(X)) \to f(\supp(X))$
+    ist monoton und surjektiv. Wegen der Surjektivität von $f \circ \varphi^q $ 
+    existieren $q' \in \supp(X)$, $s > 0$ sodass
+    \[ \varphi_{t + s}(p) = \varphi_t(q') \text{ und } f(\varphi_t(q')) = f(\varphi_t(q)) \]
+    Wegen der Monotonie gilt dann
+    \[ 
+        f(\varphi_t(q)) = f(\varphi_t(q')) = f(\varphi_t(\varphi_s(p))) 
+        = f(\varphi_{t+s}(p)) = f(\varphi^p(t+s)) \geq f(\varphi^p(t)) = 
+        f(\varphi_t(p)) \]
+
+    "$\Leftarrow$": Setze $\tilde{p} := \varphi_{-t}(p)$ und $\tilde{q} := \varphi_{-t}(q)$.
+    Gilt 
+    \[ 
+        (f(p) \leq f(q) \Leftarrow f(\varphi_t(p)) \leq f(\varphi_t(q)))
+        \Leftrightarrow 
+        (f(\varphi_t(\tilde{p})) \leq f(\varphi_t(\tilde{q}))) \Leftarrow f(\varphi_t(\tilde{p})) \leq f(\varphi_t(\tilde{q}))
+    \]
+    Was schon gezeigt wurde.
+
+    \sectiondone
+
+    \proofheading{Behauptung 5} Es gilt $\varphi_{b-a}(M^a) = M^b$.
+   
+    "$\subseteq$": Sei $p$ in $M^a$, oBdA. $p \in \supp(X)$, ansonsten gilt
+    \[ \varphi_{b-a}(p) = p \in M^b \]
+    Sei $q \in f^{-1}(a)$. Dann gilt 
+    \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a}(q)) = b \]
+    "$\supseteq$": Analog
+    \sectiondone
+
+    Damit ist $\left. \varphi_{b-a} \right\vert_{M^a}$ ein Diffeomorphismus zwischen
+    $M^a$ und $M^b$. 
+
+    Betrachte nun $r: M^b \times \R \to M^b$,
+    \[  
+        r(p, t) = \begin{cases}
+            p & \text{ falls } f(p) \leq a \\
+            \varphi_{t(a - f(p))}(p) & \text{ falls } a \leq f(p) \leq b 
+        \end{cases}
+    \]
+
+    Dann ist $r$ stetig, $r(\cdot, 0)$ ist die Identität auf $M^b$, 
+    $r(\cdot, 1)|_{M^a}$ ist die Identität auf $M^a$ und 
+    $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$.
+
+\end{proof}
