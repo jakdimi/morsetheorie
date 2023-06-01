@@ -1,17 +1,38 @@
 \section{Anwendungen}
 
 \begin{theorem}
+    \label{theorem:Sn}
     Sei $M$ eine $n$-dimensionale Mannigfaltigkeit, sodass eine glatte Funktion
     $f: M \to \R$ existiert, die genau zwei kritische Punkte besitzt, die beide
     nicht degeneriert sind. Dann ist $M$ homeomorph zu $S^n$.
 \end{theorem}
 
+\begin{proof}
+    Seien $p$ und $q$ die kritischen Werte mit $f(p) = a < b = f(q)$. Mit dem 
+    Morse Lemma existiert dann $\varepsilon > 0$, sodass 
+    $f^{-1}[a, a + \varepsilon]$ und $f^{-1}[b - \varepsilon, b]$ diffeomorph
+    zu einer $n$-Zelle $e^n$ sind. 
+    Mit dem ersten Deformationslemma~\ref{theorem:erstes deformationslemma} ist
+    $f^{-1}[a - \varepsilon, b - \varepsilon]$ deffeomorph zu 
+    $\del e^n \times [0, 1]$. Dann ist $M$ der Zylinder $\del e^n \times [0, 1]$ 
+    mit $e^n$ an beiden seiten des Zylinders angebracht. Sei 
+    $\operatorname{pr}_1: S^n \to \R$ die Projektion auf die erste Koodinate von
+    $S^n \subset \R^{n + 1}$. Dann hat $\operatorname{pr}_1$ genau zwei kritische 
+    Punkte, beide sind nicht degeneriert, also gilt $M \cong S^n$.
+\end{proof}
+
 \begin{theorem}
+    \label{theorem:CW-komplex}
     Sei $M$ eine Mannigfaltigkeit und $f: M \to \R$ eine glatte Funktion mit 
     ausschließlich nicht degenerierten kritischen Punkten $p_1, ..., p_m$. 
     Dann besitzt $M$ den Homotopie-Typen von einem CW-Komplex mit einer $k$-Zelle 
     für jeden kritischen Punkt mit Index $k$.
 \end{theorem}
+
+\begin{proof}
+    Der Beweis ist recht involviert, aber im wesentlichen folgt die Aussage aus
+    dem zweiten Deformationslemma~\ref{theorem:zweites deformationslemma}.
+\end{proof}
 
 \begin{theorem}[Morse Ungleichungen]
     Sei $M$ eine kompakte Mannigfaltigkeit, $f: M \to \R$ eine glatte Funktion
@@ -22,6 +43,12 @@
     \begin{enumerate}
         \item $ b_k(M) \leq C_k $ 
         \item $ \chi(M) = \sum_k (-1)^k \cdot C_k $
-        \item $ b_k(M) - b_{k - 1}(M) + ... \pm b_0(M) \leq C_k - C_{k-1} + ... \pm C_=0 $
+        \item $ b_k(M) - b_{k - 1}(M) + ... \pm b_0(M) 
+            \leq C_k - C_{k-1} + ... \pm C_0 $
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    Auch folgt die Behauptung wesentlich aus dem zweiten 
+    Deformationslemma~\ref{theorem:zweites deformationslemma}. 
+\end{proof}

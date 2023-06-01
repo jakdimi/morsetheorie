@@ -25,7 +25,7 @@ Werkzeuge:
     \includegraphics[width=0.7\linewidth]{resources/Me-Diagram4-gradient-of-hightmapping.png}
     \label{fig:me-diagram4}
     \caption{Gradient der Höhenfunktion auf dem Torus}
-\end{figure}a
+\end{figure}
 
 \begin{definition}[Flusslinie, Wang]
     Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$. Für einen
@@ -196,3 +196,10 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$.
 
 \end{proof}
+
+\begin{corollary}
+    Es sei $M$ eine Mannigfaltigkeit, $f: M \to \R$ eine glatte Funktion ohne
+    kritische Werte in $[a, b]$. dann ist $f^{-1}[a, b]$ diffeomorph zu den
+    Mannigfaltigkeiten mit Rand $f^{-1}(a) \times [a, b]$ und 
+    $f^{-1}(b) \times [a, b]$.
+\end{corollary}
