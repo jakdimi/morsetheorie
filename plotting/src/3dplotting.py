@@ -80,8 +80,8 @@ def plot_fig4_gradient_of_hightmapping(ax):
 
     ax.plot_surface(x1, y1, z1, color="LightBlue", zorder=1)
 
-    N21 = 20
-    N22 = 5
+    N21 = 30
+    N22 = 7
 
     u2 = np.linspace(0, 2 * np.pi, N21)
     v2 = np.linspace(np.pi, 2 * np.pi, N22)
@@ -101,7 +101,7 @@ def plot_fig4_gradient_of_hightmapping(ax):
             dz[i][j] = dz1
 
     # Plot the surface
-    ax.quiver(x2, y2, z2, dx, dy, dz, length=0.5, normalize=True, color="red", zorder=2)
+    ax.quiver(x2, y2, z2, dx, dy, dz, length=0.2, normalize=False, color="red", zorder=2)
 
     # Set an equal aspect ratio
     ax.set_aspect('equal')
@@ -111,7 +111,7 @@ def plot_fig4_gradient_of_hightmapping(ax):
 
 if __name__ == "__main__":
     dpi=500
-    show=False
+    show=True
 
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
