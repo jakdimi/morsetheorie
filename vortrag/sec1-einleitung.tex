@@ -1,6 +1,27 @@
 \section{Einführung}
 
-Sei $M$ eine glatte Abbildung, $f: M \to \R$ eine glatte Abbildung, 
+Wiederholung von letzter Woche:
+
+\begin{definition}
+    Sei $f: M \to \R$ eine glatte Abbildung, $\dim(M) = n$, $p$ ein kritischer 
+    Punkt von $f$. Sei $\varphi = (x_1, ..., x_n)$ ein lokales Koordinatensystem 
+    in einer Umgebung von $p$. Dann ist der Index von $p$ die Anzahl der 
+    negativen Eigenwerte von
+    \[ H_p^{\varphi}f := \left( \pdderive[f]{x_i}{x_j} \right)_{1 \leq i, j \leq n} \]
+\end{definition}
+
+\begin{theorem}[Das Morse Lemma]
+    Sei $M$ eine $n$-dimensionale glatte Mannigfaltigkeit, $f: M \to \R$ glatt 
+    und $p$ ein nicht degenerierter kritischer Punkt von $f$ mit Index $k$. Dann 
+    existerit ein lokales Koordinatensystem $(x_1, ..., x_n)$ in einer Umgebung
+    $U$ von $p$, sodass
+    \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k + 1}^2 + ... + x_n^2 \]
+    und 
+    \[ x_1(p) = ... = x_n (p) = 0 \]
+\end{theorem}
+\sectiondone
+
+Sei $M$ eine glatte Mannigfaltigkeit, $f: M \to \R$ eine glatte Abbildung, 
 $a \in \R$. Dann ist $M^a = f^{-1}(- \infty, a]$ ein \textit{sublevel set} von 
 $f$. Das Ziel des Vortrags ist es, die Topologie der sublevel sets einer 
 Abbildung mit ausschließlich nicht degenerierten kritischen Punkten, so genannten

@@ -194,7 +194,7 @@ def plot_fig4_handle_cases(ax, del_x=0.01):
 
 if __name__ == "__main__":
     dpi=300
-    show=False
+    show=True
 
     fig, ax1 = plt.subplots(1, 1, figsize=(7, 7))
     plot_fig1_U_parameterized(ax1, del_x=0.001)

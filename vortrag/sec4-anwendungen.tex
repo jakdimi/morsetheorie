@@ -37,18 +37,97 @@
 \begin{theorem}[Morse Ungleichungen]
     Sei $M$ eine kompakte Mannigfaltigkeit, $f: M \to \R$ eine glatte Funktion
     mit ausschließlich nicht degenerierten kritischen Punkten. Sei $C_k$ die
-    Anzahl der kritischen Punkte mit Index $k$. Sei $b_k(M)$ die $k$-te 
+    Anzahl der kritischen Punkte mit Index $k$. Sei $\betti_k(M)$ die $k$-te 
     Betti-Zahl von $M$ und $\chi(M)$ die Euler-Charakteristik von $M$. 
     Dann gelten:
     \begin{enumerate}
-        \item $ b_k(M) \leq C_k $ 
+        \item $ \betti_k(M) \leq C_k $ 
         \item $ \chi(M) = \sum_k (-1)^k \cdot C_k $
-        \item $ b_k(M) - b_{k - 1}(M) + ... \pm b_0(M) 
+        \item $ \betti_k(M) - b_{k - 1}(M) + ... \pm \betti_0(M) 
             \leq C_k - C_{k-1} + ... \pm C_0 $
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-    Auch folgt die Behauptung wesentlich aus dem zweiten 
-    Deformationslemma~\ref{theorem:zweites deformationslemma}. 
+    Auch hierfolgt die Behauptung wesentlich aus dem zweiten 
+    Deformationslemma~\ref{theorem:zweites deformationslemma}:
+    Wir definieren $\betti_k$ und $\chi$ für ein Raumpaar $(X, Y)$:
+    \[ \betti_k(X, Y) = \dim (\Hom_k (X, Y)) \]
+    und 
+    \[ \chi(X, Y) = \sum_k (-1)^k \betti_k(X, Y) \]
+    Man kann zeigen, dass $\betti_k$ subadditiv und $\chi$ addutiv sind, also
+    dass für $Z \subseteq Y \subseteq X$ gilt
+    \[ \betti_k(X, Z) \leq \betti_k(X, Y) + \betti_k(Y, Z) \]
+    und 
+    \[ \chi(X, Z) = \chi(X, Y) + \chi(Y, Z) \]
+    Außerdem zeigt man, dass für $X_0 \subseteq ... \subseteq X_n$ gilt
+    \[ S(X_n, X_0) \leq \sum_i S(X_i, X_{i-1}) \]
+    falls $S$ subadditiv, und dass falls $S$ additiv ist sogar Gleichheit gilt.
+    
+    ObdA hat $f$ nur isolierte kritische Punkte. Seien dann 
+    $a_0, ..., a_m \in \R$ so gewählt, dass $M^{a_i}$ genau $i$ kritische Punkte
+    enthalten und $M^{a_m} = M$. Dann gilt schon $M^0 = \varnothing$. Sei nun $k_i$
+    der Index des kritischen Punktes in $M^{a_i} - M^{a_{i-1}}$. Dann gilt:
+    \begin{align*}
+        \Hom_k(M^{a_i}, M^{a_{i-1}}) 
+            & = \Hom_k(M^{a_{i-1}} \cup e^{k_i}, M^{a_{i-1}})
+            & \text{ (wegen des zweiten Deformationslemmas) } \\
+        & = \Hom_k(e^{k_i}, \del e^{k_i})
+            & \text{ (wegen der Ausschneidungseigenschaft) } \\
+        & = \Hom_k(S^{k_i}, \ast)
+    \end{align*}
+
+    Also haben wir
+    \[ 
+        H_k(M^{a_i}, M^{a_{i-1}}) = \begin{cases}
+            \R &\text{ falls } k = k_i \\
+            0 & \text{ sonst }
+        \end{cases}
+    \]
+    Da $\betti_k$ subadditiv ist gilt 
+    \begin{align*}
+        \betti_k(M) 
+           & \leq \sum_i \betti_k(M^{a_i}, M^{a_{i-1}}) \\
+           & = \sum_i \dim(\Hom_k(M^{a_i}, M^{a_{i-1}})) \\
+           & = C_k
+    \end{align*}
+    
+    Und da $\chi$ additiv ist gilt
+    \begin{align*}
+        \chi(M) 
+           & = \sum_i \chi (M^{a_i}, M^{a_{i-1}}) \\
+           & = \sum_i \sum_k (-1)^k \dim \Hom_k (M^{a_i}, M^{a_{i-1}}) \\
+           & = \sum_k (-1)^k C_k
+    \end{align*}
+
+    3. folgt aus der Tatsache, dass $S_k$ subadditiv ist, wobei 
+    \[ 
+      S_k(X, Y) 
+      = \betti_k(X, Y) - \betti_{k - 1}(X, Y) + ... \pm \betti_{0} 
+    \]
+
+    Dann gilt wieder
+    \begin{align*} 
+        S_k (M) 
+            & \leq \sum_{i = 1}^m (-1)^i S_k(M^{a_i}, M^{a_{i-1}}) \\
+            & = \sum_{i = 1}^m \betti_k(M^{a_i}, M^{a_{i-1}}) 
+            - \betti_{k - 1}(M^{a_i}, M^{a_{i-1}})
+            + ... \pm \betti_0(M^{a_i}, M^{a_{i-1}})
+    \end{align*}
+    aber gerade haben wir schon gesehen, dass gilt
+    \[ 
+        \betti_k(M^{a_i}, M^{a^{i-1}}) = 
+            \begin{cases}
+                1 & \text{ if } k = i \\
+                0 & \text{ else }
+            \end{cases}
+    \]
+    Also gilt
+    \[ 
+        \sum_{i = 1}^m \betti_k(M^{a_i}, M^{a_{i-1}}) 
+            - \betti_{k - 1}(M^{a_i}, M^{a_{i-1}})
+            + ... \pm \betti_0(M^{a_i}, M^{a_{i-1}})
+        = C_k - C_{k - 1} + ... \pm C_0
+    \]
+
 \end{proof}

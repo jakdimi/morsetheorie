@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
 
 
@@ -109,22 +111,73 @@ def plot_fig4_gradient_of_hightmapping(ax):
     ax.view_init(elev=0, azim=-90, roll=0)
 
 
+def plot_fig_sublevelset_torus(a, ax):
+    N1 = 1000
+    N2 = 100
+
+    u = np.linspace(0, 2 * np.pi, N1)
+    v = np.linspace(0, 2 * np.pi, N2)
+    u, v = np.meshgrid(u, v)
+
+    x, y, z = torus(1, 3, u, v)
+
+    base_color = [142/265, 220/265, 237/265]
+
+    N=1000
+    colors=[]
+    if a > 0:
+        colors.append((0, base_color + [1]))
+    else:
+        colors.append((0, base_color + [0]))
+
+    for i in range(N):
+        if i/N > a:
+            colors.append((i/N, base_color + [0]))
+        else:
+            colors.append((i/N, base_color + [1]))
+
+    if a < 1:
+        colors.append((1, base_color + [0]))
+    else:
+        colors.append((1, base_color + [1]))
+        
+
+    levelset_cm = LinearSegmentedColormap.from_list("levelset", colors)
+
+    ax.plot_surface(x, y, z, cmap=levelset_cm, shade=True)
+
+    ax.set_aspect('equal')
+    ax.axis('off')
+
+    ax.plot_surface
+
+
 if __name__ == "__main__":
     dpi=500
     show=True
 
-    fig = plt.figure()
-    ax = fig.add_subplot(projection='3d')
-    plot_fig1_torus_plane(ax)
-    fig.canvas.manager.set_window_title("Me-Diagram1-torus-plane")
-    plt.savefig("../results/Me-Diagram1-torus-plane.png", dpi=dpi)
-    if show:
-        plt.show()
+    # fig = plt.figure()
+    # ax = fig.add_subplot(projection='3d')
+    # plot_fig1_torus_plane(ax)
+    # fig.canvas.manager.set_window_title("Me-Diagram1-torus-plane")
+    # plt.savefig("../results/Me-Diagram1-torus-plane.png", dpi=dpi)
+    # if show:
+    #     plt.show()
     
+    # fig = plt.figure()
+    # ax = fig.add_subplot(projection='3d')
+    # plot_fig4_gradient_of_hightmapping(ax)
+    # fig.canvas.manager.set_window_title("Me-Diagram4-gradient-of-hightmapping")
+    # plt.savefig("../results/Me-Diagram4-gradient-of-hightmapping.png", dpi=dpi)
+    # if show:
+    #     plt.show()
+
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
-    plot_fig4_gradient_of_hightmapping(ax)
-    fig.canvas.manager.set_window_title("Me-Diagram4-gradient-of-hightmapping")
+    plot_fig_sublevelset_torus(0.2, ax)
+    fig.canvas.manager.set_window_title("Me-Diagram-sublevelset-torus")
     plt.savefig("../results/Me-Diagram4-gradient-of-hightmapping.png", dpi=dpi)
     if show:
         plt.show()
+
+    print(type(cm.coolwarm))
