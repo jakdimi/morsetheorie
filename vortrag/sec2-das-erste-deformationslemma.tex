@@ -27,26 +27,28 @@
     Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$. Für einen
     glatten Weg $\gamma: I \to M$, $I \subseteq \R$ ein Intervall, 
     definieren wir
-    \[ \dot{\gamma}(t) \in T_pM \text{ für } p = \gamma(t) \text{ für ein } t \in I \text{ durch } 
-    \dot{\gamma}(t) = \opd \gamma (t) \left(\derive{t}\right) \]
+    \[ \derive[\gamma]{t}(t_0) \in T_{\gamma(t_0)}M \text{ für ein } t_0 \in I \text{ durch } 
+    \derive[\gamma]{t}(t_0) = \opd \gamma (t_0) \left(\derive{t}\right) \]
     wobei $\derive{t} \in T_pM$ das durch die Standardbasis von $\R$
     induzierte Element im Tangentialraum ist.
     Ein Weg $\gamma: I \to \R$ heißt \textit{Flusslinie} eines Vektorfeldes $X$,
-    falls für alle $t \in I$ gilt:
-    \[ X(\gamma(t)) = \dot{\gamma}(t) \]
+    falls für alle $t_0 \in I$ gilt:
+    \[ X(\gamma(t_0)) = \derive[|gamma]{t}(t_0) \]
 \end{definition}
 
 \begin{definition}[1-Parameter Gruppe aus Diffeomorphismen]
     Eine \textit{1-Parameter Gruppe aus Diffeomorphismen} ist eine glatte 
     Abbildung
-    \[ \varphi: \R \times M \to M \text{, wobei } (t, p) \mapsto \varphi_t(p) = \varphi^p(t) \]
+    \[ \varphi: \R \times M \to M \text{, wobei } (t, p) \mapsto \varphi_t(p) \]
     Sodass für alle $s$, $t \in \R$ gilt:
     \[ \varphi_{t + s} = \varphi_t \circ \varphi_s \]
     und 
     \[ \varphi_0 = \id_M \]
+    Ich schreibe:
+    \[ \varphi_{\id_{\R}}(p): \R \to M ; t \mapsto \varphi_t(p) \]
     Wir sagen eine 1-Parameter Gruppe aus Diffeomorphismen wird von einem
     Vektorfeld $X$ generiert, falls für alle $p \in M$ gilt
-    \[ X(p) = \dot{\varphi^p}(0) \]
+    \[ X(p) = \derive[\varphi_{\id_{\R}}(p)]{t}(0) \]
 \end{definition}
 
 Ist $\varphi$ eine 1-Parameter Gruppe aus Diffeomorphismern, so ist für alle 
@@ -55,21 +57,21 @@ $t \in \R$ $\varphi_t$ ein Diffeomorphismus mit Inverse $\varphi_{-t}$.
 Bemerke: Falls $X$ eine 1-Parameter Gruppe aus Diffeomorphismen $\varphi$ erzeugt,
 dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
 \begin{align*}
-    X(\varphi^p(t)) 
-    & = \dot{\varphi^{\varphi^p(t)}}(0)
-    = T_0 \varphi^{\varphi^p(t)} \left(\derive{t}\right) \\
-    & = T_0 \varphi_{t + \id_{\R}}(p) \left(\derive{t}\right)
-    = T_t \varphi_{\id_{\R}}(p) \cdot T_0 (t + \id_{\R}) \left(\derive{t}\right) \\
-    & = T_t \varphi_{\id_{\R}}(p) \left(\derive{t}\right)
-    = T_t \varphi^p \left(\derive{t}\right) \\
-    & = \dot{\varphi^p}(t)
+    X(\varphi^p(t_0)) 
+    & = \derive[\varphi_{id_{\R}}(\varphi_{t_0}(p))]{t}(0)
+    = T_0 \varphi_{id_{\R}}(\varphi_{t_0}(p)) \left(\derive{t}\right) \\
+    & = T_0 \varphi_{t_0 + \id_{\R}}(p) \left(\derive{t}\right)
+    = T_{t_0} \varphi_{\id_{\R}}(p) \cdot T_0 (t_0 + \id_{\R}) \left(\derive{t}\right) \\
+    & = T_{t_0} \varphi_{\id_{\R}}(p) \left(\derive{t}\right)
+    = T_{t_0} \varphi_{\id_{\R}}(p) \left(\derive{t}\right) \\
+    & = \derive[\varphi_{\id_{\R}}]{t}(t_0)
 \end{align*}
 
 \begin{lemma}
     \label{lemma:generierende vektorfelder}
-    Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$, sodass
-    $\supp(X)$ kompakt ist. Dann generiert $X$ eine eindeutige 
-    1-Parameter Gruppe aus Diffeomorphismen.
+    Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$ mit kompaktem 
+    Träger. Dann generiert $X$ eine eindeutige 1-Parameter Gruppe aus 
+    Diffeomorphismen.
 \end{lemma}
 
 \begin{proof} Der Beweis wird ausgelassen. \end{proof}
@@ -102,29 +104,29 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
     Lemma~\ref{lemma:generierende vektorfelder}. Sei also $\varphi$ die
     einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
     wird. 
-    Wir bekommen für jedes $p \in M$ eine Abbildung $f \circ \varphi^p: \R \to \R$.
+    Wir bekommen für jedes $p \in M$ eine Abbildung 
+    $f \circ \varphi_{\id_{\R}}(p): \R \to \R$.
     
-    \proofheading{Behauptung 1} Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi^p(t_0)$
-    ist $\derive{t} f \circ \varphi^p (t_0) \in [0, 1]$ und falls $f(\varphi^p(t)) \in [a, b]$
-    gilt sogar $\derive{t} f \circ \varphi^p (t_0) = 1$.
+    \proofheading{Behauptung 1} Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi_{t_0}(q)$
+    ist $\derive{t} f \circ \varphi_{\id_{\R}}(p) (t_0) \in [0, 1]$ und falls $f(\varphi_t(q)) \in [a, b]$
+    gilt sogar $\derive{t} f \circ \varphi_{\id_{\R}}(q) (t_0) = 1$.
 
     Für $q = \varphi_{t_0}(p)$:
     \begin{align*}
-        \derive{t} f \circ \varphi^p (t_0)
-        & = T_{\varphi^p(t_0)} f \cdot T_{t_0}\varphi^p \left( \derive{t} \right)
+        \derive{t} f \circ \varphi_{t_0}(p)
+        & = T_{\varphi_{t_0}(p)} f \cdot T_{t_0}\varphi_{\id_{\R}}(p) \left( \derive{t} \right)
         = \opd f (q) \cdot X(q) \\
         & = \langle X(q), \grad f (q) \rangle 
         = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
     \end{align*}
     
-    $f \circ \varphi^p$ ist also monoton wachsend für alle $p \in M$, und in 
-    $\supp (X)$ sogar streng monoton.
+    $f \circ \varphi_{id_{\R}(p)}$ ist also monoton wachsend für alle $p \in M$.
 
     Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
     \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]
     \sectiondone
 
-    \proofheading{Behauptung 2} Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_p(t_0)) \in [a, b]$.
+    \proofheading{Behauptung 2} Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_{t_0}(p)) \in [a, b]$.
     
     \[ f(\varphi_{t_0}(p)) \geq f(\varphi_0(p)) = a \]
     und
@@ -144,9 +146,9 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
     Für $p \in f^{-1}(a)$ gilt:
     \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
     und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 1 und 2
-    \[ \derive{t}f(\varphi^p(t-a)) (t_0) = 1 \]
+    \[ \derive{t}f(\varphi_{\id_{\R} - a}(p)) (t_0) = 1 \]
     also
-    \[ f(\varphi^p(b-a)) = f(\varphi_{0}(p)) + (b - a) = b \]
+    \[ f(\varphi_{b - a}(p)) = f(\varphi_{0}(p)) + (b - a) = b \]
     Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
     $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
     \sectiondone
