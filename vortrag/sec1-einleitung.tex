@@ -5,12 +5,13 @@ Wiederholung von letzter Woche:
 \begin{definition}
     Sei $f: M \to \R$ eine glatte Abbildung, $\dim(M) = n$, $p$ ein kritischer 
     Punkt von $f$. Sei $\varphi = (x_1, ..., x_n)$ ein lokales Koordinatensystem 
-    in einer Umgebung von $p$. Dann ist der Index von $p$ die Anzahl der 
-    negativen Eigenwerte von
+    in einer Umgebung von $p$. Dann ist der \textit{Index} von $p$ die Anzahl 
+    der negativen Eigenwerte von der Matrix
     \[ H_p^{\varphi}f := \left( \pdderive[f]{x_i}{x_j} \right)_{1 \leq i, j \leq n} \]
+    $p$ heißt \textit{nicht degneriert}, falls  $H_p^{\varphi}f$ invertierbar ist.
 \end{definition}
 
-\begin{theorem}[Das Morse Lemma]
+\begin{theorem}[Das Morse-Lemma]
     Sei $M$ eine $n$-dimensionale glatte Mannigfaltigkeit, $f: M \to \R$ glatt 
     und $p$ ein nicht degenerierter kritischer Punkt von $f$ mit Index $k$. Dann 
     existerit ein lokales Koordinatensystem $(x_1, ..., x_n)$ in einer Umgebung
@@ -22,12 +23,12 @@ Wiederholung von letzter Woche:
 \sectiondone
 
 Sei $M$ eine glatte Mannigfaltigkeit, $f: M \to \R$ eine glatte Abbildung, 
-$a \in \R$. Dann ist $M^a = f^{-1}(- \infty, a]$ ein \textit{sublevel set} von 
-$f$. Das Ziel des Vortrags ist es, die Topologie der sublevel sets einer 
-Abbildung mit ausschließlich nicht degenerierten kritischen Punkten, so genannten
-\textit{Morsefunktionen}, zu verstehen.
-Wir Untersuchen die Situation anhand des Torus. Wir stellen uns Morsefuinktionen
-der einfachheitshalber als "Höhenfunktionen" vor.
+$a \in \R$. Dann ist $M^a = f^{-1}(- \infty, a]$ eine \textit{Subniveaumenge} 
+von $f$. Eine \textit{Morse-Funktion} ist eine glatte Funktion $f: M \to \R$, 
+sodass alle kritischen Punkte von $f$ nicht degeneriert sind.
+Das Ziel des Vortrags ist es, die Topologie der Subnieveuamengen von 
+Morse-Funktionen zu verstehen. Wir Untersuchen die Situation anhand des Torus. 
+Man stellt sich Morse-Funktionen einfachheitshalber als "Höhenfunktionen" vor.
 
 \begin{figure}[H]
     \centering
@@ -39,13 +40,10 @@ der einfachheitshalber als "Höhenfunktionen" vor.
 Es sei $f$ die Abbildung vom Torus nach $\R$, die jedem Punkt den minimalen
 Abstand zu der eingezeichneten Ebene zuordnet. 
 Die kritischen Punkte dieser Höhenfunktion sind $p$, $q$, $r$ und $s$.
-Man stellt sich vor, dass man den Torus nach und nach mit Wasser befüllt. Dann 
-ist für $a \in \R$ $M^a = f^{-1}(-\infty, a]$ die Menge der Punkte die bei der
-Wasserhöhe $a$ das Wasser berühren. 
 
 \begin{itemize}
-    \item Für $a < 0$ ist $M^a = \varnothing$.
-    \item Für $0 \leq a < f(p)$ ist $M^a$ homotopieäquivalent zum Punkt.
+    \item Für $a < f(p)$ ist $M^a = \varnothing$.
+    \item Für $f(p) \leq a < f(p)$ ist $M^a$ homotopieäquivalent zum Punkt.
     \item Für $f(p) \leq a < f(q)$ ist $M^a$ homotopieäquivalent zum Kreis,
         an dem ein "Henkel" befestigt wurde.
     \item Für $f(q) \leq a < f(r)$ ist $M^a$ Homotopieäquivalent zum Zyliner,
@@ -55,11 +53,11 @@ Wasserhöhe $a$ das Wasser berühren.
 
 Wir bemerken: 
 \begin{itemize}
-    \item Gibt es im Intervall $[a, b]$ keine kritischen Werte, so haben alle
-        $M^c$ für $c \in [a, b]$ denselben Homotopie-Typ
+    \item Gibt es im Intervall $[a, b]$ keine kritischen Werte, so sind $M^a$ und
+        $M^b$ homeomorph
     \item Gibt es im Intervall $[a, b]$ genau einen kritischen Wert $c$ und ist
-        $ \#f^{-1}(p) = 1$, dann hat $M^b$ den Homotopie-Typ von $M^a$ mit einem 
-        Henkel angebracht (Was auch immer das bedeutet).
+        $ \#f^{-1}(p) = 1$, dann hat $M^b$ den Homotopie-Typ von $M^a$ mit einer 
+        Art Henkel angeklebt.
 \end{itemize}
 
 Um diese zwei Aussagen zu präzisieren, brauchen wir einige Definitionen:
@@ -81,7 +79,7 @@ Deformationsretrakte haben einige schöne Eigenschaften. Falls $A$ ein
 Deformationsretrakt von $X$ ist, so ist die Inklusion $A \rightarrow X$ eine
 Homotopieäquivalenz. Da Homotopieäquivalenz transitiv ist, hat ein weiterer
 Deformationsretrakt $B$ von $X$ deshalb denselben Homotopietypen wie $A$. \\
-Es eine Tatsache, dass zwei Unterräume $A$ und $B$ genau dan denselben 
+Es ist eine Tatsache, dass zwei Unterräume $A$ und $B$ genau dan denselben 
 Homotopietypen haben, wenn sie beide Deformationsretrakte eines gemeinsamen 
 Oberraumes sind. Um dies einzusehen benötigt man weitere topologische 
 Theorie.
@@ -92,12 +90,12 @@ Theorie.
     \[ \varphi: \del e^k \rightarrow X \text{ stetig } \]
     \[ X \cup_{\varphi} e^k = (X \amalg e^k) / \sim, \text{ wobei } \]
     \[ \del e^k \ni x \sim y \in X \Leftrightarrow \varphi(x) = y \]
-    Dann heißt $e^k$ $\lambda$-Zelle, $\varphi$ Anheftungsabbildung 
+    Dann heißt $e^k$ $k$-Zelle, $\varphi$ Anheftungsabbildung 
     und $X \cup_{\varphi} e^k$ heißt $X$ mit einer $k$-Zelle 
     angebracht.
 \end{definition}
 
-\textbf{ZEICHNUNG 1-Zelle, 2-Zelle}
+\textbf{ZEICHNUNG 1-Zelle anbringen}
 
 Ein Paar Beispiele: 
 \begin{itemize}
@@ -118,24 +116,3 @@ Topologie (und Homologie) der Mannigfaltigkeit besser zu verstehen. Wenn wir
 sogar die gesamte Mannigfaltigkeit durch iteratives anbringen von $k$-Zellen
 an den leeren Raum "erschaffen" können, dann können wir einigen Aussagen über 
 die Homologie des Raumes machen. 
-
-
-\begin{theorem}[Erstes Deformationslemma]
-    \label{theorem:erstes deformationslemma}
-    Es sei $M$ eine glatte Mannigfaltigkeit und $f: M \rightarrow \R$ eine
-    glatte Abbildung. Hat $f$ keine kritischen Werte im Intervall [a, b] und ist
-    $f^{-1}[a, b]$ kompakt, so existiert ein Diffeomorphismus 
-    $M^a \rightarrow M^b$, und $M^a$ ist ein Deformationsretrakt von $M^b$.
-\end{theorem}
-
-\begin{theorem}[Zweites Deformations-Lemma]
-    \label{theorem:zweites deformationslemma}
-    Es sei $M$ eine glatte Mannigfaltigkeit, $f: M \rightarrow \R$ eine glatte
-    Abbildung und $p$ ein nicht-degenerierter kritischer Punkt mit Index 
-    $k$. Sei $c := f(p)$ und $\varepsilon \geq 0$, sd. 
-    $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und außer $p$ keine 
-    weiteren kritischen Punkte von $f$ beinhaltet. Dann hat $M^{c-\varepsilon}$
-    denselben Homotopietypen wie $M^{c - \varepsilon} \cup_{\varphi} e^k$
-    für eine Anheftungsabbildung 
-    $\varphi: \del e^k \rightarrow M^{c-\varepsilon}$
-\end{theorem}

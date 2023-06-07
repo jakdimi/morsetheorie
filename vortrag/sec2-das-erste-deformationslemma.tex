@@ -1,15 +1,11 @@
 \section{Das erste Deformationslemma}
 
-Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
-steigt, also parallel zum "Boden" via eines Diffeomorphismus $\varphi$ "nach oben 
-zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$. Dazu benötigen wir ein paar 
-Werkzeuge:
-
 \begin{definition}[Riemannsche Metrik]
-    Bemerke: $( TM \otimes TM )^*$ ist Isomorph zu dem Vektorbündel mit Fasern 
-    $\operatorname{Bil}(T_pM, \R)$. Eine \textit{Riemannsche Metrik} ist eine glatte
-    Section $g: M \to (T^M \otimes T^M)^*$; $g(p) = g_p = \langle \cdot, \cdot \rangle$, 
-    sodass $g_p$ für alle $p \in M$ ein Skalarprodukt ist.
+    Eine \textit{Riemannsche Metrik} ist ein Skalarprodukt 
+    $g_p:T_pM \times T_pM \to \R$ für jeden Punkt $p$, sodass für alle 
+    Vektorfelder $X$ und $Y$ die Abbildung $p \to g_p(X(p), Y(p))$ glatt ist.
+    Wir schreiben 
+    \[ g_p(x, y) = \langle x, y \rangle \]
 \end{definition}
 
 \begin{definition}[Gradient]
@@ -72,19 +68,31 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
 \begin{lemma}
     \label{lemma:generierende vektorfelder}
     Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$, sodass
-    $\supp(X)$ kompakt. Dann generiert $X$ eine eindeutige 
+    $\supp(X)$ kompakt ist. Dann generiert $X$ eine eindeutige 
     1-Parameter Gruppe aus Diffeomorphismen.
 \end{lemma}
 
 \begin{proof} Der Beweis wird ausgelassen. \end{proof}
 
-\begin{proof}[Erstes Deformations-Lemma]
+\begin{theorem}[Erstes Deformationslemma]
+    \label{theorem:erstes deformationslemma}
+    Es sei $M$ eine glatte Mannigfaltigkeit und $f: M \rightarrow \R$ eine
+    glatte Abbildung. Hat $f$ keine kritischen Werte im Intervall $[a, b]$ und 
+    ist $f^{-1}[a, b]$ kompakt, so existiert ein Diffeomorphismus 
+    $M^a \rightarrow M^b$, und $M^a$ ist ein Deformationsretrakt von $M^b$.
+\end{theorem}
+
+Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
+steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$ 
+"nach oben zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$.
+
+\begin{proof}[Beweis erstes Deformationslemma]
     Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$. Dies folgt
     aus Whitneys Einbettungssatz und dem Satz von Heine-Borel.
     Sei $\rho: M \to \R$ eine glatte, positive Funktion, sodass
     \[ \rho(p) = 1 / \langle \grad f, \grad f \rangle \]
     für alle $p \in f^{-1}[a, b]$ und die außerhalb von $K$ verschwindet und für
-    die für $p \in K$, die keine kritischen Punkte sind, gilt: 
+    die für alle $p \in K$, die keine kritischen Punkte sind, gilt: 
     \[ 0 \leq \rho(p) \leq 1 / \langle \grad f, \grad f \rangle \]
     Bemerke dass $\rho$ innerhalb von $f^{-1}[a, b]$ wohldefiniert 
     ist, da sich keine kritischen Punkte im Intervall $[a, b]$ befinden. 
@@ -130,14 +138,12 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     \end{align*}
     \sectiondone
 
-    \textbf{ZEICHNUNG: In $f^{-1}[a, b]$ ist $f \circ \varphi^p$ linear mit Steigung $1$}
-
     \proofheading{Behauptung 3} Unter $\varphi_{b-a}$ wird das Level-Set 
     $f^{-1}(a)$ auf das Level-Set $f^{-1}(b)$ abgebildet.
      
     Für $p \in f^{-1}(a)$ gilt:
     \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
-    und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 2
+    und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 1 und 2
     \[ \derive{t}f(\varphi^p(t-a)) (t_0) = 1 \]
     also
     \[ f(\varphi^p(b-a)) = f(\varphi_{0}(p)) + (b - a) = b \]
@@ -145,40 +151,13 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
     \sectiondone
 
-    \proofheading{Behauptung 4} Für $p, q \in M$ und $t \in \R$ gilt:
-    \[ f(p) \leq f(q) \Leftrightarrow f(\varphi_t(p)) \leq f(\varphi_t(q)) \]
+    \proofheading{Behauptung 4} $\varphi_{b - a} (M^a) = M^b$
 
-    Seien oBdA $p, q \in \supp (X)$.
-
-    "$\Rightarrow$": $f \circ \varphi^p: {\varphi^p}^{-1}(\supp(X)) \to f(\supp(X))$
-    ist monoton und surjektiv. Wegen der Surjektivität von $f \circ \varphi^q $ 
-    existieren $q' \in \supp(X)$, $s > 0$ sodass
-    \[ \varphi_{t + s}(p) = \varphi_t(q') \text{ und } f(\varphi_t(q')) = f(\varphi_t(q)) \]
-    Wegen der Monotonie gilt dann
-    \[ 
-        f(\varphi_t(q)) = f(\varphi_t(q')) = f(\varphi_t(\varphi_s(p))) 
-        = f(\varphi_{t+s}(p)) = f(\varphi^p(t+s)) \geq f(\varphi^p(t)) = 
-        f(\varphi_t(p)) \]
-
-    "$\Leftarrow$": Setze $\tilde{p} := \varphi_{-t}(p)$ und $\tilde{q} := \varphi_{-t}(q)$.
-    Gilt 
-    \[ 
-        (f(p) \leq f(q) \Leftarrow f(\varphi_t(p)) \leq f(\varphi_t(q)))
-        \Leftrightarrow 
-        (f(\varphi_t(\tilde{p})) \leq f(\varphi_t(\tilde{q}))) 
-        \Leftarrow f(\varphi_t(\tilde{p})) \leq f(\varphi_t(\tilde{q}))
-    \]
-    Was schon gezeigt wurde.
-
-    \sectiondone
-
-    \proofheading{Behauptung 5} Es gilt $\varphi_{b-a}(M^a) = M^b$.
-   
-    "$\subseteq$": Sei $p$ in $M^a$, oBdA. $p \in \supp(X)$, ansonsten gilt
-    \[ \varphi_{b-a}(p) = p \in M^b \]
-    Sei $q \in f^{-1}(a)$. Dann gilt 
-    \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a}(q)) = b \]
-    "$\supseteq$": Analog
+    "$\subseteq$": Sei $p \in M^a$. OBdA. existiert $s \in [0, b-a]$, sodass 
+    $f(\varphi_s(p)) = a$, ansonsten gilt für alle 
+    $s \in [0, b-a]: f(\varphi_s(p)) \leq a < b$. Dann gilt
+    \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a+s}(p)) = f(\varphi_{b-a}(\varphi_s(p))) = b \] 
+    "$\supseteq$": Analog.
     \sectiondone
 
     Damit ist $\left. \varphi_{b-a} \right\vert_{M^a}$ ein Diffeomorphismus zwischen
