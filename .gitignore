@@ -276,3 +276,5 @@ TSWLatexianTemp*
 *.lpz
 
 *.pyc
+
+**/*/.DS_Store
