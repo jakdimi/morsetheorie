@@ -11,10 +11,13 @@
 \begin{definition}[Gradient]
     Es sei $M$ \textit{Riemannsche Mannigfaltigkeit}, also eine Mannigfaltigkeit
     zusammen mit einer Riemannschen Metrik $g$. Außerdem sei $f: M \to \R$ glatt.
-    Dann ist der \textit{Gradient} von $f$ $\grad f$ das (einzigartige) 
-    Vektorfeld, für das gilt:
+    Dann ist der \textit{Gradient} von $f$ das (einzigartige) 
+    Vektorfeld $\grad f$ für das gilt:
     \[ \langle X, \grad f \rangle = \opd fX \]
 \end{definition}
+
+Falls $M$ eine Riemannsche Mannigfaltigkeit, $f: M \to \R$ glatt, ist $p \in M$ 
+ein kritischer Punkt von $f$ genau dann, wenn $\grad f (p) = 0$.
 
 \begin{figure}[H]
     \centering
@@ -26,14 +29,13 @@
 \begin{definition}[Flusslinie, Wang]
     Es sei $X$ ein Vektorfeld auf einer glatten Mannigfaltigkeit $M$. Für einen
     glatten Weg $\gamma: I \to M$, $I \subseteq \R$ ein Intervall, 
-    definieren wir
-    \[ \derive[\gamma]{t}(t_0) \in T_{\gamma(t_0)}M \text{ für ein } t_0 \in I \text{ durch } 
-    \derive[\gamma]{t}(t_0) = \opd \gamma (t_0) \left(\derive{t}\right) \]
-    wobei $\derive{t} \in T_pM$ das durch die Standardbasis von $\R$
+    definiere für $t_0 \in I$:
+    \[ \derive[\gamma]{t}(t_0) = \opd \gamma (t_0) \left(\derive{t}\right) \in T_{\gamma(t_0)}M \]
+    wobei $\derive{t} \in T_pM$ das durch die Identität auf $\R$
     induzierte Element im Tangentialraum ist.
     Ein Weg $\gamma: I \to \R$ heißt \textit{Flusslinie} eines Vektorfeldes $X$,
     falls für alle $t_0 \in I$ gilt:
-    \[ X(\gamma(t_0)) = \derive[|gamma]{t}(t_0) \]
+    \[ X(\gamma(t_0)) = \derive[\gamma]{t}(t_0) \]
 \end{definition}
 
 \begin{definition}[1-Parameter Gruppe aus Diffeomorphismen]
@@ -45,26 +47,26 @@
     und 
     \[ \varphi_0 = \id_M \]
     Ich schreibe:
-    \[ \varphi_{\id_{\R}}(p): \R \to M ; t \mapsto \varphi_t(p) \]
+    \[ \varphi_{\bullet}(p): \R \to M ; t \mapsto \varphi_t(p) \]
     Wir sagen eine 1-Parameter Gruppe aus Diffeomorphismen wird von einem
     Vektorfeld $X$ generiert, falls für alle $p \in M$ gilt
-    \[ X(p) = \derive[\varphi_{\id_{\R}}(p)]{t}(0) \]
+    \[ X(p) = \derive[\varphi_{\bullet}(p)]{t}(0) \]
 \end{definition}
 
 Ist $\varphi$ eine 1-Parameter Gruppe aus Diffeomorphismern, so ist für alle 
 $t \in \R$ $\varphi_t$ ein Diffeomorphismus mit Inverse $\varphi_{-t}$.
 
 Bemerke: Falls $X$ eine 1-Parameter Gruppe aus Diffeomorphismen $\varphi$ erzeugt,
-dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
+dann ist für alle $p \in M$ der Weg $\varphi_{\bullet}(p)$ eine Flusslinien von $X$, denn
 \begin{align*}
     X(\varphi^p(t_0)) 
-    & = \derive[\varphi_{id_{\R}}(\varphi_{t_0}(p))]{t}(0)
-    = T_0 \varphi_{id_{\R}}(\varphi_{t_0}(p)) \left(\derive{t}\right) \\
-    & = T_0 \varphi_{t_0 + \id_{\R}}(p) \left(\derive{t}\right)
-    = T_{t_0} \varphi_{\id_{\R}}(p) \cdot T_0 (t_0 + \id_{\R}) \left(\derive{t}\right) \\
-    & = T_{t_0} \varphi_{\id_{\R}}(p) \left(\derive{t}\right)
-    = T_{t_0} \varphi_{\id_{\R}}(p) \left(\derive{t}\right) \\
-    & = \derive[\varphi_{\id_{\R}}]{t}(t_0)
+    & = \derive[\varphi_{\bullet}(\varphi_{t_0}(p))]{t}(0)
+    = T_0 \varphi_{\bullet}(\varphi_{t_0}(p)) \left(\derive{t}\right) \\
+    & = T_0 \varphi_{t_0 + \bullet}(p) \left(\derive{t}\right)
+    = T_{t_0} \varphi_{\bullet}(p) \cdot T_0 (t_0 + \id_{\R}) \left(\derive{t}\right) \\
+    & = T_{t_0} \varphi_{\bullet}(p) \left(\derive{t}\right)
+    = T_{t_0} \varphi_{\bullet}(p) \left(\derive{t}\right) \\
+    & = \derive[\varphi_{\bullet}]{t}(t_0)
 \end{align*}
 
 \begin{lemma}
@@ -74,7 +76,7 @@ dann ist für alle $p \in M$ der Weg $\varphi^p$ eine Flusslinien von $X$, denn
     Diffeomorphismen.
 \end{lemma}
 
-\begin{proof} Der Beweis wird ausgelassen. \end{proof}
+\begin{proof} Der Beweis ist recht umfangreich, wird hier aber ausgelassen. \end{proof}
 
 \begin{theorem}[Erstes Deformationslemma]
     \label{theorem:erstes deformationslemma}
@@ -105,22 +107,22 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
     einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
     wird. 
     Wir bekommen für jedes $p \in M$ eine Abbildung 
-    $f \circ \varphi_{\id_{\R}}(p): \R \to \R$.
+    $f \circ \varphi_{\bullet}(p): \R \to \R$.
     
     \proofheading{Behauptung 1} Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi_{t_0}(q)$
-    ist $\derive{t} f \circ \varphi_{\id_{\R}}(p) (t_0) \in [0, 1]$ und falls $f(\varphi_t(q)) \in [a, b]$
-    gilt sogar $\derive{t} f \circ \varphi_{\id_{\R}}(q) (t_0) = 1$.
+    ist $\derive{t} f \circ \varphi_{\bullet}(p) (t_0) \in [0, 1]$ und falls $f(\varphi_t(q)) \in [a, b]$
+    gilt sogar $\derive{t} f \circ \varphi_{\bullet}(q) (t_0) = 1$.
 
     Für $q = \varphi_{t_0}(p)$:
     \begin{align*}
         \derive{t} f \circ \varphi_{t_0}(p)
-        & = T_{\varphi_{t_0}(p)} f \cdot T_{t_0}\varphi_{\id_{\R}}(p) \left( \derive{t} \right)
+        & = T_{\varphi_{t_0}(p)} f \cdot T_{t_0}\varphi_{\bullet}(p) \left( \derive{t} \right)
         = \opd f (q) \cdot X(q) \\
         & = \langle X(q), \grad f (q) \rangle 
         = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
     \end{align*}
     
-    $f \circ \varphi_{id_{\R}(p)}$ ist also monoton wachsend für alle $p \in M$.
+    $f \circ \varphi_{\bullet}(p)$ ist also monoton wachsend für alle $p \in M$.
 
     Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
     \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]

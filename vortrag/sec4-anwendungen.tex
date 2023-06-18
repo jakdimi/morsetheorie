@@ -13,7 +13,7 @@
     $f^{-1}[a, a + \varepsilon]$ und $f^{-1}[b - \varepsilon, b]$ diffeomorph
     zu einer $n$-Zelle $e^n$ sind. 
     Mit dem ersten Deformationslemma~\ref{theorem:erstes deformationslemma} ist
-    $f^{-1}[a - \varepsilon, b - \varepsilon]$ deffeomorph zu 
+    $f^{-1}[a - \varepsilon, b - \varepsilon]$ diffeomorph zu 
     $\del e^n \times [0, 1]$. Dann ist $M$ der Zylinder $\del e^n \times [0, 1]$ 
     mit $e^n$ an beiden seiten des Zylinders angebracht. Sei 
     $\operatorname{pr}_1: S^n \to \R$ die Projektion auf die erste Koodinate von
@@ -21,24 +21,8 @@
     Punkte, beide sind nicht degeneriert, also gilt $M \cong S^n$.
 \end{proof}
 
-\begin{theorem}
-    \label{theorem:CW-komplex}
-    Sei $M$ eine Mannigfaltigkeit und $f: M \to \R$ eine Morse-Funktion, sodass
-    $M^a$ kompakt ist für alle $a \in \R$. 
-    Dann besitzt $M$ den Homotopie-Typen von einem CW-Komplex mit einer $k$-Zelle 
-    für jeden kritischen Punkt mit Index $k$ von $f$.
-\end{theorem}
-
-\begin{remark}
-    Man kann zeigen, dass auf jeder glatten Mannigfaltigkeit eine Morse-Funktion
-    existiert, sodass $M^a$ kompakt für alle $a \in \R$, also hat jede glatte 
-    Mannigfaltigkeit (ohne Rand) den Homotopie-Typen eines CW-Komplexes!
-\end{remark}
-
-\begin{proof}
-    Der Beweis ist recht involviert, aber im wesentlichen folgt die Aussage aus
-    dem zweiten Deformationslemma~\ref{theorem:zweites deformationslemma}.
-\end{proof}
+Achtung: Diffeomorphie ist dann nicht gegeben. Insbesondere gibt es mehrere glatte
+Strukturen der $S^7$.
 
 \begin{theorem}[Morse-Ungleichungen]
     Sei $M$ eine kompakte Mannigfaltigkeit, $f: M \to \R$ eine glatte Funktion
@@ -136,4 +120,23 @@
         = C_k - C_{k - 1} + ... \pm C_0
     \]
 
+\end{proof}
+
+\begin{theorem}
+    \label{theorem:CW-komplex}
+    Sei $M$ eine Mannigfaltigkeit und $f: M \to \R$ eine Morse-Funktion, sodass
+    $M^a$ kompakt ist für alle $a \in \R$. 
+    Dann besitzt $M$ den Homotopie-Typen von einem CW-Komplex mit einer $k$-Zelle 
+    für jeden kritischen Punkt mit Index $k$ von $f$.
+\end{theorem}
+
+\begin{remark}
+    Man kann zeigen, dass auf jeder glatten Mannigfaltigkeit eine Morse-Funktion
+    existiert, sodass $M^a$ kompakt für alle $a \in \R$, also hat jede glatte 
+    Mannigfaltigkeit (ohne Rand) den Homotopie-Typen eines CW-Komplexes!
+\end{remark}
+
+\begin{proof}
+    Der Beweis ist recht involviert, aber im wesentlichen folgt die Aussage aus
+    dem zweiten Deformationslemma~\ref{theorem:zweites deformationslemma}.
 \end{proof}

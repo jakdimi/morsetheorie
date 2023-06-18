@@ -14,7 +14,17 @@ Die Idee für den Beweis ist, sich eine neue Funktion $F: M \to \R$ zu definiere
 die Außerhalb von einer kleinen Umgebung von $p$ $f$ entspricht und in der 
 Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
 
-\textbf{ZEICHNUNG: Subniveaumengen von $f$ und $F$ auf dem Torus}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
+    \label{fig:me-diagram5}
+    \caption{Die Niveaumengen von $f$ (links) und $F$ (rechts)}
+\end{figure}
+
+Wir wollen also, dass $M^{c + \varepsilon} = F^{-1}(- \infty, c + \varepsilon]$ 
+gilt und $F^{-1}(-\infty, c - \varepsilon]$ fast dasselbe ist wie 
+$M^{c - \varepsilon}$, nur dass $F^{-1}(-\infty, c - \varepsilon]$ einen "Henkel"
+enthält der den kritischen Punkt $p$ enthält.
 
 \begin{proof}[Beweis zweites Deformationslemma]
     Sei $c := f(p)$. Mit dem Morse-Lemma können wir lokale Koordinaten 
@@ -91,7 +101,7 @@ Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
     also gelte oBdA 
     \[ \xi(q) + 2 \eta(q) \leq 2 \varepsilon \]
     Dann:
-    \[ F(q) \leq f(q) = c + \xi(q) + \eta(q) \leq c + \frac{1}{2}\xi(q) + \eta(q) \leq c + \varepsilon \]
+    \[ F(q) \leq f(q) = c - \xi(q) + \eta(q) \leq c + \frac{1}{2}\xi(q) + \eta(q) \leq c + \varepsilon \]
     \sectiondone
 
     \proofheading{Behauptung 2} $F^{-1}(-\infty, c - \varepsilon]$ ist ein
@@ -105,8 +115,8 @@ Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
     \[ \pderive[F]{\eta} = 1 - 2 \mu'(\xi + 2\eta) \geq 1 \]
     Insbsondere sind diese beiden Ableitungen also niemals $0$. Da 
     \[ \opd F = \pderive[F]{\xi}\opd \xi + \pderive[F]{\eta} \opd \eta \]
-    und $\opd \xi$ und $\opd \eta$ nur in $p$ Null sind, haben $f$ und $F$ 
-    dieselben kritischen Punkte.
+    und $\opd \xi$ und $\opd \eta$ nur in $p$ gleichzeitig Null sind, haben $f$ 
+    und $F$  dieselben kritischen Punkte.
 
     Betrachte die Region $F^{-1}[c - \varepsilon, c + \varepsilon]$. Wegen 
     Behauptung 1 und der Tatsache, dass $F \leq f$ gilt:
@@ -123,22 +133,28 @@ Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
     $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$.
     \sectiondone
 
-    Im Beweis von Behauptung 2 haben wir gesehen, dass 
-    $M^{c - \varepsilon} \subseteq f^{-1}(-\infty, c - \varepsilon]$ und im
-    Beweis von Behauptung 1, dass außerhalb des Kreises mit Radius 
-    $\sqrt{2 \varepsilon}$ gilt $f = F$, also haben wir folgende Situation:
-    
+    \proofheading{Behauptung 3} $M^{c - \varepsilon} \cup e^{k}$ ist ein 
+    Deformationsretrakt von $F^{-1}(-\infty, c - \varepsilon]$.
+
+    Diese Aussage ergibt nur Sinn, falls 
+    $M^{c - \varepsilon} \cup e^{k} \subseteq F^(-\infty, c - \varepsilon]$.
+    Wir wissen schon, dass $M^{c - \varepsilon} \subseteq F^{-1}(c - \varepsilon]$.
+
+    Sei $q \in e^k$, dann gilt $\xi(p) = 0 \leq \xi(q) \leq 1$. Da 
+    $\pderive[F]{\xi} < 0$, gilt dann
+    \[ F(q) \leq F(p) = c - \xi(p) + \eta(p) + \mu(\xi(p) + 2\eta(p)) = c - \mu(0) \leq c - \varepsilon \]
+
+    Also ergibt sich folgende Situation:
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\linewidth]{resources/Me-Diagram7-handle.png}
         \label{fig:me-diagram7}
-        \caption{Handle in $M^{c + \varepsilon}$}
+        \caption{Henkel}
     \end{figure}
 
-    Wir nennen nun $F^{-1}(-\infty, c-\varepsilon] - M^{c - \varepsilon} := H$.
-
-    \proofheading{Behauptung 3} $M^{c - \varepsilon} \cup e^{k}$ ist ein 
-    Deformationsretrakt von $M^{c - \varepsilon} \cup H$.
+    Die hellgrün eingefärbte Fläche ist $M^{c - \varepsilon}$ die hellgelbe
+    zusammen mit der hellgrünen Fläch ist $F^{-1}(-\infty, c - \varepsilon]$. 
 
     Dafür konstruieren wir eine Deformationsretraktion
     $r: M^{c - \varepsilon} \cup H \times [0,1] \to M^{c - \varepsilon} \cup H$
@@ -222,11 +238,11 @@ Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
     \sectiondone
 
     Mit Behauptung 3 und 4 bekommen wir
-    \[ M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup H \]
+    \[ M^{c + \varepsilon} \simeq F^{-1}(c - \varepsilon] \]
     und 
-    \[ M^{c - \varepsilon} \cup H \simeq M^{c - \varepsilon} \cup e^k \]
+    \[ F^{-1}(-\infty, c - \varepsilon] \simeq M^{c - \varepsilon} \cup e^k \]
     Also folgt die Behauptung:
-    \[ M^{c + \varepsilon} \simeq H \simeq M^{c - \varepsilon} \cup e^k \]
+    \[ M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup e^k \]
 
 \end{proof}
 
@@ -234,4 +250,8 @@ Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
     Allgemeiner gilt sogar: Angenommen es gibt $m$ kritische Punkte 
     $p_1, ..., p_m$ mit Indizes $k_1, ..., k_m$ in $f^{-1}(c)$. Dann gilt
     \[ M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup e^{k_1} \cup ... \cup e^{k_m} \]
+
+    Die Anheftungssabbildungen können hier so gewählt werden, dass ihre Bilder 
+    disjunkt in $M^{c + \varepsilon}$ liegen, also funktioniert hier unsere 
+    ursprüngliche Definition vom Anheften einer $k$-Zelle noch immer.
 \end{corollary}
