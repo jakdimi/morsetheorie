@@ -27,11 +27,10 @@ $a \in \R$. Dann ist $M^a = f^{-1}(- \infty, a]$ eine \textit{Subniveaumenge}
 von $f$. Eine \textit{Morse-Funktion} ist eine glatte Funktion $f: M \to \R$, 
 sodass alle kritischen Punkte von $f$ nicht degeneriert sind.
 Das Ziel des Vortrags ist es, die Topologie der Subnieveuamengen von 
-Morse-Funktionen zu verstehen. Wir Untersuchen die Situation anhand des Torus. 
-Man stellt sich Morse-Funktionen einfachheitshalber als "Höhenfunktionen" vor.
+Morse-Funktionen zu verstehen. 
 
-Um die vorherschende Situation besser zu Untersuchen benötigen wir eine weitere
-Definition, die im Weitesten eine Umbenennung bekannter Objekte ist:
+Um anhand eines Beispieles die Situation zu untersuchen, benötigen wir eine 
+Definition:
 
 \begin{definition}[Eine $k$-Zelle anbringen]
     Es sei $X$ ein Topologischer Raum. Seien
@@ -46,8 +45,6 @@ Definition, die im Weitesten eine Umbenennung bekannter Objekte ist:
     \[ \varnothing \cup e^0 := e^0 = \ast \text{ und falls } X \neq \varnothing : X \cup e^0 := X \]
 \end{definition}
 
-\textbf{ZEICHNUNG 1-Zelle anbringen}
-
 Ein Paar Beispiele: 
 \begin{itemize}
     \item Eine $1$-Zelle lässt uns Zusammenhangskomponenten mit einer "Schnur"
@@ -61,15 +58,8 @@ Ein Paar Beispiele:
         das stopfen eines Loches durch eine "Membran".
 \end{itemize}
 
-Eine $k$-Zelle kann also unteranderem zwei Sachen: "Löcher", die von der $k$-ten 
-Homologie "gemessen" werden zu erschaffen oder "Löcher", die von der $(k-1)$-ten 
-Homologie "gemessen" werden zu "stopfen". Wenn wir also unsere Mannigfaltigkeit 
-in Bezug auf solche Zellen bringen können, dann macht es uns das leichter die 
-Topologie (und Homologie) der Mannigfaltigkeit besser zu verstehen. Wenn wir
-sogar die gesamte Mannigfaltigkeit durch iteratives anbringen von $k$-Zellen
-an den leeren Raum "erschaffen" können, dann können wir einigen Aussagen über 
-die Homologie des Raumes machen. 
-
+Wir Untersuchen die Subniveaumengen $M^a$ der Abbildung $f:M \to \R$, die den 
+Punkten im Torus ihren minimalen Abstand zur eingezeichneten Ebene zuordnet:
 
 \begin{figure}[H]
     \centering
@@ -78,8 +68,6 @@ die Homologie des Raumes machen.
     \caption{Torus auf der Ebene}
 \end{figure}
 
-Es sei $f$ die Abbildung vom Torus nach $\R$, die jedem Punkt den minimalen
-Abstand zu der eingezeichneten Ebene zuordnet. 
 Die kritischen Punkte dieser Höhenfunktion sind $p$, $q$, $r$ und $s$.
 
 \begin{figure}[H]
@@ -91,12 +79,14 @@ Die kritischen Punkte dieser Höhenfunktion sind $p$, $q$, $r$ und $s$.
 
 \begin{itemize}
     \item Für $a < f(p)$ ist $M^a = \varnothing$.
-    \item Für $f(p) \leq a < f(p)$ ist $M^a$ homotopieäquivalent zum Punkt.
-    \item Für $f(p) \leq a < f(q)$ ist $M^a$ homotopieäquivalent zum Kreis,
-        an dem ein "Henkel" befestigt wurde.
-    \item Für $f(q) \leq a < f(r)$ ist $M^a$ Homotopieäquivalent zum Zyliner,
-        an dem ein "Henkel" befestigt wurde.
-    \item Für $f(s) \leq a$ ist $M^a$ der Torus selbst.
+    \item Für $f(p) \leq a < f(p)$ ist $M^a$ homotopieäquivalent zum Punkt,
+        also dem leeren Raum mit einer $0$-Zelle angebracht.
+    \item Für $f(p) \leq a < f(q)$ ist $M^a$ homotopieäquivalent zur vorherigen
+        Subniveaumenge, an der eine $1$-Zelle angebracht wurde.
+    \item Für $f(q) \leq a < f(r)$ ist $M^a$ homotopieäquivalent zur vorherigen
+        Subniveaumenge, an der eine $1$-Zelle angebracht wurde.
+    \item Für $f(s) \leq a$ ist $M^a$ der Torus selbst, also zur vorherigen 
+        Subniveaumenge, an der eine $2$-Zelle angebracht wurde.
 \end{itemize}
 
 Wir bemerken: 
