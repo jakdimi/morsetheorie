@@ -1,1 +1,121 @@
 \section{Morse Functions}
+
+\begin{definition}[Critical Point]
+    Let $M$ be a manifold and $f: M \to \R$ be a smooth function. A critical point of
+    $f$ is a point $p \in M$, such that $df(p) = 0$.
+\end{definition}
+
+\begin{remark}
+    If $M$ is compact, $f$ always has critical points.
+\end{remark}
+
+\begin{definition}[Poisson Bracket]
+    Let $X$ and $Y$ be vector fields on a manifold $M$. Then for a point $p \in M$ define
+    the Poisson Bracket by
+    \[  [X, Y]f := XYf - YXf \]
+    The Poisson Bracket is a Lie Bracket on the $\R$-vectorspace of vector fields.
+    Also, if $p$ is a critical point of a function $f$, then $[X, Y]f (p) = 0$.
+\end{definition}
+
+\begin{definition}[Hessian]
+    In $\R^n$, we are used to defining the Hessian of a function, that is the second order
+    derivative. On a manifold, this is not so easy, since the second order derivative will 
+    always depend on the local coordinates. We will have to do with defining 
+    the second order derivative just on the critical points of a function:
+    For $p \in M$ a critical point of a function $f$, $x, y \in T_p(M)$, choose $X, Y$
+    vectorfields extending $x$ and $y$ locally, i.e. with $Y(p) = y$ and $X(p) = x$. 
+    Then define
+    \[ \opd^2 f (x, y) (p) = XYf (p) = xYf(p)\]
+\end{definition}
+
+\begin{lemma}
+    $d^2 f (\cdot, \cdot) p$ is a symmetrical bilinear form if $p$ is a critical point of
+    $f$.
+\end{lemma}
+
+\begin{proof}
+    Note that
+    \[ d^2 f (x, y) (p) - d^2 f (y, x) (p) = [X, Y]f (p) = 0  \]
+    so $XYf(p)$ is symmetrical at any critical point and
+    \[ xYf (p) = XYf (p) \]
+    for any choice of $X$ and $Y$, so $d^2 f(\cdot, \cdot) (p)$ does not depend
+    on $X$, and by the same argument because it is symmetrical it does not depend on $Y$.
+    Then $d^2 f (x, y) (p)$ is a well defined, symmetrical bilinear form.
+\end{proof}
+
+\begin{definition}[non-degeneracy, index]
+    We call a critical point of a function $f: M \to \R$ \textit{non-degenerate}, if
+    the bilinear form $d^f(\cdot, \cdot)(p)$ is non-degenerate. \\
+    We define the index of $p$ as the maximal dimension of negative definite subspaces,
+    on which $d^2 f (\cdot, \cdot) (p)$ is negative-definite.\\
+    Note that with local coordinates $(x_1, ..., x_n)$ around $p$, we get an induced Basis 
+    of the tangent space $T_p(M)$ as $B = (\pderive{x^1}, ..., \pderive{x^n})$, and then
+    if $\Phi_B$ is the coordinate isomorphism, we get a Matrix $A$, such that
+    \[ d^2 f (x, y) (p)  = \varphi_B (x)^T A \varphi_B(y) \]
+    $A$ can be given by 
+    \[ A = \left(\pdderive[f]{x_i}{x_j}(p)\right)_{1 \leq i, j \leq n} \]
+    Then the index of $p$ is the number of ngative eingenvalues of $A$.
+\end{definition}
+
+\begin{definition}
+    A smooth function $f: M \to \R$ is called a \textit{Morse Function}, if all its critical
+    points are non-degenerate.
+\end{definition}
+
+\begin{lemma}
+    Let $M \subseteq \R^n$ be a submanifold. Then for almost every point $p /in \R^n$,
+    the function
+    \begin{align*}
+        f: M & \to \R \\
+        q & \mapsto || q - p ||^2
+    \end{align*}
+    is a Morse Function.
+\end{lemma}
+
+\begin{proof}
+    % TODO
+\end{proof}
+
+\begin{remark}
+    Note that by Whitney's embedding theorem, there exist Morse-Functions on any Manifold.
+\end{remark}
+
+\begin{theorem}
+    Any smooth function $f: M \to \R$ and all its derivatives can be uniformly approximated
+    by a Morse Function.
+\end{theorem}
+
+\begin{proof}
+    % TODO
+\end{proof}
+
+\begin{theorem}
+    Let $M$ be a compact manifold. Then the set of Morse functions is dense in 
+    $\mathcal{C}^{\infty}(M)$.
+\end{theorem}
+
+\begin{proof}
+    %TODO
+\end{proof}
+
+\begin{theorem}[Morse Lemma]
+    Let $f: M \to \R$ be a smooth function. Let $p$ be a non-degenerate critical point 
+    of index $k$ of $f$. Then there exist local coordinates $(x_1, ..., x_n)$ in a 
+    neighburhood $U$ of $p$, such that
+    \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k + 1}^2 + ... + x_n^2 \]
+    and
+    \[ x_1(p) = ... = x_n(p) = 0 \]
+    $U$ is called \textit{Morse chart}.
+\end{theorem}
+
+\begin{proof}
+    %TODO
+\end{proof}
+
+\begin{corollary}
+    Non-degenerate critical points are isolated.
+\end{corollary}
+
+\begin{remark}
+    A critical point of Index $k$ of f is a critical point of index $n-k$ of $-f$.
+\end{remark}

@@ -1,1 +1,27 @@
 \section{Pseudo-Gradients}
+
+\begin{definition}[Riemannian Metric, Gradient]
+    A \textit{Riemannian metric} $g$ on a manifold $M$ is a choice of scalar products
+    $g_p: T_pM \times T_pM \to \R$ for every point $p \in M$, such that for any vectorfields
+    $X$ and $Y$, the map
+    \[ p \mapsto g_p(X(p), Y(p)) \]
+    is smooth. For $x, y \in T_pM$, we write 
+    \[ \langle x, y \rangle := g_p(x, y)\]
+    and 
+    \[ || x || = \sqrt{g_p(x, x)} \]
+    If $f: M \to \R$ is a smooth map, then the gradient of $f$ is a vectorfield $\grad f$, such
+    that for any vectorfield $X$ the identity
+    \[ \langle X, \grad f \rangle = \opd f X \]
+    holds.
+\end{definition}
+
+\begin{definition}[Pseudo-Gradient]
+    Let $f: M \to \R$ be a smooth function. A pseudo-gradient of $f$ is a vectorfield
+    $X$ on $M$, such that 
+    \begin{enumerate}
+        \item $\opd f(p) X(p) \geq 0$, where equality holds if and only if $p$ is a 
+            critical point of $f$,
+        \item in a Morse chart neighborhood of a critical point of $f$ the vectorfield
+            $X$ coincides with $- \grad f$.
+    \end{enumerate}
+\end{definition}
