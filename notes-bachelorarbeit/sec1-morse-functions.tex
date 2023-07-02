@@ -13,7 +13,7 @@
     Let $X$ and $Y$ be vector fields on a manifold $M$. Then for a point $p \in M$ define
     the Poisson Bracket by
     \[  [X, Y]f := XYf - YXf \]
-    The Poisson Bracket is a Lie Bracket on the $\R$-vectorspace of vector fields.
+    The Poisson Bracket is a Lie Bracket on the $\R$-vectorspace of vector fields on $M$.
     Also, if $p$ is a critical point of a function $f$, then $[X, Y]f (p) = 0$.
 \end{definition}
 
@@ -25,11 +25,11 @@
     For $p \in M$ a critical point of a function $f$, $x, y \in T_p(M)$, choose $X, Y$
     vectorfields extending $x$ and $y$ locally, i.e. with $Y(p) = y$ and $X(p) = x$. 
     Then define
-    \[ \opd^2 f (x, y) (p) = XYf (p) = xYf(p)\]
+    \[ \opd^2 f (x, y) (p) = XYf (p) \]
 \end{definition}
 
 \begin{lemma}
-    $d^2 f (\cdot, \cdot) p$ is a symmetrical bilinear form if $p$ is a critical point of
+    $d^2 f (\cdot, \cdot) (p)$ is a symmetrical bilinear form if $p$ is a critical point of
     $f$.
 \end{lemma}
 
@@ -37,7 +37,7 @@
     Note that
     \[ d^2 f (x, y) (p) - d^2 f (y, x) (p) = [X, Y]f (p) = 0  \]
     so $XYf(p)$ is symmetrical at any critical point and
-    \[ xYf (p) = XYf (p) \]
+    \[ XYf (p) = X(p)Yf(p) = xYf(p) \]
     for any choice of $X$ and $Y$, so $d^2 f(\cdot, \cdot) (p)$ does not depend
     on $X$, and by the same argument because it is symmetrical it does not depend on $Y$.
     Then $d^2 f (x, y) (p)$ is a well defined, symmetrical bilinear form.

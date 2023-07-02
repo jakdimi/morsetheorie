@@ -25,3 +25,79 @@
             $X$ coincides with $- \grad f$.
     \end{enumerate}
 \end{definition}
+
+\begin{lemma}[Existence of Pseudo Gradients]
+    For any smooth function $f: M \to \R$ there exists a pseudo-gradient of $f$.
+\end{lemma}
+
+\begin{proof}
+    This follows directly from the fact that on any manifold there exists a Riemannian metric.
+\end{proof}
+
+\begin{definition}[Stable and unstable Manifolds]
+    Let $p$ be a critical point of a smooth function $f: M \to \R$. Denote by $\varphi_s$ the
+    flow of a pseudo-gradient of $f$. Then We define the \textit{stable manifold} to be
+    \[ W^s(p) = \left\{ q \in M: \lim_{s \to \infty} \varphi_s = p \right\} \]
+    and the \textit{unstable manifold}
+    \[ W^u(p) = \left\{ q \in M: \lim_{s \to -\infty} \varphi_s = p \right\} \]
+\end{definition}
+
+\begin{prop}
+    Let $p$ be a critical point of index $k$ of a smooth function $f: M \to \R$. Then
+    $W^s(p)$ is diffeomoric to the open disk of dimension $k$ and $W^u(p)$ is diffeomorphic
+    to the open disc of dimension $n - k$.
+\end{prop}
+
+\begin{proof}
+    %TODO
+\end{proof}
+
+\begin{prop}
+    Assume that $M$ is a compact manifold Let $X$ be a pseudo-gradient vectorfield of some
+    smooth function $f: M \to \R$ and $\gamma$ be a trajectory of $X$. Then there
+    exist critical points $p$ and $q$ of $f$, such that
+    \[ \lim_{t \to \infty} \gamma(t) = p \text{ and } \lim_{t \to -\infty} \gamma(t) = q \]
+\end{prop}
+
+\begin{proof}
+    %TODO
+\end{proof}
+
+\begin{theorem}[Fist Deformation Lemma]
+    %TODO
+\end{theorem}
+
+\begin{proof}
+    %TODO
+\end{proof}
+
+\begin{theorem}[Second Deformation Lemma]
+    %TODO
+\end{theorem}
+
+\begin{proof}
+    %TODO
+\end{proof}
+
+\begin{definition}[Transversality]
+    Let $U, V \subseteq M$ be submanifolds. Then $U$ and $V$ are said to meet 
+    \textit{transversly}, if for all $p \in U \cap V$ we have
+    \[ T_pU \oplus T_pV = T_pM \]
+    If $U$ and $V$ meet transversly, we write
+    \[ U \pitchfork V \]
+    A vectorfield $X$ on $M$ is \textit{transversal} to a submanifold $U \in M$ of dimension
+    $n - 1$, if for all $p \in U$ we have 
+    \[ X(p) \notin T_p(U) \]
+    Note that this is similar to the first definition, because then we have
+    \[ \langle X(p) \rangle \oplus T_pU = T_pM \]
+    for all $p \in U$.
+    We write 
+    \[ X \pitchfork U \]
+\end{definition}
+
+\begin{definition}[Smale Condition]
+    A pseudo gradient vectorfield is said to satisfy the \textit{Smale condition}, if
+    all its stable and unstable manifolds meet transversly, i.e if for all critical points
+    $p$ and $q$ of $f$, we have
+    \[ W^u(p) \pitchfork W^s(q) \]
+\end{definition}
