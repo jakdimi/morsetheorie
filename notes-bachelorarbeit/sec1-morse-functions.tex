@@ -45,16 +45,19 @@
 
 \begin{definition}[non-degeneracy, index]
     We call a critical point of a function $f: M \to \R$ \textit{non-degenerate}, if
-    the bilinear form $d^f(\cdot, \cdot)(p)$ is non-degenerate. \\
-    We define the index of $p$ as the maximal dimension of negative definite subspaces,
-    on which $d^2 f (\cdot, \cdot) (p)$ is negative-definite.\\
+    the bilinear form $d^2 f(\cdot, \cdot)(p)$ is non-degenerate. \\
+    We define the index of $p$ as the maximal dimension of subspaces, on which 
+    $d^2 f (\cdot, \cdot) (p)$ is negative definite.\\
     Note that with local coordinates $(x_1, ..., x_n)$ around $p$, we get an induced Basis 
-    of the tangent space $T_p(M)$ as $B = (\pderive{x^1}, ..., \pderive{x^n})$, and then
-    if $\Phi_B$ is the coordinate isomorphism, we get a Matrix $A$, such that
-    \[ d^2 f (x, y) (p)  = \varphi_B (x)^T A \varphi_B(y) \]
-    $A$ can be given by 
-    \[ A = \left(\pdderive[f]{x_i}{x_j}(p)\right)_{1 \leq i, j \leq n} \]
-    Then the index of $p$ is the number of ngative eingenvalues of $A$.
+    of the tangent space $T_p(M)$ as $B = (\pderive{x_1}, ..., \pderive{x_n})$, and then
+    \[ 
+        d^2 f \left(\pderive{x_i}, \pderive{x_j}\right)(p) 
+        = \pderive{x_i}(p)\pderive{x_j}f (p) 
+        = \pdderive[f]{x_i}{x_j}(p) 
+    \]
+    Then the index of $p$ is the number of negative eingenvalues of 
+    \[ \left(\pdderive[f]{x_i}{x_j}(p)\right)_{1 \leq i, j \leq n} \]
+    and $p$ is non degenerate iff the matrix is invertable.
 \end{definition}
 
 \begin{definition}
@@ -63,7 +66,7 @@
 \end{definition}
 
 \begin{lemma}
-    Let $M \subseteq \R^n$ be a submanifold. Then for almost every point $p /in \R^n$,
+    Let $M \subseteq \R^n$ be a submanifold. Then for almost every point $p \in \R^n$,
     the function
     \begin{align*}
         f: M & \to \R \\
@@ -77,7 +80,7 @@
 \end{proof}
 
 \begin{remark}
-    Note that by Whitney's embedding theorem, there exist Morse-Functions on any Manifold.
+    Note that by Whitney's embedding theorem, there exist Morse-functions on any Manifold.
 \end{remark}
 
 \begin{theorem}
