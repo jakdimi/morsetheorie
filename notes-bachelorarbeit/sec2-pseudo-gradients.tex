@@ -140,14 +140,14 @@
 \begin{definition}[Transversality]
     Let $U, V \subseteq M$ be submanifolds. Then $U$ and $V$ are said to meet 
     \textit{transversly}, if for all $p \in U \cap V$ we have
-    \[ T_pU \oplus T_pV = T_pM \]
+    \[ T_pU + T_pV = T_pM \]
     If $U$ and $V$ meet transversly, we write
     \[ U \pitchfork V \]
     A vectorfield $X$ on $M$ is \textit{transversal} to a submanifold $U \in M$ of dimension
     $n - 1$, if for all $p \in U$ we have 
     \[ X(p) \notin T_p(U) \]
     Note that this is similar to the first definition, because then we have
-    \[ \langle X(p) \rangle \oplus T_pU = T_pM \]
+    \[ \langle X(p) \rangle + T_pU = T_pM \]
     for all $p \in U$.
     We write 
     \[ X \pitchfork U \]
@@ -168,14 +168,38 @@
 \end{prop}
 
 \begin{prop}
-    $\R$ acts freely and properly discontinuously on $\mathcal{M}(p, q)$ 
-    via 
+    \textbf{Why does the action not need to be proper?}
+    If $p \neq q$ are critical points of $f$, then
+    $\R$ acts freely on $\mathcal{M}(p, q)$ via 
     \begin{align*}
         g: \R \times \mathcal{M}(p, q) & \to \mathcal{M}(p, q) \\
         (t, p) & \mapsto \varphi_t(p)
     \end{align*}
-    We define $\mathcal{L}(p, q) := \mathcal{M}(p, q)/\R$
-    Because the action is free and properly discontinuous, $\mathcal{L}(p, q)$ is 
-    a manifold with 
+    We define $\mathcal{L}(p, q) := \mathcal{M}(p, q)/\R$. 
+    Consequently $\mathcal{L}(p, q)$ is a manifold with 
     \[ \dim \mathcal{L}(p, q)  = \Index (p) - \Index (q) - 1 \]
 \end{prop}
+
+\begin{proof}
+    Note that $\R$ with addition is a Lie-group, that acts freely on $\mathcal{L}(p, q)$. 
+    This is easy to see:
+    For any $x \in \mathcal{M}(p, q)$, the function $t \mapsto f(\varphi_t(x))$ is strictly
+    decreasing, so if there are $t, t'$ s.th. $\varphi_t(x) = \varphi_{t'}(x)$, then
+    $t = t'$. With the quotient manifold theorem, $\mathcal{L}(p, q)$ is a manifold of dimension
+    $\dim \mathcal{M}(p, q) - \dim \R = \Index (p) - \Index (q) - 1 $.
+\end{proof}
+
+\begin{remark}
+    The most convenient way to consider the quotient is the following. If $a$ is a 
+    \textbf{regular} value of $f$ lying between $f(p)$ and $f(q)$, then $\mathcal{M}(p, q)$ 
+    is transversal to the level set $f^{-1}(a)$. This level-set has codimension 1 and the 
+    vector field $X$ is transversal to it. All trajectories starting at $p$ meet this level
+    set at exactly one point, so $\mathcal{L}(p, q)$ can be identified by 
+    $\mathcal{M}(p, q) \cap f^{-1}(a)$.
+
+    Hence, if $p$ and $q$ are two distinct critical points and if the gradient used 
+    satisfies the Smale-condition, then for $\mathcal{M}(p, q)$ or $\mathcal{L}(p, q)$
+    to be non-empty, we must have 
+    \[ \Index p \geq \Index q \]
+    In other words, the index decreases along gradient lines.
+\end{remark}
