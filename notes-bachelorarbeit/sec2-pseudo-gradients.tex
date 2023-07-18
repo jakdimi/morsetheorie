@@ -122,19 +122,19 @@
 \end{proof}
 
 \begin{theorem}[Fist Deformation Lemma]
-    %TODO
+    \todo{TODO}
 \end{theorem}
 
 \begin{proof}
-    %TODO
+    \todo{TODO}
 \end{proof}
 
 \begin{theorem}[Second Deformation Lemma]
-    %TODO
+    \todo{TODO}
 \end{theorem}
 
 \begin{proof}
-    %TODO
+    \todo{TODO}
 \end{proof}
 
 \begin{definition}[Transversality]
@@ -162,7 +162,7 @@
 
 \begin{prop}
     Let $(f, X)$ be a Smale pair. For critical points $p$ and $q$ of $f$ define
-    \[ \mathcal{M}(p, q) = W^s \cap W^u = 
+    \[ \M(p, q) = W^s \cap W^u = 
     \left\{ r \in M : \lim_{s \to \infty} \varphi_s(r) = p \text{ and } 
     \lim_{s \to -\infty} \varphi_s(r) = q \right\} \]
 \end{prop}
@@ -170,35 +170,35 @@
 \begin{prop}
     \textbf{Why does the action not need to be proper?}
     If $p \neq q$ are critical points of $f$, then
-    $\R$ acts freely on $\mathcal{M}(p, q)$ via 
+    $\R$ acts freely on $\M(p, q)$ via 
     \begin{align*}
-        g: \R \times \mathcal{M}(p, q) & \to \mathcal{M}(p, q) \\
+        g: \R \times \M(p, q) & \to \M(p, q) \\
         (t, p) & \mapsto \varphi_t(p)
     \end{align*}
-    We define $\mathcal{L}(p, q) := \mathcal{M}(p, q)/\R$. 
-    Consequently $\mathcal{L}(p, q)$ is a manifold with 
-    \[ \dim \mathcal{L}(p, q)  = \Index (p) - \Index (q) - 1 \]
+    We define $\Lt(p, q) := \M(p, q)/\R$. 
+    Consequently $\Lt(p, q)$ is a manifold with 
+    \[ \dim \Lt(p, q)  = \Index (p) - \Index (q) - 1 \]
 \end{prop}
 
 \begin{proof}
-    Note that $\R$ with addition is a Lie-group, that acts freely on $\mathcal{L}(p, q)$. 
+    Note that $\R$ with addition is a Lie-group, that acts freely on $\Lt(p, q)$. 
     This is easy to see:
-    For any $x \in \mathcal{M}(p, q)$, the function $t \mapsto f(\varphi_t(x))$ is strictly
+    For any $x \in \M(p, q)$, the function $t \mapsto f(\varphi_t(x))$ is strictly
     decreasing, so if there are $t, t'$ s.th. $\varphi_t(x) = \varphi_{t'}(x)$, then
-    $t = t'$. With the quotient manifold theorem, $\mathcal{L}(p, q)$ is a manifold of dimension
-    $\dim \mathcal{M}(p, q) - \dim \R = \Index (p) - \Index (q) - 1 $.
+    $t = t'$. With the quotient manifold theorem, $\Lt(p, q)$ is a manifold of dimension
+    $\dim \M(p, q) - \dim \R = \Index (p) - \Index (q) - 1 $.
 \end{proof}
 
 \begin{remark}
     The most convenient way to consider the quotient is the following. If $a$ is a 
-    \textbf{regular} value of $f$ lying between $f(p)$ and $f(q)$, then $\mathcal{M}(p, q)$ 
+    \textbf{regular} value of $f$ lying between $f(p)$ and $f(q)$, then $\M(p, q)$ 
     is transversal to the level set $f^{-1}(a)$. This level-set has codimension 1 and the 
     vector field $X$ is transversal to it. All trajectories starting at $p$ meet this level
-    set at exactly one point, so $\mathcal{L}(p, q)$ can be identified by 
-    $\mathcal{M}(p, q) \cap f^{-1}(a)$.
+    set at exactly one point, so $\Lt(p, q)$ can be identified by 
+    $\M(p, q) \cap f^{-1}(a)$.
 
     Hence, if $p$ and $q$ are two distinct critical points and if the gradient used 
-    satisfies the Smale-condition, then for $\mathcal{M}(p, q)$ or $\mathcal{L}(p, q)$
+    satisfies the Smale-condition, then for $\M(p, q)$ or $\Lt(p, q)$
     to be non-empty, we must have 
     \[ \Index p \geq \Index q \]
     In other words, the index decreases along gradient lines.

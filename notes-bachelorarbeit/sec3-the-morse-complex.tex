@@ -9,6 +9,51 @@
     Then $(C_*(M, f), \del_X)$ is a chain complex.
 \end{prop}
 
-\begin{proof}
-    %TODO
-\end{proof}
+To proof that this is a chain complex we first have to examin the so called
+\textit{space of broken trajectories}:
+
+\begin{definition}
+    The \textit{space of broken trajectories} is
+    \[ 
+        \Lb(p, q) = \bigcup_{ \{c_1, ..., c_i\} \subseteq \Crit(f )} 
+            \Lt (p, c_1) \times \Lt (c_1, c_2) \times ... \times \Lt(c_i, q) 
+    \]
+
+    We can define a topology on this space as follows: \\
+    For this, let $\lambda = (\lambda_1, ..., \lambda_l) \in \Lb(p, q)$. Then $\lambda$ 
+    connects a certain number of critical points via the trajectories $\lambda_i$, where 
+    $\lambda_i$ exits a critical point $c_i$ and enters $c_{i+1}$. Now let $U_i^-$ be a 
+    neghboehood of the point at which $\lambda_i$ exits the chosen Morse neighborhood 
+    around $c_{i-1}$ and $U_i^+$ be a neighborhood of the point at which $\lambda_i$
+    enters the Morse-neighborhood of $c_i$. Then $U^-$ is the collection of the $U_i-$
+    and $U_+$ the collection of the $U_i^+$. Then we say that a trajectory 
+    $\mu = (\mu_1, ..., \mu_k) \in \mathcal{W}(\lambda, U^-, U^+)$, if there exist 
+    integers
+    \[ 0 < i_0 < ... < i_k = l \]
+    such that:
+    \begin{itemize}
+        \item $\mu_j \in \Lt(c_{i_j}, c_{i_{j+1}})$ for every $j \leq k$
+        \item $\mu_j$ exits the chart $\Omega(c_{j+1})$ the interior of the corresponding
+            element in $U^-$ and enters the chart $\Omega(c_{j})$ through  interior of 
+            the corresponding element in $U^+$.
+    \end{itemize}
+    The $\mathcal{W}(\lambda, U^-, U^+)$ form a fundamental system of open neighborhoods 
+    for a topology on $\Lb(p, q)$. \todo{But do they?}
+\end{definition}
+
+It is clear \todo{Is it really?} that the resulting topology coincides with the topology
+of $\Lt(p, q)$. 
+
+\begin{remark}
+    We have seen earlier that $\Lt(c_i, c_{i+1})$ is only well defined if 
+    $c_i \neq c_{i + 1}$, and we know that the index is decreasing along trajectory lines,
+    so $\Lt(c_i, c_{i+1}) = \varnothing$ if $\Index \, c_i \leq \Index \, c_{i + 1}$.
+    Then $\Lb(p, q)$ is a tuple that gives a "direction" along trajectories
+    from $p$ to $q$.
+\end{remark}
+
+As suggested by the notation, $\Lb(p, q)$ can be endowed with a topology, such that 
+it is the closure of $\Lt(p, q)$, indeed its comactification. 
+To show this is the aim of the next couple sections. We will then see that if 
+$\Index \, p = \Index \, q + 2$, then $\Lb(p, q)$ is a one dimensional manifold with
+boundary, and then $\del \Lb (p, q) = \Lt (p, q)$ is an even number.
