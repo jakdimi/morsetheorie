@@ -7,12 +7,14 @@
 \usepackage{float}
 
 % set the geometry pf the document
+%\newif\ifdraft
 \usepackage{geometry}
 \geometry{
 	a4paper,
 	left=30mm,
 	right=30mm,
 	top=35mm,
+	marginparwidth=23mm
 }
 
 % useful while editing text
@@ -40,6 +42,8 @@
 % Steffen's line break
 \newcommand{\sectiondone}{\hfill \break \rightline{\mbox{\rotatebox{145}{${\|}$}}}}
 
+% Steffen's small qed
+\newcommand{\smallqed}{\mbox{\rotatebox{145}{${\|}$}}}
 
 % math ========================================================================
 
@@ -103,6 +107,37 @@
 \newtheorem*{remark}{Remark}
 
 \newcommand{\proofheading}[1]{\hfill \break {\fontfamily{lmss}\selectfont #1.} }
+
+% Claim and smallproof --------------------------------------------------------
+% For use inside of proofs.
+
+\newcounter{claimcount}
+\setcounter{claimcount}{-1}
+\newenvironment{bigproof}{%
+	\setcounter{claimcount}{0}
+	\begin{proof}
+}{%
+	\end{proof}
+	\setcounter{claimcount}{-1}
+}
+
+\newtheorem{claim}[claimcount]{Claim}
+
+\newtheorem*{claim*}{Claim}
+
+
+\newenvironment{smallproof}{%
+	\renewcommand{\qedsymbol}{\smallqed}
+	\begin{proof}[Proof of claim\ifnum\c@claimcount<1 
+		\else
+			\:\theclaimcount 
+		\fi]
+}{%
+	\end{proof}
+	\renewcommand{\qedsymbol}{\square}
+}
+
+% -----------------------------------------------------------------------------
 
 % =============================================================================
 
