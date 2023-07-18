@@ -53,7 +53,38 @@ of $\Lt(p, q)$.
 \end{remark}
 
 As suggested by the notation, $\Lb(p, q)$ can be endowed with a topology, such that 
-it is the closure of $\Lt(p, q)$, indeed its comactification. 
-To show this is the aim of the next couple sections. We will then see that if 
-$\Index \, p = \Index \, q + 2$, then $\Lb(p, q)$ is a one dimensional manifold with
-boundary, and then $\del \Lb (p, q) = \Lt (p, q)$ is an even number.
+it is the closure of $\Lt(p, q)$, indeed its compactification. 
+To show this is the aim of the next couple sections.
+
+\begin{theorem}
+    The space $\Lb(p, q)$ is compact.
+\end{theorem}
+
+\begin{corollary}
+    If $\Index(p) = \Index(q) + 1$, then $\Lt(p, q)$ is finite.
+\end{corollary}
+
+\begin{remark}
+    Hence $n_X(p, q)$ is well defined.
+\end{remark}
+
+\begin{proof}
+    The corollary follows immedeatly from the theorem, because in this case we have
+    \[ \Lt(p, q) = \Lb(p, q) \]
+\end{proof}
+
+\begin{proof}[Proof of the theorem]
+    Let $(l_n)_n$ be a sequence in $\Lb(p, q)$.
+    We begin by assuming, that $l_n \in \Lt(p, q)$.The trajectory $l_n$ exits 
+    $\Omega(p)$ through a point $l_n^-$ and enters $\Omega(q)$ at a point $l_n^+$.
+    The point $l_n^-$ is in the intersection of the unstable manifold and the boundary
+    $\del \Omega (p)$. This is a sphere and therefore compact. After extracting a 
+    subsequence, we may, and do, therefore assume that
+    \[ \lim l_n^- = a^- \; \text{ and } \; \lim l_n^+ = b^+ \]
+    Let $\gamma(t) = \varphi_t(a^-)$ be the trajectory of $a^-$, and let 
+    $c_1 = \lim_{t \to \infty} \gamma(t)$. Then $c_1$ is a critical point and 
+    $\gamma \in \Lt (p, c_1)$. Let $d^+$ be the entrypoint of $\gamma$ into
+    $\Omega (c_1)$. By the theorem of the dependence of differential equation on the 
+    initial condition, for a large enough $n$, $l_n$ must also enter $\Omega(c_1)$
+    through a point $d_n^+$. Then by the following lemma we get $\lim d_n^+ = d_n$.
+\end{proof}
