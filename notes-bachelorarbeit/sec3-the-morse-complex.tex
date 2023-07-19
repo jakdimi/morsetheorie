@@ -38,10 +38,13 @@ To proof that this is a chain complex we first have to examin the so called
             the corresponding element in $U^+$.
     \end{itemize}
     The $\mathcal{W}(\lambda, U^-, U^+)$ form a fundamental system of open neighborhoods 
-    for a topology on $\Lb(p, q)$. \todo{But do they?}
+    for a topology on $\Lb(p, q)$. 
+    %\todo{But do they?}
 \end{definition}
 
-It is clear \todo{Is it really?} that the resulting topology coincides with the topology
+It is clear 
+\todo{Is it really?} 
+that the resulting topology coincides with the topology
 of $\Lt(p, q)$. 
 
 \begin{remark}
@@ -73,9 +76,9 @@ To show this is the aim of the next couple sections.
     \[ \Lt(p, q) = \Lb(p, q) \]
 \end{proof}
 
-\begin{proof}[Proof of the theorem]
+\begin{proof}[Proof of theorem]
     Let $(l_n)_n$ be a sequence in $\Lb(p, q)$.
-    We begin by assuming, that $l_n \in \Lt(p, q)$.The trajectory $l_n$ exits 
+    We begin by assuming that $l_n \in \Lt(p, q)$. The trajectory $l_n$ exits 
     $\Omega(p)$ through a point $l_n^-$ and enters $\Omega(q)$ at a point $l_n^+$.
     The point $l_n^-$ is in the intersection of the unstable manifold and the boundary
     $\del \Omega (p)$. This is a sphere and therefore compact. After extracting a 
@@ -86,5 +89,37 @@ To show this is the aim of the next couple sections.
     $\gamma \in \Lt (p, c_1)$. Let $d^+$ be the entrypoint of $\gamma$ into
     $\Omega (c_1)$. By the theorem of the dependence of differential equation on the 
     initial condition, for a large enough $n$, $l_n$ must also enter $\Omega(c_1)$
-    through a point $d_n^+$. Then by the following lemma we get $\lim d_n^+ = d_n$.
+    through a point $d_n^+$. Then by the following claim we get $\lim d_n^+ = d_n$.
+    \begin{claim*}
+        Let $x \in M - \Crit (f)$ and let $(x_n)_n$ be a sequence that tends to $x$.
+        Let $y_n$ and $y$ be points that lie on the same trajectories as $x_n$ for all
+        $n$ and x respectively. We moreover suppose that $f(y_n) = f(y)$. Then 
+        \[ \lim y_n = y \]
+    \end{claim*}
+    \begin{smallproof}
+        Let $U$ be a neighborhood of $\Crit (f)$ that does not contain 
+        $x, y, x_n, y_n$ and let 
+        \[ Y = - \frac{X}{dfX} \]
+        defined on $M - U$ as in the proof of the first deformation lemma. Let 
+        $\psi_t$ be its flow. the trajectories of $Y$ are the same as those of $X$
+        and moreover 
+        \[ f(\psi_t(p)) = f(p) - t \]
+        We then get
+        \[ y = \psi_{- f(y) + f(x)}(x)\]
+        and so
+        \[ \lim y_n = \lim \psi_{-f(y) + f(x_n)} (x_n) = y \]
+    \end{smallproof}
+    If $c_1 = b$, then we have $\lim l_n = \gamma$ and the sequence $(l_n)_n$ has a 
+    convergent subsequence. If this is not the case, then $d_n^+$ does not lie on
+    the stable manifold of $c_1$, so that $l_n$ exits $\Omega (c_1)$ through a point
+    $d_n^-$. We then may, and do, assume that the sequence converges to a point 
+    $d^-$. this point lies on the trajectory of a $d_{\ast}$, with 
+    $f(d_{\ast}) = f(d_n^+)$, that moreover is not in $W^s (c_1)$. Because of the 
+    previous claim, $d_n^+$ tends to $d_{\ast}$, so then $d_{\ast} = d^+$, which is
+    absurd since $d^+ \in W^s(c_1)$. \\
+    We are left to consider the general case of a sequence of elements in $\Lb (p, q)$.
+    There exist critical points $c_1, ..., c_{k - 1}$ such that, for $n$ sufficiently
+    large and up to the extraction of a subsequence, we have
+    \[ l_n = (l^1_n, ..., l^q_n) \in \Lt(p, c_1) \times ... \times \Lt(c_{q - 1}, q) \]
+    we apply the previous result to $(l^1_n)_n, ..., (l^q_n)_n$.
 \end{proof}
