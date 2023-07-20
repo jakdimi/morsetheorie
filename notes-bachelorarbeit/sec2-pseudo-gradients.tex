@@ -38,14 +38,14 @@
 \begin{definition}[Stable and unstable Manifolds]
     Let $p$ be a critical point of a smooth function $f: M \to \R$. Denote by $\varphi_s$ the
     flow of a pseudo-gradient of $f$. Then We define the \textit{stable manifold} to be
-    \[ W^s(p) = \left\{ q \in M: \lim_{s \to \infty} \varphi_s = p \right\} \]
+    \[ \stab(p) = \left\{ q \in M: \lim_{s \to \infty} \varphi_s = p \right\} \]
     and the \textit{unstable manifold}
     \[ W^u(p) = \left\{ q \in M: \lim_{s \to -\infty} \varphi_s = p \right\} \]
 \end{definition}
 
 \begin{prop}
     Let $p$ be a critical point of index $k$ of a smooth function $f: M \to \R$. Then
-    $W^s(p)$ is diffeomoric to the open disk of dimension $k$ and $W^u(p)$ is diffeomorphic
+    $\stab(p)$ is diffeomoric to the open disk of dimension $k$ and $W^u(p)$ is diffeomorphic
     to the open disc of dimension $n - k$.
 \end{prop}
 
@@ -81,14 +81,14 @@
     with local coordinates $h^{-1} = (x_1, ..., x_n)$. We have
     \[ \tilde{f} = f \circ h : U \to \R \text{ with } \tilde{f} = f(p) + Q \]
     The only critical point of $\tilde{f}$ is $0$. We have
-    \[ W^s(0) = U \cap V_+ \text{ and } W^u = U \cap V_- \]
+    \[ \stab(0) = U \cap V_+ \text{ and } W^u = U \cap V_- \]
     We also get a smooth embedding
     \[ ( h(\del_+ U \cap V_+) \times (-\infty, \infty]) /( h(\del_+ U \cap V_+) \times \{ \infty \}) 
     \to M; (x, s) \mapsto \varphi_s(x) \] 
-    onto $W^s(p)$.
+    onto $\stab(p)$.
     $\del_+ U \cap V_+$ is a sphere of dimension $n - k - 1$, and $h$ is a diffeomorphism,
     so $( h(\del_+ U \cap V_+) \times (-\infty, \infty]) /( h(\del_+ U \cap V_+) \times \{ \infty \})$
-    is diffeomorphic to the open disk of dimension $n - k$, and then $W^s(p)$ is as well.
+    is diffeomorphic to the open disk of dimension $n - k$, and then $\stab(p)$ is as well.
     Similarly $W^u(p)$ is diffeomorphic to the open disk of dimension $k$.
 \end{proof}
 
@@ -102,7 +102,7 @@
 \begin{proof}
     We show that $\gamma(t)$ has a limit as $t$ tends to $+ \infty$, and that this limit is
     a critical point $p$ of $f$. This is the case if at some point the trajectory enters 
-    $S_+(p) := \del_+ \Omega(p) \cap W^s(p)$. Suppose that this is not true. Then every time 
+    $S_+(p) := \del_+ \Omega(p) \cap \stab(p)$. Suppose that this is not true. Then every time 
     the trajectory enters a morse neighborhood, it must also leave it again and never return to
     it, because $f$ is decreasing along $\gamma$. Let $t_0$ be the time that $\gamma$ leaves the
     last of the morse neighborhoods, i.e. the finite union
@@ -157,12 +157,12 @@
     A pseudo gradient vectorfield is said to satisfy the \textit{Smale condition}, if
     all its stable and unstable manifolds meet transversly, i.e if for all critical points
     $p$ and $q$ of $f$, we have
-    \[ W^u(p) \pitchfork W^s(q) \]
+    \[ W^u(p) \pitchfork \stab(q) \]
 \end{definition}
 
 \begin{prop}
     Let $(f, X)$ be a Smale pair. For critical points $p$ and $q$ of $f$ define
-    \[ \M(p, q) = W^s \cap W^u = 
+    \[ \M(p, q) = \stab \cap W^u = 
     \left\{ r \in M : \lim_{s \to \infty} \varphi_s(r) = p \text{ and } 
     \lim_{s \to -\infty} \varphi_s(r) = q \right\} \]
 \end{prop}

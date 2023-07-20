@@ -1,12 +1,13 @@
 \ProvidesPackage{../general/preamble}
 
-\RequirePackage{kvoptions}
+\makeatletter % set the at symbol to be a letter
+
+\RequirePackage{kvoptions} % allow for key-value options
 
 \RequirePackage{pdftexcmds} % String comparison
 
 % Language support ============================================================
 
-\makeatletter
 \SetupKeyvalOptions{family=preamble,prefix=preamble@}
 
 \DeclareStringOption[en]{lang}
@@ -44,6 +45,7 @@
 \fi
 
 % =============================================================================
+
 
 % Document settings ===========================================================
 
@@ -84,6 +86,7 @@
 
 % =============================================================================
 
+
 % Useful imports ==============================================================
 
 % itemize, enumerate ...
@@ -93,7 +96,10 @@
 % useful while editing text
 \RequirePackage[obeyDraft,textsize=small]{todonotes}
 
-% math ========================================================================
+% =============================================================================
+
+
+% Math ========================================================================
 
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
@@ -115,6 +121,8 @@
 \newcommand{\C}{{ \mathbb C }}
 
 % some sets
+\newcommand{\unst}{{ W^u }}
+\newcommand{\stab}{{ W^s }}
 \newcommand{\M}{{ \mathcal{M} }}
 \newcommand{\Lt}{{ \mathcal{L} }}
 \newcommand{\Lb}{{\overline{\mathcal{L}} }}
@@ -148,8 +156,6 @@
 
 % define custom environemnts ==================================================
 
-\renewcommand*{\proofname}{Proof}
-
 \theoremstyle{plain}
 \newtheorem{theorem}[subsection]{\translation@Theorem}
 
@@ -170,11 +176,18 @@
 
 \newcommand{\proofheading}[1]{\hfill \break {\fontfamily{lmss}\selectfont #1.} }
 
+\renewcommand{\proofname}{\translation@Proof}
+
 % Claim and smallproof --------------------------------------------------------
 % For use inside of proofs 
 % (Instead of using Lemmas inside of proofs like a looser)
 
-\renewcommand{\proofname}{\proofheading{\translation@Proof}}
+% You can use the claim* environment anywhere, as well as the smallproof 
+% environment. The claim environment can only be used inside of a bigproof
+% environment. The claim environment counts the ocurrences of claim 
+% environments inside of a bigproof environment. If more then zero instances of
+% the claim environment are followed by a smallproof environment, it will show 
+% the count of preceeding claim environments.
 
 \newcounter{claimcount}
 \setcounter{claimcount}{-1}
@@ -214,4 +227,4 @@
 %]{biblatex}
 %\addbibresource{../general/literature.bib}
 
-\makeatother
+\makeatother % set the at symbol to be other 

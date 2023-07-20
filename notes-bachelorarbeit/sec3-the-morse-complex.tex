@@ -114,9 +114,9 @@ To show this is the aim of the next couple sections.
     the stable manifold of $c_1$, so that $\ell_n$ exits $\Omega (c_1)$ through a point
     $d_n^-$. We then may, and do, assume that the sequence converges to a point 
     $d^-$. this point lies on the trajectory of a $d_{\ast}$, with 
-    $f(d_{\ast}) = f(d_n^+)$, that moreover is not in $W^s (c_1)$. Because of the 
+    $f(d_{\ast}) = f(d_n^+)$, that moreover is not in $\stab (c_1)$. Because of the 
     previous claim, $d_n^+$ tends to $d_{\ast}$, so then $d_{\ast} = d^+$, which is
-    absurd since $d^+ \in W^s(c_1)$. \\
+    absurd since $d^+ \in \stab(c_1)$. \\
     We are left to consider the general case of a sequence of elements in $\Lb (p, q)$.
     There exist critical points $c_1, ..., c_{k - 1}$ such that, for $n$ sufficiently
     large and up to the extraction of a subsequence, we have
@@ -164,6 +164,50 @@ is a consequence of the following proposition:
     then $\ell_n$ is contained in the image of $\psi$ for $n$ sufficiently large.
 \end{prop}
 
-\begin{proof}
-    
+\begin{proof}[Proof of proposition]
+    Set $\alpha := f(c)$ and choose $\varepsilon > 0$ such that $f^{-1}(\alpha + \varepsilon)$
+    and $f^{-1}(\alpha - \varepsilon)$ meet the morse chart $\Omega(c)$ along $\del_+\Omega(c)$
+    and $\del_-\Omega(c)$, respectively. Also set
+    \begin{align*}
+        S_+(c) & = \stab (c) \cap f^{-1}(\alpha + \varepsilon) \cong S^{n - k - 1} \\
+        S_-(c) & = \unst (c) \cap f^{-1}(\alpha - \varepsilon) \cong S^{k - 1}
+    \end{align*}
+    Let $a_1 = S_+(c) \cap \lambda_1$. $a_1$ just a point, The unstable manifold $\unst (a)$ meets 
+    $f^{-1}(\alpha + \varepsilon)$ transversally along a submanifold $P$ of dimension $k$. $P$
+    meets $S_+(c)$ transversally, since $X$ satisfies the Smale property, along a manifold of
+    dimension $0$, which, in our case, is just a finite number of points. Let now 
+    \[ D^k(\delta) = \{ (x_1, ..., x_k) \in \R^k : ||x|| < \delta \} \]
+    and let $\Psi \colon (D^k, 0) \to (P, a_1)$ be a local parameterization of $P$ such that
+    \[ \Ima \Psi \cup S_+(c) = a_1 \]
+    We may, and do, assume that $D = \Ima \Psi$ is contained in $\del_+\Omega(c)$.
+    By letting $D - {a_1}$ descend along the trajectory lines of $X$, we obtain an embedding
+    \[ \Phi: D - {a_1} \to \del_- \Omega (c) \]
+    We know that 
+    \begin{claim*}
+        After restricting the size of $D$, that is, after taking the restriction of $\Phi$ to 
+        a disk of radius $\delta' < \delta$, if necessary, the union $Q = \Ima \Phi \cup S_- (c)$
+        is a manifold of dimension $k$ with boundary, and its boundary is $\del Q = S_- (c)$.
+    \end{claim*}
+    From this claim the proposition follows: The image of $\Phi$ is an open subset of the intersection 
+    of the unstable manifold of $a$ and the level set $f^{-1}(\alpha - \varepsilon)$. Since $X$ 
+    satisfies the Smale property, we have 
+    \[ \stab (b) \pitchfork \Ima \Phi \]
+    and also 
+    \[ \stab (b) \pitchfork S_- (c) . \]
+    Consequently $\stab (b) \cap Q$ will be a submanifold of dimension $1$ in 
+    $\del_- \Omega (c) \subseteq f^{-1}(\alpha - \varepsilon)$, and its boundary is 
+    $\stab (b) \cap \del Q = \Lt (c, b)$. 
+    Let $a_2$ be the intersection point of $\lambda_2$ and $S_-(c)$ and let us define a 
+    parameterization
+    \[ \chi \colon [0, \delta) \to \stab (b) \cap Q \]
+    of this manifold with boundary, where the point $0$ is sent to $a_2$. We also have a map 
+    \[ \Phi^{-1} \circ \chi \colon (0, \delta) \to \stab (b) \cap (D - \{ a_1 \}) . \]
+    When $s \to 0$, the value of $\Phi^{-1} \circ \chi (s)$ dends to $a_1$. We can 
+    therefore extend it to $[0, \delta)$, thus obtaining the desired $\psi$:
+    \[ 
+        \psi \colon [0, \eta) \to \Lb (a, b) \;\; \text{ with } \;\; 
+        \psi (0) = (\lambda_1, \lambda_2) 
+    \]
+    \todo{not finished; Page 64}
+    \todo{main objective is to declutter and untangle the differnet lemmata}
 \end{proof}
