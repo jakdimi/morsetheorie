@@ -1,0 +1,225 @@
+\ProvidesPackage{../general/preamble}
+
+\makeatletter % set the at symbol to be a letter
+
+\RequirePackage{kvoptions} % allow for key-value options
+\SetupKeyvalOptions{family=preamble,prefix=preamble@}
+\DeclareStringOption[en]{lang}
+
+\DeclareVoidOption{lib}{
+	\RequirePackage[
+	backend=biber,
+	style=alphabetic,
+	sorting=ynt
+	]{biblatex}
+	\addbibresource{../general/literature.bib}
+}
+
+\ProcessKeyvalOptions{preamble}
+
+\RequirePackage{pdftexcmds} % String comparison
+
+% Language support ============================================================
+
+\ifnum\pdf@strcmp{\preamble@lang}{en}=0%
+	\def\translation@Proof{Proof}%
+	\def\translation@Theorem{Theorem}%
+	\def\translation@Corollary{Corollary}%
+	\def\translation@Lemma{Lemma}%
+	\def\translation@Proposition{Proposition}%
+	\def\translation@Def{Definition}%
+	\def\translation@Remark{Remark}%
+	\def\translation@Claim{Claim}%
+	\def\translation@Proofofclaim{Proof of claim}%
+\else%
+\fi
+
+\ifnum\pdf@strcmp{\preamble@lang}{de}=0%
+	\def\translation@Proof{Beweis}%
+	\def\translation@Theorem{Satz}%
+	\def\translation@Corollary{Corrolar}%
+	\def\translation@Lemma{Lemma}%
+	\def\translation@Proposition{Proposition}%
+	\def\translation@Def{Definition}%
+	\def\translation@Remark{Bemerkung}%
+	\def\translation@Claim{Behauptung}%
+	\def\translation@Proofofclaim{Beweis der Behauptung}%
+\else%
+\fi
+
+% =============================================================================
+
+
+% Document settings ===========================================================
+
+% select font encoding
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tgtermes}
+\RequirePackage{lmodern}
+
+% something to do with tables and figures
+\RequirePackage{float}
+
+% set the geometry pf the document
+\RequirePackage{geometry}
+\geometry{
+	a4paper,
+	left=30mm,
+	right=30mm,
+	top=35mm,
+	marginparwidth=23mm
+}
+
+% control indent after linebreak
+\setlength\parindent{0pt}
+
+% configure title format
+%\RequirePackage{titlesec}
+%\titleformat{\section}[hang]{\Large\bfseries}{§\thesection}{1em}{}
+%\titleformat{\subsection}[hang]{\large\bfseries}{§\thesubsection}{1em}{}
+%\titleformat{\subsubsection}[hang]{\bfseries}{§\thesubsubsection}{1em}{}
+
+% to include images
+\RequirePackage{graphicx}
+
+% Doublepacing
+\RequirePackage[onehalfspacing]{setspace}
+
+%\RequirePackage{subcaption}
+%\RequirePackage{pigpen}
+
+% =============================================================================
+
+
+% Useful imports ==============================================================
+
+% itemize, enumerate ...
+\RequirePackage{enumitem}
+\renewcommand{\labelitemi}{\labelitemfont\textendash}
+
+% useful while editing text
+\RequirePackage[obeyDraft,textsize=small]{todonotes}
+
+% =============================================================================
+
+
+% Math ========================================================================
+
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+%\RequirePackage{mathtools}
+
+% cool diagrams
+\RequirePackage{tikz-cd}
+
+% cool vector graphics
+\RequirePackage{tikz}
+
+% rings and fields
+\newcommand{\N}{{ \mathbb N }}
+\newcommand{\Z}{{ \mathbb Z }}
+\newcommand{\Q}{{ \mathbb Q }}
+\newcommand{\R}{{ \mathbb R }}
+\newcommand{\C}{{ \mathbb C }}
+
+% some sets
+\newcommand{\unst}{{ W^u }}
+\newcommand{\stab}{{ W^s }}
+\newcommand{\M}{{ \mathcal{M} }}
+\newcommand{\Lt}{{ \mathcal{L} }}
+\newcommand{\Lb}{{\overline{\mathcal{L}} }}
+
+% some operators 
+\newcommand{\id}{{ \operatorname{id} }}
+\newcommand{\opd}{{ \operatorname{d} }}
+\newcommand{\Index}{{ \operatorname{ind} }}
+\newcommand{\grad}{{ \nabla }}
+\newcommand{\betti}{{ \operatorname{b} }}
+\newcommand{\Hom}{{ \operatorname{H} }}
+\newcommand{\Ima}{{ \operatorname{Im} }}
+\newcommand{\Obj}{{ \mathsf{Obj} }}
+\newcommand{\del}{{ \partial }}
+\newcommand{\supp}{{ \operatorname{supp} }}
+\newcommand{\Crit}{{ \operatorname{Crit} }}
+
+% partial derivative commands
+\newcommand{\pderive}[2][]{{ \frac{ \partial #1 }{\partial #2} }}
+\newcommand{\pdderive}[3][]{{ \frac{\partial^2 #1}{\partial #2 \partial #3} }}
+\newcommand{\derive}[2][]{{ \frac{\opd #1}{\opd #2} }}
+
+% Steffen's small qed
+\newcommand{\smallqed}{\mbox{\rotatebox{145}{${\|}$}}}
+
+% Steffen's line break
+\newcommand{\sectiondone}{\hfill \break \rightline{\smallqed}}
+
+% =============================================================================
+
+
+% define custom environemnts ==================================================
+
+\theoremstyle{plain}
+\newtheorem{theorem}[subsection]{\translation@Theorem}
+
+\theoremstyle{plain}
+\newtheorem{corollary}[subsection]{\translation@Corollary}
+
+\theoremstyle{plain}
+\newtheorem{lemma}[subsection]{\translation@Lemma}
+
+\theoremstyle{plain}
+\newtheorem{prop}[subsection]{\translation@Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{\translation@Def}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{\translation@Remark}
+
+\newcommand{\proofheading}[1]{\hfill \break {\fontfamily{lmss}\selectfont #1.} }
+
+\renewcommand{\proofname}{\translation@Proof}
+
+% Claim and smallproof --------------------------------------------------------
+% For use inside of proofs 
+% (Instead of using Lemmas inside of proofs like a looser)
+
+% You can use the claim* environment anywhere, as well as the smallproof 
+% environment. The claim environment can only be used inside of a bigproof
+% environment. The claim environment counts the ocurrences of claim 
+% environments inside of a bigproof environment. If more then zero instances of
+% the claim environment are followed by a smallproof environment, it will show 
+% the count of preceeding claim environments.
+
+\newcounter{claimcount}
+\setcounter{claimcount}{-1}
+\newenvironment{bigproof}{%
+	\setcounter{claimcount}{0}
+	\begin{proof}
+}{%
+	\end{proof}
+	\setcounter{claimcount}{-1}
+}
+
+\newtheorem{claim}[claimcount]{\translation@Claim}
+
+\newtheorem*{claim*}{\translation@Claim}
+
+\newenvironment{smallproof}{%
+	\renewcommand{\qedsymbol}{\smallqed}
+	\begin{proof}[\translation@Proofofclaim\ifnum\c@claimcount<1 
+		\else
+			\:\theclaimcount 
+		\fi]
+}{%
+	\end{proof}
+	\renewcommand{\qedsymbol}{\square}
+}
+
+% -----------------------------------------------------------------------------
+
+% =============================================================================
+
+\makeatother % set the at symbol to be other 

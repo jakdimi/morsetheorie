@@ -3,19 +3,25 @@
 \makeatletter % set the at symbol to be a letter
 
 \RequirePackage{kvoptions} % allow for key-value options
+\SetupKeyvalOptions{family=preamble,prefix=preamble@}
+\DeclareStringOption[en]{lang}
+
+\DeclareVoidOption{lib}{
+	\RequirePackage[
+	backend=biber,
+	style=alphabetic,
+	sorting=ynt
+	]{biblatex}
+	\addbibresource{../general/literature.bib}
+}
+
+\ProcessKeyvalOptions{preamble}
 
 \RequirePackage{pdftexcmds} % String comparison
 
 % Language support ============================================================
 
-\SetupKeyvalOptions{family=preamble,prefix=preamble@}
-
-\DeclareStringOption[en]{lang}
-
-\ProcessKeyvalOptions{preamble}
-
 \ifnum\pdf@strcmp{\preamble@lang}{en}=0%
-	\message{Language is english}
 	\def\translation@Proof{Proof}%
 	\def\translation@Theorem{Theorem}%
 	\def\translation@Corollary{Corollary}%
@@ -26,11 +32,9 @@
 	\def\translation@Claim{Claim}%
 	\def\translation@Proofofclaim{Proof of claim}%
 \else%
-	\message{Language is not english}
 \fi
 
 \ifnum\pdf@strcmp{\preamble@lang}{de}=0%
-	\message{Language is german}
 	\def\translation@Proof{Beweis}%
 	\def\translation@Theorem{Satz}%
 	\def\translation@Corollary{Corrolar}%
@@ -41,7 +45,6 @@
 	\def\translation@Claim{Behauptung}%
 	\def\translation@Proofofclaim{Beweis der Behauptung}%
 \else%
-	\message{Language is not german}
 \fi
 
 % =============================================================================
@@ -52,6 +55,7 @@
 % select font encoding
 \RequirePackage[T1]{fontenc}
 \RequirePackage{tgtermes}
+\RequirePackage{lmodern}
 
 % something to do with tables and figures
 \RequirePackage{float}
@@ -67,13 +71,13 @@
 }
 
 % control indent after linebreak
-\setlength\parindent{5pt}
+\setlength\parindent{0pt}
 
 % configure title format
-\RequirePackage{titlesec}
-\titleformat{\section}[hang]{\Large\bfseries}{§\thesection}{1em}{}
-\titleformat{\subsection}[hang]{\large\bfseries}{§\thesubsection}{1em}{}
-\titleformat{\subsubsection}[hang]{\bfseries}{§\thesubsubsection}{1em}{}
+%\RequirePackage{titlesec}
+%\titleformat{\section}[hang]{\Large\bfseries}{§\thesection}{1em}{}
+%\titleformat{\subsection}[hang]{\large\bfseries}{§\thesubsection}{1em}{}
+%\titleformat{\subsubsection}[hang]{\bfseries}{§\thesubsubsection}{1em}{}
 
 % to include images
 \RequirePackage{graphicx}
@@ -145,11 +149,11 @@
 \newcommand{\pdderive}[3][]{{ \frac{\partial^2 #1}{\partial #2 \partial #3} }}
 \newcommand{\derive}[2][]{{ \frac{\opd #1}{\opd #2} }}
 
-% Steffen's line break
-\newcommand{\sectiondone}{\hfill \break \rightline{\mbox{\rotatebox{145}{${\|}$}}}}
-
 % Steffen's small qed
 \newcommand{\smallqed}{\mbox{\rotatebox{145}{${\|}$}}}
+
+% Steffen's line break
+\newcommand{\sectiondone}{\hfill \break \rightline{\smallqed}}
 
 % =============================================================================
 
@@ -217,14 +221,5 @@
 % -----------------------------------------------------------------------------
 
 % =============================================================================
-
-
-% biblatex is disabled because it takes so long to compile
-%\RequirePackage[
-%    backend=biber,
-%    style=alphabetic,
-%    sorting=ynt
-%]{biblatex}
-%\addbibresource{../general/literature.bib}
 
 \makeatother % set the at symbol to be other 
