@@ -1,6 +1,6 @@
 \documentclass[a4paper,11pt,draft]{scrreport}
 
-\usepackage{../general/preamble}
+\usepackage[lang=de,lib=false]{../general/preamble}
 
 \begin{document}
 
@@ -21,11 +21,21 @@
     \end{center}
 \end{titlepage}
 
-\begin{abstract}
-    Abstrct Text
-\end{abstract}
-
 \tableofcontents
+
+\begin{abstract}
+    In der Morse Theorie werden glatte Abbildungen $f \colon M \to \R$, deren kritische Punkte 
+    alle nicht degeneriert sind untersucht. Anhand einer solcher Abbildungen lassen sich
+    Rückschlüsse auf topologische Eigenschaften der Mannigfaltigkeit $M$ ziehen. In dieser Arbeit
+    wird der \textit{Morse-Komplex} definiert, und gezeigt, dass dieser isomorph zu einem zellulären 
+    Kettenkomplex ist. Dafür wird anfangs eine kurze Einführung in die Morse-Theorie gegeben und 
+    grundlegende Begriffe definiert. Im zweiten Kapitel werden Morse Funktionen und Pseudo-Gradienten 
+    untersucht. Im dritten Kapitel wird bewiesen, dass der Morse Komplex ein Kettenkomplex ist und 
+    im letzten Kapitel wird anhand der erarbeiteten Theorie eine zelluläre Struktur auf kompakten 
+    Mannigfaltigkeiten konstruiert, deren zellulärer Kettenkomplex isomorph zum Morse-Komplex ist.
+    Zu guter letzt werden einige bekannte Eigenschaften der zellulären Homologie anhand der 
+    Morse Homologie bewiesen.
+\end{abstract}
 
 \include{ch1-einführung}
 
@@ -35,66 +45,9 @@
 
 \include{ch4-morse-homologie-und-zellulaere-homologie}
 
-\section{Zellulärer Kettenkomplex}
+\include{anhang}
 
-\begin{definition}[CW-Komplex]
+%\printbibliography
 
-\end{definition}
-
-\begin{definition}[Zellulärer Kettenkomplex, Zelluläre Homologie]
-
-\end{definition}
-
-\section{Morse-Funktionen}
-
-\begin{definition}[kritischer Punkt]
-
-\end{definition}
-
-\begin{definition}[Index, nicht degeneriertheit]
-
-\end{definition}
-
-\begin{lemma}[Unabhängigkeit von Karte]
-
-\end{lemma}
-
-\begin{theorem}[Morse Lemma]
-
-\end{theorem}
-
-\begin{theorem}[Existenz von Morse-Funktionen]
-    Sei $M \subseteq \R^n$ eine Untermannigfaltigkeit. Dann ist für fast alle
-    $p \in \R^n$ die Funktion
-    \begin{align*}
-        f: M &\to \R \\
-        x &\mapsto \lVert x - p \rVert^2
-    \end{align*}
-    eine Morse-Funktion.
-\end{theorem}
-
-\section{Der Morse Komplex}
-
-\begin{definition}[Pseudo-Gradient]
-
-\end{definition}
-
-\begin{definition}[Aufsteigende und Absteigende Mannigfaltigkeit]
-
-\end{definition}
-
-\begin{definition}[Morse-Komplex und Morse-Homologie]
-
-\end{definition}
-
-\begin{lemma}[Unabhängigkeit von $g$ und $f$]
-    Die Morse Homologie einer Mannigfaltigkeit $M$ hängt nicht von dem gewählten
-    Pseudo-Gradienten $g$ und der Morse-Funktion $f$ ab.
-\end{lemma}
-
-\begin{theorem}
-    Die Morse-Homologie einer Mannigfaltigkeit entspricht der Zellulären 
-    Homologie.
-\end{theorem}
-
+\eject
 \end{document}

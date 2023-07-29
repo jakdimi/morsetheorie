@@ -1,0 +1,103 @@
+\chapter*{Anhang}
+
+\begin{definition}[Mannigfaltigkeit \cite{ludwig}]
+    \label{def: mannigfaltigkeit}
+    Es sei $M$ ein topologischer Raum. 
+    
+    Eine \textit{Karte} von $M$ ist ein Tupel
+    $(U, \varphi)$, wobei $U \subseteq M$ offen und $\varphi \colon U \to U' \in \R^n$ 
+    ein Homeomorphismus ist.
+
+    $\mathcal{A} = \left\{ (U_{\alpha}, \varphi_{\alpha}) \right\}_{\alpha \in I}$ ist ein 
+    \textit{$n$-dimensionaler Atlas} von $M$ falls
+    \begin{enumerate}
+        \item $(U_{\alpha}, \varphi_{\alpha})$ ist eine Karte für jedes $\alpha \in I$
+        \item $M = \bigcup_{\alpha \in I U_{\alpha}}$
+    \end{enumerate}
+    Ein Atlas ist $C^k$ für $k \in \{ \N_0 \cup \{ \infty, \omega \} \}$, falls für
+    alle $\alpha, \beta \in I$ der \textit{Koordinatenwechsel} 
+    \[ 
+        \varphi_{\alpha \beta} := 
+        \varphi_{\alpha} \circ \varphi_{\beta}^{-1} \colon 
+        \varphi_{\beta} (U_{\alpha} \cap U_{\beta}) \to \varphi_{\alpha} (U_{\alpha} \cap U_{\beta})
+    \]
+    $C^k$ ist.
+    
+    Eine Karte $(U, \varphi)$ heißt \textit{$C^k$ kompatibel} mit einem $C^k$ Atlas 
+    $\mathcal{A} = \left\{ (U_{\alpha}, \varphi_{\alpha}) \right\}_{\alpha \in I}$,
+    falls für alle $\alpha \in I$ die Koordinatenwechsel $\varphi \circ \varphi_{\alpha}^{-1}$
+    und $\varphi_{\alpha} \circ \varphi^{-1}$ $C^k$ sind.
+
+    Eine \textit{$n$-dimensionale $C^k$ Mannigfaltigkeit} ist ein topologischer Raum $M$ 
+    zusammen mit einem maximalen $C^k$ Atlas $\mathcal{A}$, sodass $M$ ein Hausdorff-Raum und
+    zweitabzählbar ist. Maximal bedeutet hier, dass es keine mit $\mathcal{A}$ $C^k$ 
+    kompatiblen Karten gibt, die nicht in $\mathcal{A}$ enthalten sind.
+
+    Eine Mannigfaltigkeit heißt \textit{glatt} falls $k = \infty$.
+
+    Für einen Punkt $p \in M$ und eine Karte $(\varphi, U)$ mit $p \in U$ 
+    heißen $\varphi = (x_1, ..., x_n)$ \textit{lokale Koordinaten} um $p$.
+\end{definition}
+
+\begin{remark}
+    Wenn der Atlas einer Mannigfaltigkeit angegeben wird, dann nie als maximaler Atlas.
+    Es reicht ein Atlas, alle anderen Karten sind dann schon impliziert.
+\end{remark}
+
+\begin{definition}[Differenzierbarkeit]
+    Sind $M, N$ $C^k$ Mannigfaltigkeiten, 
+    $\mathcal{A} = (\varphi_{\alpha}, U_{\alpha})_{\alpha \in I}$ ein Atlas von $M$, 
+    $\mathcal{B} = (\varphi_{\beta}, U_{\beta})_{\beta \in J}$ ein Atlas von $N$,
+    dann heißt eine Abbildung $C^k$ oder \textit{$k$-mal differenzierbar}, falls für alle 
+    $\alpha \in I$ und $\beta \in J$ die Abbildung
+    \[ \psi_{\beta} \circ f \circ \varphi_{\alpha}^{-1} \colon \R^n \to \R^m \]
+    $C^k$ ist.
+\end{definition}
+
+\begin{definition}[Tangentialraum]
+    Der Tangentialraum einer $C^k$ Mannigfaltigkeit $M$ an einem Punkt $p \in M$ ist
+    \[ T_pM := \left\{ X_p \colon C^{k} \to \R : X_p 
+        \text{ ist eine Derivation von $M$ an dem Punkt $p$} \right\} \]
+    Wobei $X_p: C^{k} \to \R$ ein \textit{Derivation} ist, falls folgende Bedingungen erfüllt
+    sind:
+    \begin{itemize}
+        \item $X_p$ ist linear
+        \item Für $X_p$ gilt die Leibnitz-Regel, also
+            \[ X_p (f \cdot g) = X_p (f) \cdot g + f \cdot X_p (g) \]
+    \end{itemize}
+    Dann ist $T_pM$ ein Untervektorraum von $C^k(C^k(M))$.
+
+    Für eine $C^k$ Abbildung $f \colon M \to N$  und einen Punkt $p \in M$ ist dann 
+    \begin{align*}
+        \opd f (p) \colon T_pM & \to T_{f(p)}N \\
+        X_p & \mapsto f_* X_p
+    \end{align*}
+    wobei $f_*X_p$ definiert ist durch
+    \[ f_*X_p (g) = X_p (g \circ f) \]
+\end{definition}
+
+\begin{remark}
+    \begin{align*}
+        T \colon \mathbf{Man}_{*} & \to \mathbf{Vect}_{\R} \\
+        (M, p) & \mapsto T_pM \\
+        f & \mapsto \opd f (p)
+    \end{align*}
+    Ist ein Funktor.
+\end{remark}
+
+\begin{remark}
+    Es sei $M$ eine $C^k$ Mannigfaltigkeit, $k \geq 1$, $p \in M$ und $\varphi = (x_1, ..., x_n)$
+    lokale Koordinaten um $p$. Definiere
+    \begin{align*} 
+        \pderive{x_1}(p): C^k(M) & \to \R \\
+        \pderive[f]{x_i} (p) & = \pderive[\varphi \circ f]{x_i} (\varphi(p))
+    \end{align*}
+    Dann ist $\left( \pderive{x_i} \right)_{1 \leq i \leq n}$ eine Basis von $T_pM$.
+
+    Für eine glatte Abbildung $f \colon M \to N$, einem Punkt $p \in M$ und lokale Koordinaten 
+    $(x_1, ..., x_n)$ um $p$ und $(y_1, ..., y_m)$ um $f(p)$ bekommen wir in einer Umgebung 
+    von $p$ wohldefinierte Abbildungen $f_i = y_i \circ f$. Dann ist das differential 
+    $\opd f (p)$ von $f$ gegeben durch die Matrix
+    \[ D_p(f) = \left( \pderive[f_i]{x_j} \right)_{i,j} . \]
+\end{remark}
+

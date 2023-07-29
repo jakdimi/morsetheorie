@@ -6,14 +6,7 @@
 \SetupKeyvalOptions{family=preamble,prefix=preamble@}
 \DeclareStringOption[en]{lang}
 
-\DeclareVoidOption{lib}{
-	\RequirePackage[
-	backend=biber,
-	style=alphabetic,
-	sorting=ynt
-	]{biblatex}
-	\addbibresource{../general/literature.bib}
-}
+\DeclareStringOption[false]{lib}
 
 \ProcessKeyvalOptions{preamble}
 
@@ -31,6 +24,7 @@
 	\def\translation@Remark{Remark}%
 	\def\translation@Claim{Claim}%
 	\def\translation@Proofofclaim{Proof of claim}%
+	\RequirePackage[english]{babel}
 \else%
 \fi
 
@@ -44,6 +38,8 @@
 	\def\translation@Remark{Bemerkung}%
 	\def\translation@Claim{Behauptung}%
 	\def\translation@Proofofclaim{Beweis der Behauptung}%
+	\RequirePackage[german]{babel}
+	\renewcommand*\contentsname{Inhalt}
 \else%
 \fi
 
@@ -73,6 +69,10 @@
 % control indent after linebreak
 \setlength\parindent{0pt}
 
+% start chapter on same page
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+
 % configure title format
 %\RequirePackage{titlesec}
 %\titleformat{\section}[hang]{\Large\bfseries}{§\thesection}{1em}{}
@@ -87,6 +87,19 @@
 
 %\RequirePackage{subcaption}
 %\RequirePackage{pigpen}
+
+% bibliography
+\ifnum\pdf@strcmp{\preamble@lib}{true}=0%
+	\RequirePackage[%
+		backend=biber,%
+		style=alphabetic,%
+		sorting=ynt%
+	]{biblatex}%
+	\RequirePackage{csquotes}
+	\addbibresource{../general/literature.bib}%
+\else
+	\renewcommand{\cite}[1]{REF[#1]}
+\fi
 
 % =============================================================================
 
@@ -144,6 +157,11 @@
 \newcommand{\supp}{{ \operatorname{supp} }}
 \newcommand{\Crit}{{ \operatorname{Crit} }}
 
+% some symbols
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\varphi}{\phi}
+
 % partial derivative commands
 \newcommand{\pderive}[2][]{{ \frac{ \partial #1 }{\partial #2} }}
 \newcommand{\pdderive}[3][]{{ \frac{\partial^2 #1}{\partial #2 \partial #3} }}
@@ -184,10 +202,10 @@
 
 % Claim and smallproof --------------------------------------------------------
 % For use inside of proofs 
-% (Instead of using Lemmas inside of proofs like a looser)
+% (Instead of using Lemmas inside of proofs like a fool)
 
-% You can use the claim* environment anywhere, as well as the smallproof 
-% environment. The claim environment can only be used inside of a bigproof
+% You can use the claim* and smallproof environments anywhere. 
+% The claim environment can only be used inside of a bigproof
 % environment. The claim environment counts the ocurrences of claim 
 % environments inside of a bigproof environment. If more then zero instances of
 % the claim environment are followed by a smallproof environment, it will show 
