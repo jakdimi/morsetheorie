@@ -98,7 +98,7 @@
 	\RequirePackage{csquotes}
 	\addbibresource{../general/literature.bib}%
 \else
-	\renewcommand{\cite}[1]{REF[#1]}
+	\renewcommand{\cite}[1]{CITE[#1]}
 \fi
 
 % =============================================================================
@@ -143,6 +143,7 @@
 \newcommand{\M}{{ \mathcal{M} }}
 \newcommand{\Lt}{{ \mathcal{L} }}
 \newcommand{\Lb}{{\overline{\mathcal{L}} }}
+\newcommand{\VFs}{{ \mathfrak{X} }}
 
 % some operators 
 \newcommand{\id}{{ \operatorname{id} }}
@@ -160,7 +161,7 @@
 % some symbols
 \newcommand{\eps}{\varepsilon}
 \renewcommand{\phi}{\varphi}
-\renewcommand{\varphi}{\phi}
+% \renewcommand{\varphi}{\phi}
 
 % partial derivative commands
 \newcommand{\pderive}[2][]{{ \frac{ \partial #1 }{\partial #2} }}

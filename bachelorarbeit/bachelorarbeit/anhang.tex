@@ -1,32 +1,32 @@
-\chapter*{Anhang}
+\chapter{Anhang}
 
 \begin{definition}[Mannigfaltigkeit \cite{ludwig}]
     \label{def: mannigfaltigkeit}
     Es sei $M$ ein topologischer Raum. 
     
     Eine \textit{Karte} von $M$ ist ein Tupel
-    $(U, \varphi)$, wobei $U \subseteq M$ offen und $\varphi \colon U \to U' \in \R^n$ 
+    $(U, \phi)$, wobei $U \subseteq M$ offen und $\phi \colon U \to U' \in \R^n$ 
     ein Homeomorphismus ist.
 
-    $\mathcal{A} = \left\{ (U_{\alpha}, \varphi_{\alpha}) \right\}_{\alpha \in I}$ ist ein 
+    $\mathcal{A} = \left\{ (U_{\alpha}, \phi_{\alpha}) \right\}_{\alpha \in I}$ ist ein 
     \textit{$n$-dimensionaler Atlas} von $M$ falls
     \begin{enumerate}
-        \item $(U_{\alpha}, \varphi_{\alpha})$ ist eine Karte für jedes $\alpha \in I$
+        \item $(U_{\alpha}, \phi_{\alpha})$ ist eine Karte für jedes $\alpha \in I$
         \item $M = \bigcup_{\alpha \in I U_{\alpha}}$
     \end{enumerate}
     Ein Atlas ist $C^k$ für $k \in \{ \N_0 \cup \{ \infty, \omega \} \}$, falls für
     alle $\alpha, \beta \in I$ der \textit{Koordinatenwechsel} 
     \[ 
-        \varphi_{\alpha \beta} := 
-        \varphi_{\alpha} \circ \varphi_{\beta}^{-1} \colon 
-        \varphi_{\beta} (U_{\alpha} \cap U_{\beta}) \to \varphi_{\alpha} (U_{\alpha} \cap U_{\beta})
+        \phi_{\alpha \beta} := 
+        \phi_{\alpha} \circ \phi_{\beta}^{-1} \colon 
+        \phi_{\beta} (U_{\alpha} \cap U_{\beta}) \to \phi_{\alpha} (U_{\alpha} \cap U_{\beta})
     \]
     $C^k$ ist.
     
-    Eine Karte $(U, \varphi)$ heißt \textit{$C^k$ kompatibel} mit einem $C^k$ Atlas 
-    $\mathcal{A} = \left\{ (U_{\alpha}, \varphi_{\alpha}) \right\}_{\alpha \in I}$,
-    falls für alle $\alpha \in I$ die Koordinatenwechsel $\varphi \circ \varphi_{\alpha}^{-1}$
-    und $\varphi_{\alpha} \circ \varphi^{-1}$ $C^k$ sind.
+    Eine Karte $(U, \phi)$ heißt \textit{$C^k$ kompatibel} mit einem $C^k$ Atlas 
+    $\mathcal{A} = \left\{ (U_{\alpha}, \phi_{\alpha}) \right\}_{\alpha \in I}$,
+    falls für alle $\alpha \in I$ die Koordinatenwechsel $\phi \circ \phi_{\alpha}^{-1}$
+    und $\phi_{\alpha} \circ \phi^{-1}$ $C^k$ sind.
 
     Eine \textit{$n$-dimensionale $C^k$ Mannigfaltigkeit} ist ein topologischer Raum $M$ 
     zusammen mit einem maximalen $C^k$ Atlas $\mathcal{A}$, sodass $M$ ein Hausdorff-Raum und
@@ -35,8 +35,8 @@
 
     Eine Mannigfaltigkeit heißt \textit{glatt} falls $k = \infty$.
 
-    Für einen Punkt $p \in M$ und eine Karte $(\varphi, U)$ mit $p \in U$ 
-    heißen $\varphi = (x_1, ..., x_n)$ \textit{lokale Koordinaten} um $p$.
+    Für einen Punkt $p \in M$ und eine Karte $(\phi, U)$ mit $p \in U$ 
+    heißen $\phi = (x_1, ..., x_n)$ \textit{lokale Koordinaten} um $p$.
 \end{definition}
 
 \begin{remark}
@@ -46,11 +46,11 @@
 
 \begin{definition}[Differenzierbarkeit]
     Sind $M, N$ $C^k$ Mannigfaltigkeiten, 
-    $\mathcal{A} = (\varphi_{\alpha}, U_{\alpha})_{\alpha \in I}$ ein Atlas von $M$, 
-    $\mathcal{B} = (\varphi_{\beta}, U_{\beta})_{\beta \in J}$ ein Atlas von $N$,
+    $\mathcal{A} = (\phi_{\alpha}, U_{\alpha})_{\alpha \in I}$ ein Atlas von $M$, 
+    $\mathcal{B} = (\phi_{\beta}, U_{\beta})_{\beta \in J}$ ein Atlas von $N$,
     dann heißt eine Abbildung $C^k$ oder \textit{$k$-mal differenzierbar}, falls für alle 
     $\alpha \in I$ und $\beta \in J$ die Abbildung
-    \[ \psi_{\beta} \circ f \circ \varphi_{\alpha}^{-1} \colon \R^n \to \R^m \]
+    \[ \psi_{\beta} \circ f \circ \phi_{\alpha}^{-1} \colon \R^n \to \R^m \]
     $C^k$ ist.
 \end{definition}
 
@@ -86,11 +86,11 @@
 \end{remark}
 
 \begin{remark}
-    Es sei $M$ eine $C^k$ Mannigfaltigkeit, $k \geq 1$, $p \in M$ und $\varphi = (x_1, ..., x_n)$
+    Es sei $M$ eine $C^k$ Mannigfaltigkeit, $k \geq 1$, $p \in M$ und $\phi = (x_1, ..., x_n)$
     lokale Koordinaten um $p$. Definiere
     \begin{align*} 
         \pderive{x_1}(p): C^k(M) & \to \R \\
-        \pderive[f]{x_i} (p) & = \pderive[\varphi \circ f]{x_i} (\varphi(p))
+        \pderive[f]{x_i} (p) & = \pderive[\phi \circ f]{x_i} (\phi(p))
     \end{align*}
     Dann ist $\left( \pderive{x_i} \right)_{1 \leq i \leq n}$ eine Basis von $T_pM$.
 
@@ -101,3 +101,9 @@
     \[ D_p(f) = \left( \pderive[f_i]{x_j} \right)_{i,j} . \]
 \end{remark}
 
+\begin{definition}
+    % \label{def: kritischer Punkt allgemein}
+    Es seien $M, N$ $C^k$ Mannigfaltigkeiten. Sei $f \colon M \to N$ $C^k$. Dann ist $p \in M$
+    ein kritischer Punkt von $f$, falls $\opd f (p)$ nicht surjektiv ist. $f(p)$ heißt dann
+    kritischer Wert von $f$.
+\end{definition}
