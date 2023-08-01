@@ -1,7 +1,7 @@
 \chapter{Anhang}
 
 \begin{definition}[Mannigfaltigkeit \cite{ludwig}]
-    \label{def: mannigfaltigkeit}
+    \label{anh.def: mannigfaltigkeit}
     Es sei $M$ ein topologischer Raum. 
     
     Eine \textit{Karte} von $M$ ist ein Tupel
@@ -45,6 +45,7 @@
 \end{remark}
 
 \begin{definition}[Differenzierbarkeit]
+    \label{anh.def: differenzierbarkeit}
     Sind $M, N$ $C^k$ Mannigfaltigkeiten, 
     $\mathcal{A} = (\phi_{\alpha}, U_{\alpha})_{\alpha \in I}$ ein Atlas von $M$, 
     $\mathcal{B} = (\phi_{\beta}, U_{\beta})_{\beta \in J}$ ein Atlas von $N$,
@@ -102,8 +103,20 @@
 \end{remark}
 
 \begin{definition}
-    % \label{def: kritischer Punkt allgemein}
+    \label{anh.def: kritischer punkt}
     Es seien $M, N$ $C^k$ Mannigfaltigkeiten. Sei $f \colon M \to N$ $C^k$. Dann ist $p \in M$
     ein kritischer Punkt von $f$, falls $\opd f (p)$ nicht surjektiv ist. $f(p)$ heißt dann
     kritischer Wert von $f$.
 \end{definition}
+
+\begin{theorem}[Whitney's Einbettungssatz, \cite{hirsch}]
+    \label{anh.satz: whitneys einbettungssatz}
+    Es sei $M$ eine $n$-dimensionale kompakte \todo{Finde eine Quelle ohne Kompaktheit} 
+    $C^r$ Mannigfaltigkeit. Dann existiert eine $C^r$ Einbettung von $M$ in 
+    $\R^{2n + 1}$.
+\end{theorem}
+
+\begin{remark}
+    Man kann zeigen, dass jede Mannigfaltigkeit sigar in den $\R^{2n}$ eingebettet werden.
+    Diese Version des Satzes heißt \textit{starker Whitney's Einbettungssatz}.
+\end{remark}
