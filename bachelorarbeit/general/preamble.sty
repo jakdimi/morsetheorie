@@ -124,6 +124,7 @@
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+\RequirePackage{xfrac}
 %\RequirePackage{mathtools}
 
 % cool diagrams
@@ -168,11 +169,27 @@
 \renewcommand{\phi}{\varphi}
 % \renewcommand{\varphi}{\phi}
 \newcommand{\longto}{\longrightarrow}
+\newcommand{\isom}{\approx}
 
 % partial derivative commands
-\newcommand{\pderive}[2][]{{ \frac{ \partial #1 }{\partial #2} }}
-\newcommand{\pdderive}[3][]{{ \frac{\partial^2 #1}{\partial #2 \partial #3} }}
-\newcommand{\derive}[2][]{{ \frac{\opd #1}{\opd #2} }}
+\newcommand{\pderive}[2][]{{ 
+	\mathchoice{ \frac{ \partial #1 }{ \partial #2 } }
+			   { \sfrac{ \partial #1 }{ \partial #2 } }
+			   { \sfrac{ \partial #1 }{ \partial #2 } }
+			   { \sfrac{ \partial #1 }{ \partial #2 } }
+}}
+\newcommand{\pdderive}[3][]{{ 
+	\mathchoice{ \frac{ \partial^2 #1 }{ \partial #2 \partial #3 } }
+			   { \sfrac{ \partial^2 #1 }{ \partial #2 \partial #3} }
+			   { \sfrac{ \partial^2 #1 }{ \partial #2 \partial #3} }
+			   { \sfrac{ \partial^2 #1 }{ \partial #2 \partial #3} }
+	}}
+\newcommand{\derive}[2][]{{ 
+	\mathchoice{\frac{ \opd #1 }{ \opd #2 }}
+			   { \cfrac{ \opd #1 }{ \opd #2 } }
+			   { \cfrac{ \opd #1 }{ \opd #2 } }
+			   { \cfrac{ \opd #1 }{ \opd #2 } }
+}}
 
 % Steffen's small qed
 \newcommand{\smallqed}{\mbox{\rotatebox{145}{${\|}$}}}
@@ -186,19 +203,19 @@
 % define custom environemnts ==================================================
 
 \theoremstyle{plain}
-\newtheorem{theorem}[subsection]{\translation@Theorem}
+\newtheorem{theorem}{\translation@Theorem}[chapter]
 
 \theoremstyle{plain}
-\newtheorem{corollary}[subsection]{\translation@Corollary}
+\newtheorem{corollary}{\translation@Corollary}[chapter]
 
 \theoremstyle{plain}
-\newtheorem{lemma}[subsection]{\translation@Lemma}
+\newtheorem{lemma}{\translation@Lemma}[chapter]
 
 \theoremstyle{plain}
-\newtheorem{prop}[subsection]{\translation@Proposition}
+\newtheorem{prop}{\translation@Proposition}[chapter]
 
 \theoremstyle{definition}
-\newtheorem{definition}[subsection]{\translation@Def}
+\newtheorem{definition}{\translation@Def}[chapter]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{\translation@Remark}
@@ -212,7 +229,7 @@
 % (Instead of using Lemmas inside of proofs like a fool)
 
 % You can use the claim* and smallproof environments anywhere. 
-% The claim environment can only be used inside of a bigproof
+% The claim environment should only be used inside of a bigproof
 % environment. The claim environment counts the ocurrences of claim 
 % environments inside of a bigproof environment. If more then zero instances of
 % the claim environment are followed by a smallproof environment, it will show 

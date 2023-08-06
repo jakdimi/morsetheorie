@@ -46,7 +46,7 @@
 
 \begin{definition}[Differenzierbarkeit]
     \label{anh.def: differenzierbarkeit}
-    Sind $M, N$ $C^k$ Mannigfaltigkeiten, 
+    Sind $M, N$ $C^k$ Mannigfaltigkeiten, \\ 
     $\mathcal{A} = (\phi_{\alpha}, U_{\alpha})_{\alpha \in I}$ ein Atlas von $M$, 
     $\mathcal{B} = (\phi_{\beta}, U_{\beta})_{\beta \in J}$ ein Atlas von $N$,
     dann heißt eine Abbildung $C^k$ oder \textit{$k$-mal differenzierbar}, falls für alle 
@@ -56,6 +56,7 @@
 \end{definition}
 
 \begin{definition}[Tangentialraum]
+    \label{anh.def: tangentialraum}
     Der Tangentialraum einer $C^k$ Mannigfaltigkeit $M$ an einem Punkt $p \in M$ ist
     \[ T_pM := \left\{ X_p \colon C^{k} \to \R : X_p 
         \text{ ist eine Derivation von $M$ an dem Punkt $p$} \right\} \]
@@ -117,6 +118,18 @@
 \end{theorem}
 
 \begin{remark}
-    Man kann zeigen, dass jede Mannigfaltigkeit sigar in den $\R^{2n}$ eingebettet werden.
+    Man kann zeigen, dass jede Mannigfaltigkeit sogar in den $\R^{2n}$ eingebettet werden.
     Diese Version des Satzes heißt \textit{starker Whitney's Einbettungssatz}.
 \end{remark}
+
+\begin{theorem}[Satz von Sard (siehe \cite{sard})]
+    \label{satz: satz von sard}
+    Es seien $M$ und $N$ mindestens \\ 
+    $C^q$-Mannigfaltigkeiten mit Dimension $m$ und $n$ respektive
+    und $f \colon : \to N$ mindestens $C^q$. Dann gelten:
+    \begin{itemize}
+        \item Falls $m \leq n$, dann hat die Menge der kritischen Werte von $f$ Maß $0$.
+        \item Falls $m > n$, dann hat die Menge der kritischen Werte von $f$ Maß $0$, \\
+            falls $q \geq m - n + 1$.
+    \end{itemize}
+\end{theorem}

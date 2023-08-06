@@ -16,7 +16,7 @@ Dieser Abschnitt folgt dem gleichnamigen Kapitel in \cite{milnor}.
 \end{definition}
 
 \begin{remark}
-    Allgemeiner lassen sich kritische Punkte von glatten Abbildungen $f \colon M \to N$ 
+    Allgemeiner lassen sich kritische Punkte von glatten Abbildungen \\ $f \colon M \to N$ 
     definieren, siehe im Anhang Definition~\ref{anh.def: kritischer punkt}.
 \end{remark}
 
@@ -81,8 +81,9 @@ einen Begriff erhalten, der mit dem der gewohnten Hessischen Bilinearform im $\R
 \end{definition}
 
 \begin{prop}
-    $\opd^2 f (p)$ hängt nicht von den gewählten Vektorfeldern $X$ und $Y$ ab und ist
-    für alle kritischen Punkte eine symmetrische Bilinearform.
+    \label{prop: hessische ist sym bilinearform}
+    $\opd^2 f (\cdot, \cdot) (p)$ hängt nicht von den gewählten Vektorfeldern $X$ und $Y$ ab 
+    und ist für alle kritischen Punkte eine symmetrische Bilinearform.
 \end{prop}
 
 \begin{proof}
@@ -94,7 +95,8 @@ einen Begriff erhalten, der mit dem der gewohnten Hessischen Bilinearform im $\R
     also hängt die Form nicht von $X$ ab, und wegen der Symmetrie auch nicht von $Y$.
 \end{proof}
 
-\begin{definition}[nicht-degeneriertheit, Index]
+\begin{definition}[nicht-degeneriert, Index]
+    \label{def: nicht-degeneriert u index}
     Es sei $f \colon M \to \R$ eine glatte Abbildung, $p$ ein kritischer Punkt von
     $f$. Wir nennen $p$ \textit{nicht degeneriert}, falls die Bilinearform 
     $\opd^2 f (\cdot, \cdot) (p)$ nicht ausgeartet ist. Der \textit{Index} eines
@@ -273,5 +275,3 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
 \begin{corollary}
     Nicht-degenerierte kritische Punkte sind isoliert.
 \end{corollary}
-
-\section{Klassische Morse Theorie on die Deformations-Lemmata}
