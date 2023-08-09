@@ -1,24 +1,37 @@
-\documentclass[a4paper,12pt,draft]{scrreport}
+\documentclass[a4paper,12pt,twoside]{scrreport}
 
 \usepackage[lang=de,lib=false]{../general/preamble}
 
 \begin{document}
 
+\makeheaderempty
+
 \begin{titlepage}
-    \begin{center}
-        \vspace*{1cm}
- 
-        \Large{\textbf{Der Morse-Komplex und die Morse-Homologie}}
- 
-        \vspace{0.5cm}
-        Eine Bachelorarbeit \\ 
-        Betreuerin Prof. Ursula Ludwig
-             
-        \vspace{1.5cm}
- 
-        \textbf{Jakob Dimigen}
-             
-    \end{center}
+    \centering
+    Bachelorarbeit Mathematik \\
+    \color{DarkBlue}\rule{\linewidth}{1pt}
+    \color{Black}\Huge Der Morse-Komplex und Morse-Homologie \\[14pt]
+    \color{DarkBlue}\rule{\linewidth}{2pt}
+    \color{Black}
+
+    \vspace{3cm}
+    \includegraphics[width=\textwidth]{../resources/Me-Titlepage-Color.jpeg}
+
+    \vfill
+    \small
+
+    \textit{eingereicht von}
+    \hfill
+    \textit{beaufsichtigt von} \\
+    Jakob Dimigen
+    \hfill
+    Prof. Ursula Ludwig
+
+    \vspace{2cm}
+
+    Universität Münster \\
+    \vspace{0.02cm}
+    \includegraphics[width=0.2\textwidth]{../resources/WWU_Logo.png}
 \end{titlepage}
 
 \tableofcontents
@@ -37,8 +50,8 @@
     Morse Homologie bewiesen. Something something
 \end{abstract}
 
-\label{somesection}
-
+\makeheaderfancy
+\setcounter{page}{1}
 \include{ch1-einführung}
 
 \include{ch2-morse-funktionen-und-pseudo-gradienten}

@@ -12,6 +12,10 @@
 
 \RequirePackage{pdftexcmds} % String comparison
 
+% supress some warnings
+\usepackage{silence}
+\WarningFilter{scrbook}{\float@addtolists detected!}
+
 % Language support ============================================================
 
 \ifnum\pdf@strcmp{\preamble@lang}{en}=0%
@@ -24,6 +28,7 @@
 	\def\translation@Remark{Remark}%
 	\def\translation@Claim{Claim}%
 	\def\translation@Proofofclaim{Proof of claim}%
+	\def\translation@Proofoftheclaim{Proof of the claim}%
 	\RequirePackage[english]{babel}
 \else%
 \fi
@@ -37,16 +42,54 @@
 	\def\translation@Def{Definition}%
 	\def\translation@Remark{Bemerkung}%
 	\def\translation@Claim{Behauptung}%
-	\def\translation@Proofofclaim{Beweis der Behauptung}%
+	\def\translation@Proofofclaim{Beweis von Behauptung}%
+	\def\translation@Proofoftheclaim{Beweis der Behauptung}%
 	\RequirePackage[german]{babel}
 	\renewcommand*\contentsname{Inhalt}
 \else%
 \fi
 
-% =============================================================================
+%=============================================================================%
 
 
-% Document settings ===========================================================
+% Document settings ==========================================================%
+
+% headers
+\WarningFilter{scrbook}{Usage of package `fancyhdr' together}
+\RequirePackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\let\oldheadrule\headrule
+\renewcommand{\headrule}{\color{DarkBlue}\oldheadrule}
+\renewcommand{\headrulewidth}{2pt}
+\newcommand{\makeheaderfancy}{
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyhead[RO,LE]{\thepage}
+	\fancyhead[LO,RE]{\leftmark}
+}
+\newcommand{\makeheaderempty}{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead{}
+}
+\fancyfoot{}
+\pagestyle{fancy}
+
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}% original style: plain
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+
+% start chapter on same page
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+
+% color
+\RequirePackage{xcolor}
+\definecolor{LightBlue}{RGB}{67,122,217}
+\definecolor{DarkBlue}{RGB}{18,50,105}
+\definecolor{LightGray}{RGB}{130,130,130}
+\definecolor{DarkGray}{RGB}{54,54,54}
+\definecolor{Black}{RGB}{0,0,0}
 
 % select font encoding
 \RequirePackage[T1]{fontenc}
@@ -55,6 +98,7 @@
 
 % something to do with tables and figures
 \RequirePackage{float}
+\RequirePackage{scrhack}
 
 % set the geometry pf the document
 \RequirePackage{geometry}
@@ -69,14 +113,10 @@
 % control indent after linebreak
 \setlength\parindent{0pt}
 
-% start chapter on same page
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-
 % configure title format
-%\RequirePackage{titlesec}
-%\titleformat{\section}[hang]{\Large\bfseries}{§\thesection}{1em}{}
-%\titleformat{\subsection}[hang]{\large\bfseries}{§\thesubsection}{1em}{}
+% \RequirePackage{titlesec}
+% \titleformat{\chapter}[hang]{\Large\bfseries}{\thechapter}{1em}{}
+% \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
 %\titleformat{\subsubsection}[hang]{\bfseries}{§\thesubsubsection}{1em}{}
 
 % to include images
@@ -88,7 +128,16 @@
 %\RequirePackage{subcaption}
 %\RequirePackage{pigpen}
 
+% make refs hyperlinks
 \RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=DarkBlue,
+    filecolor=LightBlue,      
+    urlcolor=DarkBlue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
 
 % bibliography
 \ifnum\pdf@strcmp{\preamble@lib}{true}=0%
@@ -103,10 +152,10 @@
 	\renewcommand{\cite}[1]{CITE[#1]}
 \fi
 
-% =============================================================================
+%=============================================================================%
 
 
-% Useful imports ==============================================================
+% Useful imports =============================================================%
 
 % itemize, enumerate ...
 \RequirePackage{enumitem}
@@ -115,10 +164,10 @@
 % useful while editing text
 \RequirePackage[obeyDraft,textsize=small]{todonotes}
 
-% =============================================================================
+%=============================================================================%
 
 
-% Math ========================================================================
+% Math =======================================================================%
 
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
@@ -186,9 +235,9 @@
 	}}
 \newcommand{\derive}[2][]{{ 
 	\mathchoice{\frac{ \opd #1 }{ \opd #2 }}
-			   { \cfrac{ \opd #1 }{ \opd #2 } }
-			   { \cfrac{ \opd #1 }{ \opd #2 } }
-			   { \cfrac{ \opd #1 }{ \opd #2 } }
+			   { \sfrac{ \opd #1 }{ \opd #2 } }
+			   { \sfrac{ \opd #1 }{ \opd #2 } }
+			   { \sfrac{ \opd #1 }{ \opd #2 } }
 }}
 
 % Steffen's small qed
@@ -197,34 +246,61 @@
 % Steffen's line break
 \newcommand{\sectiondone}{\hfill \break \rightline{\smallqed}}
 
-% =============================================================================
+%=============================================================================%
 
 
-% define custom environemnts ==================================================
-
-\theoremstyle{plain}
-\newtheorem{theorem}{\translation@Theorem}[chapter]
+% define custom environemnts =================================================%
 
 \theoremstyle{plain}
-\newtheorem{corollary}{\translation@Corollary}[chapter]
+\newtheorem{theorem}{\translation@Theorem}[section]
 
 \theoremstyle{plain}
-\newtheorem{lemma}{\translation@Lemma}[chapter]
+\newtheorem{corollary}{\translation@Corollary}[section]
 
 \theoremstyle{plain}
-\newtheorem{prop}{\translation@Proposition}[chapter]
+\newtheorem{lemma}{\translation@Lemma}[section]
+
+\theoremstyle{plain}
+\newtheorem{prop}{\translation@Proposition}[section]
 
 \theoremstyle{definition}
-\newtheorem{definition}{\translation@Def}[chapter]
+\newtheorem{definition}{\translation@Def}[section]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{\translation@Remark}
+
+% Customize environments
+\RequirePackage{mdframed}
+\newmdenv[
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	innertopmargin=-10pt,
+	innerbottommargin=0pt,
+	innerrightmargin=0pt,
+	rightmargin=0pt,
+	linecolor=DarkBlue,
+	linewidth=2pt
+]{theoremline}
+\RequirePackage{etoolbox}
+
+\BeforeBeginEnvironment{theorem}{\begin{theoremline}}
+\AfterEndEnvironment{theorem}{\end{theoremline}}
+
+\BeforeBeginEnvironment{corollary}{\begin{theoremline}}
+\AfterEndEnvironment{corollary}{\end{theoremline}}
+
+\BeforeBeginEnvironment{lemma}{\begin{theoremline}}
+\AfterEndEnvironment{lemma}{\end{theoremline}}
+
+\BeforeBeginEnvironment{prop}{\begin{theoremline}}
+\AfterEndEnvironment{prop}{\end{theoremline}}
 
 \newcommand{\proofheading}[1]{\hfill \break {\fontfamily{lmss}\selectfont #1.} }
 
 \renewcommand{\proofname}{\translation@Proof}
 
-% Claim and smallproof --------------------------------------------------------
+% Claim and smallproof -------------------------------------------------------%
 % For use inside of proofs 
 % (Instead of using Lemmas inside of proofs like a fool)
 
@@ -251,17 +327,18 @@
 
 \newenvironment{smallproof}{%
 	\renewcommand{\qedsymbol}{\smallqed}
-	\begin{proof}[\translation@Proofofclaim\ifnum\c@claimcount<1 
+	\begin{proof}[\ifnum\c@claimcount<1 
+			\translation@Proofoftheclaim
 		\else
-			\:\theclaimcount 
+			\translation@Proofofclaim\:\theclaimcount 
 		\fi]
 }{%
 	\end{proof}
 	\renewcommand{\qedsymbol}{\square}
 }
 
-% -----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------%
 
-% =============================================================================
+%=============================================================================%
 
 \makeatother % set the at symbol to be other 

@@ -10,7 +10,7 @@ das \textit{Morse-Lemma}.
 In diesem Abschnitt untersuchen wir \textit{Morse-Funktionen}:
 
 \begin{definition}[Morse-Funktion]
-    \label{def: morse-funktion}
+    \label{satz: morse-funktion}
     Eine \textit{Morse-Funktion} auf einer glatten Mannigfaltigkeit $M$ ist eine glatte Funktion
     $f \colon M \to \R$, deren kritische Punkte alle nicht degeneriert sind.
 \end{definition}
@@ -312,6 +312,10 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
     \[ \langle x, y \rangle := g_p(x, y) \text{ und } \| x \| := \sqrt{g_p(x, x)} . \]
 \end{definition}
 
+\begin{remark}
+    Man kann zeigen, dass alle Mannigfaltigkeiten eine Riemannsche Metrik besitzen.
+\end{remark}
+
 \begin{definition}[Gradient]
     \label{def: gradient}
     Es sei $M$ eine glatte Mannigfaltigkeit, $f \colon M \to \R$ eine glatte Abbilding. Dann 
@@ -320,29 +324,66 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
     \[ \langle X , \grad f \rangle = \opd f X . \]
 \end{definition}
 
+\begin{definition}[Pseudo-Gradient]
+    \label{def: pseudo-gradient}
+    Es sei $M$ eine Mannigfaltigkeit, $f \colon M \to \R$ eine glatte Funktion. $X \in \VFs (M)$
+    heißt \textit{Pseudo-Gradient} oder \textit{Pseudo-Gradientenfeld} von $f$, falls gelten:
+    \begin{itemize}
+        \item $\opd f (p) (X(p)) \leq 0$ für alle $p \in M$, mit Gleichheit genau dann wenn 
+            $p$ ein kritischer Punkt von $f$ ist.
+        \item Für jeden kritischen Punkt $p$ von $f$ existiert eine Morse-Umgebung 
+            $(U, \phi)$, in der $X = - \grad (f \circ \phi^{-1})$.
+            (Wir betrachten $X$ als Vektorfeld auf $\phi(U)$ via des durch $\phi$
+            induzierten Koordinatenisomorphismus $T_pM \to \R^n$.)
+    \end{itemize}
+\end{definition}
+
+\begin{prop}
+    Es sei $M$ eine Mannigfaltigkeit und $f \colon M \to \R$ eine Morse-Funktion. 
+    Dann existiert ein Pseudo-Gradientenfeld von $f$.
+\end{prop}
+
+\begin{proof}
+    Da $M$ zweitabzählbar ist und die kritischen Punkte isoliert, ist die Menge der kritischen
+    punkte ${p_i}_{i \in I'}$ abzählbar. Seien dann ${(U_i, \phi_i)}_{i \in I'}$ Karten-Umgebungen
+    von den kritischen Punkten, sodass in diesen Umgebungen $f$ die Form hat wie im 
+    Morse-Lemma~\ref{satz: morse-lemma}. Ergänze ${(U_i, \phi_i)}_{i \in I'}$ zu einem Atlas 
+    ${(U_i, \phi_i)}_{i \in I}$, sodass jeder kritische Punkt $p_i$ nur in $U_i$ enthalten ist.
+    definiere nun die Vektorfelder
+    \[ X_i (p) := \opd (\phi_i) (p) \circ \grad (f \circ \phi_i^{-1}) (\phi_i(p)) \]
+    auf $\phi_i(U_i)$. Setze nun
+    \[ \tilde{X_i}(p) = \begin{cases}
+        \lambda_i (p) \cdot X_i(p) & \text{ falls } p \in \phi_i(U) \\
+        0 & \text{ sonst }
+    \end{cases} . \]
+    Per Definition gilt schon $\opd f (p) (X_i(p)) \leq 0$ für alle $p \in M$ und $i \in I$.
+    Nun wähle eine Partition der 1 $(\lambda_i)_{i \in I}$ über $(U_i)_{i \in I}$. Dann setze
+    \[ X := \sum_{i \in I} \tilde{X_i}(p) . \]
+    Falls $p_i$ ein kritischer Punkt von $M$ ist, dann ist $\tilde{X_j}(p) = 0$ 
+    für alle $j \neq i$. Also ist 
+    \[ X(p) = \tilde{X_i}(p) = 0 . \]
+\end{proof}
+
 \section{Topologische Eigenschaften anhand kritischer Punkte}
 
-In diesem Abschnitt werden die Beiden Deformations-Lemmata bewiesen. Diese geben Einsicht in 
-die Topologischen Eigenschaften von Mannigfaltigkeiten, Insbesondere kann man mit ihnen Beweisen, 
-dass jede Mannigfaltigkeit den selben Homotopie-Typen hat wie ein CW-Komplex. Eine ähnliche Aussage
-ist eines der Resultate dieser Arbeit; Jede kompakte Mannigfaltigkeit besitzt eine CW-Struktur.
+In diesem Abschnitt werden wir das erste Mal das Ausmaß der Möglichkeiten, die Morse Theorie 
+bietet erfahren. Es werden die beiden Deformationslemmata bewiesen. Anhand dieser kann man 
+die Morse Ungleichungen beweisen und sogar zeigen, dass jede (glatte) Mannigfaltigkeit
+den Homotopietypen eines CW-Komplexes besitzt.
 
 \begin{theorem}[Erstes Deformationslemma]
-    \label{theorem:erstes deformationslemma}
+    \label{satz: erstes deformationslemma}
     Es sei $M$ eine glatte Mannigfaltigkeit und $f: M \rightarrow \R$ eine
     glatte Abbildung. Hat $f$ keine kritischen Werte im Intervall $[a, b]$ und 
     ist $f^{-1}[a, b]$ kompakt, so existiert ein Diffeomorphismus 
     $M^a \rightarrow M^b$, und $M^a$ ist ein Deformationsretrakt von $M^b$.
 \end{theorem}
 
-Das ist genau die erste Aussage, die wir schon am Anfang beim Torus beobachtet 
-haben!
-
 Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
 steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$ 
 "nach oben zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$.
 
-\begin{proof}[Beweis erstes Deformationslemma]
+\begin{bigproof}[Beweis erstes Deformationslemma]
     Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$. Dies folgt
     aus Whitneys Einbettungssatz und dem Satz von Heine-Borel.
     Sei $\rho: M \to \R$ eine glatte, positive Funktion, sodass
@@ -355,66 +396,78 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
     Definiere ein Vektorfeld $X$ durch
     \[ X(p) = \rho(p) \cdot \grad f (p) \]
     Dann hat $X$ kompakten Träger, erfüllt also die Vorraussetzungen von 
-    Lemma~\ref{lemma:generierende vektorfelder}. Sei also $\varphi$ die
+    Lemma~\ref{prop: kompaktes VF generiert 1-param. grp.}. Sei also $\varphi$ die
     einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
     wird. 
     Wir bekommen für jedes $p \in M$ eine Abbildung 
     $f \circ \varphi_{\bullet}(p): \R \to \R$.
     
-    \proofheading{Behauptung 1} Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi_{t_0}(q)$
-    ist $\derive{t} f \circ \varphi_{\bullet}(p) (t_0) \in [0, 1]$ und falls $f(\varphi_t(q)) \in [a, b]$
-    gilt sogar $\derive{t} f \circ \varphi_{\bullet}(q) (t_0) = 1$.
+    \begin{claim} 
+        Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi_{t_0}(q)$
+        ist $\derive{t} f \circ \varphi_{\bullet}(p) (t_0) \in [0, 1]$ und falls $f(\varphi_t(q)) \in [a, b]$
+        gilt sogar $\derive{t} f \circ \varphi_{\bullet}(q) (t_0) = 1$.
+    \end{claim}
 
-    Für $q = \varphi_{t_0}(p)$:
-    \begin{align*}
-        \derive{t} f \circ \varphi_{t_0}(p)
-        & = T_{\varphi_{t_0}(p)} f \cdot T_{t_0}\varphi_{\bullet}(p) \left( \derive{t} \right)
-        = \opd f (q) \cdot X(q) \\
-        & = \langle X(q), \grad f (q) \rangle 
-        = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
-    \end{align*}
+    \begin{smallproof}
+        Für $q = \varphi_{t_0}(p)$:
+        \begin{align*}
+            \derive{t} f \circ \varphi_{t_0}(p)
+            & = T_{\varphi_{t_0}(p)} f \cdot T_{t_0}\varphi_{\bullet}(p) \left( \derive{t} \right)
+            = \opd f (q) \cdot X(q) \\
+            & = \langle X(q), \grad f (q) \rangle 
+            = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
+        \end{align*}
+        
+        $f \circ \varphi_{\bullet}(p)$ ist also monoton wachsend für alle $p \in M$.
+
+        Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
+        \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]
+    \end{smallproof}
+
+    \begin{claim} 
+        Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_{t_0}(p)) \in [a, b]$.
+    \end{claim}
     
-    $f \circ \varphi_{\bullet}(p)$ ist also monoton wachsend für alle $p \in M$.
+    \begin{smallproof}
+        \[ f(\varphi_{t_0}(p)) \geq f(\varphi_0(p)) = a \]
+        und
+        \begin{align*}
+            f(\varphi_t(p)) 
+            & \leq f(\varphi_{b-a}(p)) \\
+            & = \int_0^{b-a}\derive{t} f(\varphi_t(p)) \opd t + f(\varphi_0(p)) \\
+            & = \int_0^{b-a}\rho(\varphi_t(p)) \langle \grad f (\varphi_t(p)), \grad f (\varphi_t(p)) \rangle \opd t + a \\
+            & \leq \int_0^{b-a} 1 \, \opd t + a \\
+            & = b
+        \end{align*}
+    \end{smallproof}
 
-    Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
-    \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]
-    \sectiondone
-
-    \proofheading{Behauptung 2} Für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt $f(\varphi_{t_0}(p)) \in [a, b]$.
-    
-    \[ f(\varphi_{t_0}(p)) \geq f(\varphi_0(p)) = a \]
-    und
-    \begin{align*}
-        f(\varphi_t(p)) 
-        & \leq f(\varphi_{b-a}(p)) \\
-        & = \int_0^{b-a}\derive{t} f(\varphi_t(p)) \opd t + f(\varphi_0(p)) \\
-        & = \int_0^{b-a}\rho(\varphi_t(p)) \langle \grad f (\varphi_t(p)), \grad f (\varphi_t(p)) \rangle \opd t + a \\
-        & \leq \int_0^{b-a} 1 \, \opd t + a \\
-        & = b
-    \end{align*}
-    \sectiondone
-
-    \proofheading{Behauptung 3} Unter $\varphi_{b-a}$ wird die Niveaumenge 
-    $f^{-1}(a)$ auf die Niveaumenge $f^{-1}(b)$ abgebildet.
+    \begin{claim} 
+        Unter $\varphi_{b-a}$ wird die Niveaumenge 
+        $f^{-1}(a)$ auf die Niveaumenge $f^{-1}(b)$ abgebildet.
+    \end{claim}
      
-    Für $p \in f^{-1}(a)$ gilt:
-    \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
-    und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 1 und 2
-    \[ \derive{t}f(\varphi_{\id_{\R} - a}(p)) (t_0) = 1 \]
-    also
-    \[ f(\varphi_{b - a}(p)) = f(\varphi_{0}(p)) + (b - a) = b \]
-    Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
-    $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
-    \sectiondone
+    \begin{smallproof}
+        Für $p \in f^{-1}(a)$ gilt:
+        \[ \varphi_{a-a}(p) = \varphi_0(p) = p \]
+        und für $t_0 \in [0, b - a]$ gilt wegen Behauptung 1 und 2
+        \[ \derive{t}f(\varphi_{\id_{\R} - a}(p)) (t_0) = 1 \]
+        also
+        \[ f(\varphi_{b - a}(p)) = f(\varphi_{0}(p)) + (b - a) = b \]
+        Genauso gilt für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
+        $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
+    \end{smallproof}
 
-    \proofheading{Behauptung 4} $\varphi_{b - a} (M^a) = M^b$
+    \begin{claim}
+        $\varphi_{b - a} (M^a) = M^b$
+    \end{claim}
 
-    "$\subseteq$": Sei $p \in M^a$. OBdA. existiert $s \in [0, b-a]$, sodass 
-    $f(\varphi_s(p)) = a$, ansonsten gilt für alle 
-    $s \in [0, b-a]: f(\varphi_s(p)) \leq a < b$. Dann gilt
-    \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a+s}(p)) = f(\varphi_{b-a}(\varphi_s(p))) = b \] 
-    "$\supseteq$": Analog.
-    \sectiondone
+    \begin{smallproof}
+        "$\subseteq$": Sei $p \in M^a$. OBdA. existiert $s \in [0, b-a]$, sodass 
+        $f(\varphi_s(p)) = a$, ansonsten gilt für alle 
+        $s \in [0, b-a]: f(\varphi_s(p)) \leq a < b$. Dann gilt
+        \[ f(\varphi_{b-a}(p)) \leq f(\varphi_{b-a+s}(p)) = f(\varphi_{b-a}(\varphi_s(p))) = b \] 
+        "$\supseteq$": Analog.
+    \end{smallproof}
 
     Damit ist $\left. \varphi_{b-a} \right\vert_{M^a}$ ein Diffeomorphismus zwischen
     $M^a$ und $M^b$. 
@@ -431,10 +484,10 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
     $r(\cdot, 1)|_{M^a}$ ist die Identität auf $M^a$ und 
     $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$.
 
-\end{proof}
+\end{bigproof}
 
 \begin{theorem}[Zweites Deformations-Lemma]
-    \label{theorem:zweites deformationslemma}
+    \label{satz: zweites deformationslemma}
     Es sei $M$ eine glatte Mannigfaltigkeit, $f: M \rightarrow \R$ eine glatte
     Abbildung und $p$ ein nicht-degenerierter kritischer Punkt mit Index 
     $k$. Sei $c := f(p)$ und $\varepsilon \geq 0$, sd. 
@@ -443,15 +496,13 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
     denselben Homotopietypen wie $M^{c - \varepsilon} \cup e^k$.
 \end{theorem}
 
-Das ist die zweite Aussage, die wir am Anfang am Beispiel des Torus beobachtet haben!
-
 Die Idee für den Beweis ist, sich eine neue Funktion $F: M \to \R$ zu definieren,
 die Außerhalb von einer kleinen Umgebung von $p$ $f$ entspricht und in der 
 Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
+    \includegraphics[width=0.8\linewidth]{../resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
     \label{fig:me-diagram5}
     \caption{Die Niveaumengen von $f$ (links) und $F$ (rechts)}
 \end{figure}
@@ -461,7 +512,7 @@ gilt und $F^{-1}(-\infty, c - \varepsilon]$ fast dasselbe ist wie
 $M^{c - \varepsilon}$, nur dass $F^{-1}(-\infty, c - \varepsilon]$ einen "Henkel"
 enthält der den kritischen Punkt $p$ enthält.
 
-\begin{proof}[Beweis zweites Deformationslemma]
+\begin{bigproof}[Beweis zweites Deformationslemma]
     Sei $c := f(p)$. Mit dem Morse-Lemma können wir lokale Koordinaten 
     $\varphi = (u_1, ..., u_n)$ in einer Umgebung $U$ von $p$ wählen, sodass
     \[ f = c - u_1^2 - ... - u_k^2 + u_{k+1}^2 + ... + u_n^2 \]
@@ -485,7 +536,7 @@ enthält der den kritischen Punkt $p$ enthält.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram6-U-parameterized.png}
+        \includegraphics[width=0.8\linewidth]{../resources/Me-Diagram6-U-parameterized.png}
         \label{fig:me-diagram6}
         \caption{U parametrisiert}
     \end{figure}
@@ -529,150 +580,159 @@ enthält der den kritischen Punkt $p$ enthält.
 
     Dann folgt schon die Behauptung.
 
-    \proofheading{Behauptung 1} $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$
+    \begin{claim} 
+        $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$
+    \end{claim}
 
-    Sei $q \in M$. Falls gilt $\xi(q) + 2 \eta(q) > 2 \varepsilon$ gilt 
-    $F(q) = f(q) - \mu(\xi(q) + 2\eta(q)) = f(q)$,
-    also gelte oBdA.
-    \[ \xi(q) + 2 \eta(q) \leq 2 \varepsilon \]
-    Dann:
-    \[ F(q) \leq f(q) = c - \xi(q) + \eta(q) \leq c + \frac{1}{2}\xi(q) + \eta(q) \leq c + \varepsilon \]
-    \sectiondone
+    \begin{smallproof}
+        Sei $q \in M$. Falls gilt $\xi(q) + 2 \eta(q) > 2 \varepsilon$ gilt 
+        $F(q) = f(q) - \mu(\xi(q) + 2\eta(q)) = f(q)$,
+        also gelte oBdA.
+        \[ \xi(q) + 2 \eta(q) \leq 2 \varepsilon \]
+        Dann:
+        \[ F(q) \leq f(q) = c - \xi(q) + \eta(q) \leq c + \frac{1}{2}\xi(q) + \eta(q) \leq c + \varepsilon \]
+    \end{smallproof}
 
-    \proofheading{Behauptung 2} $F^{-1}(-\infty, c - \varepsilon]$ ist ein
-    Deformationsretrakt von $M^{c + \varepsilon}$.
+    \begin{claim} 
+        $F^{-1}(-\infty, c - \varepsilon]$ ist ein
+        Deformationsretrakt von $M^{c + \varepsilon}$.
+    \end{claim}
 
-    Bemerke: Die kritischen Punkte von $F$ stimmen mit denen von $f$ überein, 
-    denn:
+    \begin{smallproof}
+        Bemerke: Die kritischen Punkte von $F$ stimmen mit denen von $f$ überein, 
+        denn:
 
-    \[ \pderive[F]{\xi} = -1 - \mu'(\xi + 2\eta)  < 0 \]
-    und
-    \[ \pderive[F]{\eta} = 1 - 2 \mu'(\xi + 2\eta) \geq 1 \]
-    Insbsondere sind diese beiden Ableitungen also niemals $0$. Da 
-    \[ \opd F = \pderive[F]{\xi}\opd \xi + \pderive[F]{\eta} \opd \eta \]
-    und $\opd \xi$ und $\opd \eta$ nur in $p$ gleichzeitig Null sind, haben $f$ 
-    und $F$  dieselben kritischen Punkte.
+        \[ \pderive[F]{\xi} = -1 - \mu'(\xi + 2\eta)  < 0 \]
+        und
+        \[ \pderive[F]{\eta} = 1 - 2 \mu'(\xi + 2\eta) \geq 1 \]
+        Insbsondere sind diese beiden Ableitungen also niemals $0$. Da 
+        \[ \opd F = \pderive[F]{\xi}\opd \xi + \pderive[F]{\eta} \opd \eta \]
+        und $\opd \xi$ und $\opd \eta$ nur in $p$ gleichzeitig Null sind, haben $f$ 
+        und $F$  dieselben kritischen Punkte.
 
-    Betrachte die Region $F^{-1}[c - \varepsilon, c + \varepsilon]$. Wegen 
-    Behauptung 1 und der Tatsache, dass $F \leq f$ gilt:
-    \[ F^{-1}[c - \varepsilon, c + \varepsilon] \subseteq f^{-1}[c - \varepsilon, c + \varepsilon] \]
-    Da $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und 
-    $F^{-1}[c - \varepsilon, c + \varepsilon]$ abgeschlossen ist, ist 
-    $F^{-1}[c - \varepsilon, c + \varepsilon]$ auch kompakt. Da $f$ und $F$
-    dieselben kritischen Punkte haben kann diese Menge maximal den kritischen 
-    Punkt $p$ enthalten, aber
-    \[ F(p) = c - \xi(p) + \eta(p) + \mu(\xi(p) + 2\eta(p)) = c - \mu(0) < c - \varepsilon \]
-    Also gibt es in $F^{-1}[c - \varepsilon, c + \varepsilon]$ keine kritischen
-    Punkte. Mit dem ersten Deformationslemma gilt dann:
-    $F^{-1}(- \infty, c - \varepsilon]$ ist Def. Retrakt von 
-    $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$.
-    \sectiondone
+        Betrachte die Region $F^{-1}[c - \varepsilon, c + \varepsilon]$. Wegen 
+        Behauptung 1 und der Tatsache, dass $F \leq f$ gilt:
+        \[ F^{-1}[c - \varepsilon, c + \varepsilon] \subseteq f^{-1}[c - \varepsilon, c + \varepsilon] \]
+        Da $f^{-1}[c - \varepsilon, c + \varepsilon]$ kompakt ist und 
+        $F^{-1}[c - \varepsilon, c + \varepsilon]$ abgeschlossen ist, ist 
+        $F^{-1}[c - \varepsilon, c + \varepsilon]$ auch kompakt. Da $f$ und $F$
+        dieselben kritischen Punkte haben kann diese Menge maximal den kritischen 
+        Punkt $p$ enthalten, aber
+        \[ F(p) = c - \xi(p) + \eta(p) + \mu(\xi(p) + 2\eta(p)) = c - \mu(0) < c - \varepsilon \]
+        Also gibt es in $F^{-1}[c - \varepsilon, c + \varepsilon]$ keine kritischen
+        Punkte. Mit dem ersten Deformationslemma gilt dann:
+        $F^{-1}(- \infty, c - \varepsilon]$ ist Def. Retrakt von 
+        $F^{-1}(-\infty, c + \varepsilon] = M^{c + \varepsilon}$.
+    \end{smallproof}
 
-    \proofheading{Behauptung 3} $M^{c - \varepsilon} \cup e^{k}$ ist ein 
-    Deformationsretrakt von $F^{-1}(-\infty, c - \varepsilon]$.
+    \begin{claim}
+        $M^{c - \varepsilon} \cup e^{k}$ ist ein 
+        Deformationsretrakt von $F^{-1}(-\infty, c - \varepsilon]$.
+    \end{claim}
 
-    Diese Aussage ergibt nur Sinn, falls 
-    $M^{c - \varepsilon} \cup e^{k} \subseteq F^(-\infty, c - \varepsilon]$.
-    Wir wissen schon, dass $M^{c - \varepsilon} \subseteq F^{-1}(c - \varepsilon]$.
+    \begin{smallproof}
+        Diese Aussage ergibt nur Sinn, falls 
+        $M^{c - \varepsilon} \cup e^{k} \subseteq F^(-\infty, c - \varepsilon]$.
+        Wir wissen schon, dass $M^{c - \varepsilon} \subseteq F^{-1}(c - \varepsilon]$.
 
-    Sei $q \in e^k$, dann gilt $\xi(p) = 0 \leq \xi(q) \leq 1$ und 
-    $\eta(p) = 0 = \eta(q)$. Da 
-    $\pderive[F]{\xi} < 0$ gilt dann
-    \[ F(q) \leq F(p) < c - \varepsilon \]
+        Sei $q \in e^k$, dann gilt $\xi(p) = 0 \leq \xi(q) \leq 1$ und 
+        $\eta(p) = 0 = \eta(q)$. Da 
+        $\pderive[F]{\xi} < 0$ gilt dann
+        \[ F(q) \leq F(p) < c - \varepsilon \]
 
-    Also ergibt sich folgende Situation:
+        Also ergibt sich folgende Situation:
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram7-handle.png}
-        \label{fig:me-diagram7}
-        \caption{Henkel}
-    \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{../resources/Me-Diagram7-handle.png}
+            \label{fig:me-diagram7}
+            \caption{Henkel}
+        \end{figure}
 
-    Die hellgrün eingefärbte Fläche ist $M^{c - \varepsilon}$ die hellgelbe
-    zusammen mit der hellgrünen Fläch ist $F^{-1}(-\infty, c - \varepsilon]$. 
+        Die hellgrün eingefärbte Fläche ist $M^{c - \varepsilon}$ die hellgelbe
+        zusammen mit der hellgrünen Fläch ist $F^{-1}(-\infty, c - \varepsilon]$. 
 
-    Dafür konstruieren wir eine Deformationsretraktion
-    $r: F^{-1}(-\infty, c - \varepsilon] \times [0,1] \to F^{-1}(-\infty, c - \varepsilon]$
-    für $q \in F^{-1}(-\infty, c - \varepsilon], t \in [0, 1]$, die 
-    $F^{-1}(-\infty, c - \varepsilon] - M^{c - \varepsilon}$ auf $e^k$ 
-    deformiert, wie folgt.
+        Dafür konstruieren wir eine Deformationsretraktion
+        $r: F^{-1}(-\infty, c - \varepsilon] \times [0,1] \to F^{-1}(-\infty, c - \varepsilon]$
+        für $q \in F^{-1}(-\infty, c - \varepsilon], t \in [0, 1]$, die 
+        $F^{-1}(-\infty, c - \varepsilon] - M^{c - \varepsilon}$ auf $e^k$ 
+        deformiert, wie folgt.
 
-    \[
-        r(q, t) = \begin{cases}
-            \varphi^{-1} \circ (u_1, ..., u_k, tu_{k + 1}, ..., tu_n)(q)
-                & \text{ im Fall 1: } \xi(q) \leq \varepsilon \\
-            \varphi^{-1} \circ (u_1, ..., u_k, s_tu_{k + 1}, ..., s_tu_n)(q)
-                & \text{ im Fall 2: } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
-            q & \text{ im Fall 3: } \eta(q) + \varepsilon \leq \xi(q)
-        \end{cases}
-    \]
+        \[
+            r(q, t) = \begin{cases}
+                \varphi^{-1} \circ (u_1, ..., u_k, tu_{k + 1}, ..., tu_n)(q)
+                    & \text{ im Fall 1: } \xi(q) \leq \varepsilon \\
+                \varphi^{-1} \circ (u_1, ..., u_k, s_tu_{k + 1}, ..., s_tu_n)(q)
+                    & \text{ im Fall 2: } \varepsilon \leq \xi(q) \leq \eta(q) + \varepsilon \\
+                q & \text{ im Fall 3: } \eta(q) + \varepsilon \leq \xi(q)
+            \end{cases}
+        \]
 
-    Wobei 
+        Wobei 
 
-    \[ s_t = t + (1 -t)((\xi - \varepsilon)/\eta)^{1/2} \]
+        \[ s_t = t + (1 -t)((\xi - \varepsilon)/\eta)^{1/2} \]
 
-    Die Fälle sind dann wie folgt:
+        Die Fälle sind dann wie folgt:
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\linewidth]{resources/Me-Diagram9-handle-cases.png}
-        \label{me-diagram9}
-        \caption{
-            Fall 3 ist $M^{c - \varepsilon}$, also die grün eingefärbte Fläche, die
-            orangene Fläche ist Fall 1 und die gelbe ist Fall 2.
-        }
-    \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{../resources/Me-Diagram9-handle-cases.png}
+            \label{me-diagram9}
+            \caption{
+                Fall 3 ist $M^{c - \varepsilon}$, also die grün eingefärbte Fläche, die
+                orangene Fläche ist Fall 1 und die gelbe ist Fall 2.
+            }
+        \end{figure}
 
-    Wir müssen überprüfen:
-    \begin{enumerate}
-        \item $r$ ist wohldefiniert und stetig
-        \item $r(F^{-1}(-\infty, c - \varepsilon], 0) \subseteq M^{c - \varepsilon} \cup e^k$
-        \item $r(\cdot, 1) = \id_{F^{-1}(-\infty, c - \varepsilon]}$ und 
-            $\left. r(\cdot , 0) \right\vert_{M^{c - \varepsilon} \cup e^k} 
-            = \id_{M^{c - \varepsilon} \cup e^k}$
-    \end{enumerate}
+        Wir müssen überprüfen:
+        \begin{enumerate}
+            \item $r$ ist wohldefiniert und stetig
+            \item $r(F^{-1}(-\infty, c - \varepsilon], 0) \subseteq M^{c - \varepsilon} \cup e^k$
+            \item $r(\cdot, 1) = \id_{F^{-1}(-\infty, c - \varepsilon]}$ und 
+                $\left. r(\cdot , 0) \right\vert_{M^{c - \varepsilon} \cup e^k} 
+                = \id_{M^{c - \varepsilon} \cup e^k}$
+        \end{enumerate}
 
-    3. ist einfach nachzurechnen. In Fall 1 und Fall 3 ist 2. offensichtlich
-    wahr. Für Fall 2 gilt:
-    \begin{align*} 
-        f(r(0, q)) & = 
-            f\left( \varphi^{-1} \left(u_1(q), ..., u_k(q), 
-            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q), ...,
-            \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q)
-            \right)
-            \right) \\
-        & = c - \xi(q)
-            + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q) \right)^2 + ... 
-            + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q) \right)^2 \\
-        & = c - \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right) \eta(q) \\
-        & = c - \varepsilon
-    \end{align*}
-    also ist $r(0, q) \in f^{-1}(c - \varepsilon)$. Um 1. zu prüfen müssen wir 
-    Stetigkeit in den Grenzfällen überprüfen:
-    \begin{align*}
-        & \text{For } \xi(q) = \varepsilon \text{ : }
-            & s_t(q)  =t + (1 - t)((\varepsilon - \varepsilon)/\eta(q))^{1/2} = t \\
-        & \text{For } \eta(q) + \varepsilon = \xi(q) \text{ : }
-            & s_t(q) = t + (1 - t)((\xi(q) - \varepsilon)/(\xi(q) - \varepsilon))^{1/2} = 1
-    \end{align*}
+        3. ist einfach nachzurechnen. In Fall 1 und Fall 3 ist 2. offensichtlich
+        wahr. Für Fall 2 gilt:
+        \begin{align*} 
+            f(r(0, q)) & = 
+                f\left( \varphi^{-1} \left(u_1(q), ..., u_k(q), 
+                \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q), ...,
+                \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q)
+                \right)
+                \right) \\
+            & = c - \xi(q)
+                + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_{k + 1}(q) \right)^2 + ... 
+                + \left( \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right)^{1/2}u_n(q) \right)^2 \\
+            & = c - \left( \frac{\xi(q) - \varepsilon}{\eta(q)} \right) \eta(q) \\
+            & = c - \varepsilon
+        \end{align*}
+        also ist $r(0, q) \in f^{-1}(c - \varepsilon)$. Um 1. zu prüfen müssen wir 
+        Stetigkeit in den Grenzfällen überprüfen:
+        \begin{align*}
+            & \text{For } \xi(q) = \varepsilon \text{ : }
+                & s_t(q)  =t + (1 - t)((\varepsilon - \varepsilon)/\eta(q))^{1/2} = t \\
+            & \text{For } \eta(q) + \varepsilon = \xi(q) \text{ : }
+                & s_t(q) = t + (1 - t)((\xi(q) - \varepsilon)/(\xi(q) - \varepsilon))^{1/2} = 1
+        \end{align*}
 
-    Das einzig andere Problem was wir bekommen könnten ist nun in Fall 2 falls
-    $\eta \to 0$. In Fall 1 und Fall 3 bekommen wir für $q$ mit $\eta(q) = 0$:
-    $r(q, t) = \varphi^{-1} \circ (u_1, ..., u_k, 0, ..., 0)(q)$, also wollen
-    wir zeigen dass für $\eta \in $ Fall 2 mit $\eta \to 0$ gilt $s_tu_i \to 0$
-    für $i \in \{k+1, ..., n\}$. In Fall 2 gilt
-    $0 \leq \xi - \varepsilon \leq \eta$. Dann gilt:
+        Das einzig andere Problem was wir bekommen könnten ist nun in Fall 2 falls
+        $\eta \to 0$. In Fall 1 und Fall 3 bekommen wir für $q$ mit $\eta(q) = 0$:
+        $r(q, t) = \varphi^{-1} \circ (u_1, ..., u_k, 0, ..., 0)(q)$, also wollen
+        wir zeigen dass für $\eta \in $ Fall 2 mit $\eta \to 0$ gilt $s_tu_i \to 0$
+        für $i \in \{k+1, ..., n\}$. In Fall 2 gilt
+        $0 \leq \xi - \varepsilon \leq \eta$. Dann gilt:
 
-    \begin{align*}
-        \lim\limits_{\eta \to 0} | s_t u_i |
-           & = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2} | u_i | \\
-           & \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}|u_i| \\
-           & = \lim\limits_{\eta \to 0} (1 - t)|u_i| = 0 
-    \end{align*}
-    
-    Also ist $r$ stetig.
-    \sectiondone
+        \begin{align*}
+            \lim\limits_{\eta \to 0} | s_t u_i |
+            & = \lim\limits_{\eta \to 0} (1 - t)((\xi - \varepsilon)/\eta)^{1/2} | u_i | \\
+            & \leq \lim\limits_{\eta \to 0} (1 - t)(\eta/\eta)^{1/2}|u_i| \\
+            & = \lim\limits_{\eta \to 0} (1 - t)|u_i| = 0 
+        \end{align*}
+        
+        Also ist $r$ stetig.
+    \end{smallproof}
 
     Mit Behauptung 3 und 4 bekommen wir
     \[ M^{c + \varepsilon} \simeq F^{-1}(c - \varepsilon] \]
@@ -681,4 +741,4 @@ enthält der den kritischen Punkt $p$ enthält.
     Also folgt die Behauptung:
     \[ M^{c + \varepsilon} \simeq M^{c - \varepsilon} \cup e^k \]
 
-\end{proof}
+\end{bigproof}
