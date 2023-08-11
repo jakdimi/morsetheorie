@@ -3,8 +3,167 @@
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
 Morse-Komplex ein Kettenkomplex ist.
 
-\section{Klassifizierung von kompakten 1-Mannigfaltigkeiten mit Rand}
+\section{Die stabile- und instabile Mannigfaltigkeit}
+
+\begin{definition}[Stabile- und instabile Mannigfaltigkeit]
+    \label{def: stabile und instabile mannigfaltigkeit}
+    Es sei $f \colon M \to \R$ eine Morse-Funktion, $p$ ein kritischer Punkt von $f$ und $X$ ein
+    Pseudo-Gradientenfeld von $f$. Die stabile Mannigfaltigkeit von $f$ ist die Menge
+    \[ \stab (p) = \left\{ q \in M : \lim_{t \to + \infty} \phi_t(q) = p \right\} \]
+    und die instabile Mannigfltigkeit ist
+    \[ \unst (p) = \left\{ q \in M : \lim_{t \to - \infty} \phi_t(q) = p \right\} . \]
+\end{definition}
+
+Bevor wir die stabile- und instabile Mannigfaltigkeit eines kritischen Punktes weiter untersuchen, 
+fixieren wir ein Paar Notationen zu Morse Umgebungen.
+
+\begin{definition}[Notationen zu Morse Umgebungen]
+    \label{notation: morse umgebung}
+    Zuerst untersuchen wir eine quadratische Form, die die Form hat wie Funktionen in Morse
+    Umgebungen, also
+    \[ Q \colon \R^n \to \R ; Q(x_1, \dots, x_n) = - x_1 - \dots - x_k + x_{k + 1} + \dots + x_n \]
+    für ein $1 \leq k \leq n$.
+    Mit $x_- := (x_1, \dots x_k) \colon \R^n \to \R^k$ und $x_+ := (x_{k + 1} \dots x_n)$ gilt dann
+    \[ Q = - \| x_- \|^2 + \| x_+ \|^2 . \]
+    Der Gradient von $Q$ ist mit dem Standardskalarprodukt auf $\R^n$
+    \[ \grad Q (x_-, x_+) = 2(x_-, x_+) . \]
+    Seien nun $\eps, \eta > 0$. Dann setzen wir
+    \[ U(\eps, \eta) := \left\{ x \in \R^n : - \eps < Q(x) < \eps 
+    \text{ und } \| x_- \|^2 \| x_+ \|^2 \leq \eta(\eps + \eta) \right\} := U \]
+    Wir definieren außerdem
+    \begin{align*}
+        \del_{\pm} U := & \left\{ x \in U: Q(x) = \pm \eps \text{ und } \|x_{\mp} \|^2 \leq \eta \right\} 
+            \text{ und} \\
+        \del_0 U := & \left\{ x \in \del U: \| x_- \|^2 \| x_+ \|^2 = \eta(\eps + \eta) \right\} .
+    \end{align*}
+    Dann gilt 
+    \[ \del U = \del_+ \cup \del_- \cup \del_0 . \]
+    Wir setzen nun $V_- = \langle e_1, \dots, e_k \rangle$ und 
+    $V_+ = \langle e_1, \dots, e_n \rangle \subseteq \R^n$. $V_+$ ist der größte Vektorraum, 
+    auf dem $Q$ positiv definit ist und $V_-$ der größte Vektorraum, auf dem $Q$ negativ definit ist. 
+    Es gilt 
+    \[ \del U \cap V_{\pm} \subseteq \del_{\pm} U . \]
+
+    Ist nun $f \colon M \to \R$ eine Morse Funktion, $p$ ein kritischer Punkt von $f$ und $(U, \phi)$
+    eine Morse Umgebung von $p$, dann hat $\phi \circ (f - f(p))$ auf $U$ genau die Form von $Q$, wenn
+    $k$ der Index von $p$ ist. Dann gilt 
+    \[ 
+        \phi(\stab(p) \cap U) = V_- \cap \phi(U) \text{ und } 
+        \phi(\unst(p) \cap U) = V_+ \cap \phi(U) .
+    \]
+\end{definition}
+
+Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
+
+\begin{prop}
+    $\stab (p)$ und $\unst (p)$ sind Mannigfaltigkeiten mit 
+    \[ \dim \unst (p) = n - \dim \stab (p) = \Index (p) \]
+\end{prop}
+
+\begin{proof}
+    Es sei $(V, \psi)$ eine Morse Karte um $p$ in einer Form wie in ~\ref{notation: morse umgebung},
+    also sodass $\eps, \eta > 0$ exitstieren, sodass $\psi(V) = U(\eps, \eta) := U$. Es sei außerdem
+    $\phi$ der Fluss eines Pseudo-Gradientenfeldes von $f$. Dann ist 
+    \[ \Phi \colon \psi^{-1}(\del_+ U \cap V_+) \times \R \to M ; \psi(q, t) = \phi_t(q) \]
+    eine Einbettung und es gilt 
+    \[ \stab (p) = \Ima \Phi \cup \psi^{-1}(U \cap V_+) . \]
+    Tatsächlich ist 
+    \[ \stab (p) - \Ima \Phi = \{ p \} . \]
+    Außerdem ist $\del_+ U \cap V_+ = \{ x \in \R^n: \| x_+ \|^2 = \eps \} \isom S^{n - k - 1}$, 
+    denn für alle $x \in V_+$ gilt sowieso schon $x_- = 0$. Also ist $ \stab(p)$ diffeomorph zum Raum 
+    $S^{n - k - 1} \times (-\infty, \infty]/\sim$, in dem alle Punkte in $\infty$ zusammengeklebt 
+    werden. Dieser Quotient ist wiederum diffeomorph zur offenen Kreisscheibe mit Dimension $n - k$.
+    Genauso zeigt man, dass $W^u (p)$ diffeomorph zur offenen Kreisscheibe mit Dimension $k$ ist.
+\end{proof}
+
+\begin{prop}
+    Es sei $f \colon M \to \R$ eine Morse-Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. 
+    Sei außerdem $M$ kompakt. Ist dann $\phi$ der Fluss von $X$, dann existieren für jeden Punkt 
+    $p \in M$ kritische Punkte $q$ und $r$ von $f$, sodass
+    \[ \lim_{t \to + \infty} \phi_t(p) = q \;\;\; 
+    \text{ und } \;\;\; \lim_{t \to -\infty} \phi_t(p) = r \]
+\end{prop}
+
+\begin{proof}
+    Wir zeigen die erste Aussage. Seien für kritische Punkte $q$ $(U_q, \psi_q)$ die Karten, 
+    auf denen der Pseudo Gradient mit dem negativen Gradienten auf $\R^n$ übereinstimmt. 
+    Es ist $\lim_{t \to + \infty} \phi_t(p) = q$, genau dann wenn
+    der Fluss $\phi_{\bullet}(p)$ den Punkt $p$ irgendwann in die Umgebung 
+    $\del_+\psi_q(U_q) \cap \stab(q)$ transportiert. Angenommen $\phi_{\bullet}(p)$ transportiert
+    $p$ nie zu einem kritischen Punkt. Jedes mal wenn $\phi_{\bullet}(p)$ also ins Innere einer
+    Morse-Umgebung $U_q$ gerät, muss diese Umgebung auch wieder verlassen werden. Da 
+    $f \circ \phi_{bullet}(p)$ monoton ist, kann nachdem $\phi_{bullet}(p)$ die Morse-Umgebung $U_q$
+    verlassen hat, nie wieder zu dieser zurückgekehrt werden.
+    Sei also 
+    \[ U = \bigcup_{q \in \Crit(f)} U_q \]
+    und $t_0$ der Zeitpunkt an dem $\phi_{\bullet} (p)$ die Umgebung $U$ das letzte mal verlässt.
+    Da $M - U$ keine kritischen Punkte von $f$ enthält existiert ein $\eps_0 > 0$, sodass für alle 
+    $x \in M - U$ gilt 
+    \[ \opd f (x) ((X(x))) \leq - \eps_ . \]
+    Wir rechnen also: Für jedes $t \geq t_0$ gilt
+    \begin{align*}
+        f(\varphi_t(p) - f(\varphi_{t_0}(p))) = & 
+            \int_{t_0}^t \derive[f \circ \phi_{\bullet}(p)]{s} (s) \opd s \\
+        = & \int_{t_0}^t \opd f (\phi_s(p)) (X(\phi_s(p))) \opd s \\
+        \leq & - \eps_0 (t - t_0) . 
+    \end{align*}
+    Also für $t \to + \infty$ gilt $f(\phi_t(p)) \to - \infty$. Das kann aber nicht sein, denn da 
+    $M$ kompakt ist muss auch $\Ima f$ kompakt sein. Also kann $\phi_{\bullet}(p)$ nicht alle 
+    $U_q$ verlassen. aber dann ist 
+    \[ \lim_{t \to + \infty} \phi_t(p) = q \]
+    für einen kritischen Punkt $q$.
+    Genauso zeigt man, dass $\lim_{t \to - \infty} \phi_t(p) = r$ für einen kritischen Punkt $r$.
+\end{proof}
 
 \section{Der Raum der gebrochenen Trajektorien}
+
+Das ist der Raum der gebrochenen Trajektorien.
+
+\begin{theorem}[Klassifizierung kompakter 1-Mannigfaltigkeiten]
+    Es sei $M$ eine kompakte zusammenhängende Mannigfaltigkeit mit Rand. Dann ist
+    \begin{itemize}
+        \item $M$ diffeomorph zu $S^1$, falls $\del M = \varnothing$
+        \item $M$ diffeomorph zu $[0, 1]$, falls $\del M \neq \varnothing$
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    Betrachte zuerst den ersten Fall, also dass $M$ keinen Rand hat. Es sei 
+    $\{ (U_1, \phi_1), \dots, (U_n, \phi_n) \}$ ein Atlas von $M$. Ohne Beschränkung der 
+    Allgemeinheit können wir annehmen, dass alle $U_i$ zusammenhängend sind. 
+    Da $M$ zusammenhängend ist, können wir außerdem annehmen, dass 
+    $\bigcup_{i = 1}^k U_i$ für alle $k$ zusammenhängend ist. Dann existiert ein $1 \leq k < n$, 
+    sodass $\bigcup_{i = 1}^k U_i$ diffeomorph zu $\R$ ist, aber $\bigcup_{i = 1}^{k + 1} U_i$ 
+    nicht. Setze $U := \bigcup_{i = 1}^k U_i$ und $V = U_{k + 1}$. Seien $\phi \colon U \to \R$
+    und $\psi \colon V \to \R$ Diffeomorphismen. 
+    \begin{claim*}
+        Ist $M = U \cup V$ eine 1-dimensionale Mannigfaltigkeit, $U$ und $V$ diffeomorph zu 
+        $\R$, dann ist $M$ diffeomorph zu $S^1$ oder $\R$.
+    \end{claim*}
+
+    \begin{smallproof}
+        Ohne Beschränkung der Allgemeinheit ist $U \not\subseteq V$ und \\ 
+        $V \not\subseteq U$. Dann gibt es zwei Möglichkeiten:
+        \begin{itemize}
+            \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind offene Halbintervalle
+            \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind jeweils die disjunkte Vereinigung
+                zweier offener Halbintervalle
+        \end{itemize}
+        Im ersten Fall ist $M$ homeomorph zu $\R$:
+
+        Wir dürfen annehmen, dass $\phi(U \cap V) = (- \infty, a)$ und $\psi(U \cap V) = (b, \infty)$,
+        ansonsten ersetze $\phi$ mit $\-phi$ bzw. $\psi$ mit $-\psi$. Die Verkettung
+        \shorthandoff{"}
+        \[ \begin{tikzcd}
+            (- \infty, a) = \phi(U \cap V) \arrow[r, "\phi^{-1}"] & 
+                U \cap V \arrow[r, "\psi"] & 
+                \psi(U \cap V) = (b, \infty)
+        \end{tikzcd} \] 
+        \shorthandon{"}
+        
+        Ist insbesondere injektiv, also auch monoton wachsend. 
+        \todo{}
+    \end{smallproof}
+\end{proof}
 
 \section{Der Morse-Komplex}

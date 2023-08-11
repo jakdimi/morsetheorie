@@ -160,6 +160,7 @@
 % itemize, enumerate ...
 \RequirePackage{enumitem}
 \renewcommand{\labelitemi}{\labelitemfont\textendash}
+\setlist{nosep}
 
 % useful while editing text
 \RequirePackage[obeyDraft,textsize=small]{todonotes}
@@ -251,20 +252,23 @@
 
 % define custom environemnts =================================================%
 
-\theoremstyle{plain}
-\newtheorem{theorem}{\translation@Theorem}[section]
+\newcounter{theoremcounter}
+\counterwithin{theoremcounter}{chapter}
 
 \theoremstyle{plain}
-\newtheorem{corollary}{\translation@Corollary}[section]
+\newtheorem{theorem}[theoremcounter]{\translation@Theorem}
 
 \theoremstyle{plain}
-\newtheorem{lemma}{\translation@Lemma}[section]
+\newtheorem{corollary}[theoremcounter]{\translation@Corollary}
 
 \theoremstyle{plain}
-\newtheorem{prop}{\translation@Proposition}[section]
+\newtheorem{lemma}[theoremcounter]{\translation@Lemma}
+
+\theoremstyle{plain}
+\newtheorem{prop}[theoremcounter]{\translation@Proposition}
 
 \theoremstyle{definition}
-\newtheorem{definition}{\translation@Def}[section]
+\newtheorem{definition}[theoremcounter]{\translation@Def}
 
 \theoremstyle{remark}
 \newtheorem*{remark}{\translation@Remark}
