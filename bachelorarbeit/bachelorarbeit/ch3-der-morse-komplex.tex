@@ -1,5 +1,5 @@
 \chapter{Der Morse-Komplex}
-
+dfgdfgdfg
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
 Morse-Komplex ein Kettenkomplex ist.
 
@@ -115,9 +115,139 @@ Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
     Genauso zeigt man, dass $\lim_{t \to - \infty} \phi_t(p) = r$ für einen kritischen Punkt $r$.
 \end{proof}
 
-\section{Der Raum der gebrochenen Trajektorien}
+\begin{definition}[Smale-Bedingung]
+    \label{def: smale-bedingung}
+    Es sei $M$ eine Mannigfaltigkeit und $U$ und $V$ Untermannigfaltigkeiten von $M$. Wir sagen 
+    $U$ und $V$ sind \textit{transversal} und schreiben $U \pitchfork V$, falls für alle Punkte 
+    $p \in U \cap V$ gilt 
+    \[ T_pU + T_pV = T_pM . \]
+    Ein Vektorfeld $X \in \VFs (M)$ heißt \textit{transversal} zur Untermannigfaltigkeit $U$, falls 
+    für alle $p$ in $U$ gilt 
+    \[ \langle X(p) \rangle + T_pU = T_pM . \]
 
-Das ist der Raum der gebrochenen Trajektorien.
+    Sei nun $f \colon M \to \R$ eine Morse Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. Dann sagen
+    wir, dass $X$ die \textit{Smale-Bedingung} erfüllt, falls für alle kritischen Punkte $p$ und $q$ von 
+    $f$ gilt 
+    \[ \stab (p) \pitchfork \unst (q) . \]
+\end{definition}
+
+\begin{prop}
+    Sind $U_1$ und $U_2$ Untermannigfaltigkeiten von einer $n$-\\
+    dimensionalen Mannigfaltigkeit $M$ mit 
+    Dimensionen $d_1$ und $d_2$, sodass 
+    \[ U_1 \pitchfork U_2 , \]
+    dann ist $U_1 \cap U_2$ eine Untermannigfaltigkeit von $M$ mit Dimension $d_1 + d_2 - n$.
+\end{prop}
+
+\begin{proof}
+    Fixiere einen Punkt $p \in U_1 \cap U_2$. Da $U_1$ und $U_2$ Untermannigfaltigkeiten sind existieren 
+    Karten $(\phi_1, V_1)$ und $(\phi_2, V_2)$ von $M$, sodass 
+    \[ \phi_1 = (\phi_1', \phi_1'') \colon V_1 \to 
+        \Omega_1 \times \Omega_1' \subseteq \R^{d_1} \times \R^{n - d_1} \]
+    mit $\phi_1(V_1 \cap U_1) = \Omega_1 \times \{ 0 \}$ und 
+    \[ \phi_2 = (\phi_2', \phi_2'')\colon V_2 \to 
+        \Omega_2 \times \Omega_2' \subseteq \R^{d_2} \times \R^{n - d_2} \]
+    mit $\phi_2(V_2 \cap U_2) = \Omega_2 \times \{ 0 \}$. Definiere 
+    \[ \phi'' = (\phi_1'', \phi_2'') \colon 
+        M \supseteq V_1 \cap V_2 \to \R^{n - d_1} \times \R^{n - d_2}. \]
+    Dann ist 
+    $(\phi'')^{-1}(0) = (U_1 \cap V_1) \cap (U_2 \cap V_2) = (U_1 \cap U_2) \cap (V_1 \cap V_2) := V$.
+    Wir wollen nun den Satz über reguläre Werte anwenden, aber dafür müssen wir zeigen, dass 
+    $\opd_p \phi''$ surjektiv ist. Bemerke, dass 
+    $\opd_p \phi'' = \opd_p (\phi''_1, \phi''_2) = (\opd_p \phi''_1, \opd_p \phi''_2)$.
+    Es sei $v \in T_p\R^{n - d_1}$ und $w \in T_p\R^{n - d_2}$. Da $\opd_p \phi''_1$ und 
+    $\opd_p \phi''_2$ surjektiv sind, und da $U_1$ und $U_2$ transversal sind, 
+    existieren $v_1' + v_2', w_1' + w_2' \in T_pU_1 + T_pU_2$, sodass 
+    $\opd_p \phi''_1 (v_1 + v_2) = \opd_p \phi''_1 (v_2) = v$ und 
+    $\opd_p \phi''_2 (w_1 + w_2) = \opd_p \phi''_2 (w_1) = w$.
+    Die ersten Gleichheiten gelten, da $T_pU_1$ der Kern von $\opd \phi''_1$ und 
+    $T_pU_2$ der Kern von $\opd \phi''_2$ sind. Dann gilt
+    \[ \opd_p \phi'' (w_1' + v_2')  = ( \opd_p \phi''_1 (v_2'), \opd_p \phi''_2 (w_1')) = (v, w) . \]
+    Wir können also den Satz über reguläre Werte anwenden, dann ist $V$ eine Untermannigfaltigkeit
+    mit Dimension $n - ((n - d_1) + (n - d_2)) = d_1 + d_2 - n$. Dann ist auch $U_1 \cap U_2$
+    eine Untermannigfaltigkeit von Dimension $d_1 + d_2 - n$.
+\end{proof}
+
+Dann folgt direkt:
+
+\begin{prop}
+    Es sei $f \colon M \to \R$ eine Morse Funktion und $p$ und $q$ kritische Punkte von mit Index $k_1$
+    und $k_2$ respektive. Falls $X$ die Smale-Bedingung erfüllt ist
+    \[ \mathcal{M} (p, q) := \unst (p) \cap \stab (q) = 
+        \left\{ r \in M : \lim_{t \to - \infty} \phi_t(p) \text{ und } 
+        \lim_{t \to + \infty} \phi_t(q) \right\} \]
+    ist eine Mannigfaltigkeit mit Dimension $k_1 - k_2$.
+\end{prop}
+
+\begin{prop}
+    Ist $M$ kompakt, $f \colon M \to \R$ eime Morse Funktion, $p \neq q$ kritische Punkte mit Index
+    $k_1, k_2$, dann wirkt $\R$ via $(p, t) \mapsto \phi_t(p)$ frei und eigentlich auf 
+    $\mathcal{M} (p, q)$, also ist
+    \[ \Lt (p, q) = \mathcal{M}(p, q)/\R \]
+    eine $(k_1 - k_2 - 1)$-dimensionale Mannigfaltigkeit.
+\end{prop}
+
+\begin{proof}
+    Die Abbildung 
+    $\Phi \colon \mathcal{M} (p , q) \times \R \to \mathcal{M} (p, q) \times \mathcal{M} (p,q) ; 
+    (p, t) \mapsto (p, \phi_t(p))$ ist glatt, denn da $M$ kompakt ist, ist $\phi$ eine 
+    1-Parameter-Gruppe aus Diffeomorphismen (~\ref{prop: kompaktes VF generiert 1-param. grp.}). 
+    Sei nun $I \subset \R$ ein kompaktes Intervall. 
+
+    Die Gruppenwirkung ist frei, denn in $\mathcal{W} (p, q)$
+    sind keine kritischen Punkte, da $p \neq q$. Es sei $x$ in $\mathcal{M} (p, q)$. 
+    Ist nun $t \neq 0$, dann gilt da $f \circ \phi_{\bullet}$ streng monoton ist 
+    $f(\phi_t(x)) \neq f(\phi_0(x))$, also $\phi_t(x) \neq x$.
+\end{proof}
+
+Wir gewinnen eine wichtige Erkenntnis: Der Index von kritischen Punkten erhöht sich entlang von
+Trajektorien. Denn falls $\Index (p) < \Index (q)$, dann ist die Dimension von $\mathcal{M} (p, q)$
+kleiner $0$, also ist dann $\mathcal{M} (p, q) = \varnothing$.
+
+Außerdem ist falls $\Index (p) = \Index (q) + 1$ die Mannigfaltigkeit $\Lt(p, q)$ $0$-dimensional,
+also ist $\Lt (p, q)$ nichts als eine Ansammlung von Punkten. Wenn wir für jedes 
+$\ell \in \Lt (p, q)$ einen Repräsentanten auswählen, können wir $\Lt (p, q)$ als abgeschlossene Teilmenge 
+von $M$ betrachten, aber wir nehmen an dass $M$ kompakt ist, also ist auch $\Lt (p, q)$ kompakt, 
+besteht also nur aus endlich vielen Punkten.
+
+\section{Der Morse-Komplex und der Raum der gebrochenen Trajektorien}
+
+Wir sind nun bereit, den Morse-Komplex mit Koeffizienten in $\F_2$ (wenigstens) hinzuschreiben.
+Wir fixieren für den gesamten Abschnitt eine glatte kompakte Mannigfaltigkeit $M$ und ein
+Morse-Smale Paar $(f, X)$. Dann definiere
+$C_k (M, (f, X))$ als das $\F_2$ Modul, das von den kritischen Punkten von $f$ mit Index $k$ 
+erzeugt wird. Außerdem sei $n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Wert
+$p$:
+\[ \del_X (p) := \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} \del_X(p, q)p . \]
+
+Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ ein Kettenkomplex
+ist, also dass $\del_X \circ \del_X = 0$. 
+
+Sind dafür $p$ und $q$ zwei kritische Punkte von $f$ mit $\Index (p) = \Index (q) + 2$, dann genügt es 
+zu zeigen, dass $\# \Lt (p, q)$ gerade ist. Dafür benötigen wir folgende Konstruktion:
+
+\begin{definition}[Der Raum der gebrochenen Trajektorien]
+    \label{def: raum der gebrochenen trajektorien}
+    Es seien $p$ und $q$ kritische Punkte von $f$. Der \textit{Raum der gebrochenen Trajektorien} ist
+    \[ \Lb (p, q) = 
+        \bigcup_{k \in \N} \left( \bigcup_{\substack{c_1, \dots, c_{k - 1} \\ \in \Crit(f)}} 
+            \Lt (p, c_1) \times \Lt (c_1, c_2) \times \dots 
+                \times \Lt (c_{k - 2}, c_{k - 1}) \times \Lt (c_{k - 1}, q) \right) . \]
+\end{definition}
+
+Obwohl die Formulierung recht sperrig wirkt ist sie doch intuitiv: 
+$\ell \in \Lt (p, q)$ ist eine \glqq Verbindung\grqq{} zwischen den kritischen Punkten $p$ und $q$ 
+entlang des Pseudo-Gradientenfeldes $X$. Ein Element 
+$(\ell_1, ..., \ell_k) \in \Lt (p, c_1) \times \dots \times \Lt (c_{k - 1}, q) \subseteq \Lb (p, q)$
+ist eine \glqq Verbindung\grqq{} zwischen $p$ und $q$ entlang des Pseudo-Gradientenfeldes $X$, die noch 
+bei den kritischen Punkten $c_1, \dots, c_{k - 1}$ \glqq Halt\grqq{} macht. 
+
+Offensichtlich gilt:
+\begin{itemize}
+    \item Ist $\Index (p) + 1 = \Index (q)$, so ist $\Lb (p, q) = \Lt (p, q)$.
+    \item Ist $\Index (p) + 2 = \Index (q)$, so ist 
+        $\Lb (p, q) = \Lt (p, q) \cup \bigcup_{c \in \Crit (f)} \Lt(p, c) \times \Lt(c, q)$
+\end{itemize}
 
 \begin{theorem}[Klassifizierung kompakter 1-Mannigfaltigkeiten]
     Es sei $M$ eine kompakte zusammenhängende Mannigfaltigkeit mit Rand. Dann ist
@@ -153,17 +283,13 @@ Das ist der Raum der gebrochenen Trajektorien.
 
         Wir dürfen annehmen, dass $\phi(U \cap V) = (- \infty, a)$ und $\psi(U \cap V) = (b, \infty)$,
         ansonsten ersetze $\phi$ mit $\-phi$ bzw. $\psi$ mit $-\psi$. Die Verkettung
-        \shorthandoff{"}
         \[ \begin{tikzcd}
             (- \infty, a) = \phi(U \cap V) \arrow[r, "\phi^{-1}"] & 
                 U \cap V \arrow[r, "\psi"] & 
                 \psi(U \cap V) = (b, \infty)
         \end{tikzcd} \] 
-        \shorthandon{"}
         
         Ist insbesondere injektiv, also auch monoton wachsend. 
         \todo{}
     \end{smallproof}
 \end{proof}
-
-\section{Der Morse-Komplex}

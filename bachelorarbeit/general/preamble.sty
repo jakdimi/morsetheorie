@@ -189,6 +189,7 @@
 \newcommand{\Q}{{ \mathbb Q }}
 \newcommand{\R}{{ \mathbb R }}
 \newcommand{\C}{{ \mathbb C }}
+\newcommand{\F}{{ \mathbb F }}
 
 % some sets
 \newcommand{\unst}{{ W^u }}
@@ -211,6 +212,7 @@
 \newcommand{\Crit}{{ \operatorname{Crit} }}
 \newcommand{\diag}{{ \operatorname{diag} }}
 \newcommand{\rank}{{ \operatorname{rank} }}
+\newcommand{\codim}{{ \operatorname{codim} }}
 
 % some symbols
 \newcommand{\del}{{ \partial }}
@@ -303,6 +305,10 @@
 \newcommand{\proofheading}[1]{\hfill \break {\fontfamily{lmss}\selectfont #1.} }
 
 \renewcommand{\proofname}{\translation@Proof}
+
+% Fix tikzcd environment
+\BeforeBeginEnvironment{tikzcd}{\shorthandoff{"}}
+\AfterEndEnvironment{tikzcd}{\shorthandon{"}}
 
 % Claim and smallproof -------------------------------------------------------%
 % For use inside of proofs 
