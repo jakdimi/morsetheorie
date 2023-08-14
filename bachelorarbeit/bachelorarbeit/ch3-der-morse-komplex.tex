@@ -3,7 +3,7 @@ dfgdfgdfg
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
 Morse-Komplex ein Kettenkomplex ist.
 
-\section{Die stabile- und instabile Mannigfaltigkeit}
+\section{Die stabile- und instabile Mannigfaltigkeit und die Smale-Bedingung}
 
 \begin{definition}[Stabile- und instabile Mannigfaltigkeit]
     \label{def: stabile und instabile mannigfaltigkeit}
@@ -18,7 +18,7 @@ Bevor wir die stabile- und instabile Mannigfaltigkeit eines kritischen Punktes w
 fixieren wir ein Paar Notationen zu Morse Umgebungen.
 
 \begin{definition}[Notationen zu Morse Umgebungen]
-    \label{notation: morse umgebung}
+    \label{def: notation morse umgebung}
     Zuerst untersuchen wir eine quadratische Form, die die Form hat wie Funktionen in Morse
     Umgebungen, also
     \[ Q \colon \R^n \to \R ; Q(x_1, \dots, x_n) = - x_1 - \dots - x_k + x_{k + 1} + \dots + x_n \]
@@ -56,12 +56,13 @@ fixieren wir ein Paar Notationen zu Morse Umgebungen.
 Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
 
 \begin{prop}
-    $\stab (p)$ und $\unst (p)$ sind Mannigfaltigkeiten mit 
+    Ist $f \colon M \to \R$ eine Morse Funktion und $p$ ein kritischer Punkt von $f$, dann sind
+    $\stab (p)$ und $\unst (p)$ Mannigfaltigkeiten mit 
     \[ \dim \unst (p) = n - \dim \stab (p) = \Index (p) \]
 \end{prop}
 
 \begin{proof}
-    Es sei $(V, \psi)$ eine Morse Karte um $p$ in einer Form wie in ~\ref{notation: morse umgebung},
+    Es sei $(\psi, V)$ eine Morse Karte um $p$ in einer Form wie in ~\ref{def: notation morse umgebung},
     also sodass $\eps, \eta > 0$ exitstieren, sodass $\psi(V) = U(\eps, \eta) := U$. Es sei außerdem
     $\phi$ der Fluss eines Pseudo-Gradientenfeldes von $f$. Dann ist 
     \[ \Phi \colon \psi^{-1}(\del_+ U \cap V_+) \times \R \to M ; \psi(q, t) = \phi_t(q) \]
@@ -77,6 +78,7 @@ Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
 \end{proof}
 
 \begin{prop}
+    \label{prop: trajektorien enden in kritischen punkten}
     Es sei $f \colon M \to \R$ eine Morse-Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. 
     Sei außerdem $M$ kompakt. Ist dann $\phi$ der Fluss von $X$, dann existieren für jeden Punkt 
     $p \in M$ kritische Punkte $q$ und $r$ von $f$, sodass
@@ -129,6 +131,8 @@ Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
     wir, dass $X$ die \textit{Smale-Bedingung} erfüllt, falls für alle kritischen Punkte $p$ und $q$ von 
     $f$ gilt 
     \[ \stab (p) \pitchfork \unst (q) . \]
+    Ein Paar $(f, X)$ aus einer Morse-Funktion $f$ und einem Pseudo-Gradientenfeld $X$, das die 
+    Smale-Bedingung erfüllt, nennt man \textit{Morse-Smale Paar}.
 \end{definition}
 
 \begin{prop}
@@ -179,6 +183,11 @@ Dann folgt direkt:
     ist eine Mannigfaltigkeit mit Dimension $k_1 - k_2$.
 \end{prop}
 
+Der Raum $\mathcal{M} (p, q)$ beinhaltet alle Punkte, die Auf Trajektorien zwischen den kritischen
+Punkten $p$ und $q$ liegen. 
+
+\todo{Zeichnung}
+
 \begin{prop}
     Ist $M$ kompakt, $f \colon M \to \R$ eime Morse Funktion, $p \neq q$ kritische Punkte mit Index
     $k_1, k_2$, dann wirkt $\R$ via $(p, t) \mapsto \phi_t(p)$ frei und eigentlich auf 
@@ -200,15 +209,36 @@ Dann folgt direkt:
     $f(\phi_t(x)) \neq f(\phi_0(x))$, also $\phi_t(x) \neq x$.
 \end{proof}
 
-Wir gewinnen eine wichtige Erkenntnis: Der Index von kritischen Punkten erhöht sich entlang von
-Trajektorien. Denn falls $\Index (p) < \Index (q)$, dann ist die Dimension von $\mathcal{M} (p, q)$
-kleiner $0$, also ist dann $\mathcal{M} (p, q) = \varnothing$.
+Der Raum $\Lt (p, q)$ enthält für jede Trajektorie, die zwischen den kritischen Punkten $p$ und $q$ 
+verläuft einen Repräsentanten. Später wird $\Lt (p, q)$ benutzt, um den Morse-Lomplex zu definieren.
+Die Smale Bedingung ist also für unsere Zwecke wichtig. 
 
-Außerdem ist falls $\Index (p) = \Index (q) + 1$ die Mannigfaltigkeit $\Lt(p, q)$ $0$-dimensional,
-also ist $\Lt (p, q)$ nichts als eine Ansammlung von Punkten. Wenn wir für jedes 
-$\ell \in \Lt (p, q)$ einen Repräsentanten auswählen, können wir $\Lt (p, q)$ als abgeschlossene Teilmenge 
-von $M$ betrachten, aber wir nehmen an dass $M$ kompakt ist, also ist auch $\Lt (p, q)$ kompakt, 
-besteht also nur aus endlich vielen Punkten.
+Wir gewinnen auch eine wichtige Erkenntnis: 
+
+\begin{corollary}
+    Der Index von kritischen Punkten erhöht sich entlang von Trajektorien. Denn falls 
+    $\Index (p) < \Index (q)$, dann ist die Dimension von $\mathcal{M} (p, q)$
+    kleiner $0$, also ist dann $\mathcal{M} (p, q) = \varnothing$.
+\end{corollary}
+
+Um also den Morse Komplex für jede (kompakte) Mnnigfaltigkeit definieren zu können, müssen wir noch die 
+Existenz von Morse-Smale Paaran zeigen. Sogar noch stärker ist die folgende Aussage:
+
+\begin{theorem}[Satz von Smale-Kupta]
+    Es sei $M$ eine Mannigfaltigkeit mit Rand  \\
+    und $f$ eine Morse-Funktion, sodass $f|_{\Crit{f}}$ bijektiv ist. Es sei $\Omega$ die Vereinigung 
+    von Morse-Umgebungen von allen kritischen Punkten. Sei $X$ ein Pseudo-Gradientenfeld von $f$. 
+    Dann existiert ein Pseudo-Gradientenfeld $X'$ von $f$, das die Smale Bedingung erfüllt, das 
+    innerhalb von $\Omega$ gleich $X$ ist und für das gilt:
+
+    Für jedes $\eps > 0$, jeden Atlas $(\phi_i, U_i)_{i \in I}$ von $M$ und alle $i \in I$ existiert 
+    für jede Kompakte Teilmenge $K_i \subseteq U_i$ ein Vektorfeld $X'$, sodass 
+    \[ \| \opd \phi_i^{-1} (\cdot) (X') - \opd \phi_i^{-1} (\cdot) (X) \| < \eps . \]
+\end{theorem}
+
+\begin{proof}
+    \todo{?} Der Beweis dieses Satzes ist zum Beispiel in \cite{audin} zu finden.
+\end{proof}
 
 \section{Der Morse-Komplex und der Raum der gebrochenen Trajektorien}
 
@@ -248,6 +278,127 @@ Offensichtlich gilt:
     \item Ist $\Index (p) + 2 = \Index (q)$, so ist 
         $\Lb (p, q) = \Lt (p, q) \cup \bigcup_{c \in \Crit (f)} \Lt(p, c) \times \Lt(c, q)$
 \end{itemize}
+
+Wir werden sehen, dass man wie mit der Notation angedeutet $\Lb (p, q)$ mit einer Topologie ausstatten 
+kann, sodass es die Kompaktifizierung von $\Lt (p, q)$ ist. (In der Tat ist ja 
+$\Lt (p, q) \subseteq \Lb (p, q)$).
+
+\begin{definition}[Topologie von $\Lb (p, q)$]
+    Ese seien $p$ und $q$ kritische Punkte von $f$. Wir erinnern uns an unsere Vorstellung von Morse-
+    Umgebungen $U = U(\eps, \eta)$ wie in~\ref{def: notation morse umgebung}:
+    \begin{itemize}
+        \item $\del_+ U$ sind alle Punkte auf dem Rand von $U$, auf denen Trajektorien von $X$ in 
+            die Umgebung $U$ eintreten.
+        \item $\del_- U$ sind alle Punkte auf dem Rand von $U$, auf denen Trajektorien von $X$ die
+            Umgebung $U$ verlassen.
+        \item Die Trajektorien von $X$ verlaufen tangential zu $\del_0 U$.
+    \end{itemize}
+    Es sei nun 
+    \[ \ell = (\lambda_1, \dots, \lambda_k) 
+        \in \Lt (p, c_1) \times \dots \times \Lt(c_{k - 1}, q) \subseteq \Lb (p, q) . \]
+    Seien $U_i = U_i (\eps_i, \eta_i)$ Morse Umgebungen von $c_i$ und $U_0$ und $U_k$ Morse 
+    Umgebungen von $p$ und $q$. $\lambda_i \cap \del_+ U_i$ ist der Punkt, an dem $\lambda_i$
+    in $U_i$ eintritt, und $\lambda_{i + 1} \cap \del_- U_i$ ist der Punkt, an dem $\lambda_{i + 1}$
+    die Umgebung $U_i$ verlässt. Es sei $U_i^-$ eine Umgebung von $\lambda_i \cap \del_+ U_i$ in 
+    $\del_+ U$ und $U_i^-$ eine Umgebung von $\lambda_{i + 1} \cap \del_- U_i$ in $\del_- U_i$. 
+    Seien dann $U^- = \bigcup U_i^-$ und $U^+ = \bigcup U_i^+$. Dann definiere die Menge 
+    $\mathcal{U} (\ell, U^-, U^+)$ wie folgt:
+
+    Wir sagen 
+    $\ell' = (\mu_1, ..., \mu_{k'}) \in \Lt (p, c_{i_1}) \times \dots \times \Lt (c_{i_{k'-1}}, q)$
+    ist in $\mathcal{U}(\ell, U^-, U^+)$ enthalten, falls $\mu_j \cap U_j^+ \neq \varnothing$
+    und $\mu_j \cap U_{j + 1}^- \neq \varnothing$. 
+    Dann ist $\mathcal{W} \subseteq \Lb (p, q)$ offen genau dann, wenn es für jedes 
+    $\ell \in \mathcal{W}$ Umgebungen $U^+$ und $U^-$ wie oben gibt, sodass 
+    $\mathcal{U}(\ell, U^+, U^-) \subseteq \mathcal{W}$.
+\end{definition}
+
+\begin{remark}
+    Die Topologie von $\Lt(p, q)$ als Quotient stimmt mit der von $\Lb(p, q)$ überein.
+    \todo{}
+\end{remark}
+
+\begin{prop}
+    \label{prop: Lb ist kompakt}
+    Es seien $p$ und $q$ kritische Punkte von $f$. Dann ist $\Lb (p, q)$ kompakt.
+\end{prop}
+
+Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
+
+\begin{lemma}
+    \label{lemma: konvergenz einer folge}
+    Es sei $x \in M$ \emph{kein} kritischer Punkt von $f$. Sei außerdem $(x_n)_n$ eine Folge in
+    $M$ die gegen $x$ kovnvergiert und seien $y_n$ und $y$ Punkte, die auf den selben Trajektorien
+    wie $x_n$ und $x$ liegen. Es gelte außerdem $f(y_n) = f(y)$ für alle $n \in \N$. Dann gilt
+    \[ \lim_{n \to + \infty} y_n = y . \]
+\end{lemma}
+
+\begin{proof}
+    Es sei $U$ eine Umgebung von $\Crit (f)$. Dann ist $\opd f (\cdot) (X)$ nie Null, und ähnlich wie 
+    Im Beweis vom ersten Deformationslemma~\ref{satz: erstes deformationslemma} betrachten wir das
+    Vektorfeld 
+    \[ Y = - \frac{1}{\opd f (\cdot) (X)} \cdot X \]
+    Auf $M - U$. Sei $\phi$ die von $Y$ erzeugte 1-Parameter Gruppe aus Diffeomorphismen. 
+    Da $Y$ in die selbe Richtung zeigt wie $X$, stimmen die Trajektorien von $Y$ mit denen von $X$ 
+    überein und es gilt 
+    \[ f(\phi_t(z)) = f(z) - t . \]
+    Dann gilt
+    \[ \lim_{n \to \infty} y_n 
+    = \lim_{n \to \infty} \phi_{- f(y_n) + f(x_n)}(x_n) 
+    = \lim_{n \to \infty} \phi_{- f(y) + f(x_n)}(x_n) 
+    = \phi_{- f(y) + f(x)}(x) = y \]
+\end{proof}
+
+\begin{proof}[Beweis von Proposition~\ref{prop: Lb ist kompakt}]
+    Es sei $(\ell_n)_n$ eine Folge in $\Lb (p, q)$. Um zu zeigen, dass $Lb (p, q)$ kompakt ist
+    müssen wir zeigen, dass $(l_n)_n$ eine konvergente Teilfolge besitzt.
+
+    Wir nehmen zuerst an, dass für alle $n \in \N$ die Trajektorie $\ell_n$ in $\Lt (p, q)$.
+    Seien $U$ und $V$ Morse Umgebungen von $p$ und $q$ in der Form wie bei der eingeführten
+    Notation für Morse Umgebungen~\ref{def: notation morse umgebung}.
+    Es außerdem sei $\ell_n^- \in M$ der Punkt, an dem $\ell_n$ die Morse Umgebung $U$ verlässt 
+    und $\ell_n^- \in M$ der Punkt, an dem $\ell_n$ in die Morse Umgebung $V$ eintritt.
+    $\ell_n^-$ und $\ell_n^+$ sind im Schnitt von $\del U$ bzw. $\del V$ und der stabilen bzw. 
+    instabilen Mannigfaltigkeit. Diese Schnitte sind Kugeloberflächen, also kompakt. Die Folgen 
+    $(l_n^-)_n$ und $(\ell_n^+)_n$ haben also konvergente Teilfolgen, wir können demnach ohne 
+    Beschränkung der Allgemeinheit annehmen, dass sie konvergent sind. Setze
+    \[ \lim_{n \to \infty} \ell_n^- = p^- \text{ und } \lim_{n \to \infty} \ell_n^+ = q^+ . \]
+    Sei $\phi$ die von $X$ erzeugte 1-Parameter Gruppe aus Diffeomorphismen, dann ist 
+    $\gamma = \phi_{\bullet}(p^-)$ die Trajektorie von $p^-$. Sei 
+    $c = \lim_{n \to \infty} \phi_t(p^-)$. $c$ ist nach 
+    Proposition~\ref{prop: trajektorien enden in kritischen punkten} ein kritischer Punkt,
+    also ist $\gamma \in \Lt (p, c)$. Es sei nun $W$ eine Morse-Umgebung von $c$, die auch
+    die Form hat wie in~\ref{def: notation morse umgebung}. Da $\phi$ glatt ist, muss für $n$ 
+    groß genug auch $\ell_n$ die Morse Umgebung $W$ von $c$ kreuzen. Sei $d_n^+ \in M$ der Punkt, an
+    dem $\ell_n$ in $W$ eintritt. Dann gilt $d_n^+, d^+ \in \del_+ W$, also gilt $f(d_n^+) = f(d^+)$
+    für alle $n$. Da $d_n^+$ auf der selben trajektorie wie $p_n^-$ liegt, und $d^+$ auf der selben 
+    Trajekorie wie $p^-$,folgt da $\lim p_n^- = p^-$ mit dem letzten 
+    Lemma~\ref{lemma: konvergenz einer folge}: 
+    \[ \lim_{n \to \infty} d_n^+ = d^+ . \]
+    Falls $c = q$, dann ist $\lim \ell_n = \gamma \in \Lt (p, q) \subseteq \Lb (p, q)$, also hat 
+    dann die Folge $(\ell_n)_n$ eine konvergente Teilfolge. Es sei also $c \neq q$. Dann muss 
+    $\ell_n$ die Morse Umgebung $W$ wieder durch einen Punkt $d_n^-$ verlassen. Wie oben können wir 
+    ohne Beschränkung der Allgemeinheit annehmen, dass die Folge $(d_n^-)_n$ konvergent ist, da
+    sie zumindest eine konvergente Teilfolge besitzt. Wir definieren dann $d^- = \lim d_n^-$. 
+    $d^-$ liegt in der instabielen Mannigfaltigkeit von $c$, denn wäre dies nicht der Fall, dann 
+    führt das zu einem Widerspruch:
+    
+    Angenommen $d^- \notin \unst (c)$. Dann wäre $d^-$ auf der Trajektorie von einem Punkt
+    $d^+_{\ast} \in \del_+ W$, der nicht in $\stab (c)$ enthalten ist. Wieder wegen des vorherigen
+    Lemmas~\ref{lemma: konvergenz einer folge} ist dann $\lim d_n^+ = d^+_{\ast}$, also gilt dann
+    $d^+ = d^+_{\ast}$, aber es gilt $d^+ \in \stab{c}$.
+    
+    Wir können nun wieder mit dem selben Argument zeigen, dass dann die Trajektorie von $d^-$ im
+    kritischen Punkt $q$ endet, also liegt dann $\lim \ell_n$ in $\Lt (p, c) \times \Lt (c, q)$.
+
+    Jetzt fehlt uns noch der allgemeine Fall. Wir müssen also für eine Folge $(\ell_n)_n$ in 
+    $\Lb (p, q)$ zeine konvergente Teilfolge finden. Wegen der Glattheit von $\phi$ können wir annehmen,
+    dass für $n$ groß genug alle $\ell_n$ die Form 
+    \[ \ell_n = (\ell^1_n, \dots, \ell^k_n) \in \Lt (p, c_1) \times \dots \times \Lt (c_{k - 1}, q) \]
+    haben. Wir finden mit der vorheringen Überlegung komponentenweise eine Teilfolge, sodass wir 
+    für den grenzwert maximal noch $k - 1$ kritische Punkte als \glqq Zwischenstopp\grqq{} einfügen
+    müssen. 
+\end{proof}
 
 \begin{theorem}[Klassifizierung kompakter 1-Mannigfaltigkeiten]
     Es sei $M$ eine kompakte zusammenhängende Mannigfaltigkeit mit Rand. Dann ist
