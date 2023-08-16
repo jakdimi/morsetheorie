@@ -1,5 +1,4 @@
 \chapter{Der Morse-Komplex}
-dfgdfgdfg
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
 Morse-Komplex ein Kettenkomplex ist.
 
@@ -28,7 +27,7 @@ fixieren wir ein Paar Notationen zu Morse Umgebungen.
     Der Gradient von $Q$ ist mit dem Standardskalarprodukt auf $\R^n$
     \[ \grad Q (x_-, x_+) = 2(x_-, x_+) . \]
     Seien nun $\eps, \eta > 0$. Dann setzen wir
-    \[ U(\eps, \eta) := \left\{ x \in \R^n : - \eps < Q(x) < \eps 
+    \[ U(\eps, \eta) := \left\{ x \in \R^n : - \eps \leq Q(x) \leq \eps 
     \text{ und } \| x_- \|^2 \| x_+ \|^2 \leq \eta(\eps + \eta) \right\} := U \]
     Wir definieren außerdem
     \begin{align*}
@@ -44,13 +43,32 @@ fixieren wir ein Paar Notationen zu Morse Umgebungen.
     Es gilt 
     \[ \del U \cap V_{\pm} \subseteq \del_{\pm} U . \]
 
-    Ist nun $f \colon M \to \R$ eine Morse Funktion, $p$ ein kritischer Punkt von $f$ und $(U, \phi)$
-    eine Morse Umgebung von $p$, dann hat $\phi \circ (f - f(p))$ auf $U$ genau die Form von $Q$, wenn
-    $k$ der Index von $p$ ist. Dann gilt 
-    \[ 
-        \phi(\stab(p) \cap U) = V_- \cap \phi(U) \text{ und } 
-        \phi(\unst(p) \cap U) = V_+ \cap \phi(U) .
-    \]
+    Ist nun $f \colon M \to \R$ eine Morse Funktion, $p$ ein kritischer Punkt von $f$ und $(V, \psi)$
+    eine Morse Umgebung von $p$, dann gilt $f \circ \psi^{-1} = Q + f(p)$. Sind $\eps$ und $\eta$
+    klein genug, dann ist $U \subset \psi(V)$. Wir nennen $\Omega (p) = \psi^{-1}(U)$,
+    $\del_{\pm} \Omega (p) = \psi^{-1}(\del_{\pm}U)$ und $\del_0 \Omega (p) = \psi^{-1} (\del_0 U)$.
+    Dann ist 
+    \[ \psi(\stab (p) \cap \Omega (p)) = V^+ \cap U \] 
+    und 
+    \[ \psi(\unst (p) \cap \Omega (p)) = V^- \cap U . \]
+    Wir können uns also mit dieser Notation die stabile- und instabile Mannigfaltigkeit (wenigstens 
+    in einer Umgebung von $p$) sehr gut vorstellen.
+
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}{.4\textwidth}
+          \centering
+          \includegraphics[width=.4\linewidth]{../resources/def-notation-morse-umgebung-1.JPG}
+          \captionof{figure}{Index $0$}
+          \label{fig: morse umgebung ind 0}
+        \end{minipage}%
+        \begin{minipage}{.4\textwidth}
+          \centering
+          \includegraphics[width=.4\linewidth]{../resources/def-notation-morse-umgebung-2.JPG}
+          \captionof{figure}{Index $k$, $0 < k < n$}
+          \label{fig: morse umgebung ind k}
+        \end{minipage}
+    \end{figure}
 \end{definition}
 
 Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
@@ -244,17 +262,19 @@ Existenz von Morse-Smale Paaran zeigen. Sogar noch stärker ist die folgende Aus
 
 Wir sind nun bereit, den Morse-Komplex mit Koeffizienten in $\F_2$ (wenigstens) hinzuschreiben.
 Wir fixieren für den gesamten Abschnitt eine glatte kompakte Mannigfaltigkeit $M$ und ein
-Morse-Smale Paar $(f, X)$. Dann definiere
-$C_k (M, (f, X))$ als das $\F_2$ Modul, das von den kritischen Punkten von $f$ mit Index $k$ 
-erzeugt wird. Außerdem sei $n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Wert
-$p$:
+Morse-Smale Paar $(f, X)$, und für jeden kritischen Punkt $p$ von $f$ eine Morse Umgebung 
+$(\psi_p, \Omega(p))$, sodass $\psi(\Omega(p)) = U(\eps_p, \eta_p)$ wie in der Notation zu Morse 
+Umgebungen~\ref{def: notation morse umgebung}. Dann definiere $C_k (M, (f, X))$ als das $\F_2$ Modul, 
+das von den kritischen Punkten von $f$ mit Index $k$ erzeugt wird. Außerdem sei 
+$n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Wert $p$:
 \[ \del_X (p) := \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} \del_X(p, q)p . \]
 
-Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ ein Kettenkomplex
-ist, also dass $\del_X \circ \del_X = 0$. 
+Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ wohldefiniert
+ist, also dass gilt $n_X (p, q) < \infty$, und dass es ein Kettenkomple ist, also dass 
+$\del_X \circ \del_X = 0$. Sobald das gezeigt wurde ist es ein Leichtes, den Komplex auch über die 
+ganzen Zahlen zu definieren.
 
-Sind dafür $p$ und $q$ zwei kritische Punkte von $f$ mit $\Index (p) = \Index (q) + 2$, dann genügt es 
-zu zeigen, dass $\# \Lt (p, q)$ gerade ist. Dafür benötigen wir folgende Konstruktion:
+\subsection*{Wohldefiniertheit}
 
 \begin{definition}[Der Raum der gebrochenen Trajektorien]
     \label{def: raum der gebrochenen trajektorien}
@@ -400,7 +420,23 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
     müssen. 
 \end{proof}
 
+\begin{remark}
+    Sind nun $p$ und $q$ kritische Punkte von $f$ mit $\Index (p) = \Index (q) + 1$, dann ist 
+    $\Lt(p, q)$ $0$-dimensionale Mannigfaltigkeit. Außerdem ist $\Lt (p, q)$ eine Abgeschlossene
+    Teilmenge von $\Lb (p, q)$, und wie wir in der letzten Proposition~\ref{prop: Lb ist kompakt}
+    gezeigt haben, ist $\Lb(p, q)$ kompakt, also auch $\Lt(p, q)$, also ist $\Lt (p, q)$ endlich.
+    Damit ist schon mal $n_X (p, q)$ wohldefiniert.
+\end{remark}
+
+\subsection*{Der Morse Komplex ist ein Kettenkomplex}
+
+Wir wollen zeigen, dass der Morse-Komplex tatsächlich ein Kettenkomplex ist, also dass $\del^2 = 0$.
+Dafür genügt es zu zeigen, dass für einen kritischen Punkt $p$ mit Index $k + 1$ gilt $\del^2 (0) = 0$, 
+also dass für jeden weiteren kritischen Punkt mit Index $k + 1$ gilt, dass die Zahl
+$\# (\Lb (p, q) - \Lt (p, q))$ gerade ist. Wir benutzen die folgende Aussage, ohne sie zu beweisen:
+
 \begin{theorem}[Klassifizierung kompakter 1-Mannigfaltigkeiten]
+    \label{satz: klassifizierung kompakter 1-mannigfaltigkeiten}
     Es sei $M$ eine kompakte zusammenhängende Mannigfaltigkeit mit Rand. Dann ist
     \begin{itemize}
         \item $M$ diffeomorph zu $S^1$, falls $\del M = \varnothing$
@@ -408,39 +444,110 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
     \end{itemize}
 \end{theorem}
 
-\begin{proof}
-    Betrachte zuerst den ersten Fall, also dass $M$ keinen Rand hat. Es sei 
-    $\{ (U_1, \phi_1), \dots, (U_n, \phi_n) \}$ ein Atlas von $M$. Ohne Beschränkung der 
-    Allgemeinheit können wir annehmen, dass alle $U_i$ zusammenhängend sind. 
-    Da $M$ zusammenhängend ist, können wir außerdem annehmen, dass 
-    $\bigcup_{i = 1}^k U_i$ für alle $k$ zusammenhängend ist. Dann existiert ein $1 \leq k < n$, 
-    sodass $\bigcup_{i = 1}^k U_i$ diffeomorph zu $\R$ ist, aber $\bigcup_{i = 1}^{k + 1} U_i$ 
-    nicht. Setze $U := \bigcup_{i = 1}^k U_i$ und $V = U_{k + 1}$. Seien $\phi \colon U \to \R$
-    und $\psi \colon V \to \R$ Diffeomorphismen. 
-    \begin{claim*}
-        Ist $M = U \cup V$ eine 1-dimensionale Mannigfaltigkeit, $U$ und $V$ diffeomorph zu 
-        $\R$, dann ist $M$ diffeomorph zu $S^1$ oder $\R$.
-    \end{claim*}
+% \begin{proof}
+%     Betrachte zuerst den ersten Fall, also dass $M$ keinen Rand hat. Es sei 
+%     $\{ (U_1, \phi_1), \dots, (U_n, \phi_n) \}$ ein Atlas von $M$. Ohne Beschränkung der 
+%     Allgemeinheit können wir annehmen, dass alle $U_i$ zusammenhängend sind. 
+%     Da $M$ zusammenhängend ist, können wir außerdem annehmen, dass 
+%     $\bigcup_{i = 1}^k U_i$ für alle $k$ zusammenhängend ist. Dann existiert ein $1 \leq k < n$, 
+%     sodass $\bigcup_{i = 1}^k U_i$ diffeomorph zu $\R$ ist, aber $\bigcup_{i = 1}^{k + 1} U_i$ 
+%     nicht. Setze $U := \bigcup_{i = 1}^k U_i$ und $V = U_{k + 1}$. Seien $\phi \colon U \to \R$
+%     und $\psi \colon V \to \R$ Diffeomorphismen. 
+%     \begin{claim*}
+%         Ist $M = U \cup V$ eine 1-dimensionale Mannigfaltigkeit, $U$ und $V$ diffeomorph zu 
+%         $\R$, dann ist $M$ diffeomorph zu $S^1$ oder $\R$.
+%     \end{claim*}
 
-    \begin{smallproof}
-        Ohne Beschränkung der Allgemeinheit ist $U \not\subseteq V$ und \\ 
-        $V \not\subseteq U$. Dann gibt es zwei Möglichkeiten:
-        \begin{itemize}
-            \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind offene Halbintervalle
-            \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind jeweils die disjunkte Vereinigung
-                zweier offener Halbintervalle
-        \end{itemize}
-        Im ersten Fall ist $M$ homeomorph zu $\R$:
+%     \begin{smallproof}
+%         Ohne Beschränkung der Allgemeinheit ist $U \not\subseteq V$ und \\ 
+%         $V \not\subseteq U$. Dann gibt es zwei Möglichkeiten:
+%         \begin{itemize}
+%             \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind offene Halbintervalle
+%             \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind jeweils die disjunkte Vereinigung
+%                 zweier offener Halbintervalle
+%         \end{itemize}
+%         Im ersten Fall ist $M$ homeomorph zu $\R$:
 
-        Wir dürfen annehmen, dass $\phi(U \cap V) = (- \infty, a)$ und $\psi(U \cap V) = (b, \infty)$,
-        ansonsten ersetze $\phi$ mit $\-phi$ bzw. $\psi$ mit $-\psi$. Die Verkettung
-        \[ \begin{tikzcd}
-            (- \infty, a) = \phi(U \cap V) \arrow[r, "\phi^{-1}"] & 
-                U \cap V \arrow[r, "\psi"] & 
-                \psi(U \cap V) = (b, \infty)
-        \end{tikzcd} \] 
+%         Wir dürfen annehmen, dass $\phi(U \cap V) = (- \infty, a)$ und $\psi(U \cap V) = (b, \infty)$,
+%         ansonsten ersetze $\phi$ mit $\-phi$ bzw. $\psi$ mit $-\psi$. Die Verkettung
+%         \[ \begin{tikzcd}
+%             (- \infty, a) = \phi(U \cap V) \arrow[r, "\phi^{-1}"] & 
+%                 U \cap V \arrow[r, "\psi"] & 
+%                 \psi(U \cap V) = (b, \infty)
+%         \end{tikzcd} \] 
         
-        Ist insbesondere injektiv, also auch monoton wachsend. 
-        \todo{}
-    \end{smallproof}
+%         Ist insbesondere injektiv, also auch monoton wachsend. 
+%         \todo{}
+%     \end{smallproof}
+% \end{proof}
+
+\begin{prop}
+    \label{prop: gebrochene trajektorien sind 1-dim mannigfaltigkeit}
+    Es seiein $p$ und $q$ kritische Punkte von $f$ mit $\Index (p) = k + 1$ und $\Index (q) = k - 1$
+    für ein $k \in \N_0$. Dann ist $\Lb (p, q)$ eine 1-dimensionale Mannigfaltigkeit mit Rand, und das
+    Innere von $\Lb (p, q)$ ist $\Lt (p, q)$.
+\end{prop}
+
+Mit dieser Proposition folgt dann mit der Kalssifizierung von $1$-Mannigfaltigkeiten mit 
+Rand~\ref{satz: klassifizierung kompakter 1-mannigfaltigkeiten} schon, dass der Morse Komplex ein
+Kettenkomplex ist.
+
+\begin{proof}
+    Wir wissen schon, dass $\Lt (p, q) \subseteq \Lb(p, q)$ eine $1$-dimensionale Mannigfaltigkeit ist. 
+    Um sagen zu können, dass $\Lb (p, q)$ eine $1$-dimensionale Mannigfaltigkeit mit Rand ist, und 
+    insbsondere, dass $\Lb (p, q)$ das Innere von $\Lt(p, q)$ ist, reicht die folgende Aussage über 
+    $\Lb(p, q)$:
+    Es sei $c$ ein weiterer kritischer Punkt mit Index $k$.
+    Sei $\lambda_1 \in \Lt (p, c)$ und $\lambda_2 \in \Lt (c, q)$. Dann existiert eine offene Umgebung
+    $U \subseteq \Lb (p, q)$ von $(\lambda_1, \lambda_2)$, ein $\delta > 0$ und ein Homeomorphismus
+    $\psi \colon [0, \delta) \to U$, sodass gelten: 
+    \begin{enumerate}
+        \item $\psi|_{(0, \delta)}$ ist glatt.
+        \item $\psi(0) = (\lambda_1, \lambda_2)$.
+        \item $\psi((0, \delta)) \subseteq \Lt (p, q)$.
+        \item Für jede Folge $(\ell_n)_n$ in $\Lt (p, q)$ die gegen $(\lambda_1, \lambda_2)$ konvergiert 
+            gilt $\ell_n \in \Ima \psi$ für $n$ groß genug.
+    \end{enumerate} 
+    Die letzten beiden Bedingungen stellen sicher, dass $\Lt (p, q)$ tatsächlich das Innere von 
+    $\Lb (p, q)$ ist.
+    Wir begeben uns also auf die (recht lange) Suche nach einer solchen Abbildung $\psi$. 
+
+    Wir machen ein Paar Konstruktionen. Sei $\alpha := f(c)$ und $\Omega(c)$ eine Umgebung von $c$ wie 
+    in der Notation zu Morse Umgebungen~\ref{def: notation morse umgebung}. Dann sind 
+    $f(\del_+ \Omega) = \alpha + \eps$ und $f(\del_- \Omega) = \alpha - \eps$ für ein $\eps > 0$.
+    Außerdem gilt, wie schon vorher, dass 
+    \begin{align*}
+        S_+ (c) := & \stab (c) \cap f^{-1}(\alpha + \eps) \isom S^{n - k - 1} \\
+        S_- (c) := & \unst (c) \cap f^{-1}(\alpha - \eps) \isom S^{k - 1} .
+    \end{align*}
+    Es sei $a_1 \in M$ der Punkt, an dem $\lambda_1$ auf $\Omega(c)$ trifft, also 
+    $a_1 = S_+ (c) \cap \lambda_1$, und $a_2$ der Punkt, an dem $\lambda_2$ die Umgebung $\Omega (c)$ 
+    wieder verlässt, also $a_2 = S_- (c) \cap \lambda_2$. Es sei $D^(\eps) \subseteq $
+
+    \begin{figure}
+        \centering
+        \begin{minipage}{.5\textwidth}
+          \centering
+          \includegraphics[width=.85\linewidth]{../resources/bew-gebrochene-trajektorien-sind-1-dim-mannigfaltigkeit-1.JPG}
+          \captionof{figure}{A figure}
+          \label{fig: test1}
+        \end{minipage}%
+        \begin{minipage}{.5\textwidth}
+          \centering
+          \includegraphics[width=.85\linewidth]{../resources/bew-gebrochene-trajektorien-sind-1-dim-mannigfaltigkeit-2.JPG}
+          \captionof{figure}{Another figure}
+          \label{fig: test2}
+        \end{minipage}
+    \end{figure}
+
+    Man betrachte die Abbildungen~\ref{fig: test1} und~\ref{fig: test2}.
+
+    $D$ ist eine Umgebung von dem Punkt $a_1$, an dem $\lambda_1$ auf den Rand der Morse Umgebung 
+    trifft. Die Idee des Beweises ist es, die Menge $D - a_1$ entlang der Trajektorien von $X$ auf den 
+    Teil des Randes der Morse Umgebung, an denen die Trajektorien austreten, via einer Abbildung $\Phi$ 
+    zu projizieren. Fügen wir nun den Punkt $a_2$, an dem $\lambda_2$ auf den Rand der Morse Umgebung 
+    trifft zum Bild dieser Menge hinzu, dann bekommen wir eine 1-dimensionale Mannigfaltigkeit mit Rand, 
+    und der Rand ist $a_2$. Wir können also eine Umgebung von $a_2$ in $\Ima \Phi \cup a_2$ via einer
+    Abbildung $\chi \colon [0, \delta)$ parametrisieren, aber in dieser Umgebung können wir auch jeden 
+    Punkt mit einer Trajektorie in $\Lb (p, q)$ identifizieren.
 \end{proof}
