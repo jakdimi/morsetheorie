@@ -29,7 +29,8 @@
 	\def\translation@Claim{Claim}%
 	\def\translation@Proofofclaim{Proof of claim}%
 	\def\translation@Proofoftheclaim{Proof of the claim}%
-	\RequirePackage[english]{babel}
+	\renewcommand\figurename{Fig.}%
+	\RequirePackage[english]{babel}%
 \else%
 \fi
 
@@ -44,8 +45,9 @@
 	\def\translation@Claim{Behauptung}%
 	\def\translation@Proofofclaim{Beweis von Behauptung}%
 	\def\translation@Proofoftheclaim{Beweis der Behauptung}%
-	\RequirePackage[german]{babel}
-	\renewcommand*\contentsname{Inhalt}
+	\RequirePackage[german]{babel}%
+	\renewcommand*\contentsname{Inhalt}%
+	\renewcommand\figurename{Abb.}%
 \else%
 \fi
 
@@ -135,6 +137,7 @@
     linkcolor=DarkBlue,
     filecolor=LightBlue,      
     urlcolor=DarkBlue,
+	citecolor=DarkBlue,
     pdftitle={Overleaf Example},
     pdfpagemode=FullScreen,
     }
@@ -222,6 +225,7 @@
 % \renewcommand{\varphi}{\phi}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\isom}{\approx}
+\newcommand{\B}{\mathcal{B}}
 
 % partial derivative commands
 \newcommand{\pderive}[2][]{{ 

@@ -1,263 +1,3 @@
-\chapter{Der Morse-Komplex}
-In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
-Morse-Komplex ein Kettenkomplex ist.
-
-\section{Die stabile- und instabile Mannigfaltigkeit und die Smale-Bedingung}
-
-\begin{definition}[Stabile- und instabile Mannigfaltigkeit]
-    \label{def: stabile und instabile mannigfaltigkeit}
-    Es sei $f \colon M \to \R$ eine Morse-Funktion, $p$ ein kritischer Punkt von $f$ und $X$ ein
-    Pseudo-Gradientenfeld von $f$. Die stabile Mannigfaltigkeit von $f$ ist die Menge
-    \[ \stab (p) = \left\{ q \in M : \lim_{t \to + \infty} \phi_t(q) = p \right\} \]
-    und die instabile Mannigfltigkeit ist
-    \[ \unst (p) = \left\{ q \in M : \lim_{t \to - \infty} \phi_t(q) = p \right\} . \]
-\end{definition}
-
-Bevor wir die stabile- und instabile Mannigfaltigkeit eines kritischen Punktes weiter untersuchen, 
-fixieren wir ein Paar Notationen zu Morse Umgebungen.
-
-\begin{definition}[Notationen zu Morse Umgebungen]
-    \label{def: notation morse umgebung}
-    Zuerst untersuchen wir eine quadratische Form, die die Form hat wie Funktionen in Morse
-    Umgebungen, also
-    \[ Q \colon \R^n \to \R ; Q(x_1, \dots, x_n) = - x_1 - \dots - x_k + x_{k + 1} + \dots + x_n \]
-    für ein $1 \leq k \leq n$.
-    Mit $x_- := (x_1, \dots x_k) \colon \R^n \to \R^k$ und $x_+ := (x_{k + 1} \dots x_n)$ gilt dann
-    \[ Q = - \| x_- \|^2 + \| x_+ \|^2 . \]
-    Der Gradient von $Q$ ist mit dem Standardskalarprodukt auf $\R^n$
-    \[ \grad Q (x_-, x_+) = 2(x_-, x_+) . \]
-    Seien nun $\eps, \eta > 0$. Dann setzen wir
-    \[ U(\eps, \eta) := \left\{ x \in \R^n : - \eps \leq Q(x) \leq \eps 
-    \text{ und } \| x_- \|^2 \| x_+ \|^2 \leq \eta(\eps + \eta) \right\} := U \]
-    Wir definieren außerdem
-    \begin{align*}
-        \del_{\pm} U := & \left\{ x \in U: Q(x) = \pm \eps \text{ und } \|x_{\mp} \|^2 \leq \eta \right\} 
-            \text{ und} \\
-        \del_0 U := & \left\{ x \in \del U: \| x_- \|^2 \| x_+ \|^2 = \eta(\eps + \eta) \right\} .
-    \end{align*}
-    Dann gilt 
-    \[ \del U = \del_+ \cup \del_- \cup \del_0 . \]
-    Wir setzen nun $V_- = \langle e_1, \dots, e_k \rangle$ und 
-    $V_+ = \langle e_1, \dots, e_n \rangle \subseteq \R^n$. $V_+$ ist der größte Vektorraum, 
-    auf dem $Q$ positiv definit ist und $V_-$ der größte Vektorraum, auf dem $Q$ negativ definit ist. 
-    Es gilt 
-    \[ \del U \cap V_{\pm} \subseteq \del_{\pm} U . \]
-
-    Ist nun $f \colon M \to \R$ eine Morse Funktion, $p$ ein kritischer Punkt von $f$ und $(V, \psi)$
-    eine Morse Umgebung von $p$, dann gilt $f \circ \psi^{-1} = Q + f(p)$. Sind $\eps$ und $\eta$
-    klein genug, dann ist $U \subset \psi(V)$. Wir nennen $\Omega (p) = \psi^{-1}(U)$,
-    $\del_{\pm} \Omega (p) = \psi^{-1}(\del_{\pm}U)$ und $\del_0 \Omega (p) = \psi^{-1} (\del_0 U)$.
-    Dann ist 
-    \[ \psi(\stab (p) \cap \Omega (p)) = V^+ \cap U \] 
-    und 
-    \[ \psi(\unst (p) \cap \Omega (p)) = V^- \cap U . \]
-    Wir können uns also mit dieser Notation die stabile- und instabile Mannigfaltigkeit (wenigstens 
-    in einer Umgebung von $p$) sehr gut vorstellen.
-
-    \begin{figure}[H]
-        \centering
-        \begin{minipage}{.4\textwidth}
-          \centering
-          \includegraphics[width=.4\linewidth]{../resources/def-notation-morse-umgebung-1.JPG}
-          \captionof{figure}{Index $0$}
-          \label{fig: morse umgebung ind 0}
-        \end{minipage}%
-        \begin{minipage}{.4\textwidth}
-          \centering
-          \includegraphics[width=.4\linewidth]{../resources/def-notation-morse-umgebung-2.JPG}
-          \captionof{figure}{Index $k$, $0 < k < n$}
-          \label{fig: morse umgebung ind k}
-        \end{minipage}
-    \end{figure}
-\end{definition}
-
-Wir sind nun bereit eine grundlegende aber wichtige Aussage zu beweisen.
-
-\begin{prop}
-    Ist $f \colon M \to \R$ eine Morse Funktion und $p$ ein kritischer Punkt von $f$, dann sind
-    $\stab (p)$ und $\unst (p)$ Mannigfaltigkeiten mit 
-    \[ \dim \unst (p) = n - \dim \stab (p) = \Index (p) \]
-\end{prop}
-
-\begin{proof}
-    Es sei $(\psi, V)$ eine Morse Karte um $p$ in einer Form wie in ~\ref{def: notation morse umgebung},
-    also sodass $\eps, \eta > 0$ exitstieren, sodass $\psi(V) = U(\eps, \eta) := U$. Es sei außerdem
-    $\phi$ der Fluss eines Pseudo-Gradientenfeldes von $f$. Dann ist 
-    \[ \Phi \colon \psi^{-1}(\del_+ U \cap V_+) \times \R \to M ; \psi(q, t) = \phi_t(q) \]
-    eine Einbettung und es gilt 
-    \[ \stab (p) = \Ima \Phi \cup \psi^{-1}(U \cap V_+) . \]
-    Tatsächlich ist 
-    \[ \stab (p) - \Ima \Phi = \{ p \} . \]
-    Außerdem ist $\del_+ U \cap V_+ = \{ x \in \R^n: \| x_+ \|^2 = \eps \} \isom S^{n - k - 1}$, 
-    denn für alle $x \in V_+$ gilt sowieso schon $x_- = 0$. Also ist $ \stab(p)$ diffeomorph zum Raum 
-    $S^{n - k - 1} \times (-\infty, \infty]/\sim$, in dem alle Punkte in $\infty$ zusammengeklebt 
-    werden. Dieser Quotient ist wiederum diffeomorph zur offenen Kreisscheibe mit Dimension $n - k$.
-    Genauso zeigt man, dass $W^u (p)$ diffeomorph zur offenen Kreisscheibe mit Dimension $k$ ist.
-\end{proof}
-
-\begin{prop}
-    \label{prop: trajektorien enden in kritischen punkten}
-    Es sei $f \colon M \to \R$ eine Morse-Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. 
-    Sei außerdem $M$ kompakt. Ist dann $\phi$ der Fluss von $X$, dann existieren für jeden Punkt 
-    $p \in M$ kritische Punkte $q$ und $r$ von $f$, sodass
-    \[ \lim_{t \to + \infty} \phi_t(p) = q \;\;\; 
-    \text{ und } \;\;\; \lim_{t \to -\infty} \phi_t(p) = r \]
-\end{prop}
-
-\begin{proof}
-    Wir zeigen die erste Aussage. Seien für kritische Punkte $q$ $(U_q, \psi_q)$ die Karten, 
-    auf denen der Pseudo Gradient mit dem negativen Gradienten auf $\R^n$ übereinstimmt. 
-    Es ist $\lim_{t \to + \infty} \phi_t(p) = q$, genau dann wenn
-    der Fluss $\phi_{\bullet}(p)$ den Punkt $p$ irgendwann in die Umgebung 
-    $\del_+\psi_q(U_q) \cap \stab(q)$ transportiert. Angenommen $\phi_{\bullet}(p)$ transportiert
-    $p$ nie zu einem kritischen Punkt. Jedes mal wenn $\phi_{\bullet}(p)$ also ins Innere einer
-    Morse-Umgebung $U_q$ gerät, muss diese Umgebung auch wieder verlassen werden. Da 
-    $f \circ \phi_{bullet}(p)$ monoton ist, kann nachdem $\phi_{bullet}(p)$ die Morse-Umgebung $U_q$
-    verlassen hat, nie wieder zu dieser zurückgekehrt werden.
-    Sei also 
-    \[ U = \bigcup_{q \in \Crit(f)} U_q \]
-    und $t_0$ der Zeitpunkt an dem $\phi_{\bullet} (p)$ die Umgebung $U$ das letzte mal verlässt.
-    Da $M - U$ keine kritischen Punkte von $f$ enthält existiert ein $\eps_0 > 0$, sodass für alle 
-    $x \in M - U$ gilt 
-    \[ \opd f (x) ((X(x))) \leq - \eps_ . \]
-    Wir rechnen also: Für jedes $t \geq t_0$ gilt
-    \begin{align*}
-        f(\varphi_t(p) - f(\varphi_{t_0}(p))) = & 
-            \int_{t_0}^t \derive[f \circ \phi_{\bullet}(p)]{s} (s) \opd s \\
-        = & \int_{t_0}^t \opd f (\phi_s(p)) (X(\phi_s(p))) \opd s \\
-        \leq & - \eps_0 (t - t_0) . 
-    \end{align*}
-    Also für $t \to + \infty$ gilt $f(\phi_t(p)) \to - \infty$. Das kann aber nicht sein, denn da 
-    $M$ kompakt ist muss auch $\Ima f$ kompakt sein. Also kann $\phi_{\bullet}(p)$ nicht alle 
-    $U_q$ verlassen. aber dann ist 
-    \[ \lim_{t \to + \infty} \phi_t(p) = q \]
-    für einen kritischen Punkt $q$.
-    Genauso zeigt man, dass $\lim_{t \to - \infty} \phi_t(p) = r$ für einen kritischen Punkt $r$.
-\end{proof}
-
-\begin{definition}[Smale-Bedingung]
-    \label{def: smale-bedingung}
-    Es sei $M$ eine Mannigfaltigkeit und $U$ und $V$ Untermannigfaltigkeiten von $M$. Wir sagen 
-    $U$ und $V$ sind \textit{transversal} und schreiben $U \pitchfork V$, falls für alle Punkte 
-    $p \in U \cap V$ gilt 
-    \[ T_pU + T_pV = T_pM . \]
-    Ein Vektorfeld $X \in \VFs (M)$ heißt \textit{transversal} zur Untermannigfaltigkeit $U$, falls 
-    für alle $p$ in $U$ gilt 
-    \[ \langle X(p) \rangle + T_pU = T_pM . \]
-
-    Sei nun $f \colon M \to \R$ eine Morse Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. Dann sagen
-    wir, dass $X$ die \textit{Smale-Bedingung} erfüllt, falls für alle kritischen Punkte $p$ und $q$ von 
-    $f$ gilt 
-    \[ \stab (p) \pitchfork \unst (q) . \]
-    Ein Paar $(f, X)$ aus einer Morse-Funktion $f$ und einem Pseudo-Gradientenfeld $X$, das die 
-    Smale-Bedingung erfüllt, nennt man \textit{Morse-Smale Paar}.
-\end{definition}
-
-\begin{prop}
-    Sind $U_1$ und $U_2$ Untermannigfaltigkeiten von einer $n$-\\
-    dimensionalen Mannigfaltigkeit $M$ mit 
-    Dimensionen $d_1$ und $d_2$, sodass 
-    \[ U_1 \pitchfork U_2 , \]
-    dann ist $U_1 \cap U_2$ eine Untermannigfaltigkeit von $M$ mit Dimension $d_1 + d_2 - n$.
-\end{prop}
-
-\begin{proof}
-    Fixiere einen Punkt $p \in U_1 \cap U_2$. Da $U_1$ und $U_2$ Untermannigfaltigkeiten sind existieren 
-    Karten $(\phi_1, V_1)$ und $(\phi_2, V_2)$ von $M$, sodass 
-    \[ \phi_1 = (\phi_1', \phi_1'') \colon V_1 \to 
-        \Omega_1 \times \Omega_1' \subseteq \R^{d_1} \times \R^{n - d_1} \]
-    mit $\phi_1(V_1 \cap U_1) = \Omega_1 \times \{ 0 \}$ und 
-    \[ \phi_2 = (\phi_2', \phi_2'')\colon V_2 \to 
-        \Omega_2 \times \Omega_2' \subseteq \R^{d_2} \times \R^{n - d_2} \]
-    mit $\phi_2(V_2 \cap U_2) = \Omega_2 \times \{ 0 \}$. Definiere 
-    \[ \phi'' = (\phi_1'', \phi_2'') \colon 
-        M \supseteq V_1 \cap V_2 \to \R^{n - d_1} \times \R^{n - d_2}. \]
-    Dann ist 
-    $(\phi'')^{-1}(0) = (U_1 \cap V_1) \cap (U_2 \cap V_2) = (U_1 \cap U_2) \cap (V_1 \cap V_2) := V$.
-    Wir wollen nun den Satz über reguläre Werte anwenden, aber dafür müssen wir zeigen, dass 
-    $\opd_p \phi''$ surjektiv ist. Bemerke, dass 
-    $\opd_p \phi'' = \opd_p (\phi''_1, \phi''_2) = (\opd_p \phi''_1, \opd_p \phi''_2)$.
-    Es sei $v \in T_p\R^{n - d_1}$ und $w \in T_p\R^{n - d_2}$. Da $\opd_p \phi''_1$ und 
-    $\opd_p \phi''_2$ surjektiv sind, und da $U_1$ und $U_2$ transversal sind, 
-    existieren $v_1' + v_2', w_1' + w_2' \in T_pU_1 + T_pU_2$, sodass 
-    $\opd_p \phi''_1 (v_1 + v_2) = \opd_p \phi''_1 (v_2) = v$ und 
-    $\opd_p \phi''_2 (w_1 + w_2) = \opd_p \phi''_2 (w_1) = w$.
-    Die ersten Gleichheiten gelten, da $T_pU_1$ der Kern von $\opd \phi''_1$ und 
-    $T_pU_2$ der Kern von $\opd \phi''_2$ sind. Dann gilt
-    \[ \opd_p \phi'' (w_1' + v_2')  = ( \opd_p \phi''_1 (v_2'), \opd_p \phi''_2 (w_1')) = (v, w) . \]
-    Wir können also den Satz über reguläre Werte anwenden, dann ist $V$ eine Untermannigfaltigkeit
-    mit Dimension $n - ((n - d_1) + (n - d_2)) = d_1 + d_2 - n$. Dann ist auch $U_1 \cap U_2$
-    eine Untermannigfaltigkeit von Dimension $d_1 + d_2 - n$.
-\end{proof}
-
-Dann folgt direkt:
-
-\begin{prop}
-    Es sei $f \colon M \to \R$ eine Morse Funktion und $p$ und $q$ kritische Punkte von mit Index $k_1$
-    und $k_2$ respektive. Falls $X$ die Smale-Bedingung erfüllt ist
-    \[ \mathcal{M} (p, q) := \unst (p) \cap \stab (q) = 
-        \left\{ r \in M : \lim_{t \to - \infty} \phi_t(p) \text{ und } 
-        \lim_{t \to + \infty} \phi_t(q) \right\} \]
-    ist eine Mannigfaltigkeit mit Dimension $k_1 - k_2$.
-\end{prop}
-
-Der Raum $\mathcal{M} (p, q)$ beinhaltet alle Punkte, die Auf Trajektorien zwischen den kritischen
-Punkten $p$ und $q$ liegen. 
-
-\todo{Zeichnung}
-
-\begin{prop}
-    Ist $M$ kompakt, $f \colon M \to \R$ eime Morse Funktion, $p \neq q$ kritische Punkte mit Index
-    $k_1, k_2$, dann wirkt $\R$ via $(p, t) \mapsto \phi_t(p)$ frei und eigentlich auf 
-    $\mathcal{M} (p, q)$, also ist
-    \[ \Lt (p, q) = \mathcal{M}(p, q)/\R \]
-    eine $(k_1 - k_2 - 1)$-dimensionale Mannigfaltigkeit.
-\end{prop}
-
-\begin{proof}
-    Die Abbildung 
-    $\Phi \colon \mathcal{M} (p , q) \times \R \to \mathcal{M} (p, q) \times \mathcal{M} (p,q) ; 
-    (p, t) \mapsto (p, \phi_t(p))$ ist glatt, denn da $M$ kompakt ist, ist $\phi$ eine 
-    1-Parameter-Gruppe aus Diffeomorphismen (~\ref{prop: kompaktes VF generiert 1-param. grp.}). 
-    Sei nun $I \subset \R$ ein kompaktes Intervall. 
-
-    Die Gruppenwirkung ist frei, denn in $\mathcal{W} (p, q)$
-    sind keine kritischen Punkte, da $p \neq q$. Es sei $x$ in $\mathcal{M} (p, q)$. 
-    Ist nun $t \neq 0$, dann gilt da $f \circ \phi_{\bullet}$ streng monoton ist 
-    $f(\phi_t(x)) \neq f(\phi_0(x))$, also $\phi_t(x) \neq x$.
-\end{proof}
-
-Der Raum $\Lt (p, q)$ enthält für jede Trajektorie, die zwischen den kritischen Punkten $p$ und $q$ 
-verläuft einen Repräsentanten. Später wird $\Lt (p, q)$ benutzt, um den Morse-Lomplex zu definieren.
-Die Smale Bedingung ist also für unsere Zwecke wichtig. 
-
-Wir gewinnen auch eine wichtige Erkenntnis: 
-
-\begin{corollary}
-    Der Index von kritischen Punkten erhöht sich entlang von Trajektorien. Denn falls 
-    $\Index (p) < \Index (q)$, dann ist die Dimension von $\mathcal{M} (p, q)$
-    kleiner $0$, also ist dann $\mathcal{M} (p, q) = \varnothing$.
-\end{corollary}
-
-Um also den Morse Komplex für jede (kompakte) Mnnigfaltigkeit definieren zu können, müssen wir noch die 
-Existenz von Morse-Smale Paaran zeigen. Sogar noch stärker ist die folgende Aussage:
-
-\begin{theorem}[Satz von Smale-Kupta]
-    Es sei $M$ eine Mannigfaltigkeit mit Rand  \\
-    und $f$ eine Morse-Funktion, sodass $f|_{\Crit{f}}$ bijektiv ist. Es sei $\Omega$ die Vereinigung 
-    von Morse-Umgebungen von allen kritischen Punkten. Sei $X$ ein Pseudo-Gradientenfeld von $f$. 
-    Dann existiert ein Pseudo-Gradientenfeld $X'$ von $f$, das die Smale Bedingung erfüllt, das 
-    innerhalb von $\Omega$ gleich $X$ ist und für das gilt:
-
-    Für jedes $\eps > 0$, jeden Atlas $(\phi_i, U_i)_{i \in I}$ von $M$ und alle $i \in I$ existiert 
-    für jede Kompakte Teilmenge $K_i \subseteq U_i$ ein Vektorfeld $X'$, sodass 
-    \[ \| \opd \phi_i^{-1} (\cdot) (X') - \opd \phi_i^{-1} (\cdot) (X) \| < \eps . \]
-\end{theorem}
-
-\begin{proof}
-    \todo{?} Der Beweis dieses Satzes ist zum Beispiel in \cite{audin} zu finden.
-\end{proof}
-
 \section{Der Morse-Komplex und der Raum der gebrochenen Trajektorien}
 
 Wir sind nun bereit, den Morse-Komplex mit Koeffizienten in $\F_2$ (wenigstens) hinzuschreiben.
@@ -267,7 +7,7 @@ $(\psi_p, \Omega(p))$, sodass $\psi(\Omega(p)) = U(\eps_p, \eta_p)$ wie in der N
 Umgebungen~\ref{def: notation morse umgebung}. Dann definiere $C_k (M, (f, X))$ als das $\F_2$ Modul, 
 das von den kritischen Punkten von $f$ mit Index $k$ erzeugt wird. Außerdem sei 
 $n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Wert $p$:
-\[ \del_X (p) := \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} \del_X(p, q)p . \]
+\[ \del_X (p) := \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} n_X(p, q)p . \]
 
 Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ wohldefiniert
 ist, also dass gilt $n_X (p, q) < \infty$, und dass es ein Kettenkomple ist, also dass 
@@ -492,7 +232,7 @@ Mit dieser Proposition folgt dann mit der Kalssifizierung von $1$-Mannigfaltigke
 Rand~\ref{satz: klassifizierung kompakter 1-mannigfaltigkeiten} schon, dass der Morse Komplex ein
 Kettenkomplex ist.
 
-\begin{proof}
+\begin{bigproof}
     Wir wissen schon, dass $\Lt (p, q) \subseteq \Lb(p, q)$ eine $1$-dimensionale Mannigfaltigkeit ist. 
     Um sagen zu können, dass $\Lb (p, q)$ eine $1$-dimensionale Mannigfaltigkeit mit Rand ist, und 
     insbsondere, dass $\Lb (p, q)$ das Innere von $\Lt(p, q)$ ist, reicht die folgende Aussage über 
@@ -512,8 +252,9 @@ Kettenkomplex ist.
     $\Lb (p, q)$ ist.
     Wir begeben uns also auf die (recht lange) Suche nach einer solchen Abbildung $\psi$. 
 
-    Wir machen ein Paar Konstruktionen. Sei $\alpha := f(c)$ und $\Omega(c)$ eine Umgebung von $c$ wie 
-    in der Notation zu Morse Umgebungen~\ref{def: notation morse umgebung}. Dann sind 
+    Wir machen ein Paar Konstruktionen. Sei $\alpha := f(c)$ und $(V, \psi)$ eine Morse Umgebung von
+    $c$, $\eps$, $\eta$ und $\Omega(c)$ wie in der Notation zu Morse 
+    Umgebungen~\ref{def: notation morse umgebung}. Dann sind 
     $f(\del_+ \Omega) = \alpha + \eps$ und $f(\del_- \Omega) = \alpha - \eps$ für ein $\eps > 0$.
     Außerdem gilt, wie schon vorher, dass 
     \begin{align*}
@@ -522,7 +263,18 @@ Kettenkomplex ist.
     \end{align*}
     Es sei $a_1 \in M$ der Punkt, an dem $\lambda_1$ auf $\Omega(c)$ trifft, also 
     $a_1 = S_+ (c) \cap \lambda_1$, und $a_2$ der Punkt, an dem $\lambda_2$ die Umgebung $\Omega (c)$ 
-    wieder verlässt, also $a_2 = S_- (c) \cap \lambda_2$. Es sei $D^(\eps) \subseteq $
+    wieder verlässt, also $a_2 = S_- (c) \cap \lambda_2$. $\alpha + \eps$ ist kein kritischer Wert 
+    von $f$ und es gilt $f^{-1}(\alpha + \eps) \pitchfork \unst (p)$, also ist mit 
+    Proposition~\ref{prop: schnitt von transversalen untermannigfaltigkeiten} 
+    $P = f^{-1}(\alpha) \cap \unst (p)$ eine Mannigfaltigkeit mit Dimension $(n - 1) + (k + 1) - n = k$.
+    Da $X$ die Smale-Eigenschaft erfüllt gilt 
+    $\unst (p) \supseteq P \pitchfork S_+ (c) \subseteq \stab(c)$, also ist $P \cap S_+ (c)$
+    mit Proposition~\ref{prop: schnitt von transversalen untermannigfaltigkeiten} eine 
+    Untermannigfaltigkeit der Dimenion $(k) + (n - k) - n = 0$. Offensichtlich gilt 
+    $a_1 \in P \cap S_+ (c)$. Es sei $D^k_{\eps} = \{ x \in \R^k : \| x \| < \eps \}$. Dann existiert 
+    eine Umgebung D von $a_1$ und ein Diffeomorphismus $\Psi : D \longto D^k_{\delta}$ mit 
+    $\Psi(a_1) = 0$, sodass $P \supseteq D \cap S_+ (c) = a_1$ und $D \subseteq \del_+ \Omega (c)$.
+    Wir versuchen die Kernidee des Beweises zu verstehen:
 
     \begin{figure}
         \centering
@@ -542,12 +294,114 @@ Kettenkomplex ist.
 
     Man betrachte die Abbildungen~\ref{fig: test1} und~\ref{fig: test2}.
 
-    $D$ ist eine Umgebung von dem Punkt $a_1$, an dem $\lambda_1$ auf den Rand der Morse Umgebung 
-    trifft. Die Idee des Beweises ist es, die Menge $D - a_1$ entlang der Trajektorien von $X$ auf den 
-    Teil des Randes der Morse Umgebung, an denen die Trajektorien austreten, via einer Abbildung $\Phi$ 
-    zu projizieren. Fügen wir nun den Punkt $a_2$, an dem $\lambda_2$ auf den Rand der Morse Umgebung 
-    trifft zum Bild dieser Menge hinzu, dann bekommen wir eine 1-dimensionale Mannigfaltigkeit mit Rand, 
-    und der Rand ist $a_2$. Wir können also eine Umgebung von $a_2$ in $\Ima \Phi \cup a_2$ via einer
-    Abbildung $\chi \colon [0, \delta)$ parametrisieren, aber in dieser Umgebung können wir auch jeden 
-    Punkt mit einer Trajektorie in $\Lb (p, q)$ identifizieren.
-\end{proof}
+    Wir versuchen, Menge $D - a_1$ entlang der Trajektorien von $X$ auf den Teil des Randes der Morse 
+    Umgebung, an denen die Trajektorien austreten, via einer Abbildung $\Phi$ zu projizieren. Wir werden
+    sehen, dass $Q = \Phi \cup S_+(c)$ eine Mannigfaltigkeit mit Rand ist, und dass $\stab (q)$ eine 
+    $1-dimensionale Mannigfaltigkeit$ ist. Fügen wir dieser Mannigfaltigkeit den Punkt $a_2$ hinzu, dann
+    können wir eine Umgebung von $(\lambda_1, \lambda_2)$ auf die gewünschte Art über die entstandene
+    1-dimensionale Mannigfaltigkeit mit Rand parametrisieren. Also:
+
+    \begin{claim}
+        Es sei $\phi$ die von $X$ erzeugfte 1-Parameter Gruppe aus Diffeomorphismen. Für jedes 
+        $x \in D - a_1$ existiert ein $t_x \in \R$, sodass $\phi_{t_x} (x) \in \del_- \Omega (c)$
+        und $x \mapsto t_x$ glatt ist.
+    \end{claim}
+
+    \begin{smallproof}
+        Via unserer anfangs gewählten Morse Karte $(V, \psi)$, und da wir ohne Einschränkungen $D$ 
+        klein genug wählen können, sodass $\psi(D) \subseteq V$, können wir annehmen, dass sich alles im 
+        $\R^n$ abspielt ; Sei also ohne Beschränkung $f(x_-, x_+) = - \|x_-\| + \|x_+\|$. Dann ist 
+        $\phi$ gegeben durch 
+        \[ \phi_t(x_-, x_+) = (e^{2t}x_-, e^{-2t}x_+) . \]
+        Falls $(x_-, x_+) \in \del_+ U$ und $x_- \neq 0$, dann gilt auch $x_+ \neq 0$. Setze
+        \[ t_{(x_-, x_+)} = \frac{1}{2} \ln \left( \frac{\| x_+ \|}{\| x_- \|} \right) . \]
+        Dann gilt
+        \[ \phi_{t_{(x_-, x_+)}} (x) = 
+            \left( \frac{\| x_+ \|}{\| x_- \|} x_-, \frac{\| x_- \|}{\| x_+ \|} x_+ \right) . \]
+        Die Zuordnung $(x_-, x_+) \mapsto t_{(x_-, x_+)}$ ist glatt und 
+        \begin{align*}
+            f(\phi_{t_{(x_-, x_+)}})(x_-, x_+) = & - \| \frac{\| x_+ \|}{\| x_- \|} x_- \|
+                +  \| \frac{\| x_- \|}{\| x_+ \|} x_+ \| \\
+                = & - \| x_+ \| + \| x_- \| \\
+                = & - \eps .
+        \end{align*}
+        Es folgt $\phi_{t_{(x_-, x_+)}} (x) \in \del_- U$.
+    \end{smallproof}
+
+    Wir haben nun also eine Einbettung $\Phi$ von $D - a_1$ entlang der Trajektorien von $X$ gefunden.
+    Wie am Anfang besprochen wollen wir jetzt zeigen:
+
+    \begin{claim}
+        Ist $\delta$ klein genug, dann ist $Q = \Phi (D - a_1) \cup S_(c)$ eine $k$ dimensionale 
+        Mannigfaltigkeit mit Rand, und es gilt $\del Q = S_- (c)$.
+    \end{claim}
+
+    \begin{smallproof}
+        Wider spielt sich alles via $\psi$ im $\R^n$ ab.
+        Man betrachte die Projektion
+        \[ \pi \colon \R^k \times \R^{n - k} ; \pi (x_-, x_+) = x_- . \]
+        und ihre Einschränkung $\del_+U \to D_{\delta}^k$
+        \todo{weiß net ob das stimmt, naja} Da $S_+ := \psi(\S_+(c)) = (\pi|_{\del_+U})^{-1}(0)$
+        und $D \pitchfork S_+$, ist $0$ ein regulärer Wert von $\pi|_{\del_+U}$.
+        Also ist $\opd \pi|_{\del_+U} (0)$ surjektiv, und da dim $\del_+U = k = \dim D^k_{\delta}$ ist
+        das Differential auch invertierbar. Jetzt können wir den Satz über die Umkehrfunktion anwenden 
+        bekommen lokal ein Inverses der Abbildung $\pi|_{\del_+U}$. Es existiert also ein 
+        $\delta' \leq \delta$, sodass das inverse von $\pi|_{\del_+U}$ auf $D^k_{\delta'}$ definiert ist.
+        Dann ist 
+        \begin{align*}
+            (\pi|_{del_+U})^{-1} \colon D^k_{\delta'} \longto & D \\
+            x_- \longmapsto & (x_-, x_+) =: (x_-m h(x_-))
+        \end{align*}
+        ein Diffeomorphismus. Da $D \subseteq \del_+U \subseteq f^{-1}(\eps)$, gilt dann 
+        $\| h(x_-) \|^2 = \| x_- \|^2 + \eps $. Ist dann 
+        $g = \cfrac{h}{\| h \|} \colon D^k_{\delta'} \to S^{n - k - 1}$, dann gilt
+        \[ D = \{ (x_-, h(x_-)): x \in D^k_{\delta'} \} 
+            = \{ (x_-, \sqrt{\| x_- \|^2 + \eps} \cdot g(x_-)): x \in D^k_{\delta'} \} . \]
+        Dann bekommen wir mit der Einbettung aus Behauptung 1 und da $\| g(x_-) \| = 1$:
+        \[ \Phi(D - a_1) = 
+            \left\{ \left( \frac{\sqrt{\| x_- \|^2 + \eps}}{\| x_- \|} \, x_-, \; 
+                    \| x_- \| \, g(x_-) \right) : 
+                x_- \in D^k_{\delta'} - 0 \right\} \]
+        Wir können nun auf $D^k_{\delta'}$ Polarkoordinaten anwenden. wir erhalten einen Diffeomorphismus
+        \begin{align*}
+            H = \Phi \circ \rho \colon (0, \delta') \times S^{k-1} \longto & D \subseteq \del_-U \\
+            (r, v) \longmapsto & ( \sqrt{r^2 + \eps} \cdot v, r \cdot g(\rho(r, v)))
+        \end{align*}
+        $g$ ist auf ganz $D^k_{\delta'}$ definiert, und wenigstens in einer Umgebung von $0$ beschränkt.
+        Also können wir $H$ stetig in $0$ durch
+        \[ H(0, v) = (\sqrt{\eps} \cdot v, \, 0) \]
+        fortsetzen. Dann ist $H$ auch weiterhin eine (topologische) Einbettung 
+        \[ H \colon [0, \delta') \times S^{k - 1} \longto \Phi(D - a_1) \cup S_- , \]
+        und es gilt 
+        \[ H(0, S^{k - 1}) = S_- . \]
+    \end{smallproof}
+\end{bigproof}
+
+\subsection*{Der Morse Komplex über \texorpdfstring{$\Z$}{TEXT}}
+
+\begin{definition}[Orientierung und Co-Orientierung von Mannigfaltigkeiten]
+    Es sei $V$ ein (endlich dimensionaler) Vektorraum. Seien dann $\B_1$ und $\B_2$ zwei Basen von $V$.
+    Wir sagen $\B_1$ und $\B_2$ induzieren dieselbe Orientierung, wenn 
+    \[ \det \, _{\B_2}[\id_V]_{B_1} > 0 . \]
+    \textit{Dieselbe Orientierung induzieren} ist eine Äquivalenzrelation. Eine Orientierung eines 
+    Vektorraums ist eine Wahl einer Äquuivalenzklasse.
+
+    Ein \textit{orientierter Atlas} einer $n$-dimensionalen Mannigfaltigkeit $M$ ist ein Atlas 
+    $\mathcal{A}$ von $M$, sodass für alle Karten $(U, \phi)$ und $(V, \psi)$ in $\mathcal{A}$ 
+    und alle Punkte $p \in M$ gilt
+    \[ \det d \psi \circ \phi^{-1} (p) > 0 \]
+    Eine \textit{Orientierung} einer Mannigfaltigkeit ist eine Auswahl eines maximalen orientierten Atlas.
+    Eine Mannigfaltigkeit heißt orientierbar, falls eine Orientierung für die Mannigfaltigkeit existiert.
+\end{definition}
+
+\begin{remark}
+    Man kann zeigen, dass es für jeden Vektorraum und jede Mannigfaltigkeit genau zwei Orientierungen
+    gibt. Man sagt die ausgewählte Orientierung ist \textit{positiv} und die andere \textit{negativ}.
+\end{remark}
+
+Wir haben nun den Morse Komplex über $\F_2$ definiert. Wir wollen noch allgemeiner einen Komplex
+über $\Z$ definieren. Die meiste Arbeit dafür ist nun schon gemacht. 
+Wir können die Morse Umgebungen jedes kritischen Punktes orientieren. Sind $p$ und $q$ 
+kritische Punkte mit $\Index (p) = \Index(q) + 1$, dann ist 
+$\mathcal{W} (p, q) = \unst (p) \cap \unst (q)$ eine $1$-dimensionale kreisscheibe, also 
+orientierbar. 

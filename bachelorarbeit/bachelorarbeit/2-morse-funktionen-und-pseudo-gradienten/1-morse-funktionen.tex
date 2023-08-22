@@ -1,0 +1,203 @@
+\section{Morse-Funktionen}
+
+In diesem Abschnitt untersuchen wir \textit{Morse-Funktionen}:
+
+\begin{definition}[Morse-Funktion]
+    \label{satz: morse-funktion}
+    Eine \textit{Morse-Funktion} auf einer glatten Mannigfaltigkeit $M$ ist eine glatte Funktion
+    $f \colon M \to \R$, deren kritische Punkte alle nicht degeneriert sind.
+\end{definition}
+
+Insbesondere zeigen wir, dass Morse Funktionen nichts besonderes sind. Dafür zeigen wir, dass für 
+eine Untermannigfaltigkeit $M \subseteq \R^n$ und einen Punkt $p \in \R^n$ die Abbildung
+$x \mapsto \| x - p \|^2$ nur für $p$, die so gennanten \textit{Brennpunkte}
+sind, keine Morse Funktion ist.
+
+\begin{definition}[Normalenbündel]
+    \label{def: normalenbuendel}
+    Es sei $M \subseteq \R^n$ eine Untermannigfaltigkeit von $\R^n$. Das Normalenbündel ist die 
+    Menge
+    \[ NM = \{ (x, v) \in M \times \R^n : v \perp T_xM \} . \]
+    Wir betrachten hier $T_xM \subseteq T_x\R^n \isom \R^n$ via der Basis 
+    $\left( \del / \del x_i \right)$, wobei $x_i$ die Achsen des $\R^n$ sind.
+\end{definition}
+
+\begin{prop}
+    \label{prop: NM ist untermannigfaltigkeit}
+    Das Normalenbündel $NM$ ist eine $n$-dimensionale Untermannigfaltigkeit von $M \times \R^n$.
+\end{prop}
+
+\begin{proof}
+    Es sei $x \in M$. Dann existiert eine Umgebung $U \subseteq \R^n$ von $x$, eine Umgebung 
+    $\Omega \subseteq \R^d$ von $0$ und eine Immersion 
+    \begin{align*}
+        h \colon \Omega \longto & \R^n \\
+        (u_1, \dots, u_d) \; \longmapsto & \; x(u_1, \dots, u_d)
+    \end{align*}
+    die ein Diffeomorphismus $h \colon \Omega \to U \cap M$ ist. Das orthogonale Komplement 
+    von $T_xM$ in $\R^n$ hat Dimension $n - d$. Es sei also 
+    $(v_1(x), ..., v_{n-d}(x))$ eine Basis von $(T_xM)^{\perp}$. Dann ist 
+    \[ (u_1, ..., u_d, t_1, ..., t_{n - d}) \longmapsto 
+        \left(x(u_1, ..., u_n), \sum_{k = 1}^{n - d} t_k \cdot v_k(u_1, ..., u_d)\right) \]
+    eine lokale Parametrisierung von $NM$ als Untermannigfaltigkeit von $M \times \R^n$.
+\end{proof}
+
+\begin{definition}[Brennpunkt]
+    \label{def: brennpunkt}
+    Es sei $M \subseteq \R^n$ eine Untermannigfaltigkeit von $\R^n$. Es sei $E \colon NM \to R^n$ 
+    mit $E (x, v) = x + v$. Ein \textit{Brennpunkt} von $M$ ist ein kriticher Wert von $E$.
+\end{definition}
+
+\begin{remark}
+    Aus dem Satz von Sard folgt, dass die Menge der Brennpunkte eine Nullmenge ist.
+    Intuitiv sind die Brennpunkte einer Untermannigfaltigkeit die Punkte im $\R^n$, an denen sich
+    die Normalen von nahe aneinanderliegenden Punkten schneiden.
+\end{remark}
+
+\begin{lemma}
+    \label{lemma: char. von Brennpunkten}
+    Es sei $M \subseteq \R^n$ eine Untermannigfaltigkeit von $\R^n$ $x \in M$ und $M$ in einer 
+    Umgebung von $x$ und $NM$ parametriesiert wie im Beweis von 
+    Proposition~\ref{prop: NM ist untermannigfaltigkeit}. Dann ist $p = x + v$ genau dann ein
+    Brennpunkt von $M$, wenn die Matrix 
+    \[
+        \left( \left\langle \pderive[x]{u_j}, \pderive[x]{u_i} \right\rangle - 
+        \left\langle v , \pdderive[x]{u_i}{u_j} \right\rangle \right)_{ij}
+    \]
+    nicht invertierbar ist.
+\end{lemma}
+
+\begin{proof}
+    Wir haben partielle Ableitungen
+    \[ \pderive[e]{u_i} = \pderive[x]{u_i} + \sum_{k = 1}^{n - d} t_k \pderive[v_k]{u_i} \]
+    und 
+    \[ \pderive[E]{t_j} = v_j \]
+    Nun ein kleines Ergebnis aus der Linearen Algebra:
+
+    sind $v_1, ..., v_n, u_1, ..., u_n \in \R^n$ und $u_1, ..., u_n$ linear unabhängig, 
+    dann ist
+    \[ (v_1 \; ... \; v_n)^T \cdot (u_1 \; ... \; u_n) = (\langle v_i, u_j \rangle)_{ij} , \]
+    Also 
+    \[ \rank (v_1 ... v_n) = \rank (\langle v_i, u_j \rangle)_{ij} . \]
+
+    Die Vektoren $ \pderive[x]{u_1}, ..., \pderive[x]{u_d}, v_1, ..., v_{n - d}$ sind linear
+    unabhängig. Außerdem ist $\pderive[x]{u_l}$ orthogonal zu $v_k$, also hat die Matrix mit 
+    Einträgen die Skalarprodukte dieser linear unabhängigen Vektoren mit den obigen partiellen
+    Ableitungen von $E$ die Form 
+    \[
+        \begin{pmatrix}
+            \left( \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle + 
+                \sum_{k = 1}^{n - d} t_k 
+                \left\langle \pderive[v_k]{u_i} , \pderive[x]{u_j} \right\rangle \right)_{ij} &
+            \left( \sum_{k = 1}^{n - d} 
+                \left\langle \pderive[v_k]{u_i}, v_j \right\rangle \right)_{ij} \\
+            0 & E_{n - d}
+        \end{pmatrix}
+    \]
+    Diese Matrix hat Rang $< n$ genau dann, wenn 
+    \[ \rank \left( \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle + 
+        \sum_{k = 1}^{n - d} t_k 
+        \left\langle \pderive[v_k]{u_i} , \pderive[x]{u_j} \right\rangle \right)_{ij} < d 
+    , \]
+    Aber da $v_k$ und $\pderive[x]{u_j}$ orthogonal aufeinander stehen gilt 
+    \[ 
+        0 = \pderive{u_i} \left\langle v_k, \pderive[x]{u_j} \right\rangle
+        = \left\langle \pderive[v_k]{u_j}, \pderive[x]{u_i} \right\rangle 
+        + \left\langle v_k, \pdderive[x]{u_i}{u_j} \right\rangle
+    \]
+    Also 
+    \begin{align*}
+        \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle + 
+                \sum_{k = 1}^{n - d} t_k 
+                \left\langle \pderive[v_k]{u_i} , \pderive[x]{u_j} \right\rangle
+        = & \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle - 
+        \sum_{k = 1}^{n - d} t_k 
+        \left\langle v_k , \pdderive[x]{u_i}{u_j} \right\rangle \\
+        = & \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle - 
+        \left\langle v , \pdderive[x]{u_i}{u_j} \right\rangle
+    \end{align*}
+    Es folgt die Behauptung.
+\end{proof}
+
+\begin{prop}
+    \label{prop: existenz morse-funktionen}
+    Es sei $M \subseteq \R^n$ eine Untermannigfaltikgeit. Für fast jeden Punkt in $\R^n$ ist
+    die Funktion
+    \begin{align*}
+        f_p \colon M & \longrightarrow \R \\
+        x & \longmapsto \| x - p \|^2
+    \end{align*}
+    eine Morse-Funktion.
+\end{prop}
+
+\begin{proof}
+    Offensichtlich ist $f_p$ glatt. $x \in M$ ist genau dann ein kritischer Punkt von $f_p$, wenn
+    $T_xM \perp (x - p)$, denn das differential von $f_p$ erweitert auf $\R^n$ ist
+    \[ \opd f_p (x) = 2 (x - p). \]
+    Also gilt
+    \[ \opd f_p (x) (v) = \langle 2 (x - p), v \rangle . \]
+    $x \in M$ ist folglich genau dann ein kritischer Punkt von $f_p$, wenn $T_xM$ orthogonal 
+    zu $(x - p)$ ist.
+
+    Bemerke, dass für eine Abbildung $f \colon \R^n \to \R$ mit $f = \langle \phi_1, \phi_2 \rangle$,
+    $\phi_1, \phi_2 \colon \R^n \to \R^n$ und eine Derivation $X_p$ gilt 
+    \[ X_p (f) = \langle X_p(\phi_1), \phi_2 \rangle + \langle \phi_1, X_p(\phi_2) \rangle.  \]
+    Sei nun $x \in M$. Dann existiert eine Umgebung $U \subseteq \R^n$ von $x$, eine Umgebung 
+    $\Omega \subseteq \R^d$ von $0$ und eine Immersion 
+    \[ h \colon \Omega \longto \R^n , \]
+    die ein Diffeomorphismus $h \colon \Omega \to U \cap M$ ist.
+    Schreibe
+    \[ h(u_1, ..., u_n) = x(u_1, ..., u_n). \]
+    Dann bekommen wir die partiellen Ableitungen
+    \[ 
+        \pderive[f_p]{u_i} = \sum_{k = 1}^n \pderive[f_p]{x_k} \cdot \pderive[x_k]{u_i} 
+        = \langle 2(x - p), \pderive[x]{u_i} \rangle 
+    \]
+    und 
+    \[ 
+        \pdderive[f_p]{u_i}{u_j} = 
+            2 \left( \left\langle \pderive[x]{u_j}, \pderive[x]{u_i} \right\rangle + 
+            \left\langle x - p , \pdderive[x]{u_i}{u_j} \right\rangle \right) 
+    . \]
+    
+    Also hat nach Lemma~\ref{lemma: char. von Brennpunkten} $f_p$ in einer Umgebung von $x$ genau 
+    dann nicht-degenerierte kritische Punkte, wenn $f_p$ ein Brennpunkt von $M$ ist. Mit der 
+    Bemerkung nach der Definition von Brennpunkten~\ref{def: brennpunkt} folgt dann direkt die 
+    Behauptung.
+\end{proof}
+
+\begin{remark}
+    Mit dem Einbettungssatz von Whitney folgt dann direkt, dass es auf jeder Mannigfaltigkeit 
+    $M$ viele Morse-Funktionen gibt. Wir können sogar noch eine stärkere Aussage beweisen:
+\end{remark}
+
+\begin{theorem}
+    \label{satz: morse-approximation}
+    Es sei $M$ eine Mannigfaltigkeit, $f \colon M \to \R$ glatt. Dann kann $f$ in jeder kompakten
+    Teilmenge $K$ beliebig gut von einer Morse Funktion approximirt werden, also für jedes 
+    $\eps > 0$ existiert eine Morse Funktion $g \colon K \to \R$, sodass 
+    \[ \| \, f - g \, \|_{\infty} < \eps . \]
+\end{theorem}
+
+\begin{proof}
+    Wir wählen eine Einbettung $h' \colon M \to \R^{n - 1}$. Dann ist 
+    \[ h \colon M \longto \R^n \; ; \; h(x) = (f(x), h'(x)) \]
+    eine Einbettung von $M$ in $\R^n$. Seien $c, \eps_1, \dots, \eps_n > 0$, sodass für \\
+    $p = (c - \eps_1, \eps_2, \dots, \eps_n)$ die Funktion $f_p$ eine Morse Funktion ist.
+    Setze nun 
+    \[ g(x) = \frac{f_p(x) - c^2}{2c} . \]
+    $g$ ist offensichtlich eine Morse-Funktion. Wir rechnen:
+    \begin{align*}
+        g(x) = & \frac{1}{2c} \left( (f(x) + c - \eps_1)^2 + (h_1(x) - \eps_2)^2 
+            + \dots + (h_{n-1}(x) - \eps_n)^2 - c^2 \right) \\
+        = & f(x) + \frac{f(x)^2 + \sum h_i(x)^2}{2c} - \frac{\eps_1 f(x) 
+            + \sum \eps_i h_{i - 1}(x)}{c} + \sum \eps_i^2 - \eps_1
+    \end{align*}
+    Man kann nun $c$ beliebig groß und $\eps_1, \dots, \eps_n$ beliebig klein wählen,
+    sodass $g$ beliebig nah an $f$ ist.
+\end{proof}
+
+\begin{remark}
+    Die meiste Zeit werden wir uns in dieser Arbeit kompakte Mannigfaltigkeiten untersuchen,
+    auf solchen kann jede glatte Funktion sogar global mit einer Morse Funktion approximieren.
+\end{remark}
