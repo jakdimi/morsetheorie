@@ -1,4 +1,4 @@
-section{Vektorfelder und Pseudo-Gradienten}
+\section{Vektorfelder und Pseudo-Gradienten}
 
 Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
 
@@ -38,7 +38,7 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
 \end{definition}
 
 \begin{remark}
-    Wie der Name suggestiert, ist für jedes $t \in \R$ $\phi_t$ ein 
+    Wie der Name suggestiert, ist für jedes $t \in \R$ die Abbildung $\phi_t$ ein 
     Diffeomorphismus: Das Inverse von $\phi_t$ ist $\phi_{-t}$.
 
     Ist außerdem $\phi$ eine von einem Vektorfeld $X$ erzeugte 1-Parameter Gruppe aus 
@@ -62,27 +62,7 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
 \end{prop}
 
 \begin{proof}
-    Für jeden Punkt $p \in M$ existiert eine Karten-Ungebung $(U_p, \phi_p)$. In dieser
-    Umgebung hat das Anfangswertproblem
-    \[ \derive[\gamma]{t} = X (\gamma) \; , \; \gamma(0) = p \]
-    eine eindeutige Lösung in einem Intervall $[-\eps_p, \eps_p]$. Diese Lösung 
-    $\gamma$ hängt glatt vom Anfangswert ab. Wir schreiben
-    $\phi_{\bullet}(p) := \gamma$. In dieser Umgebung gilt schon \\ 
-    $\phi_{t + s} = \phi_t \circ \phi_s$, solange $t, s, t + s \in [-\eps_p, \eps_p]$. 
-    Da $\supp \, X$ kompakt ist existiert eine endliche Menge ${p_1, \dots, p_k}$, 
-    sodass $\supp \, X \subseteq \bigcup_i U_{p_i}$. Es sei $\eps$ das Minimum der 
-    $\eps_{p_i}$. Setze $\phi_t(p) = p$ für alle $p$ nicht im Träger von $X$. Wir haben nun 
-    fast einen Kandidaten für die von $X$ generierte 1-Parameter Gruppe aus Diffeomorphismen;
-    $\phi_t(p)$ ist definiert für alle $p \in M$ und $t \in [-\eps, \eps]$. Wir müssen also nur 
-    noch einen Kandidaten für $\phi_t(p)$ finden, falls $|t| \geq \eps$.
-
-    Wir können jede Zahl $t \in \R$ schreiben als $t = m \cdot \sfrac{\eps}{2} + r$ mit 
-    $0 \leq r < \sfrac{\eps}{2}$ und $m \in \Z$. Sei nun zuerst $t \geq 0$, dann ist $m \geq 0$.
-    Setze für alle $p \in M$ 
-    \[ \phi_t(p) 
-        := \phi_{\sfrac{\eps}{2}} \circ \dots \circ \phi_{\sfrac{\eps}{2}} \circ \phi_r , \] 
-    Wobei wir $\phi_{\sfrac{\eps}{2}}$ $|m|$ mal anwenden. Falls $t < 0$ ersetze $\sfrac{\eps}{2}$
-    mit $- \sfrac{\eps}{2}$. 
+    Einen Beweis für diese Aussage findet man zum Beispiel auch in \cite{milnor}.x
 \end{proof}
 
 \begin{remark}
@@ -90,28 +70,28 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
     1-Parametergruppen aus Diffeomorphismen.
 \end{remark}
 
-\begin{definition}[Riemannsche Metrik]
-    \label{def: riemannsche metrik}
-    Es sei $M$ eine Mannigfaltigkeit. Es sei 
-    \[ g_p \colon T_pM \times T_pM \longto T_pM \]
-    ein Skalarprodukt für jedes $p \in M$, sodass für alle $X, Y \in \VFs (M)$ die Abbildung 
-    \[ p \longmapsto g_p(X(p), Y(p)) \]
-    glatt ist. Dann heißt $g$ \textit{Riemmannsche Metrik} auf $M$. Wir schreiben für 
-    $x, y \in T_pM$ 
-    \[ \langle x, y \rangle := g_p(x, y) \text{ und } \| x \| := \sqrt{g_p(x, x)} . \]
-\end{definition}
+% \begin{definition}[Riemannsche Metrik]
+%     \label{def: riemannsche metrik}
+%     Es sei $M$ eine Mannigfaltigkeit. Es sei 
+%     \[ g_p \colon T_pM \times T_pM \longto T_pM \]
+%     ein Skalarprodukt für jedes $p \in M$, sodass für alle $X, Y \in \VFs (M)$ die Abbildung 
+%     \[ p \longmapsto g_p(X(p), Y(p)) \]
+%     glatt ist. Dann heißt $g$ \textit{Riemmannsche Metrik} auf $M$. Wir schreiben für 
+%     $x, y \in T_pM$ 
+%     \[ \langle x, y \rangle := g_p(x, y) \text{ und } \| x \| := \sqrt{g_p(x, x)} . \]
+% \end{definition}
 
-\begin{remark}
-    Man kann zeigen, dass alle Mannigfaltigkeiten eine Riemannsche Metrik besitzen.
-\end{remark}
+% \begin{remark}
+%     Man kann zeigen, dass alle Mannigfaltigkeiten eine Riemannsche Metrik besitzen.
+% \end{remark}
 
-\begin{definition}[Gradient]
-    \label{def: gradient}
-    Es sei $M$ eine glatte Mannigfaltigkeit, $f \colon M \to \R$ eine glatte Abbilding. Dann 
-    ist der Gradient von $f$ das eindeutige Vektorfeld $\grad f$, sodass für alle $X \in \VFs (M)$
-    gilt 
-    \[ \langle X , \grad f \rangle = \opd f X . \]
-\end{definition}
+% \begin{definition}[Gradient]
+%     \label{def: gradient}
+%     Es sei $M$ eine glatte Mannigfaltigkeit, $f \colon M \to \R$ eine glatte Abbilding. Dann 
+%     ist der Gradient von $f$ das eindeutige Vektorfeld $\grad f$, sodass für alle $X \in \VFs (M)$
+%     gilt 
+%     \[ \langle X , \grad f \rangle = \opd f X . \]
+% \end{definition}
 
 \begin{definition}[Pseudo-Gradient]
     \label{def: pseudo-gradient}
@@ -121,8 +101,11 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
         \item $\opd f (p) (X(p)) \leq 0$ für alle $p \in M$, mit Gleichheit genau dann wenn 
             $p$ ein kritischer Punkt von $f$ ist.
         \item Für jeden kritischen Punkt $p$ von $f$ existiert eine Morse-Umgebung 
-            $(U_p, \phi_p)$, in der $X (q) = - \opd (\phi_p^{-1}) (q) \cdot \grad (f \circ \phi_p^{-1})$.
+            $(U_p, \phi_p)$, in der $X (q) = 
+                - \opd (\phi_p^{-1}) (q) \cdot \grad (f \circ \phi_p^{-1})$.
     \end{itemize}
+    $\grad$ ist hier der standard Gradient auf $\R^n$, der vom standard Skalarprodukt auf $\R^n$ 
+    induziert wird.
 \end{definition}
 
 \begin{prop}

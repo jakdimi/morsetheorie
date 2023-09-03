@@ -37,7 +37,7 @@
 \ifnum\pdf@strcmp{\preamble@lang}{de}=0%
 	\def\translation@Proof{Beweis}%
 	\def\translation@Theorem{Satz}%
-	\def\translation@Corollary{Corrolar}%
+	\def\translation@Corollary{Corollar}%
 	\def\translation@Lemma{Lemma}%
 	\def\translation@Proposition{Proposition}%
 	\def\translation@Def{Definition}%
@@ -75,6 +75,7 @@
 \fancyfoot{}
 \pagestyle{fancy}
 
+% add fancy header to chapter start
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{fancy}% original style: plain
                     \global\@topnum\z@
@@ -116,10 +117,9 @@
 \setlength\parindent{0pt}
 
 % configure title format
-% \RequirePackage{titlesec}
-% \titleformat{\chapter}[hang]{\Large\bfseries}{\thechapter}{1em}{}
-% \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
-%\titleformat{\subsubsection}[hang]{\bfseries}{§\thesubsubsection}{1em}{}
+\setkomafont{chapter}{\Large}
+\setkomafont{section}{\large}
+\setkomafont{subsection}{\normalsize}
 
 % to include images
 \RequirePackage{graphicx}
@@ -297,6 +297,17 @@
 	innerbottommargin=0pt,
 	innerrightmargin=0pt,
 	rightmargin=0pt,
+	linecolor=LightBlue,
+	linewidth=2pt
+]{lighttheoremline}
+\newmdenv[
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	innertopmargin=-10pt,
+	innerbottommargin=0pt,
+	innerrightmargin=0pt,
+	rightmargin=0pt,
 	linecolor=DarkBlue,
 	linewidth=2pt
 ]{theoremline}
@@ -305,11 +316,11 @@
 \BeforeBeginEnvironment{theorem}{\begin{theoremline}}
 \AfterEndEnvironment{theorem}{\end{theoremline}}
 
-\BeforeBeginEnvironment{corollary}{\begin{theoremline}}
-\AfterEndEnvironment{corollary}{\end{theoremline}}
+\BeforeBeginEnvironment{corollary}{\begin{lighttheoremline}}
+\AfterEndEnvironment{corollary}{\end{lighttheoremline}}
 
-\BeforeBeginEnvironment{lemma}{\begin{theoremline}}
-\AfterEndEnvironment{lemma}{\end{theoremline}}
+\BeforeBeginEnvironment{lemma}{\begin{lighttheoremline}}
+\AfterEndEnvironment{lemma}{\end{lighttheoremline}}
 
 \BeforeBeginEnvironment{prop}{\begin{theoremline}}
 \AfterEndEnvironment{prop}{\end{theoremline}}

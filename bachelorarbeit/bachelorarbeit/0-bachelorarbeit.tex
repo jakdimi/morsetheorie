@@ -34,50 +34,90 @@
     \includegraphics[width=0.2\textwidth]{../resources/WWU_Logo.png}
 \end{titlepage}
 
+\section*{Vorwort}
+
+\subsection*{Zielsetzung und Inhalt}
+
+In der Morse Theorie werden glatte Abbildungen $f \colon M \to \R$, deren kritische Punkte 
+alle nicht degeneriert sind untersucht. Ein kritischer Punkt ist nicht degeneriert, wenn die Hesseche 
+Bilinearform, die lokal durch die Matrix
+\[ \left(\pdderive[f]{x_i}{x_j} \right)_{1 \leq i, y \leq n} \]
+gegeben ist, nicht ausgeartet ist. Anhand einer solcher Abbildungen lassen sich
+Rückschlüsse auf topologische Eigenschaften der Mannigfaltigkeit $M$ ziehen. Das Ziel dieser Arbeit
+ist es, den \textit{Morse-Komplex} zu definieren und zu zeigen, dass dieser isomorph zu einem 
+zellulären Kettenkomplex ist. Damit ist die \textit{Morse-Homologie}, die Homologie des 
+\textit{Morse-Komplexes}, isomorph zur \textit{zellulären Homologie}, die nicht von der gewählten 
+zellulären Struktur abhängt. Wir folgen dem ersten Teil des Buches 
+\textit{Morse Theory and Fleur Homology} \cite{audin}. 
+
+Im ersten Kapitel wird ein grundlegender Einblick in die Morse-Theorie gegeben. Wichtiges Ergebnis ist
+das \textit{Morse-Lemma} das einen konkrete Vorstellung des Verhaltens von Morse-Funktionen in der Nähe 
+kritischer Punkte liefert. Weitere wichtige Ergebnisse sind die beiden 
+\textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma}.
+
+Im zweiten Kapitel untersuchen wir erst die \textit{stabile- und instabile Mannigfaltigkeit} und 
+definieren den \textit{Raum der Trajektorien}. Die Trajektorien sind Flüsse von eines Pseudo-Gradientenfeldes.
+Diese starten und enden immer in kritischen Punkten. Das $k$-te Glied des Morse-Komplexes ist dann dasjenige
+$\F_2$-Modul, das von den kritischen Punkten mit Index $k$ erzeugt wird, und das differenzial ist gegeben
+durch die Anzahl der Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index 
+$k - 1$. Wir zeigen, dass dieser Komplex wohldefiniert ist und dass es ein Kettenkomplex ist. 
+
+Im dritten Kapitel wird bewiesen, dass der Morse-Komplex isomorph zum einem zellulären Komplex ist. 
+Dann werden einige Anwendungen der Morse-Homologie gegeben.
+
+\subsection*{Geschichte der Morse Theorie}
+
+Die Morse-Theorie ist zu Ehren des amerikanischen Mathematikers \textit{Marston Morse} benannt, der
+grundlegende Ergebnisse zum Beispiel wie das \textit{Morse-Lemma}~\ref{satz: morse-lemma} in 
+\cite{morse} schon im Jahre 1929 bewies. In den späten 60er Jahren untersuchte dann 
+bewies.
+
+\subsection*{Vorraussetzungen}
+
+Wir setzen vorraus, dass der Leser sich mit Mannigfaltigkeiten auskennt. Außerdem sollten 
+grundlegende Begriffe der Topologie wie \textit{Homotopie}, \textit{Homotopietyp} ... \todo{...}
+bekannt sein. Weiterhin sollten Grundlagen der homologischen Algebra bekannt sein, also 
+Definitionen von \textit{Kettenkomplex} und \textit{Homologie}.
+
+\subsection*{Notation}
+
+Folgende Notationen werden benutzt:
+
+\begin{itemize}
+    \item $\isom$ für eine Vektorraum-Isomorphie oder eine Homeomorphie.
+    \item $\diffeo$ für einen Diffeomorphismus.
+    \item Die Tangentialräume werden immer als die Menge der Derivationen betrachtet.
+    \item Um Subskripte in Subskripten weitestgehend zu vermeiden, ist ein Vektorfeld eine 
+        glatte Abbildung $X \colon M \to TM$ mit $p \mapsto X(p) \in T_pM$ (anstatt $X_p$).
+    \item ist $f \colon M \to \N$ eine glatte Abbiildung, dann ist die Tangentialabbildung
+        von $f$ im Punkt $p$ die Abbildung $\opd f (p) \colon T_pM \to T_{f(p)}N$.
+\end{itemize}
+
 \tableofcontents
 
-\begin{abstract}
-    In der Morse Theorie werden glatte Abbildungen $f \colon M \to \R$, deren kritische Punkte 
-    alle nicht degeneriert sind untersucht. Anhand einer solcher Abbildungen lassen sich
-    Rückschlüsse auf topologische Eigenschaften der Mannigfaltigkeit $M$ ziehen. In dieser Arbeit
-    wird der \textit{Morse-Komplex} definiert, und gezeigt, dass dieser isomorph zu einem zellulären 
-    Kettenkomplex ist. Dafür wird anfangs eine kurze Einführung in die Morse-Theorie gegeben und 
-    grundlegende Begriffe definiert. Im zweiten Kapitel werden Morse Funktionen und Pseudo-Gradienten 
-    untersucht. Im dritten Kapitel wird bewiesen, dass der Morse Komplex ein Kettenkomplex ist und 
-    im letzten Kapitel wird anhand der erarbeiteten Theorie eine zelluläre Struktur auf kompakten 
-    Mannigfaltigkeiten konstruiert, deren zellulärer Kettenkomplex isomorph zum Morse-Komplex ist.
-    Zu guter letzt werden einige bekannte Eigenschaften der zellulären Homologie anhand der 
-    Morse Homologie bewiesen. Something something
-\end{abstract}
+\chapter{Morse-Funktionen und Pseudo-Gradienten}
 
 \makeheaderfancy
 \setcounter{page}{1}
 
-\chapter{Traditionelle Morse-Theorie}
+In diesem Kapitel beschäftigen wir uns näher mit den Stars dieser Arbeit: \\
+\textit{Morse-Funktionen} und \textit{Pseudo-Gradientenfeldern}. Außerdem werden wir das 
+\textit{Morse-\\Lemma}~\ref{satz: morse-lemma} und die so genannten 
+\textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma} 
+beweisen, die allein von den kritischen Punkten einer Morse Funktion 
+Rückschlüsse auf die topologischen Eigenschaften der Mannigfaltigkeit zulassen.
 
-Anschauliche Beispiele, vielleicht die zu den Deformations-Lemmata? Dann müsste
-ich aber auch noch die Deformations-Lemmata machen.
-
-\input{1-einfuehrung/1-1-einfuehrung}
-\input{1-einfuehrung/1-2-nicht-degeneriertheit-und-index}
-
-\chapter{Morse-Funktionen und Pseudo-Gradienten}
-
-Das Ziel dieses Kapitels ist es, Morse-Funktionen und Pseudo-Gradienten zu
-definieren und ihre \todo{allgegen- wertigkeit ist nicht so ein schönes Wort}
-\textit{allgegenwertigkeit} zu zeigen. Ein weiteres wichtiges Ergebnis ist
-das \textit{Morse-Lemma}.
-
-\input{2-morse-funktionen-und-pseudo-gradienten/2-1-morse-funktionen}
-\input{2-morse-funktionen-und-pseudo-gradienten/2-2-vektorfelder-und-pseudo-gradienten}
-\input{2-morse-funktionen-und-pseudo-gradienten/2-3-topologische-eigenschaften-anhand-kritischer-punkte}
+\input{1-morse-funktionen-und-pseudo-gradienten/1-1-nicht-degeneriertheit-und-index.tex}
+\input{1-morse-funktionen-und-pseudo-gradienten/1-2-morse-funktionen.tex}
+\input{1-morse-funktionen-und-pseudo-gradienten/1-3-vektorfelder-und-pseudo-gradienten.tex}
+\input{1-morse-funktionen-und-pseudo-gradienten/1-4-topologische-eigenschaften-anhand-kritischer-punkte.tex}
 
 \chapter{Der Morse-Komplex}
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
 Morse-Komplex ein Kettenkomplex ist.
 
-\input{3-der-morse-komplex/3-1-die-stabile-und-instabile-mannigfaltigkeit}
-\input{3-der-morse-komplex/3-2-der-morse-komplex}
+\input{2-der-morse-komplex/2-1-die-stabile-und-instabile-mannigfaltigkeit}
+\input{2-der-morse-komplex/2-2-der-morse-komplex}
 
 \chapter{Morse-Homologie und zelluläre Homologie}
 
@@ -87,14 +127,13 @@ sehen, dass der Kettenkomplex, der von dieser Struktur induziert wird schon mit
 dem Morse-Komplex übereinstimmt. Somit stimmt die Morse-Homologie mit der 
 zellulären Homologie überein, also auch mit der singulären Homologie.
 
-\input{4-morse-homologie-und-zellulaere-homologie/4-1-cw-komplexe}
-\input{4-morse-homologie-und-zellulaere-homologie/4-2-cw-struktur-von-mannigfaltigkeiten}
-\input{4-morse-homologie-und-zellulaere-homologie/4-3-morse-homologie-ist-zellulaere-homologie}
-\input{4-morse-homologie-und-zellulaere-homologie/4-4-anwendungen}
+\input{3-morse-homologie-und-zellulaere-homologie/3-1-cw-struktur-von-mannigfaltigkeiten}
+\input{3-morse-homologie-und-zellulaere-homologie/3-2-morse-homologie-ist-zellulaere-homologie}
+\input{3-morse-homologie-und-zellulaere-homologie/3-3-anwendungen}
 
-\appendix
+% \appendix
 
-\input{0-anhang}
+% \input{0-anhang}
 
 \printbibliography
 

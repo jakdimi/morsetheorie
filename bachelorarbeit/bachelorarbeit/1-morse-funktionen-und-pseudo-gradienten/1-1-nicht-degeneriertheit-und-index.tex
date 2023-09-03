@@ -1,87 +1,48 @@
 \section{Nicht-Degeneriertheit und Index}
 
-Dieser Abschnitt folgt dem ersten Abschnitt aus \cite{milnor}.
+Dieser Abschnitt folgt dem ersten Kapitel aus \cite{milnor}. Wir werden Grundlegende Begriffe der
+Morse-Theorie erklären und das \textit{Morse-Lemma}~\ref{satz: morse-lemma} beweisen.
 
 \begin{definition}[Kritischer Punkt]
     \label{def: kritischer Punkt}
     Sei $M$ eine glatte Mannigfaltigkeit und $f \colon M \to \R$ eine glatte Abbildung. 
-    Ein \textit{kritischer Punkt} von $f$ ist ein Punkt $p \in M$, sodass $\opd f (p) = 0$.
+    Ein \textit{kritischer Punkt} von $f$ ist ein Punkt $p \in M$, sodass $\opd f (p)$ nicht 
+    surjektiv ist.
 \end{definition}
 
 \begin{remark}
-    Allgemeiner lassen sich kritische Punkte von glatten Abbildungen \\ $f \colon M \to N$ 
-    definieren, siehe im Anhang Definition~\ref{anh.def: kritischer punkt}.
+    Wir werden uns ausschließlich mit glatten Abbildungen $f \colon M \to \R$ beschäftigen.
+    bei solchen Abbildungen ist $p \in M$ ein kritischer Punkt genau dann, wenn 
+    $\opd f (p) = 0$.
 \end{remark}
 
-Wir würden gerne eine Hessische Bilinearform für die Tangentialräume der Mannigfaltigkeit
+Wir würden gerne eine Hessesche Bilinearform für die Tangentialräume der Mannigfaltigkeit
 definieren, allerdings ist dies ein nicht ganz einfaches Unterfangen. Wir werden am Ende
-einen Begriff erhalten, der mit dem der gewohnten Hessischen Bilinearform im $\R^n$
+einen Begriff erhalten, der mit dem der gewohnten Hesseschen Bilinearform im $\R^n$
 übereinstimmt, allerdings nur für kritische Werte definiert ist.
 
-\begin{definition}[Lie-Klammer]
-    \label{def: lie-klammer}
-    Es seien $X$ und $Y$ Vektorfelder auf einer glatten Mannigfaltigkeit $M$. Die 
-    \textit{Lie-Klammer} ist die Abbildung 
-    \begin{align*} 
-        [\cdot, \cdot] \colon \VFs(M) \times \VFs(M) & \to \VFs(M) \\
-        (X, Y) & \mapsto [X, Y] := XY - YX
-    \end{align*}
-    Wobei 
-    \[ (XY - YX) (p) (f) = X(p)(Y(\cdot)(f)) - Y(p)(X(\cdot)(f)) \]
-\end{definition}
-
-\begin{remark}
-    Es ist leicht nachzurechnen, dass die Lie-Klammer tatsächlich eine \\ Lie-Klammer ist,
-    also dass sie folgende Eigenschaften erfüllt:
-    \begin{itemize}
-        \item $[\cdot, \cdot]$ ist $\R$-bilinear.
-        \item $[X, Y] = -[Y, X]$
-        \item $[X, [Y, Z]] + [Z, [X, Y]] + [Y, [Z, X]] = 0$
-    \end{itemize}
-\end{remark}
-
-\begin{prop}
-    \label{prop: lie-klammer ist null}
-    Es sei $f \colon M \to \R$ glatt, $p$ ein kritischer Punkt von $f$, 
-    $X, Y \in \VFs (M)$. Dann gilt:
-    \[ [X, Y] (p) f = 0 \]
-\end{prop}
-
-\begin{proof}
-    Es seien $(x_1, ..., x_n)$ lokale Koordinaten um $p$. Wir können ohne beschränkung
-    der Allgemeinheit annehmen, dass $X = g_X \cdot \pderive{x_i}$ und 
-    $Y = g_Y \cdot \pderive{x_j}$ für $g_X, g_Y \in C^{\infty} (M)$. Dann gilt:
-    \begin{align*}
-        \left[g_X \cdot \pderive{x_i}, g_Y \cdot \pderive{x_j}\right] (p) (f) = & 
-            g_X (p) \cdot \pderive{x_i} (p) \left(g_Y \cdot \pderive[f]{x_j} \right) -
-            g_Y (p) \cdot \pderive{x_j} (p) \left(g_X \cdot \pderive[f]{x_i} \right) \\
-        = & g_X (p) \cdot \left( \pderive[g_Y]{x_i}(p) \cdot \pderive[f]{x_j}(p) + 
-                g_Y(p) \cdot \pdderive[f]{x_j}{x_i}(p) \right) \\ 
-        & - g_Y (p) \cdot \left( \pderive[g_X]{x_j}(p) \cdot \pderive[f]{x_i}(p) + 
-            g_X (p) \cdot \pdderive[f]{x_i}{x_j}(p) \right) \\
-        = & \; 0
-    \end{align*}
-    Der letzte Ausdruck ist Null wegen des Satzes von Schwarz und da $p$ ein kritischer
-    Punkt von $f$ ist, also gilt $\pderive[f]{x_i}(p) = 0$.
-\end{proof}
-
-\begin{definition}[Hessische Bilinearform]
+\begin{definition}[Hessesche Bilinearform]
     Es sei $f \colon M \to \R$ eine glatte Abbildung, $p$ ein kritischer Punkt von $f$.
     Es seien $x, y \in T_pM$. Wähle $X, Y \in \VFs (M)$, sodass $X(p) = x$ und 
     $Y(p) = y$. Definiere nun
     \[ \opd^2 f (x, y) (p) = X(p)(Y(\cdot)f). \]
-    $\opd^2 f (\cdot, \cdot) (p)$ heißt \textit{Hessische Bilinearform}. 
+    $\opd^2 f (\cdot, \cdot) (p)$ heißt \textit{Hessesche Bilinearform}. 
 \end{definition}
 
 \begin{prop}
-    \label{prop: hessische ist sym bilinearform}
+    \label{prop: hessesche ist sym bilinearform}
     $\opd^2 f (\cdot, \cdot) (p)$ hängt nicht von den gewählten Vektorfeldern $X$ und $Y$ ab 
     und ist für alle kritischen Punkte eine symmetrische Bilinearform.
 \end{prop}
 
 \begin{proof}
-    Bilinearität folgt direkt aus der Definition.
-    Da $p$ ein kritischer Punkt ist gilt 
+    Wir betrachten die so genannte \textit{Lie-Klammer} für Vektorfelder $X$ und $Y$:
+    \[ [X, Y] = XY - YX , \]
+    wobei
+    \[ (XY - YX) (p) (f) = X(p)(Y(\cdot)(f)) - Y(p)(X(\cdot)(f)) . \]
+    Man rechnet nach, dass die Lie-Klammer symmetrisch ist und das für jeden kritischen Punkt $p$
+    von $f$ gilt $[X, Y](p)(f) = 0$.
+    Bilinearität folgt dann direkt aus der Definition. Da $p$ ein kritischer Punkt ist gilt 
     \[ \opd^2 f (x, y) (p) - \opd^2 f (y, x) (p) = [X, Y] (p) (f) = 0, \]
     die Zuordnung ist also symmetrisch. Außerdem gilt
     \[ XY f (p) = X(p) (Y(\cdot) f) = x(Y(\cdot) f), \]
@@ -93,14 +54,14 @@ einen Begriff erhalten, der mit dem der gewohnten Hessischen Bilinearform im $\R
     Es sei $f \colon M \to \R$ eine glatte Abbildung, $p$ ein kritischer Punkt von
     $f$. Wir nennen $p$ \textit{nicht degeneriert}, falls die Bilinearform 
     $\opd^2 f (\cdot, \cdot) (p)$ nicht ausgeartet ist. Der \textit{Index} eines
-    nicht degenerierten kritischen Punktes ist die maximale Dimension eines
-    Untervektorraumes, auf dem $\opd^2 f (\cdot, \cdot) (p)$ negativ definit ist.
+    nicht degenerierten kritischen Punktes ist die maximale Dimension der
+    Untervektorräume, auf denen $\opd^2 f (\cdot, \cdot) (p)$ negativ definit ist.
 \end{definition}
 
 \begin{remark}
-    Nicht-Degeneriertheit und Index lassen sich auch über lokale Koordinaten definieren,
-    aber nachzurechnen, dass diese Begriffe wohldefiniert sind ist recht aufwändig.
-    Trotzdem wollen wir diese Sichtweise nicht vorenthaltern:
+    Nicht-Degeneriertheit und Index lassen sich auch über lokale Koordinaten definieren.
+    Tatsächlich stimmt die Sichtweise über lokale Koordinaten mit der Vorstellung der Hesseschen-
+    Bilinearform, die wir für Abbildungen $\R^n \to \R$ haben überein:
 
     Es seien $\phi = (x_1, ..., x_n)$ lokale Koordinaten um den kritischen Punkt $p$. 
     Dann ist $\mathcal{B} = \left(\pderive{x_1}, ..., \pderive{x_n}\right)$ eine Basis des
@@ -117,14 +78,9 @@ einen Begriff erhalten, der mit dem der gewohnten Hessischen Bilinearform im $\R
     nicht von den gewählten Koordinaten ab, aber die Matrix $H_p^{\phi}(f)$ schon.
 \end{remark}
 
-Die Hessische Bilinearform lässt sich auch mithilfe von \textit{Zusammenhängen} für 
-alle Punkte von $M$ definieren.
-
-\begin{remark}
-    Die beiden Begriffe Index und nicht-Degeneriertheit sind zentral in der Morse-Theorie 
-    und werden uns über die gesamte Arbeit begleiten. Auch der nachfolgende Satz wird in 
-    fast jedem Beweis genutzt:
-\end{remark}
+Die beiden Begriffe Index und nicht-Degeneriertheit sind zentral in der Morse-Theorie 
+und werden uns über die gesamte Arbeit begleiten. Auch der nachfolgende Satz wird in 
+fast jedem Beweis genutzt:
 
 \begin{theorem}[Morse-Lemma]
     \label{satz: morse-lemma}
@@ -150,44 +106,7 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
 \end{lemma}
 
 \begin{proof}
-    Betrachte zuerst den Fall $n = 1$:
-
-    Dann ist $A = (\pm 1)$. Wähle $N = (0, 2)$ oder $N = (-2, 0)$, $P(B) := 1/\sqrt{|B|}$
-
-    Nun $n - 1 \rightsquigarrow n$:
-
-    Es sei $B$ eine symmetrische $n \times n$ Matrix, die nah genug an $A$ ist, sodass
-    $b_{11} \neq 0$ und das selbe Vorzeichen hat wie $a_1$. Betrachte die Matrix 
-    \[ T = \begin{pmatrix}
-        \frac{1}{\sqrt{|b_{11}|}} & 
-            - \frac{1}{\sqrt{|b_{11}|}} \cdot \frac{b_{12}}{b_{11}} & 
-            - \frac{1}{\sqrt{|b_{11}|}} \cdot \frac{b_{13}}{b_{11}} & \cdots & 
-            - \frac{1}{\sqrt{|b_{11}|}} \cdot \frac{b_{1n}}{b_{11}} \\
-        0 & 1 & 0 & \cdots & 0 \\
-        0 & 0 & 1 & \cdots & 0 \\
-        \vdots & \vdots & \vdots & & \vdots \\
-        0 & 0 & 0 & \cdots & 1 
-    \end{pmatrix} \]
-    Man rechnet nach, dass 
-    \[ T^T B T = \begin{pmatrix}
-        a_1 & 0 & \cdots & 0 \\
-        0 & & & \\
-        \vdots & & B_1 & \\
-        0 & & &
-    \end{pmatrix}. \]
-    Die Diagonalmatrix $\diag(a_2, ..., a_n)$ ist invertierbar, und da die 
-    Determinante stetig ist, ist falls $B$ nah genug an $A$ ist die symmetrische Matrix 
-    $B_1$ auch invertierbar. Bemerke dass sowohl $T$ als auch $B_1$ glatte Abbildungen
-    definieren. Laut Induiktionsannahme existiert eine Matrix 
-    $Q_1 \in GL_n(\R)$ die glatt von $B_1$ abhängt, sodass $Q_1^T B_1 Q_1 = A_1$.
-    Definiere nun $P(B) = Q$ durch $Q = TS$, wobei
-    \[ S = \begin{pmatrix}
-        1 & 0 & \cdots & 0 \\
-        0 & & & \\
-        \vdots & & Q_1 & \\
-        0 & & &
-    \end{pmatrix}. \]
-    Dann gilt $Q^TBQ = S^T (T^T B T) S = A$.
+    Die Aussage kann man Induktiv beweisen, siehe \cite{hirsch}.
 \end{proof}
 
 \begin{proof}[Beweis von Satz~\ref{satz: morse-lemma}]
@@ -207,10 +126,10 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
         Da $f(0) = 0$ bekommen wir mit dem Fundamentalsatz der 
         Differenzial - und Integralrechnung: 
         \begin{align*}
-            f(x) = & f(x) - f(0) \\
-            = & \int_0^1 \derive[f (tx)]{t} \opd t \\
-            = & \int_0^1 \sum_{i = 1}^n \pderive[f]{x_i}(tx) x_i \opd t \\
-            = & \sum_{i = 1}^n \left( \int_0^1 \pderive[f]{x_i}(tx) \opd t \right) x_i
+            f(x) = & f(x) - f(0) 
+                = \int_0^1 \derive[f (tx)]{t} \opd t \\
+            = & \int_0^1 \sum_{i = 1}^n \pderive[f]{x_i}(tx) x_i \opd t 
+                = \sum_{i = 1}^n \left( \int_0^1 \pderive[f]{x_i}(tx) \opd t \right) x_i
         \end{align*}
         Da $p = 0$ ein kritischer Punkt ist, gilt $\pderive[f]{x_i}(0) = 0$ für alle 
         $i$. Mit dem selben Argument sehen wir dann, dass
@@ -257,15 +176,16 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
     eingeschräkt aufs Bild ein Diffeomorphismus ist. 
     Dann ist $\phi$ eine Karte um $0$. Setze $(y_1, ..., y_n) := \phi$, dann gilt 
     \begin{align*}
-        f(x) = & x^T B_x x \\
-        = & (Q_x \phi(x))^T B_x (Q_x \phi(x)) \\
-        = & \phi(x)^T (Q_x^T B_x Q_x) \phi(x) \\
-        = & \phi(x)^T A \phi(x) \\
+        f(x) = & x^T B_x x 
+            = (Q_x \phi(x))^T B_x (Q_x \phi(x)) \\
+        = & \phi(x)^T (Q_x^T B_x Q_x) \phi(x) 
+            = \phi(x)^T A \phi(x) \\
         = & \sum_{i = 1}^n a_{ii} y_i(x)^2
     . \end{align*}
     Das entspricht genau der gewünschten Form.
 \end{proof}
 
 \begin{corollary}
-    Nicht-degenerierte kritische Punkte sind isoliert.
+    Jeder nicht degenerierte kritische Punkt besitzt eine offene Umgebung, in der sich keine weiteren
+    kritischen Punkte befinden.
 \end{corollary}

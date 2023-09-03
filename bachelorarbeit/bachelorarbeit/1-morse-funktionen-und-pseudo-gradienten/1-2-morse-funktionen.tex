@@ -11,7 +11,9 @@ In diesem Abschnitt untersuchen wir \textit{Morse-Funktionen}:
 Insbesondere zeigen wir, dass Morse Funktionen nichts besonderes sind. Dafür zeigen wir, dass für 
 eine Untermannigfaltigkeit $M \subseteq \R^n$ und einen Punkt $p \in \R^n$ die Abbildung
 $x \mapsto \| x - p \|^2$ nur für $p$, die so gennanten \textit{Brennpunkte}
-sind, keine Morse Funktion ist.
+sind, keine Morse Funktion ist, und dass die Menge der Brennpunkte eine Nullmenge ist. Dann werden
+wir sehen, dass jede glatte Funktion (auf gewisse Art und Weise) beliebig nah an einer Morse 
+Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{audin}.
 
 \begin{definition}[Normalenbündel]
     \label{def: normalenbuendel}
@@ -29,7 +31,7 @@ sind, keine Morse Funktion ist.
 
 \begin{proof}
     Es sei $x \in M$. Dann existiert eine Umgebung $U \subseteq \R^n$ von $x$, eine Umgebung 
-    $\Omega \subseteq \R^d$ von $0$ und eine Immersion 
+    $\Omega \subseteq \R^d$ von $0$ und eine Einbettung 
     \begin{align*}
         h \colon \Omega \longto & \R^n \\
         (u_1, \dots, u_d) \; \longmapsto & \; x(u_1, \dots, u_d)
@@ -56,10 +58,9 @@ sind, keine Morse Funktion ist.
 
 \begin{lemma}
     \label{lemma: char. von Brennpunkten}
-    Es sei $M \subseteq \R^n$ eine Untermannigfaltigkeit von $\R^n$ $x \in M$ und $M$ in einer 
-    Umgebung von $x$ und $NM$ parametriesiert wie im Beweis von 
-    Proposition~\ref{prop: NM ist untermannigfaltigkeit}. Dann ist $p = x + v$ genau dann ein
-    Brennpunkt von $M$, wenn die Matrix 
+    Es sei $M \subseteq \R^n$ eine Untermannigfaltigkeit, $x \in M$ und $NM$ parametriesiert wie im 
+    Beweis von Proposition~\ref{prop: NM ist untermannigfaltigkeit}. Dann ist $p = x + v$ genau 
+    dann ein Brennpunkt von $M$, wenn die Matrix 
     \[
         \left( \left\langle \pderive[x]{u_j}, \pderive[x]{u_i} \right\rangle - 
         \left\langle v , \pdderive[x]{u_i}{u_j} \right\rangle \right)_{ij}
@@ -68,55 +69,7 @@ sind, keine Morse Funktion ist.
 \end{lemma}
 
 \begin{proof}
-    Wir haben partielle Ableitungen
-    \[ \pderive[e]{u_i} = \pderive[x]{u_i} + \sum_{k = 1}^{n - d} t_k \pderive[v_k]{u_i} \]
-    und 
-    \[ \pderive[E]{t_j} = v_j \]
-    Nun ein kleines Ergebnis aus der Linearen Algebra:
-
-    sind $v_1, ..., v_n, u_1, ..., u_n \in \R^n$ und $u_1, ..., u_n$ linear unabhängig, 
-    dann ist
-    \[ (v_1 \; ... \; v_n)^T \cdot (u_1 \; ... \; u_n) = (\langle v_i, u_j \rangle)_{ij} , \]
-    Also 
-    \[ \rank (v_1 ... v_n) = \rank (\langle v_i, u_j \rangle)_{ij} . \]
-
-    Die Vektoren $ \pderive[x]{u_1}, ..., \pderive[x]{u_d}, v_1, ..., v_{n - d}$ sind linear
-    unabhängig. Außerdem ist $\pderive[x]{u_l}$ orthogonal zu $v_k$, also hat die Matrix mit 
-    Einträgen die Skalarprodukte dieser linear unabhängigen Vektoren mit den obigen partiellen
-    Ableitungen von $E$ die Form 
-    \[
-        \begin{pmatrix}
-            \left( \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle + 
-                \sum_{k = 1}^{n - d} t_k 
-                \left\langle \pderive[v_k]{u_i} , \pderive[x]{u_j} \right\rangle \right)_{ij} &
-            \left( \sum_{k = 1}^{n - d} 
-                \left\langle \pderive[v_k]{u_i}, v_j \right\rangle \right)_{ij} \\
-            0 & E_{n - d}
-        \end{pmatrix}
-    \]
-    Diese Matrix hat Rang $< n$ genau dann, wenn 
-    \[ \rank \left( \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle + 
-        \sum_{k = 1}^{n - d} t_k 
-        \left\langle \pderive[v_k]{u_i} , \pderive[x]{u_j} \right\rangle \right)_{ij} < d 
-    , \]
-    Aber da $v_k$ und $\pderive[x]{u_j}$ orthogonal aufeinander stehen gilt 
-    \[ 
-        0 = \pderive{u_i} \left\langle v_k, \pderive[x]{u_j} \right\rangle
-        = \left\langle \pderive[v_k]{u_j}, \pderive[x]{u_i} \right\rangle 
-        + \left\langle v_k, \pdderive[x]{u_i}{u_j} \right\rangle
-    \]
-    Also 
-    \begin{align*}
-        \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle + 
-                \sum_{k = 1}^{n - d} t_k 
-                \left\langle \pderive[v_k]{u_i} , \pderive[x]{u_j} \right\rangle
-        = & \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle - 
-        \sum_{k = 1}^{n - d} t_k 
-        \left\langle v_k , \pdderive[x]{u_i}{u_j} \right\rangle \\
-        = & \left\langle \pderive[x]{u_i}, \pderive[x]{u_j} \right\rangle - 
-        \left\langle v , \pdderive[x]{u_i}{u_j} \right\rangle
-    \end{align*}
-    Es folgt die Behauptung.
+    Den beweis findet man zum Beispiel bei Milnor in Kapitel 6 von \cite{milnor}.
 \end{proof}
 
 \begin{prop}
@@ -132,7 +85,8 @@ sind, keine Morse Funktion ist.
 
 \begin{proof}
     Offensichtlich ist $f_p$ glatt. $x \in M$ ist genau dann ein kritischer Punkt von $f_p$, wenn
-    $T_xM \perp (x - p)$, denn das differential von $f_p$ erweitert auf $\R^n$ ist
+    $T_xM \perp (x - p)$, denn das Differential von $f_p$ erweitert auf $\R^n$ mit derselben Vorschrift
+    ist
     \[ \opd f_p (x) = 2 (x - p). \]
     Also gilt
     \[ \opd f_p (x) (v) = \langle 2 (x - p), v \rangle . \]
@@ -168,7 +122,7 @@ sind, keine Morse Funktion ist.
 
 \begin{remark}
     Mit dem Einbettungssatz von Whitney folgt dann direkt, dass es auf jeder Mannigfaltigkeit 
-    $M$ viele Morse-Funktionen gibt. Wir können sogar noch eine stärkere Aussage beweisen:
+    $M$ viele Morse-Funktionen gibt. Es gilt sogar noch eine stärkere Aussage:
 \end{remark}
 
 \begin{theorem}
@@ -197,7 +151,5 @@ sind, keine Morse Funktion ist.
     sodass $g$ beliebig nah an $f$ ist.
 \end{proof}
 
-\begin{remark}
-    Die meiste Zeit werden wir uns in dieser Arbeit kompakte Mannigfaltigkeiten untersuchen,
-    auf solchen kann jede glatte Funktion sogar global mit einer Morse Funktion approximieren.
-\end{remark}
+Die meiste Zeit werden wir uns in dieser Arbeit kompakte Mannigfaltigkeiten untersuchen,
+auf solchen kann jede glatte Funktion sogar global mit einer Morse Funktion approximieren.

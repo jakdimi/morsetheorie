@@ -20,6 +20,11 @@ passiert \textit{wenn ein} kritischer Wert überschritten wird. Die Beweise folg
 Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
 steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$ 
 "nach oben zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$.
+Wir erinnern uns, dass auf jeder Mannigfaltigkeiten \textit{Riemannsche Metriken} existieren,
+und dass diese dann für eine Funktion $f \colon M \to \R$ eine Gradientenvektorfeld induzieren.
+dieses Gradientenvektorfeld $\grad f$ ist definiert durch 
+\[ \langle X , \grad f \rangle = \opd f X \]
+und $\grad f (p) = 0$ genau dann, wenn $p$ ein kritischer Punkt von $f$ ist.
 
 \begin{proof}
     Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$, in der keine kritischen Punkte 
@@ -150,9 +155,9 @@ steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$
 \end{proof}
 
 Mit diesen beiden Aussagen kommt man schon sehr weit. Die berühmten Morse- \\Ungleichungen lassen
-sich mit ein bisschen linearer Algebra an exacten Sequenzen leicht daraus folgern. Man kann sogar
+sich mit ein bisschen linearer Algebra an exakten Sequenzen leicht daraus folgern. Man kann sogar
 zeigen, dass jede Mannigfaltigkeit dein Homotopietypen eines CW-Komplexes 
-(siehe Def.~\ref{def: cw-komplex}) besitzt, wie es zum Beispiel Milnor tut. Die Folgenden Kapitel 
+(siehe Def.~\ref{def: cw-komplex}) besitzt, wie es zum Beispiel Milnor tut. Die folgenden Kapitel 
 geben eine etwas eleganterere Sicht auf die Thematik, die in gewisser Hinsicht stärkere Aussagen
 liefert:
 

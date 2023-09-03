@@ -416,93 +416,93 @@ Kettenkomplex ist.
     Außerdem ist $\Phi^{-1}(\ell_n^+) = \ell_n^-$, also $\ell_n \in \Ima (\psi)$.
 \end{bigproof}
 
-\subsection*{Der Morse Komplex über \texorpdfstring{$\Z$}{TEXT}}
+% \subsection*{Der Morse Komplex über \texorpdfstring{$\Z$}{TEXT}}
 
-Wir haben nun den Morse Komplex über $\F_2$ definiert. Wir wollen noch allgemeiner einen Komplex
-über $\Z$ definieren. Die meiste Arbeit dafür ist nun schon gemacht. Um den Morse-Komplex über 
-$\Z$ zu definieren, wollen wir den Raum der Trajektorien $\Lt (p, q)$ orientieren. Dafür beschäftigen 
-wir uns ein wenig mit Orientierungen von Vektorräumen.
+% Wir haben nun den Morse Komplex über $\F_2$ definiert. Wir wollen noch allgemeiner einen Komplex
+% über $\Z$ definieren. Die meiste Arbeit dafür ist nun schon gemacht. Um den Morse-Komplex über 
+% $\Z$ zu definieren, wollen wir den Raum der Trajektorien $\Lt (p, q)$ orientieren. Dafür beschäftigen 
+% wir uns ein wenig mit Orientierungen von Vektorräumen.
 
-\begin{definition}[Orientierung und Koorientierung]
-    Es sei $V$ ein endlich dimensionaler Vektorraum. Seien außerdem $\B_1$ und $\B_2$ Basen von $V$. 
-    Definiere
-    \[ \B_1 \sim_O \B_2 \Longleftrightarrow \det \, _{\B_1}[\id_V]_{B_2} > 0 \]
-    Man rechnet leicht nach dass $\sim_O$ eine Äquivalenzrelation ist und dass es bezüglich $\sim_O$
-    genau zwei Äquivalenzklassen gibt.
-    Zwei Basen heißen \textit{gleich orientiert} wenn sie äquivalent bezüglich $\sim_O$ sind. 
-    Eine \textit{Orientierung} ist eine Wahl der Äquivalenzklasse. Ein \textit{orientierter Vektorraum} 
-    ist ein Vektorraum zusammen mit einer Orientierung. Ist ein Vektorraum orientiert, dann sagen wir 
-    dass eine Basis \textit{positiv orientiert} ist, falls sie gleich orientiert mit der gewählten Basis 
-    ist.
+% \begin{definition}[Orientierung und Koorientierung]
+%     Es sei $V$ ein endlich dimensionaler Vektorraum. Seien außerdem $\B_1$ und $\B_2$ Basen von $V$. 
+%     Definiere
+%     \[ \B_1 \sim_O \B_2 \Longleftrightarrow \det \, _{\B_1}[\id_V]_{B_2} > 0 \]
+%     Man rechnet leicht nach dass $\sim_O$ eine Äquivalenzrelation ist und dass es bezüglich $\sim_O$
+%     genau zwei Äquivalenzklassen gibt.
+%     Zwei Basen heißen \textit{gleich orientiert} wenn sie äquivalent bezüglich $\sim_O$ sind. 
+%     Eine \textit{Orientierung} ist eine Wahl der Äquivalenzklasse. Ein \textit{orientierter Vektorraum} 
+%     ist ein Vektorraum zusammen mit einer Orientierung. Ist ein Vektorraum orientiert, dann sagen wir 
+%     dass eine Basis \textit{positiv orientiert} ist, falls sie gleich orientiert mit der gewählten Basis 
+%     ist.
 
-    Sei nun $U$ ein Unterraum von $V$ und $\B_0$ eine Basis von $U$. Sind $\B_1$ und $\B_2$ Basen von 
-    zwei (möglicherweise verschiedenen) Komplementärräumen von $U$, dann definiere
-    \[ \B_1 \sim_K \B_2 \Longleftrightarrow \det \, _{(\B_1, \B_0)}[\id_V]_{(\B_2, \B_0)} > 0 . \]
-    Man rechnet leicht nach, dass $\sim_K$ eine Äquivalenzrelation ist, dass es bezüglich $\sim_K$
-    genau zwei äquivalenzklassen gibt, und dass $\sim_K$ nicht von der gewählten Basis $\B_0$ abhängt. 
-    Zwei Basen heißen \textit{gleich koorientiert} wenn sie äquivalent sind. Eine \textit{Koorientierung} 
-    von $U$ ist eine Wahl der Äquivalenzklasse. Ein \textit{koorientierter Vektorraum} ist ein Vektorraum 
-    zusammen mit einer Koorientierung. Ist ein Vektorraum koorientiert, dann sagen wir dass eine Basis 
-    eines Komplements von $U$ \textit{positiv koorientiert} ist, falls sie gleich koorientiert mit der 
-    gewählten Basis ist.
-\end{definition}
+%     Sei nun $U$ ein Unterraum von $V$ und $\B_0$ eine Basis von $U$. Sind $\B_1$ und $\B_2$ Basen von 
+%     zwei (möglicherweise verschiedenen) Komplementärräumen von $U$, dann definiere
+%     \[ \B_1 \sim_K \B_2 \Longleftrightarrow \det \, _{(\B_1, \B_0)}[\id_V]_{(\B_2, \B_0)} > 0 . \]
+%     Man rechnet leicht nach, dass $\sim_K$ eine Äquivalenzrelation ist, dass es bezüglich $\sim_K$
+%     genau zwei äquivalenzklassen gibt, und dass $\sim_K$ nicht von der gewählten Basis $\B_0$ abhängt. 
+%     Zwei Basen heißen \textit{gleich koorientiert} wenn sie äquivalent sind. Eine \textit{Koorientierung} 
+%     von $U$ ist eine Wahl der Äquivalenzklasse. Ein \textit{koorientierter Vektorraum} ist ein Vektorraum 
+%     zusammen mit einer Koorientierung. Ist ein Vektorraum koorientiert, dann sagen wir dass eine Basis 
+%     eines Komplements von $U$ \textit{positiv koorientiert} ist, falls sie gleich koorientiert mit der 
+%     gewählten Basis ist.
+% \end{definition}
 
-\begin{prop}
-    Es seien $U, W \subseteq V$ Untervektorräume, $U$ orientiert und $W$ koorientiert. Dann ist 
-    $U \cap W$ orientiert.
-\end{prop}
+% \begin{prop}
+%     Es seien $U, W \subseteq V$ Untervektorräume, $U$ orientiert und $W$ koorientiert. Dann ist 
+%     $U \cap W$ orientiert.
+% \end{prop}
 
-\begin{proof}
-    Wähle eine Basis $\B$ von $U \cap W$. Erweitere $\B$ mit einer positiv koorientierten Basis $\B_1$
-    bezüglich $W$ zu einer Basis von $U$. Dann ist $\B$ positiv orientiert, falls $(\B_1, \B)$ 
-    in $U$ positiv orientiert ist. Dies hängt nicht von der Wahl von $\B_1$ ab:
+% \begin{proof}
+%     Wähle eine Basis $\B$ von $U \cap W$. Erweitere $\B$ mit einer positiv koorientierten Basis $\B_1$
+%     bezüglich $W$ zu einer Basis von $U$. Dann ist $\B$ positiv orientiert, falls $(\B_1, \B)$ 
+%     in $U$ positiv orientiert ist. Dies hängt nicht von der Wahl von $\B_1$ ab:
 
-    Sei $\B_2$ eine weitere positiv koorientierte Basis eines Komplements von $W$, sodass $(\B_2, \B)$ 
-    eine Basis von $U$ mit derserlben Orientierung wie $(B_1, \B)$ ist. Sei $\tilde{\B}$ gewählt, sodass 
-    $(B, \tilde{\B})$ eine Basis von $W$ ist. Dann sind $(\B_1, \B, \tilde{\B})$ und 
-    $(\B_2, \B, \tilde{\B})$ Basen von $V$, und es gilt
-    \[ 0 < \det \, _{(\B_1, \B, \tilde{\B})}[\id_V]_{(\B_2, \B, \tilde{\B})} = 
-        \det \, _{(\B_1, \B)}[\id_U]_{(\B_2, \B)} \]
-\end{proof}
+%     Sei $\B_2$ eine weitere positiv koorientierte Basis eines Komplements von $W$, sodass $(\B_2, \B)$ 
+%     eine Basis von $U$ mit derserlben Orientierung wie $(B_1, \B)$ ist. Sei $\tilde{\B}$ gewählt, sodass 
+%     $(B, \tilde{\B})$ eine Basis von $W$ ist. Dann sind $(\B_1, \B, \tilde{\B})$ und 
+%     $(\B_2, \B, \tilde{\B})$ Basen von $V$, und es gilt
+%     \[ 0 < \det \, _{(\B_1, \B, \tilde{\B})}[\id_V]_{(\B_2, \B, \tilde{\B})} = 
+%         \det \, _{(\B_1, \B)}[\id_U]_{(\B_2, \B)} \]
+% \end{proof}
 
-\begin{definition}[Orientierung und Koorientierung von Mannigfaltigkeiten]
-    Es sei $M$ eine $n$-dimensionalen Mannigfaltigkeit und 
-    \[ (v_1, \dots, v_n), (w_1, \dots, w_n) \colon M \to TM \times \dots \times TM \]
-    glatte Abbildungen mit $v_i(p), w_i(p) \in T_pM$, für alle $p \in M$ sodass $(v_1(p), \dots, v_n(p))$
-    und $(w_1(p), \dots w_n(p))$ Basen von $T_pM$ sind. Dann definiere:
-    \[ (v_1, \dots, v_n) \sim_O (w_1, \dots, w_n) 
-        \Longleftrightarrow 
-            (v_1(p), \dots, v_n(p)) \sim_O (w_1(p), \dots, w_n(p)) \text{ für alle } p \in M . \]
-    Dies ist wieder eine Äquivalenzrelation und es gibt wieder genau zwei Äquivalenzklassen. 
-    Eine Äquivalenzk
-\end{definition}
+% \begin{definition}[Orientierung und Koorientierung von Mannigfaltigkeiten]
+%     Es sei $M$ eine $n$-dimensionalen Mannigfaltigkeit und 
+%     \[ (v_1, \dots, v_n), (w_1, \dots, w_n) \colon M \to TM \times \dots \times TM \]
+%     glatte Abbildungen mit $v_i(p), w_i(p) \in T_pM$, für alle $p \in M$ sodass $(v_1(p), \dots, v_n(p))$
+%     und $(w_1(p), \dots w_n(p))$ Basen von $T_pM$ sind. Dann definiere:
+%     \[ (v_1, \dots, v_n) \sim_O (w_1, \dots, w_n) 
+%         \Longleftrightarrow 
+%             (v_1(p), \dots, v_n(p)) \sim_O (w_1(p), \dots, w_n(p)) \text{ für alle } p \in M . \]
+%     Dies ist wieder eine Äquivalenzrelation und es gibt wieder genau zwei Äquivalenzklassen. 
+%     Eine Äquivalenzk
+% \end{definition}
 
-Die stabilen Mannigfaltigkeiten sind offene Kreisscheiben, also offensichtlich orientierbar. 
-Wähle für jeden kritischen Punkt $p$ (endgültig) eine Orientierung von $\stab (p)$. Da gilt 
-$T_p \stab (p) + T_p \unst (p) = T_p M$ und $\dim T_p \stab (p) + \dim T_p \unst(p) = n$,
-gilt schon $T_p \stab (p) \oplus T_p \unst (p) = T_p M$. Die Wahl der Orientierung von $\stab (p)$
-ist also gleichzeitig eine Wahl der Koorientierung von $\unst (p)$. Dann ist für kritische Punkte 
-$\stab (p) \cap \unst (p)$ eine orientierte Mannigfaltigkeit. 
+% Die stabilen Mannigfaltigkeiten sind offene Kreisscheiben, also offensichtlich orientierbar. 
+% Wähle für jeden kritischen Punkt $p$ (endgültig) eine Orientierung von $\stab (p)$. Da gilt 
+% $T_p \stab (p) + T_p \unst (p) = T_p M$ und $\dim T_p \stab (p) + \dim T_p \unst(p) = n$,
+% gilt schon $T_p \stab (p) \oplus T_p \unst (p) = T_p M$. Die Wahl der Orientierung von $\stab (p)$
+% ist also gleichzeitig eine Wahl der Koorientierung von $\unst (p)$. Dann ist für kritische Punkte 
+% $\stab (p) \cap \unst (p)$ eine orientierte Mannigfaltigkeit. 
 
-Bemerke nun, dass fur einen regulären Wert $c$ die Niveau-Menge $f^{-1}(c)$ transversal zum 
-Pseudo-Gradientenfeld $X$ liegt, und da $f^{-1}(c)$ $n-1$-dimensional ist definiert $X$ eine 
-Koorientierung von $f^{-1}(c)$. Außerdem gilt für reguläre Werte mit $f(p) > c > f(q)$, dass 
-$\Lt (p, q) = (\unst (p) \cap \stab (q)) \cap f^{-1}(c)$. Also ist $\Lt (p, q)$ orientiert.
+% Bemerke nun, dass fur einen regulären Wert $c$ die Niveau-Menge $f^{-1}(c)$ transversal zum 
+% Pseudo-Gradientenfeld $X$ liegt, und da $f^{-1}(c)$ $n-1$-dimensional ist definiert $X$ eine 
+% Koorientierung von $f^{-1}(c)$. Außerdem gilt für reguläre Werte mit $f(p) > c > f(q)$, dass 
+% $\Lt (p, q) = (\unst (p) \cap \stab (q)) \cap f^{-1}(c)$. Also ist $\Lt (p, q)$ orientiert.
 
-Falls nun $p$ und $q$ kritische Punkte mit $\Index (p) = \Index (q) + 1$ sind, dann ist wieder 
-$\Lt (p, q)$ nur eine Ansammlung von Punkten, die alle mittels der Orientierung mit einem Vorzeichen 
-ausgestattet wurden. Es sei $N_X (p, q)$ die Summe dieser Vorzeichen. Dann sei $C_k (M, (f, X))$
-das von den kritischen Punkten von $f$ mit Index $k$ erzeugte $\Z$-Modul, und für einen kritischen $p$
-sei
-\[\del_X (p) = \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} N_X(p, q)p . \]
+% Falls nun $p$ und $q$ kritische Punkte mit $\Index (p) = \Index (q) + 1$ sind, dann ist wieder 
+% $\Lt (p, q)$ nur eine Ansammlung von Punkten, die alle mittels der Orientierung mit einem Vorzeichen 
+% ausgestattet wurden. Es sei $N_X (p, q)$ die Summe dieser Vorzeichen. Dann sei $C_k (M, (f, X))$
+% das von den kritischen Punkten von $f$ mit Index $k$ erzeugte $\Z$-Modul, und für einen kritischen $p$
+% sei
+% \[\del_X (p) = \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} N_X(p, q)p . \]
 
-Wir müssen nun dieselben Fragen beantworten wie für den Komplex über $\F_2$. 
+% Wir müssen nun dieselben Fragen beantworten wie für den Komplex über $\F_2$. 
 
-Offensichtlich ist $N_X(p, q) < \infty$. Wir müssen also noch zeigen, dass gilt
-\[ \del_X \circ \del_X (p) = 0 . \]
-Dies folgt aus dem Satz~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}.
-Die Kompaktifizierung einer orientierten \\ 
-$1$-dimensionalen Mannigfaltigkeit zu einer $1$-dimensionalen 
-Mannigfaltigkeit mit Rand ist offensichtlich wieder orientiert. Wir müssen nur noch sicherstellen, dass 
-die Orientierung auf dem Rand dann auch mit der Orientierung, die wir oben festgelegt haben übereinstimmt.
+% Offensichtlich ist $N_X(p, q) < \infty$. Wir müssen also noch zeigen, dass gilt
+% \[ \del_X \circ \del_X (p) = 0 . \]
+% Dies folgt aus dem Satz~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}.
+% Die Kompaktifizierung einer orientierten \\ 
+% $1$-dimensionalen Mannigfaltigkeit zu einer $1$-dimensionalen 
+% Mannigfaltigkeit mit Rand ist offensichtlich wieder orientiert. Wir müssen nur noch sicherstellen, dass 
+% die Orientierung auf dem Rand dann auch mit der Orientierung, die wir oben festgelegt haben übereinstimmt.
 

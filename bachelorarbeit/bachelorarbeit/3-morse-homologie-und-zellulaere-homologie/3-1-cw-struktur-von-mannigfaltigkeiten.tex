@@ -1,0 +1,64 @@
+\section{CW-Struktur von Mannigfaltigkeiten}
+
+Die folgenden Definitionen sind in \cite{dold} zu finden.
+
+\begin{definition}[CW-Zerlegung und CW-Komplexe]
+    \label{def: cw-komplex}
+    Es sei $X$ ein topologischer Raum. Eine offene Überdeckung $\mathcal{E}$ von $X$ heißt 
+    $CW-Zerlegung$, wenn gelten:
+    \begin{enumerate}
+        \item Die Elemente in $\mathcal{E}$ sind paarweise disjunkt.
+        \item Alle $e \in \mathcal{E}$ sind homeomorph zu offenen Kreisscheiben. \\
+            Wir nennen $X^n$ die Vereinigung aller $e \in \mathcal{E}$, die Homeomorph zu einer
+            $k$-dimensionalen offenen Kreisscheibe mit $k \leq n$ sind.
+        \item Für jedes Element $e \in \mathcal{E}$ existiert eine stetige Abbildung
+            $\Phi_e \colon (B^n, S^{n - 1}) \to (X^n \cup e, X^n)$, sodass 
+            $\Phi_e \colon B^n - S^n \to e$ ein Homeomorphismus ist. $B^n$ ist die abgeschlossene 
+            $n$-dimiensionale Kresscheibe.
+        \item Der Abschluss $\overline{e}$ enthält nur endlich viele Elemente aus $\mathcal{E}$.
+        \item Eine Teilmenge $U$ ist offen in $X$ genau dann, wenn für alle $e \in \mathcal{E}$ die
+            Menge $U \cap \overline{e}$ offen in $\overline{e}$ ist. 
+    \end{enumerate}
+    
+    Ein topologischer Raum $X$ zusammen mit einer CW-Zerlegung $\mathcal{E}$ heißt 
+    \textit{CW-Komplex}.
+    Wir nennen die $k$-dimensionalen $e \in \mathcal{E}$ $k$-Zellen, die Abbildung $\Phi_e$
+    heißt charakteristische Abbildung von $e$, die Abbildung 
+    $\phi_e := \Phi_e|_{S^{n - 1}} \colon S^{n - 1} \to X^{n - 1}$ heißt Anheftungsabbildung.
+    $X^n$ heißt $n$-Skelett von $X$. Existiert ein $n$, sodass $X^n = X$, dann ist $n$ die 
+    dimension des CW-Komplexes. Existiert kein solchens $n$, dann ist die Dimiension $\infty$.
+\end{definition}
+
+\begin{remark}
+    Ist $X$ kompakt mit einer CW-Zerlegung $\mathcal{E}$, dann ist $\mathcal{E}$ endlich dimensional, 
+    und die Bedingungen 4. und 5. sind sowieso erfüllt.
+\end{remark}
+
+\begin{definition}[Zelluläre Homologie]
+    \label{def: zellulaere homologie}
+    Bemerke, dass $X^n / X^{n - 1}$ das Wedge-Produkt vieler $D^n / S^{n-1} = S^n$'s ist. 
+    Wir bekommen durch die Anheftungsabbildung für jede $k$-Zelle $e$ eine Abbildung in den 
+    Quotienten
+    \[ \phi_e \colon S^{k-1} \longto X^{k - 1} \longto X^{k - 1} / X^{k - 2} . \]
+    ist $d$ eine $k - 1$-Zelle, dann bekommen wir außerdem eine Abbildung 
+    \[ \psi_d \colon X^{k - 1} / X^{k - 2} \longto S^{k - 1} , \]
+    die alle Sphären in dem Quotienten außer die, die aus $\Ima (\Phi_d)$ entstanden ist
+    auf den Klebepunkt abbildet.
+
+    Sei dann $N(e, d)$ der Grad$\mod 2$ der Abbildung
+    \[ \psi_d \circ \phi_c \colon S^{k - 1} \longto S^{k - 1} . \]
+    Dann ist das $k$-te Glied $K_k$ des \textit{zellulären Komplexes} $(K_{\ast}, \del)$ das 
+    $\F_2$-Modul, das von den $k$-Zellen in $\mathcal{E}$ erzeugt wird, und das Differential ist für 
+    eine $k$-Zelle $e$ gegeben durch
+    \[ \del (e) = \sum_{d \in K_{k  - 1}} N(e, d) \cdot d \] 
+\end{definition}
+
+\begin{remark}
+    Man zeigt, dass $\del \circ \del = 0$, also dass $(K_{\ast}, \del)$ ein Kettenkomplex ist. 
+    Siehe \cite{dold}. Außerdem ist die Homologie des zellulären Kettenkomplexes isomorph zur 
+    singulären Homologie, und damit unabhängig von der gewählten CW-Zerlegung (\cite{hatcher}). 
+    Wie schon vorher angedeutet, gibt es nicht für jeden topologischen Raum eine CW-Zerlegung,
+    aber es ist tatsächlich gar nicht leicht einen topologischen Raum zu konstruieren, der 
+    kein CW-Komplex ist.
+\end{remark}
+
