@@ -1,17 +1,19 @@
 \section{Der Morse-Komplex und der Raum der gebrochenen Trajektorien}
 
 Wir sind nun bereit, den Morse-Komplex mit Koeffizienten in $\F_2$ (wenigstens) hinzuschreiben.
-Wir fixieren für den gesamten Abschnitt eine glatte kompakte Mannigfaltigkeit $M$ und ein
-Morse-Smale Paar $(f, X)$, und für jeden kritischen Punkt $p$ von $f$ eine Morse Umgebung 
-$(\psi_p, \Omega(p))$, sodass $\psi(\Omega(p)) = U(\eps_p, \eta_p)$ wie in der Notation zu Morse 
-Umgebungen~\ref{def: notation morse umgebung}. Dann definiere $C_k (M, (f, X))$ als das $\F_2$ Modul, 
-das von den kritischen Punkten von $f$ mit Index $k$ erzeugt wird. Außerdem sei 
-$n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Wert $p$:
-\[ \del_X (p) := \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} n_X(p, q)p . \]
+Wir fixieren für den gesamten Abschnitt eine glatte \textbf{kompakte} Mannigfaltigkeit $M$ und ein
+Morse-Smale Paar $(f, X)$. Die Notation, die wir zu Morse-Umgebungen 
+in~\ref{def: notation morse umgebung} entwickelt haben wird weiterhin wichtig sein. 
+Dann definiere $C_k (M, (f, X))$ als das $\F_2$-Modul, 
+das von den kritischen Punkten von $f$ mit Index $k$ erzeugt wird, also
+\[ C_k = \left\{ \sum_{p \, \in \, \Crit_k (f)} a_p \cdot p : a_p \in \F_2 \right\} . \] 
+Außerdem sei 
+$n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Punkt $p$ mit Index $k + 1$:
+\[ \del_X (p) := \sum_{q \, \in \, \Crit_{k}(f)} n_X(p, q)p . \]
 
 Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ wohldefiniert
 ist, also dass gilt $n_X (p, q) < \infty$, und dass es ein Kettenkomple ist, also dass 
-$\del_X \circ \del_X = 0$. Sobald das gezeigt wurde ist es ein Leichtes, den Komplex auch über die 
+$\del_X \circ \del_X = 0$. Sobald das gezeigt wurde ist es recht leicht, den Komplex auch über die 
 ganzen Zahlen zu definieren.
 
 \subsection*{Wohldefiniertheit}
@@ -32,34 +34,33 @@ $(\ell_1, ..., \ell_k) \in \Lt (p, c_1) \times \dots \times \Lt (c_{k - 1}, q) \
 ist eine \glqq Verbindung\grqq{} zwischen $p$ und $q$ entlang des Pseudo-Gradientenfeldes $X$, die noch 
 bei den kritischen Punkten $c_1, \dots, c_{k - 1}$ \glqq Halt\grqq{} macht. 
 
+\todo{Zerichnung: gebrochene Trajektorien}
+
 Offensichtlich gilt:
 \begin{itemize}
-    \item Ist $\Index (p) + 1 = \Index (q)$, so ist $\Lb (p, q) = \Lt (p, q)$.
-    \item Ist $\Index (p) + 2 = \Index (q)$, so ist 
+    \item Für jedes $\ell \in \Lt (p, c_1) \times \dots \times \Lt (c_{k - 1}, q)$ gilt 
+        $\Index (p) < \Index (c_1) < \dots < \Index (c_{k - 1}) < \Index (q)$, denn falls dies nicht
+        der Fall ist, ist mindestens einer der Faktoren leer. 
+    \item Ist $\Index (p) = \Index (q) + 1$, so ist $\Lb (p, q) = \Lt (p, q)$.
+    \item Ist $\Index (p) = \Index (q) + 2$, so ist 
         $\Lb (p, q) = \Lt (p, q) \cup \bigcup_{c \in \Crit (f)} \Lt(p, c) \times \Lt(c, q)$
 \end{itemize}
-
-Wir werden sehen, dass man wie mit der Notation angedeutet $\Lb (p, q)$ mit einer Topologie ausstatten 
-kann, sodass es die Kompaktifizierung von $\Lt (p, q)$ ist. (In der Tat ist ja 
+Tatsächlich sind die beiden letzten Fälle die, die wir am meisten untersuchen werden.
+Wir werden sehen, dass man, wie mit der Notation angedeutet, $\Lb (p, q)$ mit einer Topologie 
+ausstatten kann, sodass es die Kompaktifizierung von $\Lt (p, q)$ ist. (In der Tat ist ja 
 $\Lt (p, q) \subseteq \Lb (p, q)$).
 
 \begin{definition}[Topologie von $\Lb (p, q)$]
     Ese seien $p$ und $q$ kritische Punkte von $f$. Wir erinnern uns an unsere Vorstellung von Morse-
-    Umgebungen $U = U(\eps, \eta)$ wie in~\ref{def: notation morse umgebung}:
-    \begin{itemize}
-        \item $\del_+ U$ sind alle Punkte auf dem Rand von $U$, auf denen Trajektorien von $X$ in 
-            die Umgebung $U$ eintreten.
-        \item $\del_- U$ sind alle Punkte auf dem Rand von $U$, auf denen Trajektorien von $X$ die
-            Umgebung $U$ verlassen.
-        \item Die Trajektorien von $X$ verlaufen tangential zu $\del_0 U$.
-    \end{itemize}
-    Es sei nun 
+    Umgebungen $\Omega(p)$ wie in~\ref{def: notation morse umgebung}.
+    Es sei
     \[ \ell = (\lambda_1, \dots, \lambda_k) 
         \in \Lt (p, c_1) \times \dots \times \Lt(c_{k - 1}, q) \subseteq \Lb (p, q) . \]
-    Seien $U_i = U_i (\eps_i, \eta_i)$ Morse Umgebungen von $c_i$ und $U_0$ und $U_k$ Morse 
+    Seien $U_i = \Omega(c_i)$ Morse Umgebungen von $c_i$ und $U_0$ und $U_k$ Morse 
     Umgebungen von $p$ und $q$. $\lambda_i \cap \del_+ U_i$ ist der Punkt, an dem $\lambda_i$
-    in $U_i$ eintritt, und $\lambda_{i + 1} \cap \del_- U_i$ ist der Punkt, an dem $\lambda_{i + 1}$
-    die Umgebung $U_i$ verlässt. Es sei $U_i^-$ eine Umgebung von $\lambda_i \cap \del_+ U_i$ in 
+    in $U_i$ eintritt, und $\lambda_{i + 1} \cap \del_- U_i$ ist der Punkt, an dem 
+    $\lambda_{i + 1}$ die Umgebung $U_i$ verlässt. Es sei $U_i^-$ eine Umgebung von 
+    $\lambda_i \cap \del_+ U_i$ in 
     $\del_+ U$ und $U_i^-$ eine Umgebung von $\lambda_{i + 1} \cap \del_- U_i$ in $\del_- U_i$. 
     Seien dann $U^- = \bigcup U_i^-$ und $U^+ = \bigcup U_i^+$. Dann definiere die Menge 
     $\mathcal{U} (\ell, U^-, U^+)$ wie folgt:
@@ -68,14 +69,17 @@ $\Lt (p, q) \subseteq \Lb (p, q)$).
     $\ell' = (\mu_1, ..., \mu_{k'}) \in \Lt (p, c_{i_1}) \times \dots \times \Lt (c_{i_{k'-1}}, q)$
     ist in $\mathcal{U}(\ell, U^-, U^+)$ enthalten, falls $\mu_j \cap U_j^+ \neq \varnothing$
     und $\mu_j \cap U_{j + 1}^- \neq \varnothing$. 
-    Dann ist $\mathcal{W} \subseteq \Lb (p, q)$ offen genau dann, wenn es für jedes 
-    $\ell \in \mathcal{W}$ Umgebungen $U^+$ und $U^-$ wie oben gibt, sodass 
-    $\mathcal{U}(\ell, U^+, U^-) \subseteq \mathcal{W}$.
+
+    Eine Menge $\mathcal{W} \subseteq \Lb (p, q)$ heißt dann \textit{offen}, falls für alle 
+    $\ell \in V$ Umgebungen $U_{\ell}^+$ und $U_{\ell}^-$ wie oben existieren, sodass 
+    \[ \mathcal{U}(\ell, U_{\ell}^+, U_{\ell}^-) \subseteq V . \]
 \end{definition}
 
 \begin{remark}
     Die Topologie von $\Lt(p, q)$ als Quotient stimmt mit der von $\Lb(p, q)$ überein.
-    \todo{}
+    Dies ist wieder ersichtlich, wenn wir uns $\Lt (p, q)$ als Schnitt 
+    $\mathcal{M} (p, q) \cap f^{-1}(c)$ vorstellen; Die $U^-$ beziehungsweise $U^+$ sind nur 
+    offene Umgebungen in den Niveaumengen.
 \end{remark}
 
 \begin{prop}
@@ -94,62 +98,61 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
 \end{lemma}
 
 \begin{proof}
-    Es sei $U$ eine Umgebung von $\Crit (f)$. Dann ist $\opd f (\cdot) (X)$ nie Null, und ähnlich wie 
-    Im Beweis vom ersten Deformationslemma~\ref{satz: erstes deformationslemma} betrachten wir das
-    Vektorfeld 
+    Es sei $U$ eine Umgebung von $\Crit (f)$. Dann ist $\opd f (\cdot) (X)$  in $M - U$ nie Null.
+    Ähnlich wie im Beweis vom ersten Deformationslemma~\ref{satz: erstes deformationslemma} betrachten 
+    wir das Vektorfeld 
     \[ Y = - \frac{1}{\opd f (\cdot) (X)} \cdot X \]
     Auf $M - U$. Sei $\phi$ die von $Y$ erzeugte 1-Parameter Gruppe aus Diffeomorphismen. 
     Da $Y$ in die selbe Richtung zeigt wie $X$, stimmen die Trajektorien von $Y$ mit denen von $X$ 
-    überein und es gilt 
+    überein und außerdem gilt 
     \[ f(\phi_t(z)) = f(z) - t . \]
     Dann gilt
-    \[ \lim_{n \to \infty} y_n 
-    = \lim_{n \to \infty} \phi_{- f(y_n) + f(x_n)}(x_n) 
-    = \lim_{n \to \infty} \phi_{- f(y) + f(x_n)}(x_n) 
-    = \phi_{- f(y) + f(x)}(x) = y \]
+    \begin{align*} 
+        \lim_{n \to \infty} y_n  = & \lim_{n \to \infty} \phi_{- f(y_n) + f(x_n)}(x_n) \\
+        = & \lim_{n \to \infty} \phi_{- f(y) + f(x_n)}(x_n) \\
+        = & \phi_{- f(y) + f(x)}(x) = y
+    \end{align*}
 \end{proof}
 
 \begin{proof}[Beweis von Proposition~\ref{prop: Lb ist kompakt}]
-    Es sei $(\ell_n)_n$ eine Folge in $\Lb (p, q)$. Um zu zeigen, dass $Lb (p, q)$ kompakt ist
-    müssen wir zeigen, dass $(l_n)_n$ eine konvergente Teilfolge besitzt.
+    Es sei $(\ell_n)_n$ eine Folge in $\Lb (p, q)$. Um zu zeigen, dass $\Lb (p, q)$ kompakt ist
+    müssen wir zeigen, dass $(\ell_n)_n$ eine konvergente Teilfolge besitzt.
 
-    Wir nehmen zuerst an, dass für alle $n \in \N$ die Trajektorie $\ell_n$ in $\Lt (p, q)$.
-    Seien $U$ und $V$ Morse Umgebungen von $p$ und $q$ in der Form wie bei der eingeführten
-    Notation für Morse Umgebungen~\ref{def: notation morse umgebung}.
-    Es außerdem sei $\ell_n^- \in M$ der Punkt, an dem $\ell_n$ die Morse Umgebung $U$ verlässt 
-    und $\ell_n^- \in M$ der Punkt, an dem $\ell_n$ in die Morse Umgebung $V$ eintritt.
-    $\ell_n^-$ und $\ell_n^+$ sind im Schnitt von $\del U$ bzw. $\del V$ und der stabilen bzw. 
-    instabilen Mannigfaltigkeit. Diese Schnitte sind Kugeloberflächen, also kompakt. Die Folgen 
-    $(l_n^-)_n$ und $(\ell_n^+)_n$ haben also konvergente Teilfolgen, wir können demnach ohne 
-    Beschränkung der Allgemeinheit annehmen, dass sie konvergent sind. Setze
+    Wir nehmen zuerst an, dass für alle $n \in \N$ die Trajektorie $\ell_n \in \Lt (p, q)$.
+    Es sei $\ell_n^- \in M$ der Punkt, an dem $\ell_n$ die Morse Umgebung $\Omega(p)$ verlässt 
+    und $\ell_n^- \in M$ der Punkt, an dem $\ell_n$ in die Morse Umgebung $\Omega(q)$ eintritt.
+    $\ell_n^-$ und $\ell_n^+$ sind im Schnitt von $\del \Omega (p)$ bzw. $\del \Omega (q)$ und 
+    der stabilen bzw. instabilen Mannigfaltigkeit. Diese Schnitte sind Kugeloberflächen, also 
+    kompakt. Die Folgen $(l_n^-)_n$ und $(\ell_n^+)_n$ haben also konvergente Teilfolgen, wir können 
+    demnach ohne Beschränkung der Allgemeinheit annehmen, dass sie konvergent sind. Setze
     \[ \lim_{n \to \infty} \ell_n^- = p^- \text{ und } \lim_{n \to \infty} \ell_n^+ = q^+ . \]
     Sei $\phi$ die von $X$ erzeugte 1-Parameter Gruppe aus Diffeomorphismen, dann ist 
     $\gamma = \phi_{\bullet}(p^-)$ die Trajektorie von $p^-$. Sei 
-    $c = \lim_{n \to \infty} \phi_t(p^-)$. $c$ ist nach 
+    $c = \lim_{n \to \infty} \phi_t(p^-)$. Der Punkt $c$ ist nach 
     Proposition~\ref{prop: trajektorien enden in kritischen punkten} ein kritischer Punkt,
-    also ist $\gamma \in \Lt (p, c)$. Es sei nun $W$ eine Morse-Umgebung von $c$, die auch
-    die Form hat wie in~\ref{def: notation morse umgebung}. Da $\phi$ glatt ist, muss für $n$ 
-    groß genug auch $\ell_n$ die Morse Umgebung $W$ von $c$ kreuzen. Sei $d_n^+ \in M$ der Punkt, an
-    dem $\ell_n$ in $W$ eintritt. Dann gilt $d_n^+, d^+ \in \del_+ W$, also gilt $f(d_n^+) = f(d^+)$
-    für alle $n$. Da $d_n^+$ auf der selben trajektorie wie $p_n^-$ liegt, und $d^+$ auf der selben 
-    Trajekorie wie $p^-$,folgt da $\lim p_n^- = p^-$ mit dem letzten 
-    Lemma~\ref{lemma: konvergenz einer folge}: 
+    also ist $\gamma \in \Lt (p, c)$.  Es sei $d^+$ der Punkt, an dem $\gamma$ in $\Omega (c)$ 
+    eintritt. Da $\phi$ glatt ist, muss für $n$ groß genug auch $\ell_n$ die Morse Umgebung 
+    $\Omega (c)$ kreuzen. Sei $d_n^+ \in M$ der Punkt, an dem $\ell_n$ in $\Omega (c)$ eintritt. 
+    Dann gilt $d_n^+, d^+ \in \del_+ W$, also gilt $f(d_n^+) = f(d^+)$ für alle $n$. Da $d_n^+$ auf 
+    der selben Trajektorie wie $\ell_n^-$ liegt, und $d^+$ auf der selben wie $p^-$,folgt da 
+    $\lim \ell_n^- = p^-$ mit dem letzten Lemma~\ref{lemma: konvergenz einer folge}: 
     \[ \lim_{n \to \infty} d_n^+ = d^+ . \]
     Falls $c = q$, dann ist $\lim \ell_n = \gamma \in \Lt (p, q) \subseteq \Lb (p, q)$, also hat 
     dann die Folge $(\ell_n)_n$ eine konvergente Teilfolge. Es sei also $c \neq q$. Dann muss 
-    $\ell_n$ die Morse Umgebung $W$ wieder durch einen Punkt $d_n^-$ verlassen. Wie oben können wir 
-    ohne Beschränkung der Allgemeinheit annehmen, dass die Folge $(d_n^-)_n$ konvergent ist, da
-    sie zumindest eine konvergente Teilfolge besitzt. Wir definieren dann $d^- = \lim d_n^-$. 
+    $\ell_n$ die Morse Umgebung $\Omega (c)$ wieder durch einen Punkt $d_n^-$ verlassen. Wie oben 
+    können wir ohne Beschränkung der Allgemeinheit annehmen, dass die Folge $(d_n^-)_n$ konvergent 
+    ist, da sie zumindest eine konvergente Teilfolge besitzt. Wir definieren dann $d^- := \lim d_n^-$. 
     $d^-$ liegt in der instabielen Mannigfaltigkeit von $c$, denn wäre dies nicht der Fall, dann 
     führt das zu einem Widerspruch:
     
     Angenommen $d^- \notin \unst (c)$. Dann wäre $d^-$ auf der Trajektorie von einem Punkt
-    $d^+_{\ast} \in \del_+ W$, der nicht in $\stab (c)$ enthalten ist. Wieder wegen des vorherigen
-    Lemmas~\ref{lemma: konvergenz einer folge} ist dann $\lim d_n^+ = d^+_{\ast}$, also gilt dann
-    $d^+ = d^+_{\ast}$, aber es gilt $d^+ \in \stab{c}$.
+    $d^+_{\ast} \in \del_+ \Omega (c)$, der nicht in $\unst (c)$ enthalten ist. Wieder wegen des 
+    vorherigen Lemmas~\ref{lemma: konvergenz einer folge} ist dann $\lim d_n^+ = d^+_{\ast}$, also 
+    gilt dann $d^+ = d^+_{\ast}$, aber es gilt $d^+ \in \unst (c)$.
     
     Wir können nun wieder mit dem selben Argument zeigen, dass dann die Trajektorie von $d^-$ im
     kritischen Punkt $q$ endet, also liegt dann $\lim \ell_n$ in $\Lt (p, c) \times \Lt (c, q)$.
+    \todo{können wir das wirklich?}
 
     Jetzt fehlt uns noch der allgemeine Fall. Wir müssen also für eine Folge $(\ell_n)_n$ in 
     $\Lb (p, q)$ zeine konvergente Teilfolge finden. Wegen der Glattheit von $\phi$ können wir annehmen,
@@ -165,15 +168,26 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
     $\Lt(p, q)$ $0$-dimensionale Mannigfaltigkeit. Außerdem ist $\Lt (p, q)$ eine Abgeschlossene
     Teilmenge von $\Lb (p, q)$, und wie wir in der letzten Proposition~\ref{prop: Lb ist kompakt}
     gezeigt haben, ist $\Lb(p, q)$ kompakt, also auch $\Lt(p, q)$, also ist $\Lt (p, q)$ endlich.
-    Damit ist schon mal $n_X (p, q)$ wohldefiniert.
+    Damit ist schon mal $n_X (p, q)< \infty$, also $C_k(M (f, X))$ wohldefiniert.
 \end{remark}
 
 \subsection*{Der Morse Komplex ist ein Kettenkomplex}
 
-Wir wollen zeigen, dass der Morse-Komplex tatsächlich ein Kettenkomplex ist, also dass $\del^2 = 0$.
-Dafür genügt es zu zeigen, dass für einen kritischen Punkt $p$ mit Index $k + 1$ gilt $\del^2 (0) = 0$, 
-also dass für jeden weiteren kritischen Punkt mit Index $k + 1$ gilt, dass die Zahl
-$\# (\Lb (p, q) - \Lt (p, q))$ gerade ist. Wir benutzen die folgende Aussage, ohne sie zu beweisen:
+Wir wollen zeigen, dass der Morse-Komplex tatsächlich ein Kettenkomplex ist, also dass 
+$\del_X \circ \del_X = 0$.
+Wir rechnen:
+\begin{align*}
+    \del_X (\del_X (p)) = & \del_X (\sum_{c \in \Crit_k (f)} n_X (p, c) \cdot c) \\
+    = & \sum_{q \in \Crit_{k - 1}(f)} \left( 
+        \sum_{c \in \Crit_k (f)} n_X(p, c) \cdot n_X(c, q) \right) \cdot q
+\end{align*}
+und 
+\[ \sum_{c \in \Crit_k (f)} n_X(p, c) \cdot n_X(c, q) = 
+\# \left( \bigcup_{c \in \Crit_k (f)} \Lt (p, c) \times \Lt (c, q) \right) \mod 2 . \]
+Es genügt also zu zeigen, dass für kritische Punkte $p$ und $q$ mit Index $k + 1$ und $k - 1$
+gilt, dass $\# \left( \bigcup_{c \in \Crit_k (f)} \Lt (p, c) \times \Lt (c, q) \right)$ gerade ist.
+
+Wir benutzen die folgende Aussage, ohne sie zu beweisen:
 
 \begin{theorem}[Klassifizierung kompakter 1-Mannigfaltigkeiten]
     \label{satz: klassifizierung kompakter 1-mannigfaltigkeiten}
@@ -184,49 +198,16 @@ $\# (\Lb (p, q) - \Lt (p, q))$ gerade ist. Wir benutzen die folgende Aussage, oh
     \end{itemize}
 \end{theorem}
 
-% \begin{proof}
-%     Betrachte zuerst den ersten Fall, also dass $M$ keinen Rand hat. Es sei 
-%     $\{ (U_1, \phi_1), \dots, (U_n, \phi_n) \}$ ein Atlas von $M$. Ohne Beschränkung der 
-%     Allgemeinheit können wir annehmen, dass alle $U_i$ zusammenhängend sind. 
-%     Da $M$ zusammenhängend ist, können wir außerdem annehmen, dass 
-%     $\bigcup_{i = 1}^k U_i$ für alle $k$ zusammenhängend ist. Dann existiert ein $1 \leq k < n$, 
-%     sodass $\bigcup_{i = 1}^k U_i$ diffeomorph zu $\R$ ist, aber $\bigcup_{i = 1}^{k + 1} U_i$ 
-%     nicht. Setze $U := \bigcup_{i = 1}^k U_i$ und $V = U_{k + 1}$. Seien $\phi \colon U \to \R$
-%     und $\psi \colon V \to \R$ Diffeomorphismen. 
-%     \begin{claim*}
-%         Ist $M = U \cup V$ eine 1-dimensionale Mannigfaltigkeit, $U$ und $V$ diffeomorph zu 
-%         $\R$, dann ist $M$ diffeomorph zu $S^1$ oder $\R$.
-%     \end{claim*}
+\begin{proof}
+    Ich hab hier die eine gute Quelle gehabt verdammt. \todo{Quelle}
+\end{proof}
 
-%     \begin{smallproof}
-%         Ohne Beschränkung der Allgemeinheit ist $U \not\subseteq V$ und \\ 
-%         $V \not\subseteq U$. Dann gibt es zwei Möglichkeiten:
-%         \begin{itemize}
-%             \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind offene Halbintervalle
-%             \item $\phi(U \cap V)$ und $\psi(U \cap V)$ sind jeweils die disjunkte Vereinigung
-%                 zweier offener Halbintervalle
-%         \end{itemize}
-%         Im ersten Fall ist $M$ homeomorph zu $\R$:
-
-%         Wir dürfen annehmen, dass $\phi(U \cap V) = (- \infty, a)$ und $\psi(U \cap V) = (b, \infty)$,
-%         ansonsten ersetze $\phi$ mit $\-phi$ bzw. $\psi$ mit $-\psi$. Die Verkettung
-%         \[ \begin{tikzcd}
-%             (- \infty, a) = \phi(U \cap V) \arrow[r, "\phi^{-1}"] & 
-%                 U \cap V \arrow[r, "\psi"] & 
-%                 \psi(U \cap V) = (b, \infty)
-%         \end{tikzcd} \] 
-        
-%         Ist insbesondere injektiv, also auch monoton wachsend. 
-%         \todo{}
-%     \end{smallproof}
-% \end{proof}
-
-\begin{prop}
-    \label{prop: gebrochene trajektorien sind 1-dim mannigfaltigkeit}
-    Es seiein $p$ und $q$ kritische Punkte von $f$ mit $\Index (p) = k + 1$ und $\Index (q) = k - 1$
+\begin{theorem}
+    \label{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}
+    Es seien $p$ und $q$ kritische Punkte von $f$ mit $\Index (p) = k + 1$ und $\Index (q) = k - 1$
     für ein $k \in \N_0$. Dann ist $\Lb (p, q)$ eine 1-dimensionale Mannigfaltigkeit mit Rand, und das
     Innere von $\Lb (p, q)$ ist $\Lt (p, q)$.
-\end{prop}
+\end{theorem}
 
 Mit dieser Proposition folgt dann mit der Kalssifizierung von $1$-Mannigfaltigkeiten mit 
 Rand~\ref{satz: klassifizierung kompakter 1-mannigfaltigkeiten} schon, dass der Morse Komplex ein
@@ -235,12 +216,12 @@ Kettenkomplex ist.
 \begin{bigproof}
     Wir wissen schon, dass $\Lt (p, q) \subseteq \Lb(p, q)$ eine $1$-dimensionale Mannigfaltigkeit ist. 
     Um sagen zu können, dass $\Lb (p, q)$ eine $1$-dimensionale Mannigfaltigkeit mit Rand ist, und 
-    insbsondere, dass $\Lb (p, q)$ das Innere von $\Lt(p, q)$ ist, reicht die folgende Aussage über 
+    insbsondere, dass $\Lt (p, q)$ das Innere von $\Lb(p, q)$ ist, reicht die folgende Aussage über 
     $\Lb(p, q)$:
     Es sei $c$ ein weiterer kritischer Punkt mit Index $k$.
     Sei $\lambda_1 \in \Lt (p, c)$ und $\lambda_2 \in \Lt (c, q)$. Dann existiert eine offene Umgebung
-    $U \subseteq \Lb (p, q)$ von $(\lambda_1, \lambda_2)$, ein $\delta > 0$ und ein Homeomorphismus
-    $\psi \colon [0, \delta) \to U$, sodass gelten: 
+    $U \subseteq \Lb (p, q)$ von $(\lambda_1, \lambda_2)$, ein $\delta > 0$ und eine (topologische)
+    Einbettung $\psi \colon [0, \delta) \to U$, sodass gelten: 
     \begin{enumerate}
         \item $\psi|_{(0, \delta)}$ ist glatt.
         \item $\psi(0) = (\lambda_1, \lambda_2)$.
@@ -248,33 +229,34 @@ Kettenkomplex ist.
         \item Für jede Folge $(\ell_n)_n$ in $\Lt (p, q)$ die gegen $(\lambda_1, \lambda_2)$ konvergiert 
             gilt $\ell_n \in \Ima \psi$ für $n$ groß genug.
     \end{enumerate} 
-    Die letzten beiden Bedingungen stellen sicher, dass $\Lt (p, q)$ tatsächlich das Innere von 
-    $\Lb (p, q)$ ist.
+    Die letzte Bedingung stellt sicher, dass sich in $(\lambda_1, \lambda_2)$ keine 
+    \say{Kreuzung} befindet (wie zum Beispiel der Klebepunkt bei $S^1 \wedge S^1$).
     Wir begeben uns also auf die (recht lange) Suche nach einer solchen Abbildung $\psi$. 
 
-    Wir machen ein Paar Konstruktionen. Sei $\alpha := f(c)$ und $(V, \psi)$ eine Morse Umgebung von
-    $c$, $\eps$, $\eta$ und $\Omega(c)$ wie in der Notation zu Morse 
-    Umgebungen~\ref{def: notation morse umgebung}. Dann sind 
-    $f(\del_+ \Omega) = \alpha + \eps$ und $f(\del_- \Omega) = \alpha - \eps$ für ein $\eps > 0$.
-    Außerdem gilt, wie schon vorher, dass 
+    Wir machen ein Paar Konstruktionen. Sei $\alpha := f(c)$ und $(V, \kappa)$ eine Morse Karte von
+    $c$, $\Omega(c)$ wie in der Notation zu Morse Umgebungen~\ref{def: notation morse umgebung}. 
+    Dann sind $f(\del_+ \Omega) = \alpha + \eps$ und $f(\del_- \Omega) = \alpha - \eps$ für ein 
+    $\eps > 0$. Außerdem setze
     \begin{align*}
-        S_+ (c) := & \stab (c) \cap f^{-1}(\alpha + \eps) \isom S^{n - k - 1} \\
-        S_- (c) := & \unst (c) \cap f^{-1}(\alpha - \eps) \isom S^{k - 1} .
+        S_+ (c) := & \stab (c) \cap f^{-1}(\alpha + \eps) \diffeo S^{n - k - 1} \\
+        S_- (c) := & \unst (c) \cap f^{-1}(\alpha - \eps) \diffeo S^{k - 1} .
     \end{align*}
+    Dass $S_+ (c)$ und $S_- (c)$ diffeomorph zu Sphären sind hatten wir schon vorher gesehen.
     Es sei $a_1 \in M$ der Punkt, an dem $\lambda_1$ auf $\Omega(c)$ trifft, also 
     $a_1 = S_+ (c) \cap \lambda_1$, und $a_2$ der Punkt, an dem $\lambda_2$ die Umgebung $\Omega (c)$ 
     wieder verlässt, also $a_2 = S_- (c) \cap \lambda_2$. $\alpha + \eps$ ist kein kritischer Wert 
     von $f$ und es gilt $f^{-1}(\alpha + \eps) \pitchfork \unst (p)$, also ist mit 
     Proposition~\ref{prop: schnitt von transversalen untermannigfaltigkeiten} 
-    $P = f^{-1}(\alpha) \cap \unst (p)$ eine Mannigfaltigkeit mit Dimension $(n - 1) + (k + 1) - n = k$.
-    Da $X$ die Smale-Eigenschaft erfüllt gilt 
-    $\unst (p) \supseteq P \pitchfork S_+ (c) \subseteq \stab(c)$, also ist $P \cap S_+ (c)$
+    $P = f^{-1}(\alpha + \eps) \cap \unst (p)$ eine Mannigfaltigkeit mit Dimension 
+    $(n - 1) + (k + 1) - n = k$. Da $X$ die Smale-Eigenschaft erfüllt, $P \subseteq \unst (p)$,
+    $S_+ \subseteq \stab(c)$, $P, S_+(c) \subseteq f^{-1}(c + \eps)$ und 
+    $\dim P + \dim S_+(c) = n - 1$ gilt $P \pitchfork S_+ (c)$, also ist $P \cap S_+ (c)$
     mit Proposition~\ref{prop: schnitt von transversalen untermannigfaltigkeiten} eine 
-    Untermannigfaltigkeit der Dimenion $(k) + (n - k) - n = 0$. Offensichtlich gilt 
-    $a_1 \in P \cap S_+ (c)$. Es sei $D^k_{\eps} = \{ x \in \R^k : \| x \| < \eps \}$. Dann existiert 
-    eine Umgebung D von $a_1$ und ein Diffeomorphismus $\Psi : D \longto D^k_{\delta}$ mit 
-    $\Psi(a_1) = 0$, sodass $P \supseteq D \cap S_+ (c) = a_1$ und $D \subseteq \del_+ \Omega (c)$.
-    Wir versuchen die Kernidee des Beweises zu verstehen:
+    Untermannigfaltigkeit der Dimenion $k + (n - k - 1) - (n - 1) = 0$. Offensichtlich gilt 
+    $a_1 \in P \cap S_+ (c)$. Es sei $D^k_{\delta} = \{ x \in \R^k : \| x \| < \delta \}$. Dann 
+    existiert eine Umgebung D von $a_1$ in $P$ und ein Diffeomorphismus 
+    $\Psi : D \longto D^k_{\delta}$ mit $\Psi(a_1) = 0$, sodass $D \cap S_+ (c) = a_1$ 
+    und $D \subseteq \del_+ \Omega (c)$. Wir versuchen die Kernidee des Beweises zu verstehen:
 
     \begin{figure}
         \centering
@@ -292,14 +274,18 @@ Kettenkomplex ist.
         \end{minipage}
     \end{figure}
 
+    \todo{Zeichnung}
+
     Man betrachte die Abbildungen~\ref{fig: test1} und~\ref{fig: test2}.
 
-    Wir versuchen, Menge $D - a_1$ entlang der Trajektorien von $X$ auf den Teil des Randes der Morse 
-    Umgebung, an denen die Trajektorien austreten, via einer Abbildung $\Phi$ zu projizieren. Wir werden
-    sehen, dass $Q = \Phi \cup S_+(c)$ eine Mannigfaltigkeit mit Rand ist, und dass $\stab (q)$ eine 
-    $1-dimensionale Mannigfaltigkeit$ ist. Fügen wir dieser Mannigfaltigkeit den Punkt $a_2$ hinzu, dann
-    können wir eine Umgebung von $(\lambda_1, \lambda_2)$ auf die gewünschte Art über die entstandene
-    1-dimensionale Mannigfaltigkeit mit Rand parametrisieren. Also:
+    Wir versuchen, Menge $D - a_1$ entlang der Trajektorien von $X$ auf $\del_- \Omega(c)$ via einer 
+    Abbildung $\Phi$ zu projizieren. Wir werden sehen, dass $Q = \Ima (\Phi) \cup S_+(c)$ eine 
+    Mannigfaltigkeit mit Rand ist, und dass dann $Q \cap \stab (q)$ eine $1$-dimensionale
+    Mannigfaltigkeit mit Rand ist, und $a_2 \in \del q$. Wie in~\ref{prop: wohldefiniertheit von Lt} 
+    ist $Q \cap \stab (q) - a_2$ eine Teilmenge von $\Lt (p, q)$, und $a_2 \in \Lt (c, q)$, 
+    wenn wir also $a_2 \in \lambda_2$ mit $(\lambda_1, \lambda_2)$ identifizieren, dann bekommen 
+    wir unsere Parametrisierung $\psi$ von $\Lb (p, q)$. 
+    Also:
 
     \begin{claim}
         Es sei $\phi$ die von $X$ erzeugfte 1-Parameter Gruppe aus Diffeomorphismen. Für jedes 
@@ -308,15 +294,15 @@ Kettenkomplex ist.
     \end{claim}
 
     \begin{smallproof}
-        Via unserer anfangs gewählten Morse Karte $(V, \psi)$, und da wir ohne Einschränkungen $D$ 
-        klein genug wählen können, sodass $\psi(D) \subseteq V$, können wir annehmen, dass sich alles im 
-        $\R^n$ abspielt ; Sei also ohne Beschränkung $f(x_-, x_+) = - \|x_-\| + \|x_+\|$. Dann ist 
-        $\phi$ gegeben durch 
+        Via unserer anfangs gewählten Morse Karte $(V, \kappa)$, und da wir ohne Einschränkungen $D$ 
+        klein genug wählen können, sodass $D \subseteq \Omega (c)$, können wir annehmen, dass sich 
+        alles im $\R^n$ abspielt ; Sei also ohne Beschränkung der Allgemeinheit 
+        $f(x_-, x_+) = - \|x_-\| + \|x_+\|$. Dann ist $\phi$ gegeben durch 
         \[ \phi_t(x_-, x_+) = (e^{2t}x_-, e^{-2t}x_+) . \]
         Falls $(x_-, x_+) \in \del_+ U$ und $x_- \neq 0$, dann gilt auch $x_+ \neq 0$. Setze
         \[ t_{(x_-, x_+)} = \frac{1}{2} \ln \left( \frac{\| x_+ \|}{\| x_- \|} \right) . \]
         Dann gilt
-        \[ \phi_{t_{(x_-, x_+)}} (x) = 
+        \[ \phi_{t_{(x_-, x_+)}} (x_-, x_+) = 
             \left( \frac{\| x_+ \|}{\| x_- \|} x_-, \frac{\| x_- \|}{\| x_+ \|} x_+ \right) . \]
         Die Zuordnung $(x_-, x_+) \mapsto t_{(x_-, x_+)}$ ist glatt und 
         \begin{align*}
@@ -332,25 +318,25 @@ Kettenkomplex ist.
     Wie am Anfang besprochen wollen wir jetzt zeigen:
 
     \begin{claim}
-        Ist $\delta$ klein genug, dann ist $Q = \Phi (D - a_1) \cup S_(c)$ eine $k$ dimensionale 
+        Ist $\delta$ klein genug, dann ist $Q = \Phi (D - a_1) \cup S_+ (c)$ eine $k$ dimensionale 
         Mannigfaltigkeit mit Rand, und es gilt $\del Q = S_- (c)$.
     \end{claim}
 
     \begin{smallproof}
-        Wider spielt sich alles via $\psi$ im $\R^n$ ab.
+        Wieder spielt sich alles via $\kappa$ im $\R^n$ ab.
         Man betrachte die Projektion
         \[ \pi \colon \R^k \times \R^{n - k} ; \pi (x_-, x_+) = x_- . \]
-        und ihre Einschränkung $\del_+U \to D_{\delta}^k$
-        \todo{weiß net ob das stimmt, naja} Da $S_+ := \psi(\S_+(c)) = (\pi|_{\del_+U})^{-1}(0)$
+        und ihre Einschränkung $\del_+ U \to D_{\eta}^k$.
+        \todo{weiß net ob das stimmt, naja} Da $S_+ := \kappa(S_+(c)) = (\pi|_{\del_+U})^{-1}(0)$
         und $D \pitchfork S_+$, ist $0$ ein regulärer Wert von $\pi|_{\del_+U}$.
         Also ist $\opd \pi|_{\del_+U} (0)$ surjektiv, und da dim $\del_+U = k = \dim D^k_{\delta}$ ist
         das Differential auch invertierbar. Jetzt können wir den Satz über die Umkehrfunktion anwenden 
         bekommen lokal ein Inverses der Abbildung $\pi|_{\del_+U}$. Es existiert also ein 
-        $\delta' \leq \delta$, sodass das inverse von $\pi|_{\del_+U}$ auf $D^k_{\delta'}$ definiert ist.
-        Dann ist 
+        $\delta' \leq \eta$, sodass das Inverse von $\pi|_{\del_+U}$ auf $D^k_{\delta'}$ definiert 
+        ist. Dann ist 
         \begin{align*}
-            (\pi|_{del_+U})^{-1} \colon D^k_{\delta'} \longto & D \\
-            x_- \longmapsto & (x_-, x_+) =: (x_-m h(x_-))
+            (\pi|_{\del_+U})^{-1} \colon D^k_{\delta'} \longto & D \\
+            x_- \longmapsto & (x_-, x_+) =: (x_-, h(x_-))
         \end{align*}
         ein Diffeomorphismus. Da $D \subseteq \del_+U \subseteq f^{-1}(\eps)$, gilt dann 
         $\| h(x_-) \|^2 = \| x_- \|^2 + \eps $. Ist dann 
@@ -362,19 +348,72 @@ Kettenkomplex ist.
             \left\{ \left( \frac{\sqrt{\| x_- \|^2 + \eps}}{\| x_- \|} \, x_-, \; 
                     \| x_- \| \, g(x_-) \right) : 
                 x_- \in D^k_{\delta'} - 0 \right\} \]
-        Wir können nun auf $D^k_{\delta'}$ Polarkoordinaten anwenden. wir erhalten einen Diffeomorphismus
+        Wir können nun auf $D^k_{\delta'} - 0$ Polarkoordinaten anwenden. wir erhalten eine 
+        Einbettung
         \begin{align*}
-            H = \Phi \circ \rho \colon (0, \delta') \times S^{k-1} \longto & D \subseteq \del_-U \\
-            (r, v) \longmapsto & ( \sqrt{r^2 + \eps} \cdot v, r \cdot g(\rho(r, v)))
+            H = \Phi^{-1} \circ \rho \colon (0, \delta') \times S^{k-1} \longto & \del_- U \\
+            (r, v) \longmapsto & ( \sqrt{r^2 + \eps} \cdot v, r \cdot g(\rho(r, v))) .
         \end{align*}
-        $g$ ist auf ganz $D^k_{\delta'}$ definiert, und wenigstens in einer Umgebung von $0$ beschränkt.
-        Also können wir $H$ stetig in $0$ durch
+        $g$ ist auf ganz $D^k_{\delta'}$ definiert, und wenigstens in einer Umgebung von $0$ 
+        beschränkt. Also können wir $H$ stetig in $0$ durch
         \[ H(0, v) = (\sqrt{\eps} \cdot v, \, 0) \]
-        fortsetzen. Dann ist $H$ auch weiterhin eine (topologische) Einbettung 
-        \[ H \colon [0, \delta') \times S^{k - 1} \longto \Phi(D - a_1) \cup S_- , \]
-        und es gilt 
+        fortsetzen. Dann ist $H$ auch weiterhin eine (topologische) Einbettung mit 
+        $\Ima (H) = \Phi(D - a_1) \cup S_- $, und es gilt 
         \[ H(0, S^{k - 1}) = S_- . \]
     \end{smallproof}
+
+    Wir wissen, dass für $f(q) < \alpha - \eps < f(c)$ gilt 
+    $\Lt (c, q) \diffeo (\unst (c) \cap \stab (q)) \cap f^{-1}(\alpha - \eps)$. 
+    
+    Außerdem gilt $\stab (q) \pitchfork \Ima \Phi$ und $\stab (q) \pitchfork S_-(c)$ in 
+    $f^{-1}(\alpha - \eps)$, also ist mit 
+    Proposition~\ref{prop: schnitt von transversalen untermannigfaltigkeiten}
+    $\stab (q) \cap Q$ eine Mannigfaltigkeit mit Rand der Dimension $(n - (k - 1)) + k - n = 1$,
+    und der Rand von $\stab (q) \cap Q$ ist $\stab (q) \cap S_-(c) \subseteq \Lt (c, q)$, also ist 
+    $a_2 \in \del (\stab(q) \cap Q)$.
+
+    Wähle eine Parametrisierung von einer Umgebung von $a_2$ in $\stab (q) \cap Q$
+    \[ \chi \colon [0, \delta) \to \stab (q) \cap Q . \]
+    Es gilt dann $\chi(0) = a_2$.
+    
+    Damit erhalten wir die Abbildung 
+    \[ \Phi^{-1} \circ \chi \colon (0, \delta) \longto \stab (q) \cap (D - a_1) \subseteq \Lt (p, q) . \]
+    Definiere nun 
+    \begin{align*} 
+        \psi \colon [0, \delta) \longto & \Lb (p, q) \\
+        t \longmapsto & \begin{cases}
+            \Phi^{-1} \circ \chi (t) & \text{ falls } t \neq 0 \\
+            (\lambda_1, \lambda_2) & \text{ falls } t = 0
+        \end{cases}
+    \end{align*}
+    Wir wollen zeigen, dass $\psi$ die gewünschten Eigenschaften vom Anfang erfüllt.
+
+    Offensichtlich ist $\psi$ bijektiv. $\psi$ ist stetig, denn ist $(x_n)_n$ eine Folge in 
+    $(0, \delta)$, die gegen $0$ konvergiert, dann konvergiert die Folge $(\chi(x_n))_n$ in 
+    $\stab (q) \cap Q \subseteq \del_- \Omega (c)$ gegen $a_2$. Dann folgt aus dem 
+    Lemma~\ref{lemma: konvergenz einer folge}, dass die  Folge $(y_n)_n$ in $\stab (q) \cap (D - a_1)$
+    mit $y_n = \Phi^{-1}(\chi(x_n))$ gegen $a_1$ konvergiert, also konvergiert $\psi(x_n)$ gegen
+    $(\lambda_1, \lambda_2)$. Genau dasselbe gilt für die Umkehrabbildung:
+
+    Ist $(x_n)_n$ eine Folge in $\stab (q) \cap D$, die gegen $a_1$ konvergiert, dann konvergiert
+    $\Phi (x_n)$ gegen $a_2$, also $\chi^{-1} (\Phi(x_n))$ gegen $0$.
+    Also ist die Abbildung $\psi$ ein Homeomorphismus, und die drei Bedingungen, die an $\psi$ gestellt
+    werden, sind offensichtlich aufgrund der Konstruktion erfüllt. 
+
+    Wir müssen nur noch 4. zeigen.
+
+    Sei $(\ell_n)_n$ eine Folge in $\Lt (p, q)$, die gegen $(\lambda_1, \lambda_2)$ konvergiert. 
+    Für $n$ groß genug können wir annehmen, dass die $\ell_n$ die Morse Umgebung $\Omega (c)$ betreten 
+    und verlassen. Seien wieder wie vorher die $\ell_n^+ = \ell_n \cap \del_+ \Omega (c)$ die Punkte, 
+    an denen $\ell_n$ die Umgebung $\Omega (c)$ verlässt und $\ell_n^- = \ell_n \cap \del_- \Omega (c)$
+    die Punkte, an denen $\ell_n$ in die Umgebung $\Omega (c)$ eintritt. Wegen der Topologie, die wir 
+    auf $\Lb(p, q)$ definiert haben gilt offensichtlich
+    \[ \lim_{n \to \infty} \ell_n^- = a_1 \; \; \text{ und } \; \; \lim_{n \to \infty} \ell_n^+ = a_2 , \]
+    und da $\Phi$ den Trajektorien von $X$ folgt gilt $\Phi(\ell_n^-) = \ell_n^+$.
+    Für $n$ groß genug gilt also $\ell_n^- \in D - a_1$, also $\ell_n^+ \in Q$. Sowieso gilt schon, dass
+    $\ell_n^+ \in \stab (q)$, also 
+    \[ \ell_n^- \in Q \cap \stab (q) = \Ima \chi . \]
+    Außerdem ist $\Phi^{-1}(\ell_n^+) = \ell_n^-$, also $\ell_n \in \Ima (\psi)$.
 \end{bigproof}
 
 \subsection*{Der Morse Komplex über \texorpdfstring{$\Z$}{TEXT}}
@@ -456,3 +495,14 @@ ausgestattet wurden. Es sei $N_X (p, q)$ die Summe dieser Vorzeichen. Dann sei $
 das von den kritischen Punkten von $f$ mit Index $k$ erzeugte $\Z$-Modul, und für einen kritischen $p$
 sei
 \[\del_X (p) = \sum_{\substack{ q \in \Crit(f) \\ \Index (p) + 1 = \Index (q) }} N_X(p, q)p . \]
+
+Wir müssen nun dieselben Fragen beantworten wie für den Komplex über $\F_2$. 
+
+Offensichtlich ist $N_X(p, q) < \infty$. Wir müssen also noch zeigen, dass gilt
+\[ \del_X \circ \del_X (p) = 0 . \]
+Dies folgt aus dem Satz~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}.
+Die Kompaktifizierung einer orientierten \\ 
+$1$-dimensionalen Mannigfaltigkeit zu einer $1$-dimensionalen 
+Mannigfaltigkeit mit Rand ist offensichtlich wieder orientiert. Wir müssen nur noch sicherstellen, dass 
+die Orientierung auf dem Rand dann auch mit der Orientierung, die wir oben festgelegt haben übereinstimmt.
+
