@@ -1,1 +1,112 @@
 \section{Morse-Homologie ist zelluläre Homologie}
+
+Das Ziel dieses Abschnittes ist es, mithilfe der im 2. Kapitel erarbeiteten Mitteln eine 
+CW-Zerlegung von einer kompakten Mannigfaltigkeit $M$ zu finden.
+
+Wir kennen schon eine disjunkte Zerlegung von $M$ in offene Kreisscheiben, nämlich
+\[ \mathcal{E} = \{ \unst (p): p \in \Crit (f) \} . \]
+Tatsächlich ist jede instabile Mannigfaltigkeit eine offene Kreisscheibe und jeder Punkt in 
+$ p \in M$ wird von $\phi_{\bullet}(p)$ für $t \to - \infty$ genau auf einen kritischen Punkt 
+transportiert (siehe Prop.~\ref{prop: trajektorien enden in kritischen punkten}).
+
+\begin{prop}
+    \label{prop: cw-zerlegung}
+    Die Zerlegung $\mathcal{E} = \{ \unst (p): p \in \Crit (f) \}$ ist eine CW-Zerlegung.
+\end{prop}
+
+Bevor wir diese Proposition beweisen können, müssen wir noch ein wenig arbeiten.
+Wir definieren für einen kritischen Punkt $p$:
+\[ \clunst (p) = 
+    \unst (p) \cup \left( \bigcup_{q \in \Crit (f)} \Lb (p, q) \times \unst (q) \right) . \]
+
+$\Lb (p, q) \times \unst (q)$ ist nur nicht leer, wenn $\Index (p) > \Index (q)$.
+Für alle $x \in \unst (p) - \{ p \}$ gibt es einen kritischen Punkt $q$ und eine Trajektorie 
+$\lambda_x \in \Lt (p, c)$,m sodass $x \in \lambda_x$. wir können also jedes 
+$x \in \unst (p) - \{ p \}$ künstlich zu einem Tupel $(\lambda_x, x)$ machen. 
+
+Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
+
+\begin{definition}[Topologie von $\clunst (p)$]
+    Wir definieren eine Basis der Topologie von $\clunst (p)$. Offene Mengen in $\unst (p)$ sind 
+    auch in $\clunst (p)$ offen. Für $(\lambda, x) \in \Lt (p, c_1) \times \Lt (c_{k - 1}, c)$,
+    eine Umgebung $U^0$ von $x$ in $M$ und $U^+$ und $U^-$ wie vorher 
+    in~\ref{def: topologie gebrochener trajektorien} die Vereinigungen offener Umgebungen der Ein-
+    bzw. Austrittspunkte der jeweiligen Trajektorien in $\del_+ \Omega (c_i)$ bzw. 
+    $\del_- \Omega (c_i)$ definieren wir die restlichen Elemente der Baisis
+    $\mathcal{U}(\lambda, x, U^0, U^-, U^+)$ wie folgt: \\
+    Falls $(\mu, x') \in \Lb(c, c_i) \times \unst (c_i)$ (mit der 
+    Notation von vorher können dies also auch Punkte in $\stab(p) - \{ p \}$ sein), dann ist 
+    \[ (\mu, x') \in \mathcal{U}(x, \lambda, U^0, U^-, U^+) , \]
+    falls gelten:
+    \begin{enumerate}
+        \item $x' \in U^0$.
+        \item Die (einfache) Trajektorie, die $c_i$ mit $x'$ verbindet, tritt in $\Omega (c_j)$ durch 
+            $U^+_j$ für alle $j > i$ und verlässt $\Omega (c_j)$ durch $U^-_j$ für alle $j \geq i$.
+            Eine solche Trajektorie existiert, da $x' \in \unst (c_i)$.
+        \item $\mu \in \mathcal{U}(\tilde{\lambda}, \tilde{U}^-, \tilde{U}^+)$, wobei 
+            $\tilde{\lambda} = (\lambda_1, \dots, \lambda_i)$ und 
+            $\tilde{U}^{\pm} = \bigcup_{j = 1}^i U^{\pm}_j$
+    \end{enumerate}
+    Die offenen Mengen in $\clunst (p)$ sind dann die Mengen, die sich als Vereinigung der 
+    Elemente der Basis schreiben lassen. 
+\end{definition}
+
+% \begin{remark}
+%     Hier handelt es sich tatsächlich um eine Basis der Topologie, denn die oben definierete Basis
+%     ist sogar unter Schnitten abgeschlossen.
+% \end{remark}
+
+\begin{example}
+    \todo{}
+\end{example}
+
+\begin{prop}
+    $\clunst (p)$ ist homeomorph zur abgeschlossenen Kreisscheibe $B^{\Index (p)}$, und 
+    $\unst (p)$ ist das Innere von $\clunst (p)$.
+\end{prop}
+
+\begin{bigproof}
+    Für Elemete $(\lambda, x) \in \clunst (p)$ gilt sobieso schon, dass $f(x) \leq f(p)$. Definiere
+    \[ \clunst (p, \alpha) = 
+        \{ (\lambda, x) \in \clunst (p) - \{ p \} : f(x) \geq \alpha \}  \cup \{ p \} \]
+    und 
+    \[ \unst (p, \alpha) = \{ x \in \unst (p) : f(x) \geq \alpha \} . \]
+    Für $\alpha = f(c) - \eps$ und $\eps$ klein genug gilt 
+    \[ \clunst (p, \alpha) = \unst (p) \cap \Omega (p, \eps, \eta) . \]
+    Für ein belibiges $\eta$. $\Omega (p, \eps, \eta)$ ist wie in der Notation zu 
+    Morse-Umgebungen~\ref{def: notation morse umgebung}. Dies ist via einer Morse-Karte homeomorph 
+    zu $V^- \cap U(\eps, \eta)$, also zur abgeschlossenen $\Index (p)$-dimensionalen Kreisscheibe.
+    $\Index (p)$-dimensionalen abgeschlossenen Kreisscheibe. Da $M$ kompakt ist besitzt $f$ ein 
+    Minimum, und falls gilt $\alpha < \min (f)$, dann gilt offenbar
+    \[ \clunst (p, \alpha) = \clunst (p) . \]
+    Wir wollen also zeigen, dass für $\alpha' < \alpha$ gilt
+    \[ \clunst (p, \alpha') \isom \clunst (p, \alpha) . \]
+    Die Menge $\clunst (p, \alpha)$ erinnert uns an die Subniveaumengen aus 
+    Abschnitt~\ref{sec: topologische eigenschaften anhand kritischer punkte}. Das erste 
+    Deformationslemma leifert eine ähnliche Aussage, und wir können die folgende Behauptung 
+    beweisen:
+
+    \begin{claim}
+        Wenn sich im Intervall $[\alpha', \alpha]$ keine kritischen Werte von $f$
+        befinden, dann sind $\clunst (p, \alpha')$ und $\clunst (p, \alpha)$ homeomorph.
+    \end{claim}
+
+    \begin{smallproof}
+        Unter Anwendung des ersten Deformationslemmas auf $-f$ bekommen wir einen Homeomorphismus
+        \[ \phi \colon M^{\alpha'} \longto M^{\alpha} . \]
+        Die Subniveaumengen sind die Subniveaumengen von $-f$. Dann ist auch 
+        \begin{align*}
+            \chi \colon \clunst (p, \alpha') \longto & \clunst (p, \alpha) \\
+            (\lambda, x) \longmapsto & (\lambda, \phi(x))
+        \end{align*}
+        ein Homeomorphismus.
+    \end{smallproof}
+
+    Sehr viel schwieriger ist es zu beweisen, dass sich $\clunst (p, \alpha)$ selbst wenn $\alpha$
+    einen kritischen Wert überquert nicht verändert. Wir nehmen an, dass es für jeden kritischen Wert
+    $c$ genau einen kritischen Punkt $p$ gibt, sodass $f (p) = c$. 
+
+    \begin{claim}
+        
+    \end{claim}
+\end{bigproof}

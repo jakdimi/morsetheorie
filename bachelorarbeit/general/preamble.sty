@@ -26,6 +26,7 @@
 	\def\translation@Proposition{Proposition}%
 	\def\translation@Def{Definition}%
 	\def\translation@Remark{Remark}%
+	\def\translation@Example{Example}%
 	\def\translation@Claim{Claim}%
 	\def\translation@Proofofclaim{Proof of claim}%
 	\def\translation@Proofoftheclaim{Proof of the claim}%
@@ -42,6 +43,7 @@
 	\def\translation@Proposition{Proposition}%
 	\def\translation@Def{Definition}%
 	\def\translation@Remark{Bemerkung}%
+	\def\translation@Example{Beispiel}%
 	\def\translation@Claim{Behauptung}%
 	\def\translation@Proofofclaim{Beweis von Behauptung}%
 	\def\translation@Proofoftheclaim{Beweis der Behauptung}%
@@ -138,18 +140,17 @@
     filecolor=LightBlue,      
     urlcolor=DarkBlue,
 	citecolor=DarkBlue,
-    pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
+    pdfpagemode=FullScreen
     }
 
 % bibliography
 \ifnum\pdf@strcmp{\preamble@lib}{true}=0%
 	\RequirePackage[%
 		backend=biber,%
-		style=alphabetic,%
+		style=numeric,%
 		sorting=ynt%
 	]{biblatex}%
-	\RequirePackage{csquotes}
+	\RequirePackage{csquotes}%
 	\addbibresource{../general/literature.bib}%
 \else
 	\renewcommand{\cite}[1]{CITE[#1]}
@@ -203,6 +204,7 @@
 
 % some sets
 \newcommand{\unst}{{ W^u }}
+\newcommand{\clunst}{{ \overline{W}^u }}
 \newcommand{\stab}{{ W^s }}
 \newcommand{\M}{{ \mathcal{M} }}
 \newcommand{\Lt}{{ \mathcal{L} }}
@@ -286,6 +288,9 @@
 
 \theoremstyle{remark}
 \newtheorem*{remark}{\translation@Remark}
+
+\theoremstyle{remark}
+\newtheorem*{example}{\translation@Example}
 
 % Customize environments
 \RequirePackage{mdframed}

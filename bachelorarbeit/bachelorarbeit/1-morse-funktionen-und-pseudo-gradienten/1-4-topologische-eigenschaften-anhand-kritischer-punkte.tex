@@ -1,4 +1,5 @@
 \section{Topologische Eigenschaften anhand kritischer Punkte}
+\label{sec: topologische eigenschaften anhand kritischer punkte}
 
 Wir wollen die beiden Deformations-Lemmata beweisen, die eine Verbindung zwischen den topologischen
 Eingeschaften einer Mannigfaltigkeit und den kritischen Punkten einer Morse Funktion herstellt.
@@ -7,36 +8,31 @@ einer reellen Zahl $c$ die Menge $M^c := f^{-1}(- \infty, c]$. Sind $a < b$ reel
 stellen die Deformationslemmata die Topologien von $M^a$ und $M^b$ in Relation: Das erste beschreibt, 
 was passiert \textit{wenn kein} kritischer Wert überschritten wird, und das zweite beschreibt, was 
 passiert \textit{wenn ein} kritischer Wert überschritten wird. Die Beweise folgen Milnors Buch 
-\cite{morse}.
+\cite{morse}. \\
 
 \begin{theorem}[Erstes Deformationslemma]
     \label{satz: erstes deformationslemma}
     Es sei $M$ eine glatte Mannigfaltigkeit und $f: M \rightarrow \R$ eine
     glatte Abbildung. Hat $f$ keine kritischen Werte im Intervall $[a, b]$ und 
     ist $f^{-1}[a, b]$ kompakt, so existiert ein Diffeomorphismus 
-    $M^a \rightarrow M^b$, und $M^a$ ist ein Deformationsretrakt von $M^b$.
+    $M^b \rightarrow M^a$, und $M^a$ ist ein Deformationsretrakt von $M^b$.
 \end{theorem}
 
-Die Idee des Beweises ist es, $M^a$ entlang der Richtung, in die $f$ am stärksten
-steigt, also entlang des Gradientenfeldes mit einem Diffeomorphismus $\varphi$ 
-"nach oben zu ziehen", bis $\varphi(f^{-1}(a)) = f^{-1}(b)$.
-Wir erinnern uns, dass auf jeder Mannigfaltigkeiten \textit{Riemannsche Metriken} existieren,
-und dass diese dann für eine Funktion $f \colon M \to \R$ eine Gradientenvektorfeld induzieren.
-dieses Gradientenvektorfeld $\grad f$ ist definiert durch 
-\[ \langle X , \grad f \rangle = \opd f X \]
-und $\grad f (p) = 0$ genau dann, wenn $p$ ein kritischer Punkt von $f$ ist.
+Die Idee des Beweises ist es, $M^b$ entlang eines Pseudo-Gradientenfeldes von $f$ mit einem 
+Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{-1}(a)$.
 
 \begin{proof}
-    Es existiert eine kompakte Umgebung $K \in M$ von $f^{-1}[a, b]$, in der keine kritischen Punkte 
-    enthalten sind, das folgt zum Beispiel aus Whitneys Einbettungssatz und dem Satz von Heine-Borel. 
-    Sei $\rho: M \to \R$ eine glatte, positive Funktion, sodass
-    \[ \rho(p) = 1 / \langle \grad f, \grad f \rangle \]
-    für alle $p \in f^{-1}[a, b]$ und die außerhalb von $K$ verschwindet und für
+    Sei $Y$ ein Pseudo-Gradientenfeld von $f$. Es existiert eine kompakte Umgebung $K \in M$ von 
+    $f^{-1}[a, b]$, in der keine kritischen Punkte enthalten sind, das folgt zum Beispiel aus 
+    Whitneys Einbettungssatz und dem Satz von Heine-Borel. Sei $\rho: M \to \R$ eine glatte, 
+    positive Funktion, sodass
+    \[ \rho(p) = - \frac{1}{\opd f (p) (Y (p))} \]
+    für alle $p \in f^{-1}[b, a]$ und die außerhalb von $K$ verschwindet und für
     die für alle $p \in K$, die keine kritischen Punkte sind, gilt: 
-    \[ 0 \leq \rho(p) \leq 1 / \langle \grad f, \grad f \rangle \]
+    \[ 0 \leq \rho(p) \leq - \frac{1}{\opd f (p) (Y (p))} . \]
     Bemerke dass $\rho$ innerhalb von $K$ wohldefiniert ist, da sich keine kritischen Punkte in $K$ 
     befinden. Definiere ein Vektorfeld $X$ durch
-    \[ X(p) = \rho(p) \cdot \grad f (p) \]
+    \[ X(p) = \rho(p) \cdot Y (p) \]
     Dann hat $X$ kompakten Träger, erfüllt also die Vorraussetzungen von 
     Lemma~\ref{prop: kompaktes VF generiert 1-param. grp.}. Sei also $\varphi$ die
     einzigartige 1-Parameter Gruppe aus Diffeomorphismen, die von $X$ generiert
@@ -46,8 +42,8 @@ und $\grad f (p) = 0$ genau dann, wenn $p$ ein kritischer Punkt von $f$ ist.
     
     \begin{claim*} 
         Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi_{t_0}(q)$
-        ist $\derive{t} f \circ \varphi_{\bullet}(p) (t_0) \in [0, 1]$ und falls 
-        $f(\varphi_t(q)) \in [a, b]$ gilt sogar $\derive{t} f \circ \varphi_{\bullet}(q) (t_0) = 1$.
+        ist $\derive{t} f \circ \varphi_{\bullet}(p) (t_0) \in [-1, 0]$ und falls 
+        $f(\varphi_t(q)) \in [a, b]$ gilt sogar $\derive{t} f \circ \varphi_{\bullet}(q) (t_0) = -1$.
     \end{claim*}
 
     \begin{smallproof}
@@ -56,39 +52,38 @@ und $\grad f (p) = 0$ genau dann, wenn $p$ ein kritischer Punkt von $f$ ist.
             \derive{t} f \circ \varphi_{t_0}(p)
             & = \opd f (\varphi_{t_0}(p)) \cdot \opd \varphi_{\bullet}(p) (t_0) 
                 \left( \derive{t} \right)
-            = \opd f (q) \cdot X(q) \\
-            & = \langle X(q), \grad f (q) \rangle 
-            = \rho(q) \langle \grad f (q), \grad f (q) \rangle \in [0, 1]
+            = \opd f (q) ( X(q) ) \in [-1, 0]
         \end{align*}
         $f \circ \varphi_{\bullet}(p)$ ist also monoton wachsend für alle $p \in M$.
-        Falls sogar $f(\varphi_p(t_0)) \in [a, b]$, dann gilt
-        \[ \frac{d}{dt} f \circ \varphi^p (t_0) = 1 \]
+        Falls sogar $f(\varphi_p(t_0)) \in [b, a]$, dann gilt
+        \[ \frac{d}{dt} f \circ \varphi^p (t_0) = -1 \]
     \end{smallproof}
 
-    Man zeigt dann leicht, dass für $p \in f^{-1}(a)$, $t_0 \in [0, b-a]$ gilt 
-    $f(\varphi_{t_0}(p)) \in [a, b]$.
+    Man zeigt dann leicht, dass für $p \in f^{-1}(b)$, $t_0 \in [0, b - a]$ gilt 
+    $f(\varphi_{t_0}(p)) \in [b, a]$.
 
-    Dann ist für $p \in f^{-1}(a)$ die Abbildung $f \circ \phi_{bullet}(p)$ im Intervall $[0, b - a]$
-    linear mit Steigung $1$ und es gilt 
+    Dann ist für $p \in f^{-1}(b)$ die Abbildung $f \circ \phi_{\bullet}(p)$ im Intervall $
+    [0, b - a]$ linear mit Steigung $- 1$ und es gilt 
 
     \[ f(\varphi_{b - a}(p)) = f(\varphi_{0}(p)) + (b - a) = b \]
     Genauso für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
     $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
 
-    Dann haben wir $\varphi_{b - a} (M^a) = M^b$, also ist $\varphi_{b - a}|_{M^a}$ ein 
+    Dann haben wir $\varphi_{b - a} (M^b) = M^a$, also ist $\varphi_{b - a}|_{M^b}$ ein 
     Diffeomorphismus zwischen $M^a$ und $M^b$. 
 
-    Betrachte nun $r: M^b \times \R \to M^b$,
+    Betrachte nun $r: M^b \times \R \to M^a$,
     \[  
         r(p, t) = \begin{cases}
-            p & \text{ falls } f(p) \leq a \\
-            \varphi_{t(a - f(p))}(p) & \text{ falls } a \leq f(p) \leq b 
+            p & \text{ falls }  f(p) \leq a \\
+            \varphi_{t(f(p) - a)}(p) & \text{ falls } a \leq f(p) \leq b 
         \end{cases}
     \]
 
-    $r$ ist stetig, $r(\cdot, 0)$ ist die Identität auf $M^b$, 
-    $r(\cdot, 1)|_{M^a}$ ist die Identität auf $M^a$ und 
-    $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt von $M^b$.
+    $r$ ist stetig, $r(\cdot, 0)$ ist die Identität auf $M^b$, $r(\cdot, 1)|_{M^a}$ ist die 
+    Identität auf $M^a$ und \\ $r(1, M^b) \subseteq M^a$, also ist $M^a$ ein Deformationsretrakt 
+    von 
+    $M^b$.
 \end{proof}
 
 \begin{theorem}[Zweites Deformations-Lemma]
@@ -131,7 +126,7 @@ und $\grad f (p) = 0$ genau dann, wenn $p$ ein kritischer Punkt von $f$ ist.
     Wir bekommen folgende Situation:
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.45\linewidth]{../resources/Me-Diagram6-U-parameterized.png}
+        \includegraphics[width=0.5\linewidth]{../resources/Me-Diagram6-U-parameterized.png}
         \label{fig:me-diagram6}
     \end{figure}
     $F$ wird nun so definiert, dass eine Umgebung der $k$-Zelle $e^k$ ein wenig abgesenkt wird.
@@ -156,7 +151,7 @@ und $\grad f (p) = 0$ genau dann, wenn $p$ ein kritischer Punkt von $f$ ist.
 
 Mit diesen beiden Aussagen kommt man schon sehr weit. Die berühmten Morse- \\Ungleichungen lassen
 sich mit ein bisschen linearer Algebra an exakten Sequenzen leicht daraus folgern. Man kann sogar
-zeigen, dass jede Mannigfaltigkeit dein Homotopietypen eines CW-Komplexes 
+zeigen, dass jede Mannigfaltigkeit den Homotopietypen eines CW-Komplexes 
 (siehe Def.~\ref{def: cw-komplex}) besitzt, wie es zum Beispiel Milnor tut. Die folgenden Kapitel 
 geben eine etwas eleganterere Sicht auf die Thematik, die in gewisser Hinsicht stärkere Aussagen
 liefert:

@@ -1,10 +1,13 @@
 \section{Der Morse-Komplex und der Raum der gebrochenen Trajektorien}
 
 Wir sind nun bereit, den Morse-Komplex mit Koeffizienten in $\F_2$ (wenigstens) hinzuschreiben.
-Wir fixieren für den gesamten Abschnitt eine glatte \textbf{kompakte} Mannigfaltigkeit $M$ und ein
-Morse-Smale Paar $(f, X)$. Die Notation, die wir zu Morse-Umgebungen 
-in~\ref{def: notation morse umgebung} entwickelt haben wird weiterhin wichtig sein. 
-Dann definiere $C_k (M, (f, X))$ als das $\F_2$-Modul, 
+Wir fixieren für den \textbf{gesamten Rest der Arbeit}: 
+\begin{itemize}
+    \item eine glatte \textbf{kompakte} Mannigfaltigkeit $M$.
+    \item ein Morse-Smale Paar $(f, X)$.
+\end{itemize}
+Die Notation, die wir zu Morse-Umgebungen in~\ref{def: notation morse umgebung} entwickelt haben 
+wird weiterhin wichtig sein. Dann definiere $C_k (M, (f, X))$ als das $\F_2$-Modul, 
 das von den kritischen Punkten von $f$ mit Index $k$ erzeugt wird, also
 \[ C_k = \left\{ \sum_{p \, \in \, \Crit_k (f)} a_p \cdot p : a_p \in \F_2 \right\} . \] 
 Außerdem sei 
@@ -13,8 +16,9 @@ $n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Punkt $
 
 Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ wohldefiniert
 ist, also dass gilt $n_X (p, q) < \infty$, und dass es ein Kettenkomple ist, also dass 
-$\del_X \circ \del_X = 0$. Sobald das gezeigt wurde ist es recht leicht, den Komplex auch über die 
-ganzen Zahlen zu definieren.
+$\del_X \circ \del_X = 0$. 
+% Sobald das gezeigt wurde ist es recht leicht, den Komplex auch über die 
+% ganzen Zahlen zu definieren.
 
 \subsection*{Wohldefiniertheit}
 
@@ -51,6 +55,7 @@ ausstatten kann, sodass es die Kompaktifizierung von $\Lt (p, q)$ ist. (In der T
 $\Lt (p, q) \subseteq \Lb (p, q)$).
 
 \begin{definition}[Topologie von $\Lb (p, q)$]
+    \label{def: topologie gebrochener trajektorien}
     Ese seien $p$ und $q$ kritische Punkte von $f$. Wir erinnern uns an unsere Vorstellung von Morse-
     Umgebungen $\Omega(p)$ wie in~\ref{def: notation morse umgebung}.
     Es sei

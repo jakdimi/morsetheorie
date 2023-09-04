@@ -1,4 +1,4 @@
-\section{CW-Struktur von Mannigfaltigkeiten}
+\section{CW-Komplexe}
 
 Die folgenden Definitionen sind in \cite{dold} zu finden.
 
@@ -26,7 +26,7 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     heißt charakteristische Abbildung von $e$, die Abbildung 
     $\phi_e := \Phi_e|_{S^{n - 1}} \colon S^{n - 1} \to X^{n - 1}$ heißt Anheftungsabbildung.
     $X^n$ heißt $n$-Skelett von $X$. Existiert ein $n$, sodass $X^n = X$, dann ist $n$ die 
-    dimension des CW-Komplexes. Existiert kein solchens $n$, dann ist die Dimiension $\infty$.
+    Dimension des CW-Komplexes. Existiert kein solchens $n$, dann ist die Dimiension $\infty$.
 \end{definition}
 
 \begin{remark}
@@ -62,3 +62,15 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     kein CW-Komplex ist.
 \end{remark}
 
+\begin{example}
+    \begin{itemize}
+        \item Die Sphären $S^n$ sind CW-Komplexe, denn mit $\R^n \hookrightarrow \R^{n + 1}$,
+            haben wir $S^n \cap \R^n = S^{n - 1}$ und $S^n - \R^n$ ist die disjunkte Vereinigung
+            zweier offener Kreisschebien der Dimension $k$. So findet man induktiv eine CW-Zerlegung
+            von $S^n$ mit zwei $k$-Zellen für jedes $k$ zwischen $0$ und $n$.
+            \todo{Zeichnung}
+        \item der Torus ist (zum Beispiel) auf folgende Art ein CW-Komplex:
+            \todo{Zeichnung}
+            Wir haben also eine $0$-Zelle, zwei $1$-Zellen und eine $2$-Zelle.
+    \end{itemize}
+\end{example}
