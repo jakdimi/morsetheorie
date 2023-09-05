@@ -36,6 +36,25 @@ Eigenschaften singulärer Homologie sofort ersichtlich.
     Ungleichung 1.
 \end{proof}
 
-\begin{theorem}
-    
+\begin{theorem}[Poincaré-Dualität]
+    \label{satz: poincare-dualität}
+    Es sei $M$ eine komapkte $n$-dimensionale Mannigfaltigkeit ohne Rand. Dann gilt für alle 
+    $k \in \{ 0, \dots, n\}$:
+    \[ HM_k (M) \isom HM_{n - k} (M) \]
+\end{theorem}
+
+\begin{proof}
+    Es sei $(f, X)$ ein Morse-Smale Paar. Die kritischen Punkte von $f$ mit Index $k$ sind kritische Punkte
+    von $-f$ mit Index $n - k$, und $-X$ ist ein Pseudo-Gradientenfeld von $-f$. Die kritischen Punkte 
+    $p$ mit Index $k$ bilden eine Basis von $C_k (M, (f, X))$ und auch von $C_{n - k}(M, (-f, -X))$.
+    Es sei $a^{\ast}$ das duale Element von $a$, dann können wir auch $a^{\ast}$ als Basis von 
+    $C_{n - k}(M, (-f, -X))$ wählen. Dann gilt $C_{n - k} (M, (-f, -X)) = (C_k (M, (f, X)))^{\ast}$,
+    und per Definition ist dann das Differential im Kettenkomplex von $-f$ ist gegeben durch die duale Abbildung
+    \[ \del_X^{\ast} \colon C_{n - k} (M, (-f, -X)) \longto C_{n - k - 1} (M, (-f, -X)) . \]
+    Es folgt die Behauptung.
+\end{proof}
+
+\begin{theorem}[Künneth-Formel]
+    Falls $M$ und $N$ kompakte Mannigfaltigkeiten sind, dann existiert für jedes $k \in \N$ ein Isomorphismus
+    \[ HM_k (M \times N) \longto \bigoplus_{i + j = k} HM_i (M) \otimes HM_j (N) . \]
 \end{theorem}

@@ -36,16 +36,21 @@
 
 \section*{Vorwort}
 
+\subsection*{Geschichte der Morse Theorie}
+
+Die Morse-Theorie ist Teil der Differential-Topologie. Sie lässt Aussagen zu, die von sehr lokalen 
+Eigenschaften auf globale Eigenschaften von Mannigfaltigkeiten schließen lassen. Insbesondere schließt man
+von den Eingenschaften kritischer Punkte von bestimmten Funktionen $f \colon M \to \R$ auf topologische 
+Eigenschaften von $M$. Die Theorie geht zurück auf den amerikanischen Mathematiker \textit{Marston Morse}, 
+der schon 1929 in \cite{morse} zu der Thematik veröffentlichte. Die \textit{Morse-Homologie}, die in dieser 
+Arbeit untersucht wird, wurde in verschiedenen Formen von \textit{René Thom}, \textit{Stephen Smale},
+\textit{John Milnor} und \textit{Edward Witten} eingeführt. Wir werden uns in dieser Arbeit mit den Ideen der 
+ersten Drei beschäftigen.
+
 \subsection*{Zielsetzung und Inhalt}
 
-In der Morse Theorie werden glatte Abbildungen $f \colon M \to \R$, deren kritische Punkte 
-alle nicht degeneriert sind untersucht. Ein kritischer Punkt ist nicht degeneriert, wenn die Hesseche 
-Bilinearform, die lokal durch die Matrix
-\[ \left(\pdderive[f]{x_i}{x_j} \right)_{1 \leq i, y \leq n} \]
-gegeben ist, nicht ausgeartet ist. Anhand einer solcher Abbildungen lassen sich
-Rückschlüsse auf topologische Eigenschaften der Mannigfaltigkeit $M$ ziehen. Das Ziel dieser Arbeit
-ist es, den \textit{Morse-Komplex} zu definieren und zu zeigen, dass dieser isomorph zu einem 
-zellulären Kettenkomplex ist. Damit ist die \textit{Morse-Homologie}, die Homologie des 
+Das Ziel dieser Arbeit ist es, den \textit{Morse-Komplex} zu definieren und zu zeigen, dass dieser 
+isomorph zu einem zellulären Kettenkomplex ist. Damit ist die \textit{Morse-Homologie}, die Homologie des 
 \textit{Morse-Komplexes}, isomorph zur \textit{zellulären Homologie}, die nicht von der gewählten 
 zellulären Struktur abhängt. Wir folgen dem ersten Teil des Buches 
 \textit{Morse Theory and Fleur Homology} \cite{audin}. 
@@ -53,31 +58,26 @@ zellulären Struktur abhängt. Wir folgen dem ersten Teil des Buches
 Im ersten Kapitel wird ein grundlegender Einblick in die Morse-Theorie gegeben. Wichtiges Ergebnis ist
 das \textit{Morse-Lemma} das einen konkrete Vorstellung des Verhaltens von Morse-Funktionen in der Nähe 
 kritischer Punkte liefert. Weitere wichtige Ergebnisse sind die beiden 
-\textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma}.
+\textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma},
+die eine erste Verbindung zwischen den Eigenschaften kritischer Punkte und den topologischen Eigenschaften
+der Mannigfaltigkeit herstellen.
 
 Im zweiten Kapitel untersuchen wir erst die \textit{stabile- und instabile Mannigfaltigkeit} und 
-definieren den \textit{Raum der Trajektorien}. Die Trajektorien sind Flüsse von eines Pseudo-Gradientenfeldes.
+definieren den \textit{Raum der Trajektorien}, Die Trajektorien sind Flüsse von eines Pseudo-Gradientenfeldes.
 Diese starten und enden immer in kritischen Punkten. Das $k$-te Glied des Morse-Komplexes ist dann dasjenige
-$\F_2$-Modul, das von den kritischen Punkten mit Index $k$ erzeugt wird, und das differenzial ist gegeben
-durch die Anzahl der Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index 
-$k - 1$. Wir zeigen, dass dieser Komplex wohldefiniert ist und dass es ein Kettenkomplex ist. 
+$\F_2$-Modul, das von den kritischen Punkten mit Index $k$ erzeugt wird, und das Differenzial wird dann über
+die Anzahl der Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index 
+$k - 1$ definiert. Wir zeigen, dass dieser Komplex wohldefiniert ist und dass es ein Kettenkomplex ist. 
 
-Im dritten Kapitel wird bewiesen, dass der Morse-Komplex isomorph zum einem zellulären Komplex ist. 
-Dann werden einige Anwendungen der Morse-Homologie gegeben.
-
-\subsection*{Geschichte der Morse Theorie}
-
-Die Morse-Theorie ist zu Ehren des amerikanischen Mathematikers \textit{Marston Morse} benannt, der
-grundlegende Ergebnisse zum Beispiel wie das \textit{Morse-Lemma}~\ref{satz: morse-lemma} in 
-\cite{morse} schon im Jahre 1929 bewies. In den späten 60er Jahren untersuchte dann 
-bewies.
+Im dritten Kapitel konstruieren wir eine zelluläre Struktur auf kompakten Mannigfaltigkeiten und zeigen,
+dass die der durch diese Struktur induzierte zelluläre Kettenkomplex isomorph zum Morse Komplex ist. 
+Wir geben außerdem ein Paar schöne Anwendungen der Morse-Homologie.
 
 \subsection*{Vorraussetzungen}
 
-Wir setzen vorraus, dass der Leser sich mit Mannigfaltigkeiten auskennt. Außerdem sollten 
-grundlegende Begriffe der Topologie wie \textit{Homotopie}, \textit{Homotopietyp} ... \todo{...}
-bekannt sein. Weiterhin sollten Grundlagen der homologischen Algebra bekannt sein, also 
-Definitionen von \textit{Kettenkomplex} und \textit{Homologie}.
+Wir setzen vorraus, dass der Leser weiß was eine Mannigfaltigkeit ist. Nur im Beweis von 
+Satz~\ref{satz: morse-homologie ist zellulaere homologie} wird ein bisschen Wissen über relative Homologie
+und die lokale Grad Formel vorrausgesetzt. 
 
 \subsection*{Notation}
 
@@ -93,6 +93,7 @@ Folgende Notationen werden benutzt:
         von $f$ im Punkt $p$ die Abbildung $\opd f (p) \colon T_pM \to T_{f(p)}N$.
     \item $B^k \subseteq \R^k$ ist die offene Kreisscheibe mit Radius $1$, und $\overline{B}^k$
         die abgeschlossene.
+    \item Zelluläre und singuläre Homologie werden ausschließlich mit Koeffizienten in $\F_2$ betrachtet.
 \end{itemize}
 
 \tableofcontents
