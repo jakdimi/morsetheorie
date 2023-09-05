@@ -421,6 +421,17 @@ Kettenkomplex ist.
     Außerdem ist $\Phi^{-1}(\ell_n^+) = \ell_n^-$, also $\ell_n \in \Ima (\psi)$.
 \end{bigproof}
 
+\begin{definition}[Morse-Homologie]
+    \label{def: morse-homologie}
+    Die \textit{Morse-Homologie} ist die Homologie des Morse-Komplexes. Ist also
+    \[ \del_X^k \colon C_k (M, (f, X)) \longto C_{k - 1} (M, (f, X)), \]
+    dann ist die Morse Homologie im $k$-ten Grad 
+    \[ HM_k (M, (f, X)) = \frac{\Ker \, \del_X^k}{\Ima \, \del_X^{k + 1}} \]
+\end{definition}
+
+Wir haben gezeigt, dass $(C_{\ast}(M, (f, X)), \del_X)$ ein Kettenkomplex ist, also ist die 
+Morse-Homologie wohldefiniert.
+
 % \subsection*{Der Morse Komplex über \texorpdfstring{$\Z$}{TEXT}}
 
 % Wir haben nun den Morse Komplex über $\F_2$ definiert. Wir wollen noch allgemeiner einen Komplex

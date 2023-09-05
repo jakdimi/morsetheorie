@@ -1,1 +1,41 @@
 \section{Anwendungen}
+
+Die berühmten Morse Ungleichungen lassen sich, wie am Ende des ersten Kapitels erwähnt, sehr
+leicht aus den Eigenschaften der Morse-Homologie folgern. Außerdem sind einige bekannten 
+Eigenschaften singulärer Homologie sofort ersichtlich.
+
+\begin{theorem}[Die Morse-Ungleichungen]
+    \label{satz: morse-ungleichungen}
+    Es sei $M$ eine kompakte Mannigfaltigkeit und $f$ ein Morse-Funktion auf $M$.
+    Wir definieren:
+    \begin{itemize}
+        \item $\betti_k (M) := \dim HM_k (M)$ ist die $k$-te Betti-Zahl.
+        \item $\chi(M) := \sum_k (-1)^k \cdot \betti_k(M)$ ist die Euler-Charakteristik.
+        \item $C_k$ ist die Anzahl der kritischen Punkte von $f$ mit Index $k$.
+    \end{itemize}
+    Dann gelten die folgenden Ungleichungen:
+    \begin{enumerate}
+        \item $\betti_k(M) - \betti_{k - 1}(M) + \dots \pm \betti_0(M) \leq
+            C_k - C_{k - 1} + \dots \pm C_0$
+        \item $\chi (M) = \sum_k (-1)^k \cdot C_k$
+        \item $\betti_k(M) \leq C_k$
+    \end{enumerate}
+    3. ist die so genannte \emph{schwache} Morse-Unkgleichung, denn sie folgt direkt aus 1.
+\end{theorem}
+
+\begin{proof}
+    Es sei $X$ ein Pseudogradientenfeld welches die Smale Bedingung erfüllt.
+
+    2. Ist ein bekanntes Ergebnis über Kettenkomplexe, denn $C_k = \dim(C_k (M, (f, X)))$,
+
+    1. Folgt sofort,
+
+    3. folgt aus 1.:
+
+    Subtrahiere die Ungleichung 1., bei der wir für $k$ die Zahl $k - 1$ einsetzten von der 
+    Ungleichung 1.
+\end{proof}
+
+\begin{theorem}
+    
+\end{theorem}

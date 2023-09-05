@@ -34,8 +34,8 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     und die Bedingungen 4. und 5. sind sowieso erfüllt.
 \end{remark}
 
-\begin{definition}[Zelluläre Homologie]
-    \label{def: zellulaere homologie}
+\begin{definition}[Zellulärer Kettenkomplex]
+    \label{def: zellulaerer kettenkomplex}
     Bemerke, dass $X^n / X^{n - 1}$ das Wedge-Produkt vieler $D^n / S^{n-1} = S^n$'s ist. 
     Wir bekommen durch die Anheftungsabbildung für jede $k$-Zelle $e$ eine Abbildung in den 
     Quotienten
@@ -74,3 +74,11 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
             Wir haben also eine $0$-Zelle, zwei $1$-Zellen und eine $2$-Zelle.
     \end{itemize}
 \end{example}
+
+\begin{definition}[zelluläre Homologie]
+    Die zelluläre Homologie des zellulären Kettenkomplexes $(K, \del)$ ist wie die Morse-Homologie 
+    für 
+    \[ \del^k := \del \colon K_k \longto K_{k - 1} \]
+    gegeben durch 
+    \[ HC_k = \frac{ \Ker \, \del^k }{ \Ima \, \del^{k + 1} } \]
+\end{definition}

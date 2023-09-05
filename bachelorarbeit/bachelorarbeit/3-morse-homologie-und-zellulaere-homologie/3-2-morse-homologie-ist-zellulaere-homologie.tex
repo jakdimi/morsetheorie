@@ -21,8 +21,9 @@ Wir definieren für einen kritischen Punkt $p$:
 
 $\Lb (p, q) \times \unst (q)$ ist nur nicht leer, wenn $\Index (p) > \Index (q)$.
 Für alle $x \in \unst (p) - \{ p \}$ gibt es einen kritischen Punkt $q$ und eine Trajektorie 
-$\lambda_x \in \Lt (p, c)$,m sodass $x \in \lambda_x$. wir können also jedes 
-$x \in \unst (p) - \{ p \}$ künstlich zu einem Tupel $(\lambda_x, x)$ machen. 
+$\lambda_x \in \Lt (p, q)$, sodass $x \in \lambda_x$. wir können also jedes 
+$x \in \unst (p) - \{ p \}$ künstlich zu einem Tupel $(\lambda_x, x)$ machen. Wir werden im Folgenden
+nicht zwischen $x$ und $(\lambda_x, x)$ in $\unst (p)$ unterscheiden.
 
 Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
 
@@ -34,9 +35,8 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     bzw. Austrittspunkte der jeweiligen Trajektorien in $\del_+ \Omega (c_i)$ bzw. 
     $\del_- \Omega (c_i)$ definieren wir die restlichen Elemente der Baisis
     $\mathcal{U}(\lambda, x, U^0, U^-, U^+)$ wie folgt: \\
-    Falls $(\mu, x') \in \Lb(c, c_i) \times \unst (c_i)$ (mit der 
-    Notation von vorher können dies also auch Punkte in $\stab(p) - \{ p \}$ sein), dann ist 
-    \[ (\mu, x') \in \mathcal{U}(x, \lambda, U^0, U^-, U^+) , \]
+    Falls $(\mu, x') \in \Lb(p, c_i) \times \unst (c_i)$ oder $(\mu, x') \in W^u (p) \cap \stab (c)$, 
+    dann ist \[ (\mu, x') \in \mathcal{U}(x, \lambda, U^0, U^-, U^+) , \]
     falls gelten:
     \begin{enumerate}
         \item $x' \in U^0$.
@@ -47,23 +47,27 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
             $\tilde{\lambda} = (\lambda_1, \dots, \lambda_i)$ und 
             $\tilde{U}^{\pm} = \bigcup_{j = 1}^i U^{\pm}_j$
     \end{enumerate}
+    Für $(\mu, x) \in \unst(p) \cap \stab (c)$ sind die zweite und die dritte Bedingung äquivalent.
     Die offenen Mengen in $\clunst (p)$ sind dann die Mengen, die sich als Vereinigung der 
     Elemente der Basis schreiben lassen. 
 \end{definition}
-
-% \begin{remark}
-%     Hier handelt es sich tatsächlich um eine Basis der Topologie, denn die oben definierete Basis
-%     ist sogar unter Schnitten abgeschlossen.
-% \end{remark}
 
 \begin{example}
     \todo{}
 \end{example}
 
 \begin{prop}
-    $\clunst (p)$ ist homeomorph zur abgeschlossenen Kreisscheibe $B^{\Index (p)}$, und 
-    $\unst (p)$ ist das Innere von $\clunst (p)$.
+    \label{prop: abschluss von instabilen mannigfaltigkeiten}
+    Ist $p$ ein kritischer Punkt von $f$, $k = \Index (p)$, dann ist $\clunst (p)$ homeomorph 
+    zur abgeschlossenen Kreisscheibe $B^k$, und $\unst (p)$ ist das Innere von $\clunst (p)$.
 \end{prop}
+
+\begin{remark}
+    Mit dieser Proposition wird auch Proposition~\ref{prop: cw-zerlegung} bewiesen:
+    Die ersten beiden Bedingungen für CW-Zerlegungen sind schon erfüllt. Da wir annehmen, dass 
+    $M$ kompakt ist, sind auch die letzten beiden Bedingungen erfüllt. Die dritte Bedingung folgt
+    dann sofort aus der letzten Proposition~\ref{prop: abschluss von instabilen mannigfaltigkeiten}.
+\end{remark}
 
 \begin{bigproof}
     Für Elemete $(\lambda, x) \in \clunst (p)$ gilt sobieso schon, dass $f(x) \leq f(p)$. Definiere
@@ -76,8 +80,8 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     Für ein belibiges $\eta$. $\Omega (p, \eps, \eta)$ ist wie in der Notation zu 
     Morse-Umgebungen~\ref{def: notation morse umgebung}. Dies ist via einer Morse-Karte homeomorph 
     zu $V^- \cap U(\eps, \eta)$, also zur abgeschlossenen $\Index (p)$-dimensionalen Kreisscheibe.
-    $\Index (p)$-dimensionalen abgeschlossenen Kreisscheibe. Da $M$ kompakt ist besitzt $f$ ein 
-    Minimum, und falls gilt $\alpha < \min (f)$, dann gilt offenbar
+    Da $M$ kompakt ist besitzt $f$ ein Minimum, und falls gilt $\alpha < \min (f)$, dann gilt 
+    offenbar
     \[ \clunst (p, \alpha) = \clunst (p) . \]
     Wir wollen also zeigen, dass für $\alpha' < \alpha$ gilt
     \[ \clunst (p, \alpha') \isom \clunst (p, \alpha) . \]
@@ -107,6 +111,88 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     $c$ genau einen kritischen Punkt $p$ gibt, sodass $f (p) = c$. 
 
     \begin{claim}
-        
+        Ist $\alpha = f(p)$, $q$ ein weitererkritischer Punkt von $f$ mit 
+        $\Index (p) = \Index (q) + 1$ und $\eps > 0$ klein genug, dann sind 
+        $\clunst (p, \alpha + \eps)$ und $\clunst (p, \alpha - \eps)$ homeomorph.
     \end{claim}
+
 \end{bigproof}
+
+\begin{theorem}[Morse-Homologie ist zelluläre Homologie]
+    \label{satz: morse-homologie ist zellulaere homologie}
+    Der zelluläre Kettenkomplex \\ $(K_{\ast}, \del)$, der durch die CW-Zerlegung in instabilen 
+    Mannigfaltigkeiten durch Proposition~\ref{prop: cw-zerlegung} gegeben ist, ist isomorph zum 
+    Morse-Komplex $(C_{\ast}(M, (f, X)), \del_X)$, also es existieren lineare Isomorphismen
+    \[ F \colon C_k(M, (f, X)) \longto K_k \]
+    für jedes $k \in \N$, sodass das folgende Diagramm kommutiert:
+    \[ \begin{tikzcd}[column sep = 5ex]
+        \cdots \arrow[r, "\del_X"] & 
+            C_{k + 1}(M, (f, X)) \arrow[r, "\del_X"] \arrow[d, "F"] & 
+            C_k(M, (f, X)) \arrow[r, "\del_X"] \arrow[d, "F"] &
+            C_{k - 1}(M, (f, X)) \arrow[r, "\del_X"] \arrow[d, "F"] & \cdots \\
+        \cdots \arrow[r, "\del"] & 
+            K_{k + 1} \arrow[r, shorten <= 2em, shorten >= 2em, "\del"] & 
+            K_k \arrow[r, shorten <= 2em, shorten >= 2em, "\del"] &
+            K_{k - 1} \arrow[r, "\del"] & \cdots
+    \end{tikzcd} \] 
+\end{theorem}
+
+\begin{proof}
+    Es sei $F \colon C_k (M, (f, X)) \to K_k$ die lineare Abbildung, die den kritischen Punkt $p$
+    auf die Zelle $\unst (p)$ schickt. Dann bildet $F$ Erzeuger auf Erzeuger ab, ist also 
+    offensichtlich ein linearer Isomorphismus. Wir wollen zeigen, dass 
+    $F \circ \del_X = \del \circ F$. Wir zeigen sogar, dass für kritische Punkte $p$ und $q$ mit 
+    Index $k$ und $k - 1$ die Zahl $N (\unst (p), \unst (q))$, also der Grad der Abbildung 
+    $\psi_{\unst (q)} \circ \phi_{\unst (p)}$ modulo $2$ gleich der Zahl $n_X(p, q)$, also 
+    der Anzahl der Trajektorien von $p$ nach $q$ modulo $2$ ist. 
+
+    Da $\Lt (p, q)$ $0$-dimensional ist, gilt $\Lb (p, q) = \Lt (p, q)$ und dann befinden sich im 
+    Rand von $\clunst (p)$, also 
+    \[ \bigcup_{c \in \Crit (f)} \Lb (p, c) \times \unst (c) \isom S^{k - 1} , \] 
+    genau $\# \Lt (p, q)$ disjunkte Kopien von $\unst (q) \isom U^{k - 1}$. Jede dieser Kopien 
+    wird mit der Anbringungsabbildung $\phi_{\unst (p)}$ via der Inklusion auf die Zelle $\unst (q)$
+    geschickt. Wenn wir nun $M$ mit der Abbildung $\psi_{\unst (q)}$ kollabieren, dann ist 
+    $\psi_{\unst (q)} (M)$ die $1$-Punkt-Kompaktifizierung von $\unst (q)$ und 
+    \[ \phi_{\unst (p)} \circ \psi_{\unst (q)} |_{ \{ \lambda \} \times \unst (q) } \]
+    Ist die Inklusion von $\unst (q)$ in ihre $1$-Punkt kompaktifizierung. Wir wissen, dass 
+    $\unst (q) \isom B^{k - 1}$, und dass die Kopien $\{ \ell \} \times \unst (q)$ in 
+    $\del \clunst (p)$ disjunkt sind, wir haben also die folgende Situation:
+    Eine Abbildung $\Phi \colon S^{k - 1} \to S^{k - 1}$, endlich viele disjunkte Kopien 
+    $(\ell, B^{k - 1}) \subseteq S^{k - 1}$, sodass ein Punkt $\ast$ in $S^{k - 1}$ existiert, sodass
+    \[ \Phi \colon (\ell, B^{k - 1}) \to S^{k - 1} - \{ \ast \} \]
+    für jedes $\ell$ ein Homeomorphismus ist und sodass
+    \[ \Phi \left( S^{k - 1} - \bigcup_{\ell} \left( \ell, B^{k - 1} \right) \right) = \{ \ast \} . \]
+    Es sei $m$ die Anzahl der kopien von $B^{k - 1}$ in $S^{k - 1}$
+    Wir benutzen die lokale Grad Formel (siehe zum Beispiel \cite{hatcher}): 
+    
+    Wähle einen von $\ast$ verschiedenen Punkt $y$ in $S^{k - 1}$. Dann ist 
+    $\Phi^{-1}(y) = \{ x_{\ell} \}_{\ell}$ mit $x_{\ell} \in (\ell, B^k)$. 
+    $\Phi \colon (\ell, B^k) \to S^{k - 1} - \{ \ast \}$ ist ein Homeomorphismus, also ist 
+    \[ \Phi_{\ast} \colon H_{k - 1} ((\ell, B^{k - 1}), (\ell, B^{k - 1}) - x_{\ell}) \to 
+        H_{k - 1}(S^{k - 1} - \{ \ast \}, S^{k - 1} - \{ \ast, y \}) \]
+    ein Isomorphismus, dann sind alle lokalen Grade $1$ oder $-1$. Dann ist 
+    \[ \deg \Phi = \sum_{\ell} (\pm_{\ell} 1) = m \mod 2 \]
+    Damit ist die Aussage gezeigt.
+\end{proof}
+
+Zum Beispiel bei Hatcher \cite{hatcher} kann man nachlesen, wie für einen toipologischen Raum die 
+singuläre Homologie $H_{\ast} (X)$ definiert wird. Insbesondere hängt diese nur vom topologischen 
+$X$ Raum ab. Hatcher zeigt auch: 
+
+\begin{theorem}
+    \label{satz: zellulaere Homologie ist singuläre Homologie}
+    Für jedes $k \in \N$ gilt 
+    \[ H_k (X) \isom HC_k (X, \mathcal{E}) . \]
+\end{theorem}
+
+Die zelluläre Homologie ist also nicht von der gewählten CW-Zerlegung abhägig und wir können schreiben
+\[ HC_{\ast} (X) := HC_{\ast} (X, \mathcal{E}) \]
+
+Da aber für eine kompakte Mannigfaltigkeit $M$ und ein Morse-Smale Paar $(f, X)$ gilt 
+\[ HM_k(M, (f, X)) \isom HC_k(X) . \]
+Es folgt direkt:
+
+\begin{theorem}
+    Die Morse Homologie ist nicht vom gewählten Morse-Smale Paar abhängig, und wir können schreiben
+    \[ HM_{\ast} (M) := HM_{\ast}(M, (f, X)) \]
+\end{theorem}
