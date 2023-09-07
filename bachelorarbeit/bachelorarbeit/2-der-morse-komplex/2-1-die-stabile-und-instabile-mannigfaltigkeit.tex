@@ -7,11 +7,12 @@
     \[ \stab (p) = \left\{ q \in M : \lim_{t \to + \infty} \phi_t(q) = p \right\} \]
     und die instabile Mannigfltigkeit ist
     \[ \unst (p) = \left\{ q \in M : \lim_{t \to - \infty} \phi_t(q) = p \right\} . \]
+    (\say{s} wie \say{stable}, \say{u} wie \say{unstable})
 \end{definition}
 
 Bevor wir die stabile- und instabile Mannigfaltigkeit eines kritischen Punktes weiter untersuchen, 
-fixieren wir ein Paar Notationen zu Morse Umgebungen. Für das gesamte Kapitel ist diese Vorstellung
-von Morse-Umgebungen wichtig.
+fixieren wir ein Paar Notationen zu Morse Umgebungen. Für den Rest dieser Arbeit ist diese 
+Vorstellung von Morse-Umgebungen wichtig.
 
 \begin{definition}[Notationen zu Morse Umgebungen]
     \label{def: notation morse umgebung}
@@ -33,13 +34,13 @@ von Morse-Umgebungen wichtig.
         \del_0 U := & \left\{ x \in \del U: \| x_- \|^2 \| x_+ \|^2 = \eta(\eps + \eta) \right\} .
     \end{align*}
     Dann setzt sich der Rand von $U$ aus diesen drei Teilen zusammen, also
-    \[ \del U = \del_+ \cup \del_- \cup \del_0 . \]
+    \[ \del U = \del_+ U \cup \del_- U \cup \del_0 U . \]
     $\del_0 U$ ist parallel zu den Trajektorien des negativen Gradienten von $Q$. $\del_+ U$ und 
     $\del_- U$ sind orthogonal zu den Trajektorien des negativen Gradienten von $Q$, wobei die 
     Trajektorien in $\del_+ U$ in die Menge $U$ eintreten und sie in $\del_- U$ wieder verlassen. 
     Wir setzen nun $V_- = \langle e_1, \dots, e_k \rangle$ und 
     $V_+ = \langle e_1, \dots, e_n \rangle \subseteq \R^n$. $V_+$ ist der größte Vektorraum, 
-    auf dem $\opd^2 Q (0) (\cdot, \cdot)$ positiv definit ist und $V_-$ der größte Vektorraum, auf dem 
+    auf dem $\opd^2 Q (\cdot, \cdot) (0)$ positiv definit ist und $V_-$ der größte Vektorraum, auf dem 
     $\opd^2 Q (0) (\cdot, \cdot) (0)$ negativ definit ist. 
     Es gilt 
     \[ \del U \cap V_{\pm} \subseteq \del_{\pm} U . \]
@@ -50,8 +51,8 @@ von Morse-Umgebungen wichtig.
     Ist nun $f \colon M \to \R$ eine Morse Funktion, $p$ ein kritischer Punkt von $f$ und $(V, \psi)$
     eine Morse Umgebung von $p$, dann gilt $f \circ \psi^{-1} = Q + f(p)$. Sind $\eps$ und $\eta$
     klein genug, dann ist $U \subset \psi(V)$. Wir nennen 
-    $\Omega (p, \eps, \eta) = \Omega (p) = \psi^{-1}(U)$, und 
-    $\del_{\pm} \Omega (p) = \psi^{-1}(\del_{\pm}U)$ und $\del_0 \Omega (p) = \psi^{-1} (\del_0 U)$.
+    $\Omega (p, \eps, \eta) := \Omega (p) := \psi^{-1}(U)$, 
+    $\del_{\pm} \Omega (p) := \psi^{-1}(\del_{\pm}U)$ und $\del_0 \Omega (p) := \psi^{-1} (\del_0 U)$.
     Dann ist 
     \[ \psi(\stab (p) \cap \Omega (p)) = V^+ \cap U \] 
     und 
@@ -59,22 +60,41 @@ von Morse-Umgebungen wichtig.
     Wir können uns also mit dieser Notation die stabile- und instabile Mannigfaltigkeit (wenigstens 
     in einer Umgebung von $p$) sehr gut vorstellen.
 
-    \begin{figure}[ht]
-        \centering
-        \begin{minipage}{.4\textwidth}
-          \centering
-          \includegraphics[width=.4\linewidth]{../resources/def-notation-morse-umgebung-1.JPG}
-          \captionof{figure}{Index $0$}
-          \label{fig: morse umgebung ind 0}
-        \end{minipage}%
-        \begin{minipage}{.4\textwidth}
-          \centering
-          \includegraphics[width=.4\linewidth]{../resources/def-notation-morse-umgebung-2.JPG}
-          \captionof{figure}{Index $k$, $0 < k < n$}
-          \label{fig: morse umgebung ind k}
-        \end{minipage}
-    \end{figure}
+    Hier einige Beispiele für diese Morse Umgebungen:
 
+    \begin{tikzpicture}
+        % Include the image in a node
+        \node [
+            above right,
+            inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{../resources/morse-umgebungen.jpeg}};
+            
+        % Create scope with normalized axes
+        \begin{scope}[
+        x={($0.02*(image.south east)$)},
+        y={($0.05*(image.north west)$)}]
+
+        \node at (1, 10.7) {$ \del_+ U $};
+        \node at (16.9, 10) {$ \del_- U $};
+        \node[text=LightBlue] at (29, 10) {$ \del_0 U $};
+        \node at (32, 10) {$ \del_+ U $};
+        \node at (48.2, 10.3) {$ \del_- U $};
+        \node[text=LightBlue] at (48.2, 15.5) {$ \del_0 U $};
+        \node at (46, 16.5) {$ \del_+ U $};
+            
+        \end{scope}
+    \end{tikzpicture}
+
+    Links eine Morse Umgebung um ein Minimum, also einen kritischen Punkt mit Index $0$ einer 
+    Morse-Funktion aus einer $2$-dimenisionalen Mannigfaltigkeit, in der Mitte eine Morse Umgebung 
+    eines Sattelpunktes, also eines kritischen Punktes mit Index $2$, und rechts eine Morse-Umgebung 
+    eines kritischen Punktes mit Index $1$ einer Morse Funktion aus einer $3$-dimensionalen 
+    Mannigfaltigkeit.
+
+    Links ist die stabile Mannigfaltigkeit einfach eine Ungebung des Kreises, in der Mitte ist die 
+    stabile Mannigfaltigkeit die vertikale Achse und die instabile die horizontale, und rechts
+    ist die stabile Mannigfaltigkeit die vertikale Achse und die instabile ist eine Umgebung 
+    eines Kreises auf der horizontalen Ebene.
+    
     $\eps$ und $\eta$ werden häufig in der Notation ausgelassen.
 \end{definition}
 
@@ -120,7 +140,7 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
     $\del_+ \Omega (p) \cap \stab(p)$ transportiert. Angenommen $\phi_{\bullet}(q)$ transportiert
     $q$ nie zu einem kritischen Punkt. Jedes mal wenn $\phi_{\bullet}(q)$ also ins Innere einer
     Morse-Umgebung $U_q$ gerät, muss diese Umgebung auch wieder verlassen werden. Da 
-    $f \circ \phi_{bullet}(q)$ monoton ist, kann nachdem $\phi_{bullet}(q)$ die Morse-Umgebung 
+    $f \circ \phi_{\bullet}(q)$ monoton ist, kann nachdem $\phi_{\bullet}(q)$ die Morse-Umgebung 
     $\Omega (p)$ verlassen hat, nie wieder zu dieser zurückgekehrt werden.
     Sei also 
     \[ \Omega = \bigcup_{p \in \Crit(f)} \Omega (p) \]
@@ -148,15 +168,13 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
     \label{def: smale-bedingung}
     Es sei $M$ eine Mannigfaltigkeit und $U$ und $V$ Untermannigfaltigkeiten von $M$. Wir sagen 
     $U$ und $V$ sind \textit{transversal} und schreiben $U \pitchfork V$, falls für alle Punkte 
-    $p \in U \cap V$ gilt 
-    \[ T_pU + T_pV = T_pM . \]
-    Ein Vektorfeld $X \in \VFs (M)$ heißt \textit{transversal} zur Untermannigfaltigkeit $U$, falls 
-    für alle $p$ in $U$ gilt 
-    \[ \langle X(p) \rangle + T_pU = T_pM . \]
+    $p \in U \cap V$ gilt $T_pU + T_pV = T_pM$. Ein Vektorfeld $X \in \VFs (M)$ heißt 
+    \textit{transversal} zur Untermannigfaltigkeit $U$, falls für alle $p$ in $U$ gilt 
+    $\langle X(p) \rangle + T_pU = T_pM$.
 
-    Sei nun $f \colon M \to \R$ eine Morse Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. Dann sagen
-    wir, dass $X$ die \textit{Smale-Bedingung} erfüllt, falls für alle kritischen Punkte $p$ und $q$ von 
-    $f$ gilt 
+    Sei nun $f \colon M \to \R$ eine Morse Funktion und $X$ ein Pseudo-Gradientenfeld von $f$. Dann 
+    sagen wir, dass $X$ die \textit{Smale-Bedingung} erfüllt, falls für alle kritischen Punkte 
+    $p$ und $q$ von $f$ gilt 
     \[ \stab (p) \pitchfork \unst (q) . \]
     Ein Paar $(f, X)$ aus einer Morse-Funktion $f$ und einem Pseudo-Gradientenfeld $X$, das die 
     Smale-Bedingung erfüllt, nennt man \textit{Morse-Smale Paar}.
@@ -180,13 +198,13 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
     \[ \phi_2 = (\phi_2', \phi_2'')\colon V_2 \to 
         \Omega_2 \times \Omega_2' \subseteq \R^{d_2} \times \R^{n - d_2} \]
     mit $\phi_2(V_2 \cap U_2) = \Omega_2 \times \{ 0 \}$. Definiere 
-    \[ \phi'' = (\phi_1'', \phi_2'') \colon 
+    \[ \phi = (\phi_1'', \phi_2'') \colon 
         M \supseteq V_1 \cap V_2 \to \R^{n - d_1} \times \R^{n - d_2}. \]
     Dann ist 
-    $(\phi'')^{-1}(0) = (U_1 \cap V_1) \cap (U_2 \cap V_2) = (U_1 \cap U_2) \cap (V_1 \cap V_2) := V$.
+    $(\phi)^{-1}(0) = (U_1 \cap V_1) \cap (U_2 \cap V_2) = (U_1 \cap U_2) \cap (V_1 \cap V_2) := V$.
     Wir wollen nun den Satz über reguläre Werte anwenden, aber dafür müssen wir zeigen, dass 
-    $\opd \phi'' (p)$ surjektiv ist. Bemerke, dass 
-    $\opd \phi'' (p) = \opd (\phi''_1, \phi''_2) (p) = (\opd \phi''_1 (p), \opd \phi''_2 (p))$.
+    $\opd \phi (p)$ surjektiv ist. Bemerke, dass 
+    $\opd \phi (p) = \opd (\phi''_1, \phi''_2) (p) = (\opd \phi''_1 (p), \opd \phi''_2 (p))$.
     Es sei $v \in T_p \R^{n - d_1}$ und $w \in T_p\R^{n - d_2}$. Da $\opd \phi''_1 (p)$ und 
     $\opd \phi''_2 (p)$ surjektiv sind, und da $U_1$ und $U_2$ transversal sind, 
     existieren $v_1' + v_2', w_1' + w_2' \in T_pU_1 + T_pU_2$, sodass 
@@ -194,7 +212,7 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
     $\opd \phi''_2 (p) (w_1 + w_2) = \opd \phi''_2 (p) (w_1) = w$.
     Die ersten Gleichheiten gelten, da $T_p U_1$ der Kern von $\opd \phi''_1 (p)$ und 
     $T_p U_2$ der Kern von $\opd \phi''_2 (p)$ sind. Dann gilt
-    \[ \opd \phi'' (p) (w_1' + v_2')  = 
+    \[ \opd \phi (p) (w_1' + v_2')  = 
         ( \opd \phi''_1 (p) (v_2'), \opd \phi''_2 (p) (w_1')) = (v, w) . \]
     Wir können also den Satz über reguläre Werte anwenden, dann ist $V$ eine Untermannigfaltigkeit
     mit Dimension $n - ((n - d_1) + (n - d_2)) = d_1 + d_2 - n$. Dann ist auch $U_1 \cap U_2$
@@ -204,8 +222,8 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
 Dann folgt direkt:
 
 \begin{prop}
-    Es sei $f \colon M \to \R$ eine Morse Funktion und $p$ und $q$ kritische Punkte von mit Index $k_1$
-    und $k_2$ respektive. Falls $X$ die Smale-Bedingung erfüllt ist
+    Es sei $f \colon M \to \R$ eine Morse Funktion und $p$ und $q$ kritische Punkte von $f$ mit 
+    Index $k_1$ und $k_2$ respektive. Falls $X$ die Smale-Bedingung erfüllt ist
     \[ \mathcal{M} (p, q) := \unst (p) \cap \stab (q) = 
         \left\{ r \in M : \lim_{t \to - \infty} \phi_t(p) \text{ und } 
         \lim_{t \to + \infty} \phi_t(q) \right\} \]
@@ -251,7 +269,16 @@ Punkten $p$ und $q$ liegen.
 
 Der Raum $\Lt (p, q)$ enthält für jede Trajektorie, die zwischen den kritischen Punkten $p$ und $q$ 
 verläuft einen Repräsentanten. Später wird $\Lt (p, q)$ benutzt, um den Morse-Komplex zu definieren.
-Die Smale Bedingung ist also für unsere Zwecke wichtig.
+Die Smale-Bedingung ist also für unsere Zwecke wichtig.
+
+\begin{example}
+    Wir haben vorher schon zwei Beispiele für Morse Funktionen auf dem Torus gesehen. 
+    Die Höhenfunktion ist erfüllt die Smale-Bedingung nicht - tatsächlich führen die Trajektorien 
+    vom oberen Sattelpunkt direkt zum unteren Sattelpunkt.
+
+    Die Funktion mit $f(x, y) = - \cos(x) - \cos(y)$ ist eine Morse Funktion und erfüllt auch die 
+    Smale-Bedingung.
+\end{example}
 
 Wir gewinnen auch eine wichtige Erkenntnis: 
 
@@ -268,7 +295,7 @@ Sogar noch stärker ist die folgende Aussage:
 \begin{theorem}[Satz von Smale-Kupta]
     Es sei $M$ eine Mannigfaltigkeit mit Rand und $f$ eine Morse-Funktion. Es sei $\Omega$ die 
     Vereinigung von Morse-Umgebungen von allen kritischen Punkten. Sei $X$ ein Pseudo-Gradientenfeld 
-    von $f$. Dann existiert ein Pseudo-Gradientenfeld $X'$ von $f$, das die Smale Bedingung erfüllt, 
+    von $f$. Dann existiert ein Pseudo-Gradientenfeld $X'$ von $f$, das die Smale-Bedingung erfüllt, 
     das innerhalb von $\Omega$ gleich $X$ ist und für das gilt:
 
     Für jedes $\eps > 0$, jeden Atlas $(\phi_i, U_i)_{i \in I}$ von $M$ und alle $i \in I$ existiert 

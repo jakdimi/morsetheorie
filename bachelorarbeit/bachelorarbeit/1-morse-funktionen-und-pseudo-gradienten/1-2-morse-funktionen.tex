@@ -15,6 +15,22 @@ sind, keine Morse Funktion ist, und dass die Menge der Brennpunkte eine Nullmeng
 wir sehen, dass jede glatte Funktion (auf gewisse Art und Weise) beliebig nah an einer Morse 
 Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{audin}.
 
+\begin{example}
+    \label{bsp: morse funktion}
+    Ein Paar Beispiele:
+    \begin{enumerate}
+        \item Die Höhenfunktion auf dem Torus, die wir am Anfang dieses Kapitels untersucht haben, ist 
+            ein Beispiel für eine Morse-Funktion.
+        \item Ist $T = [0, 1]^2 / \sim$ wie üblich der Torus, dann ist $f \colon T \to \R$ mit 
+            $f(x, y) = -\cos(\pi \cdot x) + -\cos(\pi \cdot y)$ eine Morse Funktion. 
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.4\textwidth]{../resources/morse-funktion-torus.jpeg}
+                \caption{Höhenlinien (links) und der Gradient (rechts) von $f$}
+            \end{figure}
+    \end{enumerate}
+\end{example}
+
 \begin{definition}[Normalenbündel]
     \label{def: normalenbuendel}
     Es sei $M \subseteq \R^n$ eine Untermannigfaltigkeit von $\R^n$. Das Normalenbündel ist die 
@@ -51,9 +67,9 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
 \end{definition}
 
 \begin{remark}
-    Aus dem Satz von Sard folgt, dass die Menge der Brennpunkte eine Nullmenge ist.
-    Intuitiv sind die Brennpunkte einer Untermannigfaltigkeit die Punkte im $\R^n$, an denen sich
-    die Normalen von nahe aneinanderliegenden Punkten schneiden.
+    Aus dem Satz von Sard (siehe \cite{sard}) folgt, dass die Menge der Brennpunkte eine 
+    Nullmenge ist. Intuitiv sind die Brennpunkte einer Untermannigfaltigkeit die Punkte im 
+    $\R^n$, an denen sich die Normalen von nahe aneinanderliegenden Punkten schneiden.
 \end{remark}
 
 \begin{lemma}
@@ -69,7 +85,7 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
 \end{lemma}
 
 \begin{proof}
-    Den beweis findet man zum Beispiel bei Milnor in Kapitel 6 von \cite{milnor}.
+    Den Beweis findet man zum Beispiel bei Milnor in Kapitel 6 von \cite{milnor}.
 \end{proof}
 
 \begin{prop}
@@ -84,9 +100,8 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
 \end{prop}
 
 \begin{proof}
-    Offensichtlich ist $f_p$ glatt. $x \in M$ ist genau dann ein kritischer Punkt von $f_p$, wenn
-    $T_xM \perp (x - p)$, denn das Differential von $f_p$ erweitert auf $\R^n$ mit derselben Vorschrift
-    ist
+    Offensichtlich ist $f_p$ glatt. Das Differential von $f_p$ erweitert auf $\R^n$ mit 
+    derselben Vorschrift ist
     \[ \opd f_p (x) = 2 (x - p). \]
     Also gilt
     \[ \opd f_p (x) (v) = \langle 2 (x - p), v \rangle . \]
@@ -97,15 +112,15 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
     $\phi_1, \phi_2 \colon \R^n \to \R^n$ und eine Derivation $X_p$ gilt 
     \[ X_p (f) = \langle X_p(\phi_1), \phi_2 \rangle + \langle \phi_1, X_p(\phi_2) \rangle.  \]
     Sei nun $x \in M$. Dann existiert eine Umgebung $U \subseteq \R^n$ von $x$, eine Umgebung 
-    $\Omega \subseteq \R^d$ von $0$ und eine Immersion 
+    $\Omega \subseteq \R^d$ von $0$ und eine Einbettung 
     \[ h \colon \Omega \longto \R^n , \]
-    die ein Diffeomorphismus $h \colon \Omega \to U \cap M$ ist.
+    mit $h \colon \Omega \to U \cap M$.
     Schreibe
     \[ h(u_1, ..., u_n) = x(u_1, ..., u_n). \]
     Dann bekommen wir die partiellen Ableitungen
     \[ 
         \pderive[f_p]{u_i} = \sum_{k = 1}^n \pderive[f_p]{x_k} \cdot \pderive[x_k]{u_i} 
-        = \langle 2(x - p), \pderive[x]{u_i} \rangle 
+        = \left\langle 2(x - p), \pderive[x]{u_i} \right\rangle 
     \]
     und 
     \[ 
@@ -121,28 +136,30 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
 \end{proof}
 
 \begin{remark}
-    Mit dem Einbettungssatz von Whitney folgt dann direkt, dass es auf jeder Mannigfaltigkeit 
-    $M$ viele Morse-Funktionen gibt. Es gilt sogar noch eine stärkere Aussage:
+    Mit dem Einbettungssatz von Whitney (siehe \cite{whitney}) folgt dann direkt, dass es auf 
+    jeder Mannigfaltigkeit $M$ viele Morse-Funktionen gibt. Es gilt sogar noch eine stärkere 
+    Aussage:
 \end{remark}
 
-\begin{theorem}
-    \label{satz: morse-approximation}
+\begin{prop}
+    \label{prop: morse-approximation}
     Es sei $M$ eine Mannigfaltigkeit, $f \colon M \to \R$ glatt. Dann kann $f$ in jeder kompakten
     Teilmenge $K$ beliebig gut von einer Morse Funktion approximirt werden, also für jedes 
     $\eps > 0$ existiert eine Morse Funktion $g \colon K \to \R$, sodass 
     \[ \| \, f - g \, \|_{\infty} < \eps . \]
-\end{theorem}
+\end{prop}
 
 \begin{proof}
-    Wir wählen eine Einbettung $h' \colon M \to \R^{n - 1}$. Dann ist 
+    Wir wählen eine für ein beliebiges $n$, das groß genug ist eine Einbettung 
+    $h' \colon M \to \R^{n - 1}$. Dann ist 
     \[ h \colon M \longto \R^n \; ; \; h(x) = (f(x), h'(x)) \]
     eine Einbettung von $M$ in $\R^n$. Seien $c, \eps_1, \dots, \eps_n > 0$, sodass für \\
     $p = (c - \eps_1, \eps_2, \dots, \eps_n)$ die Funktion $f_p$ eine Morse Funktion ist.
     Setze nun 
     \[ g(x) = \frac{f_p(x) - c^2}{2c} . \]
-    $g$ ist offensichtlich eine Morse-Funktion. Wir rechnen:
+    $g$ ist offensichtlich eine Morse-Funktion. Wir rechnen mit einem $x \in M$:
     \begin{align*}
-        g(x) = & \frac{1}{2c} \left( (f(x) + c - \eps_1)^2 + (h_1(x) - \eps_2)^2 
+        g(h(x)) = & \frac{1}{2c} \left( (f(x) + c - \eps_1)^2 + (h_1(x) - \eps_2)^2 
             + \dots + (h_{n-1}(x) - \eps_n)^2 - c^2 \right) \\
         = & f(x) + \frac{f(x)^2 + \sum h_i(x)^2}{2c} - \frac{\eps_1 f(x) 
             + \sum \eps_i h_{i - 1}(x)}{c} + \sum \eps_i^2 - \eps_1

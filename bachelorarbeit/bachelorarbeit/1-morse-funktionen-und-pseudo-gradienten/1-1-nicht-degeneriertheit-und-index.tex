@@ -8,7 +8,8 @@ Morse-Theorie erklären und das \textit{Morse-Lemma}~\ref{satz: morse-lemma} bew
     Sei $M$ eine glatte Mannigfaltigkeit und $f \colon M \to \R$ eine glatte Abbildung. 
     Ein \textit{kritischer Punkt} von $f$ ist ein Punkt $p \in M$, sodass $\opd f (p)$ nicht 
     surjektiv ist.
-    Die Menge der kritischen Punkte von $f$ heißt $\Crit (f)$.
+    Die Menge der kritischen Punkte von $f$ heißt $\Crit (f)$. Ist $p$ ein kritischer Punkt, dann
+    heißt $f(p)$ kritischer Wert von $f$.
 \end{definition}
 
 \begin{remark}
@@ -55,7 +56,7 @@ einen Begriff erhalten, der mit dem der gewohnten Hesseschen Bilinearform im $\R
     Es sei $f \colon M \to \R$ eine glatte Abbildung, $p$ ein kritischer Punkt von
     $f$. Wir nennen $p$ \textit{nicht degeneriert}, falls die Bilinearform 
     $\opd^2 f (\cdot, \cdot) (p)$ nicht ausgeartet ist. Der \textit{Index} eines
-    nicht degenerierten kritischen Punktes ist die maximale Dimension der
+    nicht degenerierten kritischen Punktes $p$ ist die maximale Dimension $\Index (p)$ der
     Untervektorräume, auf denen $\opd^2 f (\cdot, \cdot) (p)$ negativ definit ist.
     Die Menge der kritischen Punkte von $f$ mit Index $k$ heißt $\Crit_k (f)$.
 \end{definition}
@@ -87,11 +88,11 @@ fast jedem Beweis genutzt:
 \begin{theorem}[Morse-Lemma]
     \label{satz: morse-lemma}
     Es sei $p$ ein nicht degenerierter kritischer Punkt mit Index $k$ einer glatten 
-    Funktion $f \colon M \to \R$. Dann existieren lokale koordinaten 
+    Funktion $f \colon M \to \R$. Dann existieren lokale Koordinaten 
     $\phi = (x_1, ..., x_n)$, sodass in einer Umgebung $U$ von $p$ gilt:
-    \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k + 1}^2 + ... + x_n^2 \]
-    und 
-    \[ \varphi (p) = 0. \]
+    \[ f = f(p) - x_1^2 - ... - x_k^2 + x_{k + 1}^2 + ... + x_n^2
+        \; \text{ und } \;
+        \varphi (p) = 0 . \]
     $(U, \phi)$ heißt \textit{Morse-Karte}, und $U$ \textit{Morse-Umgebung}.
 \end{theorem}
 
@@ -108,15 +109,14 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
 \end{lemma}
 
 \begin{proof}
-    Die Aussage kann man Induktiv beweisen, siehe \cite{hirsch}.
+    Die Aussage kann man Induktiv über $n$ beweisen, siehe \cite{hirsch}.
 \end{proof}
 
 \begin{proof}[Beweis von Satz~\ref{satz: morse-lemma}]
     Es sei $U$ eine Karten Umgebung von $p$. Dann können wir ohne Beschränkung der 
     Allgemeinheit annehmen, dass $f \colon \R^n \to \R$, $p = 0$ und $f(0) = 0$.
-    Außerdem können wir mithilfe eines Korrdinatenwechsels annehmen, dass 
-    \[ A = H_0(f) \]
-    eine Diagonalmatrix mit ausschließlich Diagonaleinträgen $\pm 1$ hat, denn da $p$
+    Außerdem können wir mithilfe eines Korrdinatenwechsels annehmen, dass $A := H_0(f)$
+    eine Diagonalmatrix mit ausschließlich Diagonaleinträgen $\pm 1$ ist, denn da $p$
     nicht degeneriert ist ist $A$ invertierbar. 
     \begin{claim*}
         Es existiert eine glatte Abbildung $x \mapsto B_x$ von $M$ in die symmetrischen
@@ -131,27 +131,27 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
             f(x) = & f(x) - f(0) 
                 = \int_0^1 \derive[f (tx)]{t} \opd t \\
             = & \int_0^1 \sum_{i = 1}^n \pderive[f]{x_i}(tx) x_i \opd t 
-                = \sum_{i = 1}^n \left( \int_0^1 \pderive[f]{x_i}(tx) \opd t \right) x_i
+                = \sum_{i = 1}^n \left( \int_0^1 \pderive[f]{x_i}(tx) \opd t \right) x_i ,
         \end{align*}
-        Da $p = 0$ ein kritischer Punkt ist, gilt $\pderive[f]{x_i}(0) = 0$ für alle 
+        Denn da $p = 0$ ein kritischer Punkt ist, gilt $\pderive[f]{x_i}(0) = 0$ für alle 
         $i$. Mit dem selben Argument sehen wir dann, dass
         \[ \pderive[f]{x_i}(tx) = 
         \sum_{j = 1}^n \left( \int_0^1 \pdderive[f]{x_i}{x_j}(stx) \opd s \right) x_j . \]
         Dann gilt 
         \[ f(x) = 
             \sum_{i, j = 1}^n 
-            \left( \int_0^1 \int_0^1 \pdderive[f]{x_i}{x_j} \opd s \opd t \right) 
+            \left( \int_0^1 \int_0^1 \pdderive[f]{x_i}{x_j} (x) \opd s \opd t \right) 
             x_i x_j 
         . \]
         Setze also 
-        \[ b_{ij}(x) = \int_0^1 \int_0^1 \pdderive[f]{x_i}{x_j} \opd s \opd t . \]
+        \[ b_{ij}(x) = \int_0^1 \int_0^1 \pdderive[f]{x_i}{x_j} (x) \opd s \opd t . \]
         Dann gilt schon $B_0  = A$, und die Abbilfungen $b_{ij}$ sind glatt, also 
         auch $x \mapsto B_ x$.
     \end{smallproof}
     Wir dürfen nun das vorherige Lemma~\ref{lemma: lina lemma} anwenden:
 
     Sei $P \colon N \to GL_n(\R)$ eine Abbildung wie in~\ref{lemma: lina lemma}.
-    Setze $P(B_x) := Q_x$ Definiere nun eine glatte Abbildung $\phi \colon U \to \R^n$
+    Setze $Q_x := P(B_x)$. Definiere nun eine glatte Abbildung $\phi \colon U \to \R^n$
     durch $\phi (x) = Q_x^{-1}x$ in einer Umgebung von $0$. Wir rechnen nach, dass 
     $\opd \phi (0) \colon \R^n \to \R^n$ die Identität ist:
 
@@ -168,12 +168,12 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
             \pderive[q_{ik}]{x_j}(x) x_k + q_{ik}(x) \delta_{ki}
         \right)
     , \end{align*}
-    Wobei $\delta_{ki}$ das Kronecker Delta ist. Setzen wir also $0$  in $\phi$ ein
+    Wobei $\delta_{ki}$ das Kronecker Delta ist. Setzen wir also $0$ ein
     bekommen wir
     \[ \pderive[\phi_i]{x_j}(0) = q_{ij}(0). \]
     Das Differential von $\phi$ in $0$ ist also gegeben durch
     \[ Q_0^{-1} = P(B_0)^{-1} = P(A)^{-1} = E_n . \]
-    Das differential an der Stelle $0$ ist also invertierbar, und dann können wir mit dem 
+    Das Differential an der Stelle $0$ ist also invertierbar, und dann können wir mit dem 
     Satz über die Umkehrfunktion annehmen, dass $U$ klein genug ist, sodass $\phi$ 
     eingeschräkt aufs Bild ein Diffeomorphismus ist. 
     Dann ist $\phi$ eine Karte um $0$. Setze $(y_1, ..., y_n) := \phi$, dann gilt 
@@ -184,7 +184,7 @@ Bevor wir das Morse Lemma beweisen, benötigen wir eine Aussage aus der Linearen
             = \phi(x)^T A \phi(x) \\
         = & \sum_{i = 1}^n a_{ii} y_i(x)^2
     . \end{align*}
-    Das entspricht genau der gewünschten Form.
+    Das entspricht genau der gewünschten Form, denn $a_{ii} \in \{ \pm 1 \}$.
 \end{proof}
 
 \begin{corollary}

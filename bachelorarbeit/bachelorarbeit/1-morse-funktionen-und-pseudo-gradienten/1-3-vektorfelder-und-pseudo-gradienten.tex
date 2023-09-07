@@ -13,6 +13,8 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
     Es sei $X \in \VFs (M)$ ein Vektorfeld auf $M$. $\gamma$ heißt Flusslinie von $X$
     falls für alle $t_0 \in \R$ gilt: 
     \[ \derive[\gamma]{t}(t_0) = X(\gamma(t_0)) . \]
+    Das Bild einer Flusslinie von $X$ heißt \textit{Trajektorie}. Wir benutzen den Begriff 
+    Trajektorie recht frei. Manchmal ist damit auch die Flusslinie gemeint.
 \end{definition}
 
 \begin{definition}[1-Parameter Gruppe aus Diffeomorphismen]
@@ -42,17 +44,8 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
     Diffeomorphismus: Das Inverse von $\phi_t$ ist $\phi_{-t}$.
 
     Ist außerdem $\phi$ eine von einem Vektorfeld $X$ erzeugte 1-Parameter Gruppe aus 
-    Diffeomorphismen, dann sind $\phi_{\bullet}(p)$ Flusslinien von $X$:
-    \begin{align*}
-        X(\varphi_{t_0}(p)) 
-        & = \derive[\varphi_{\bullet}(\varphi_{t_0}(p))]{t}(0)
-        = \opd \varphi_{\bullet} (0) (\varphi_{t_0}(p)) \left(\derive{t}\right) \\
-        & = \opd (\varphi_{t_0 + \bullet}(p)) (0) \left(\derive{t}\right)
-        = \opd (\varphi_{\bullet}(p)) (t_0) \cdot \opd (t_0 + \id_{\R}) (0) \left(\derive{t}\right) \\
-        & = \opd (\varphi_{\bullet}(p)) (t_0) \left(\derive{t}\right)
-        = \opd (\varphi_{\bullet}(p)) (t_0) \left(\derive{t}\right) \\
-        & = \derive[\varphi_{\bullet}(p)]{t}(t_0)
-    \end{align*}
+    Diffeomorphismen, dann rechnet man leicht nach, dass $\phi_{\bullet}(p)$ Flusslinien 
+    von $X$ sind.
 \end{remark}
 
 \begin{prop}
@@ -62,7 +55,7 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
 \end{prop}
 
 \begin{proof}
-    Einen Beweis für diese Aussage findet man zum Beispiel auch in \cite{milnor}.x
+    Einen Beweis für diese Aussage findet man zum Beispiel auch in \cite{milnor}.
 \end{proof}
 
 \begin{remark}
@@ -108,28 +101,17 @@ Wir untersuchen erst ein Paar Eigenschaften von Vektorfeldern.
     induziert wird.
 \end{definition}
 
+Die erste Eigenschaft haben auch Gradientenfelder. Tatsächlich ist dies die einzige
+Eigenschaft des Gradienten, die uns in diesem Kontext interessiert.
+
+Die zweite Eigenschaft stellt sicher, dass sich Pseudo-Gradientenfelder in der nähe von 
+kritischen Punkten, also den Punkten, die wir in dieser Arbeit untersuchen, einfach verhält.
+
 \begin{prop}
     Es sei $M$ eine Mannigfaltigkeit und $f \colon M \to \R$ eine Morse-Funktion. 
     Dann existiert ein Pseudo-Gradientenfeld von $f$.
 \end{prop}
 
 \begin{proof}
-    Da $M$ zweitabzählbar ist und die kritischen Punkte isoliert, ist die Menge der kritischen
-    punkte ${p_i}_{i \in I'}$ abzählbar. Seien dann ${(U_i, \phi_i)}_{i \in I'}$ Karten-Umgebungen
-    von den kritischen Punkten, sodass in diesen Umgebungen $f$ die Form hat wie im 
-    Morse-Lemma~\ref{satz: morse-lemma}. Ergänze ${(U_i, \phi_i)}_{i \in I'}$ zu einem Atlas 
-    ${(U_i, \phi_i)}_{i \in I}$, sodass jeder kritische Punkt $p_i$ nur in $U_i$ enthalten ist.
-    definiere nun die Vektorfelder
-    \[ X_i (p) := \opd (\phi_i) (p) \circ \grad (f \circ \phi_i^{-1}) (\phi_i(p)) \]
-    auf $\phi_i(U_i)$. Setze nun
-    \[ \tilde{X_i}(p) = \begin{cases}
-        \lambda_i (p) \cdot X_i(p) & \text{ falls } p \in \phi_i(U) \\
-        0 & \text{ sonst }
-    \end{cases} . \]
-    Per Definition gilt schon $\opd f (p) (X_i(p)) \leq 0$ für alle $p \in M$ und $i \in I$.
-    Nun wähle eine Partition der 1 $(\lambda_i)_{i \in I}$ über $(U_i)_{i \in I}$. Dann setze
-    \[ X := \sum_{i \in I} \tilde{X_i}(p) . \]
-    Falls $p_i$ ein kritischer Punkt von $M$ ist, dann ist $\tilde{X_j}(p) = 0$ 
-    für alle $j \neq i$. Also ist 
-    \[ X(p) = \tilde{X_i}(p) = 0 . \]
+    Den Beweis findet man bei Audin und Damian \cite{audin}.
 \end{proof}

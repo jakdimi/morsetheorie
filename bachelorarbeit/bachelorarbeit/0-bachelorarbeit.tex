@@ -38,14 +38,15 @@
 
 \subsection*{Geschichte der Morse Theorie}
 
-Die Morse-Theorie ist Teil der Differential-Topologie. Sie lässt Aussagen zu, die von sehr lokalen 
+Die Morse-Theorie ist Teil der Differential-Topologie. Sie lässt Aussagen zu, die von lokalen 
 Eigenschaften auf globale Eigenschaften von Mannigfaltigkeiten schließen lassen. Insbesondere schließt man
 von den Eingenschaften kritischer Punkte von bestimmten Funktionen $f \colon M \to \R$ auf topologische 
-Eigenschaften von $M$. Die Theorie geht zurück auf den amerikanischen Mathematiker \textit{Marston Morse}, 
+Eigenschaften von $M$. 
+Die Theorie geht zurück auf den amerikanischen Mathematiker \textit{Marston Morse}, 
 der schon 1929 in \cite{morse} zu der Thematik veröffentlichte. Die \textit{Morse-Homologie}, die in dieser 
 Arbeit untersucht wird, wurde in verschiedenen Formen von \textit{René Thom}, \textit{Stephen Smale},
-\textit{John Milnor} und \textit{Edward Witten} eingeführt. Wir werden uns in dieser Arbeit mit den Ideen der 
-ersten Drei beschäftigen.
+\textit{John Milnor} in den 40er - 60er Jahren und \textit{Edward Witten} Anfang der 80er Jahre 
+eingeführt \cite{yanfeng}. Wir werden uns in dieser Arbeit mit den Ideen der ersten Drei beschäftigen.
 
 \subsection*{Zielsetzung und Inhalt}
 
@@ -56,47 +57,53 @@ zellulären Struktur abhängt. Wir folgen dem ersten Teil des Buches
 \textit{Morse Theory and Fleur Homology} \cite{audin}. 
 
 Im ersten Kapitel wird ein grundlegender Einblick in die Morse-Theorie gegeben. Wichtiges Ergebnis ist
-das \textit{Morse-Lemma} das einen konkrete Vorstellung des Verhaltens von Morse-Funktionen in der Nähe 
+das \textit{Morse-Lemma}, das einen konkrete Vorstellung des Verhaltens von Morse-Funktionen in der Nähe 
 kritischer Punkte liefert. Weitere wichtige Ergebnisse sind die beiden 
 \textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma},
 die eine erste Verbindung zwischen den Eigenschaften kritischer Punkte und den topologischen Eigenschaften
 der Mannigfaltigkeit herstellen.
 
 Im zweiten Kapitel untersuchen wir erst die \textit{stabile- und instabile Mannigfaltigkeit} und 
-definieren den \textit{Raum der Trajektorien}, Die Trajektorien sind Flüsse von eines Pseudo-Gradientenfeldes.
-Diese starten und enden immer in kritischen Punkten. Das $k$-te Glied des Morse-Komplexes ist dann dasjenige
-$\F_2$-Modul, das von den kritischen Punkten mit Index $k$ erzeugt wird, und das Differenzial wird dann über
-die Anzahl der Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index 
+definieren den \textit{Raum der Trajektorien}. Die Trajektorien sind Flüsse eines Pseudo-Gradien\-ten\-feldes.
+Diese starten und enden immer in kritischen Punkten. Das $k$-te Glied des Morse-Komplexes ist dann das
+$\F_2$-Modul, welches von den kritischen Punkten mit Index $k$ erzeugt wird, und das Differenzial wird dann 
+über die Anzahl der Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index 
 $k - 1$ definiert. Wir zeigen, dass dieser Komplex wohldefiniert ist und dass es ein Kettenkomplex ist. 
 
-Im dritten Kapitel konstruieren wir eine zelluläre Struktur auf kompakten Mannigfaltigkeiten und zeigen,
-dass die der durch diese Struktur induzierte zelluläre Kettenkomplex isomorph zum Morse Komplex ist. 
-Wir geben außerdem ein Paar schöne Anwendungen der Morse-Homologie.
+Im dritten Kapitel konstruieren wir anhand der erarbeiteten Theorie eine zelluläre Struktur auf kompakten 
+Mannigfaltigkeiten und zeigen, dass der durch diese Struktur induzierte zelluläre Kettenkomplex 
+isomorph zum Morse-Komplex ist. Wir geben außerdem ein Paar schöne Anwendungen der Morse-Homologie.
 
 \subsection*{Vorraussetzungen}
 
-Wir setzen vorraus, dass der Leser weiß was eine Mannigfaltigkeit ist. Nur im Beweis von 
-Satz~\ref{satz: morse-homologie ist zellulaere homologie} wird ein bisschen Wissen über relative Homologie
-und die lokale Grad Formel vorrausgesetzt. 
+Wir setzen vorraus, dass die Leser\textit{in} sich mit mehrdimensionaler Analysis auskennt und weiß, was 
+Mannigfaltigkeiten und eine Untermannigfaltigkeiten ist und was Glattheit bedeutet. Außerdem sollte 
+Mengentopologie einigermaßen vertraut sein. In Satz~\ref{satz: erstes deformationslemma}
+und Satz~\ref{satz: zweites deformationslemma} , sowie im letzten Kapitel wird der Begriff
+\textit{Deformationsretrakt} ohne Erklärung benutzt. Im Beweis von 
+Satz~\ref{satz: morse-homologie ist zellulaere homologie} wird ein bisschen Wissen über 
+\textit{algebraische Topologie}, insbesondere relative Homologie und die lokale Grad Formel 
+vorrausgesetzt. 
 
 \subsection*{Notation}
 
 Folgende Notationen werden benutzt:
 
 \begin{itemize}
-    \item $\isom$ für eine Vektorraum-Isomorphie oder eine Homeomorphie.
-    \item $\diffeo$ für einen Diffeomorphismus.
+    \item $\isom$ für eine Vektorraum-Isomorphie oder eine Homeomorphie, $\diffeo$ für einen Diffeomorphismus
+        und $\simeq$ für eine Homotopie-Äquivalenz.
     \item Die Tangentialräume werden immer als die Menge der Derivationen betrachtet.
-    \item Um Subskripte in Subskripten weitestgehend zu vermeiden, ist ein Vektorfeld eine 
-        glatte Abbildung $X \colon M \to TM$ mit $p \mapsto X(p) \in T_pM$ (anstatt $X_p$).
-    \item ist $f \colon M \to \N$ eine glatte Abbiildung, dann ist die Tangentialabbildung
+    \item Einin Vektorfeld ist eine glatte Abbildung $X \colon M \to TM$ mit 
+        $p \mapsto X(p) \in T_pM$ (anstatt $X_p$).
+    \item Ist $f \colon M \to \N$ eine glatte Abbiildung, dann ist die Tangentialabbildung
         von $f$ im Punkt $p$ die Abbildung $\opd f (p) \colon T_pM \to T_{f(p)}N$.
-    \item $B^k \subseteq \R^k$ ist die offene Kreisscheibe mit Radius $1$, und $\overline{B}^k$
+    \item $B^k \subseteq \R^k$ ist die offene Kreisscheibe mit Radius $1$, und $D^k$
         die abgeschlossene.
     \item Zelluläre und singuläre Homologie werden ausschließlich mit Koeffizienten in $\F_2$ betrachtet.
 \end{itemize}
 
 \tableofcontents
+
 
 \chapter{Morse-Funktionen und Pseudo-Gradienten}
 
@@ -105,24 +112,84 @@ Folgende Notationen werden benutzt:
 
 In diesem Kapitel beschäftigen wir uns näher mit den Stars dieser Arbeit: \\
 \textit{Morse-Funktionen} und \textit{Pseudo-Gradientenfeldern}. Außerdem werden wir das 
-\textit{Morse-\\Lemma}~\ref{satz: morse-lemma} und die so genannten 
+\textit{Morse-Lem\-ma}~\ref{satz: morse-lemma} und die so genannten 
 \textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma} 
-beweisen, die allein von den kritischen Punkten einer Morse Funktion 
+beweisen, die allein von den Eigenschaften kritischer Punkten einer Morse Funktion 
 Rückschlüsse auf die topologischen Eigenschaften der Mannigfaltigkeit zulassen.
+
+Es sei $X$ ein topologischer Raum. Eine $k$-Zelle $e^k \subseteq X$ ist eine Teilmenge, sodass 
+$e^k \isom B^k$ und sodass eine stetige Abbildung 
+$\phi \colon (D^k, S^{k - 1}) \to (\overline{e}^k, \del \overline{e}^k)$ existiert, sodass 
+$\Phi \colon B^k \to e^k$ ein Homeomorphismus ist. Ein Raum $Y$ entsteht aus einem Raum $X$
+durch anbringen einer $k$-Zelle $e^k \subseteq Y$, falls $Y \isom X \amalg \overline{e}^k / \sim$, 
+wobei die Äquivalenzrelation $\sim$ gegeben ist durch 
+\[ \del \overline{e}^k \ni x \sim y \in X \Leftrightarrow y = \iota (x) . \]
+$\iota \colon \overline{e}^k \to Y$ ist hier die Inklusion. Das anbringen einer $1$-Zelle könnte 
+zum Beispiel folgendermaßen aussehen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../resources/Me-Diagram1-attaching-a-1-cell.jpeg}
+\end{figure}
+
+Wir betracheten den Torus $T$, der aufrecht auf einer Ebene steht und die Abbildung 
+$f \colon T \to \R$, der jedem Punkt seinen Abstand zur Ebene zuordnet.
+Die \textit{Subniveaumengen} von $f$ sind $M^a = f^{-1} (-\infty, a]$. Wir untersuchen $M^a$:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../resources/Me-Diagram3-torus-example.jpeg}
+\end{figure}
+
+Es sei $p$ das Minimum, $q$ der untere Sattelpunkt, $r$ der obere Sattelpunkt und $s$ das Maximum.
+
+\begin{itemize}
+    \item Für $a < f(p)$ ist $M^a = \varnothing$.
+    \item Für $f(p) \leq a < f(p)$ ist $M^a$ homotopieäquivalent zum Punkt,
+        also dem leeren Raum mit einer $0$-Zelle angebracht.
+    \item Für $f(p) \leq a < f(q)$ ist $M^a$ homotopieäquivalent zur vorherigen
+        Subniveaumenge, an der eine $1$-Zelle angebracht wurde.
+    \item Für $f(q) \leq a < f(r)$ ist $M^a$ homotopieäquivalent zur vorherigen
+        Subniveaumenge, an der eine $1$-Zelle angebracht wurde.
+    \item Für $f(s) \leq a$ ist $M^a$ der Torus selbst, also homotopieäquivalent zur 
+        vorherigen Subniveaumenge, an der eine $2$-Zelle angebracht wurde.
+\end{itemize}
+
+Wir bemerken: 
+\begin{itemize}
+    \item Gibt es im Intervall $[a, b]$ keine kritischen Werte, so sind $M^a$ und
+        $M^b$ diffeomorph.
+    \item Gibt es in $f^{-1}[a, b]$ genau einen kritischen Punkt, dann hat $M^b$ 
+        den Homotopie-Typ von $M^a$ mit einer $k$-Zelle angebracht, wobei 
+        $k \in \N_0$
+\end{itemize}
+
+Diese beiden Aussagen können wir am Ende dieses Kapitels konkretisieren.
 
 \input{1-morse-funktionen-und-pseudo-gradienten/1-1-nicht-degeneriertheit-und-index.tex}
 \input{1-morse-funktionen-und-pseudo-gradienten/1-2-morse-funktionen.tex}
 \input{1-morse-funktionen-und-pseudo-gradienten/1-3-vektorfelder-und-pseudo-gradienten.tex}
 \input{1-morse-funktionen-und-pseudo-gradienten/1-4-topologische-eigenschaften-anhand-kritischer-punkte.tex}
 
+
+\begingroup
+\let\clearpage\relax
 \chapter{Der Morse-Komplex}
+\endgroup
+%\chapter{Der Morse-Komplex}
+
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
 Morse-Komplex ein Kettenkomplex ist.
 
 \input{2-der-morse-komplex/2-1-die-stabile-und-instabile-mannigfaltigkeit}
 \input{2-der-morse-komplex/2-2-der-morse-komplex}
 
+\begingroup
+\let\clearpage\relax
 \chapter{Morse-Homologie und zelluläre Homologie}
+\endgroup
+
+%\chapter{Morse-Homologie und zelluläre Homologie}
 
 In diesem Kapitel wird aus einem Morse-Smale Paar auf einer Mannigfaltigkeit
 eine zelluläre Struktur dieser Mannigfaltigkeit konstruiert. Dann werden wir 
@@ -134,11 +201,74 @@ zellulären Homologie überein, also auch mit der singulären Homologie.
 \input{3-morse-homologie-und-zellulaere-homologie/3-2-morse-homologie-ist-zellulaere-homologie}
 \input{3-morse-homologie-und-zellulaere-homologie/3-3-anwendungen}
 
+\section*{Nachwort}
+
+
+Die Morse-Theorie bietet eine Fülle an Methoden, und sie benutzt auch Methoden aus vielen Ecken der 
+Mathematik. Alleine in dieser Arbeit haben wir Methoden der Algebraische Topologie,
+Homologische Algebra, endlich dimensionale Differentialgeometrie, der Analysis und der Analysis von 
+Differentialgleichungen genutzt. 
+
+Morse-Theorie ist einer der Grundpfeiler der \textit{Critical Point Theory}, die sich grob gesagt 
+darauf spezialisiert topologische Invarianten, die von kritischen Punkten abhängen zu finden und 
+anzunähern \cite{mercuri}. Wie in dieser Arbeit gesehen haben wir genau das getan:
+
+Die Homologie, Betti-Zahlen und Euler-Charakteristik sind topologische Invarianten, die wir anhand 
+der Indizes der kritischen Punkte berechnen oder annähern können. 
+
 % \appendix
 
 % \input{0-anhang}
 
+\AtNextBibliography{\small}
 \printbibliography
+
+
+\newpage
+\begin{center}
+\large{\textbf{Eigenständigkeitserklärung}}
+\end{center}
+
+\vspace{-6cm}
+
+\normalsize Hiermit versichere ich, dass die vorliegende Arbeit über 
+\textit{\say{Morse-Theorie und \\ Morse-Homoloige}} selbstständig von mir und ohne fremde Hilfe verfasst 
+worden ist, dass keine anderen Quellen und Hilfsmittel als die angegebenen benutzt worden sind und 
+dass die Stellen der Arbeit, die anderen Werken - auch elektrionischen Medien - dem Wortlaut oder 
+Sinn nach entnommen wurden, auf jeden Fall unter Angabe der Quelle als Entlehnung kenntlich gemacht 
+wirden sind. Mir ist bekannt, dass es sich bei einem Plagiat um eine Täuschung handelt, die gemäß 
+der Prüfungsordnung sanktioniert werden kann.
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+			\draw (0,0) -- (10,0);
+\end{tikzpicture}
+
+\vspace{-1cm}
+
+(Datum, Unterschrift)
+
+\vspace{1cm}
+
+Ich erkläre mich mit einem Abgleich der Arbeit mit anderen Texten zwecks Auffindung von 
+Übereinstimmungen sowie mit einer zu diesem Zweck vorzunehmenden Speicherung der Arbeit in einer 
+Datenbank einverstanden.
+
+Ich versichere, dass ich die vorliegende Arbeit oder Teile daraus nicht anderweitig als 
+Prüfungsarbeit eingereicht habe.
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+			\draw (0,0) -- (10,0);
+\end{tikzpicture}
+
+\vspace{-1cm}
+
+(Datum, Unterschrift)
+
+\makeheaderempty
 
 \eject
 \end{document}

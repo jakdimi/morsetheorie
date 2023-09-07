@@ -33,8 +33,9 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     eine Umgebung $U^0$ von $x$ in $M$ und $U^+$ und $U^-$ wie vorher 
     in~\ref{def: topologie gebrochener trajektorien} die Vereinigungen offener Umgebungen der Ein-
     bzw. Austrittspunkte der jeweiligen Trajektorien in $\del_+ \Omega (c_i)$ bzw. 
-    $\del_- \Omega (c_i)$ definieren wir die restlichen Elemente der Baisis
-    $\mathcal{U}(\lambda, x, U^0, U^-, U^+)$ wie folgt: \\
+    $\del_- \Omega (c_i)$ definieren wir die restlichen Elemente 
+    $\mathcal{U}(\lambda, x, U^0, U^-, U^+)$ der Basis
+    wie folgt: \\
     Falls $(\mu, x') \in \Lb(p, c_i) \times \unst (c_i)$ oder $(\mu, x') \in W^u (p) \cap \stab (c)$, 
     dann ist \[ (\mu, x') \in \mathcal{U}(x, \lambda, U^0, U^-, U^+) , \]
     falls gelten:
@@ -53,13 +54,55 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
 \end{definition}
 
 \begin{example}
-    \todo{}
+    \begin{itemize}
+        \item Die Höhenfunktion $f$ von $S^2 \subseteq \R^3$ ist eine Morse Funktion. Diese hat 
+            zwei kritische Punkte: den Nordpol $n$ und den Südpol $s$. Es gilt 
+            $\unst (n) = S^2 - \{ s \}$ und $\unst (s) = \{ s \}$. $\Lb (n, s) = \Lt (n, s) = S^1$,
+            und dann ist $\clunst (n)$ die abgeschlossene Kreisscheibe mit Rand $\Lt (n, s)$. 
+        \item Wir betrachten den kritischen Punkt $p$:
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    % Include the image in a node
+                    \node [
+                        above right,
+                        inner sep=0] (image) at (0,0) {\includegraphics[width=0.4\textwidth]{../resources/clunst-beispiel.jpeg}};
+                        
+                    % Create scope with normalized axes
+                    \begin{scope}[
+                    x={($0.05*(image.south east)$)},
+                    y={($0.1*(image.north west)$)}]
+
+                    % Annotate left figure
+                    \node at (3.5, 9.5) {\tiny $p$};
+                    \node at (7, 6.2) {\tiny $c$};
+                    \node at (7, 0.6) {\tiny $q$};
+                    
+                    \node[text=LightBlue] at (4.2, 6.2) {\tiny $\ell$};
+                    \node[text=LightBlue] at (5, 3.8) {\tiny $\ell_1$};
+                    \node[text=LightBlue] at (9, 3.8) {\tiny $\ell_2$};
+
+                    % Annotaste right figure
+                    \node at (15.5, 4.5) {\tiny $p$};
+                    \node at (15.5, 8.5) {\tiny $(\ell, c)$};
+
+                    \node at (13.3, 5.6) {\tiny $((\ell, \ell_1), q)$};
+                    \node[right] at (19.1, 5.6) {\tiny $((\ell, \ell_1), q)$};
+
+                    \node at (19, 0.5) {\tiny $\Lb (p, q) \times \{ q \}$};
+                    \node[text=LightBlue] at (19, 9.5) {\tiny $\{ \ell \} \times \unst (c)$};
+
+                    % \draw[lightgray,step=1] (image.south west) grid (image.north east);
+                    \end{scope}
+                \end{tikzpicture}
+            \end{figure}
+    \end{itemize}
 \end{example}
 
 \begin{prop}
     \label{prop: abschluss von instabilen mannigfaltigkeiten}
     Ist $p$ ein kritischer Punkt von $f$, $k = \Index (p)$, dann ist $\clunst (p)$ homeomorph 
-    zur abgeschlossenen Kreisscheibe $B^k$, und $\unst (p)$ ist das Innere von $\clunst (p)$.
+    zur abgeschlossenen Kreisscheibe $D^k$, und $\unst (p)$ ist das Innere von $\clunst (p)$.
 \end{prop}
 
 \begin{remark}
@@ -70,11 +113,10 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
 \end{remark}
 
 \begin{bigproof}
+    Wir geben nur eine grobe Beweisidee. Den detaillierten Beweis findet man in \cite{audin}.
     Für Elemete $(\lambda, x) \in \clunst (p)$ gilt sobieso schon, dass $f(x) \leq f(p)$. Definiere
     \[ \clunst (p, \alpha) = 
-        \{ (\lambda, x) \in \clunst (p) - \{ p \} : f(x) \geq \alpha \}  \cup \{ p \} \]
-    und 
-    \[ \unst (p, \alpha) = \{ x \in \unst (p) : f(x) \geq \alpha \} . \]
+        \{ (\lambda, x) \in \clunst (p) - \{ p \} : f(x) \geq \alpha \}  \cup \{ p \} . \]
     Für $\alpha = f(c) - \eps$ und $\eps$ klein genug gilt 
     \[ \clunst (p, \alpha) = \unst (p) \cap \Omega (p, \eps, \eta) . \]
     Für ein belibiges $\eta$. $\Omega (p, \eps, \eta)$ ist wie in der Notation zu 
@@ -87,7 +129,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     \[ \clunst (p, \alpha') \isom \clunst (p, \alpha) . \]
     Die Menge $\clunst (p, \alpha)$ erinnert uns an die Subniveaumengen aus 
     Abschnitt~\ref{sec: topologische eigenschaften anhand kritischer punkte}. Das erste 
-    Deformationslemma leifert eine ähnliche Aussage, und wir können die folgende Behauptung 
+    Deformationslemma liefert eine ähnliche Aussage, und wir können die folgende Behauptung 
     beweisen:
 
     \begin{claim}
@@ -107,34 +149,94 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     \end{smallproof}
 
     Sehr viel schwieriger ist es zu beweisen, dass sich $\clunst (p, \alpha)$ selbst wenn $\alpha$
-    einen kritischen Wert überquert nicht verändert. Wir nehmen an, dass es für jeden kritischen Wert
-    $c$ genau einen kritischen Punkt $p$ gibt, sodass $f (p) = c$. 
+    einen kritischen Wert überquert nicht verändert. Für den Fall $\Index (p) = \Index (q) + 1$
+    und $\Index (q) \neq 0$ liefert die folgende Skizze eine Idee für den Beweis:
+
+    \begin{figure}[H]
+        \label{fig: definition von chi}
+        \centering
+        \begin{tikzpicture}
+            % Include the image in a node
+            \node [
+                above right,
+                inner sep=0] (image) at (0,0) {\includegraphics[width=0.4\textwidth]{../resources/cw-zerlegung.jpeg}};
+                
+            % Create scope with normalized axes
+            \begin{scope}[
+            x={($0.05*(image.south east)$)},
+            y={($0.05*(image.north west)$)}]
+
+            \node[text=LightBlue] at (0, 7) {\small $\Ima (\Phi)$};
+            \node[text=DarkGray] at (22, 6.4) {\small $\unst (c) \cap f^{-1}[\alpha - \eps, \infty)$};
+            \node[text=DarkGray] at (18.5, 15.2) {\small $B'$};
+            \node[text=LightBlue] at (3.5, 17) {\small $B - B'$};
+            \node[text=DarkGray] at (15.7, 18.8) {\small $U$};
+
+            \draw[lightgray,step=1] (image.south west) grid (image.north east);
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Definition von $\chi$}
+    \end{figure}
+    
+    Wir nehmen an, dass es für jeden kritischen Wert $\alpha$ genau einen kritischen Punkt $c$ gibt, 
+    sodass $f (c) = \alpha$. Es sei $c$ ein weiterer kritischer Punkt mit $f(c) = \alpha$. Dann sei $\eps > 0$, 
+    sodass sich im Intervall $f^{-1}[\alpha - \eps, \alpha + \eps]$ keine kritischen Punkte außer $c$ befinden.
+    Wir bekommen in diesem Fall nur ein Problem, wenn wir einen Punkt $x$ haben, der von seiner Trajektorie 
+    auf den kritischen Punkt $c$ geschickt wird - ansonsten können wir wie im Beweis von Behauptung 1
+    den Punkt $x$ entlang seiner Trajektorie entlang des (skalierten) Pseudo-Gradientenfeldes nach unten ziehen. 
+    Wir definieren also
+    \[ P = \{ (x, \lambda) \in \clunst (p, \alpha + \eps) : x \in \unst (c) \} . \]
+    Außerhalb von einer Umgebung von $P$ können wir 
+    \[ \chi \colon \clunst (p, \alpha + \eps) \longto \clunst (p, \alpha - \eps) \]
+    wie oben angedeutet definieren.
+
+   Wir zeigen dies nur für den einfachsten Fall:
 
     \begin{claim}
-        Ist $\alpha = f(p)$, $q$ ein weitererkritischer Punkt von $f$ mit 
-        $\Index (p) = \Index (q) + 1$ und $\eps > 0$ klein genug, dann sind 
+        Ist $\alpha = f(p)$, $q$ ein weiterer kritischer Punkt von $f$ mit 
+        $\Index (p) = \Index (q) + 1 \neq 0$ und $\eps > 0$ klein genug, dann sind 
         $\clunst (p, \alpha + \eps)$ und $\clunst (p, \alpha - \eps)$ homeomorph.
     \end{claim}
 
+    \begin{smallproof}
+        In diesem Fall gilt 
+        \[ P \subseteq \mathcal{M} (p, c) \subseteq \unst (p) \subseteq \clunst (p) \]
+        Der Beweis erinnert an den Beweis von Satz~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}.
+        Man betrachte die Folgende Abbildung:
+
+        Da der Index sich nur um $1$ unterscheidet ist $\Lb (p, c) = \Lt (p, c)$ eine endliche Ansammlung 
+        von Trajektorien. Für jede dieser Trajektorien $\ell$ wähle eine Umgebung wie in 
+        Fig.~\ref{fig: definition von chi} angedeutet:
+
+        Die Umgebung von $P$ ist an den Seiten von den äußeren Trajektorien begrenzt und oben und unten von den
+        Niveaumengen $f^{-1}(\alpha + \eps + \delta)$ und $f^{-1}(\alpha - \eps)$. Wir finden wie im Beweis 
+        von Satz~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit} eine Kreisscheibe 
+        $B \subseteq f^{-1}(\alpha + \eps) \cap \unst (p)$, die transversal zu $S_+(c)$ ist, vollständig in der 
+        gewählten Umgebung von $P$ enthalten ist und eine Umgebung vom Schnittpunkt 
+        $\ell \cap f^{-1}(\alpha + \eps)$ ist. Die existenz solcher Umgebungen transversal zu $S_+(c)$ folgt 
+        aus der Smale-Bedingung. Außerdem wählen wir eine weitere kleinere Kreisscheibe $B'$, 
+        die die selben Eigenschaften wie $B$ und sodass gilt $B' \subsetneq B$. 
+
+        Die Scheibe in der Mitte vom Bild ist $\unst (c) \cap f^{-1} [\alpha - \eps, \infty)$. 
+        Wir identifizieren diese Kreisscheibe mit 
+        \[ \{ \ell \} \times \unst (c) \cap f^{-1} [\alpha - \eps, \infty) \subseteq 
+            \clunst (c, \alpha - \eps) . \]
+        Wenn wir unsere Umgebung nun entlang der angedeuteten Pfeile ähnlich wie im Beweis 
+        von~\ref{satz: erstes deformationslemma} \say{nach unten ziehen}, sodass 
+        $B - B'$ auf den gefärbten Zylinderabschnitt $\Ima (\Phi)$ und $B'$ auf die mittlere Kreisscheibe 
+        abgebildet wird. Es ist möglich diese Abbildung so zu wählen, dass sie am Rand der Umgebung der 
+        oben gewählten Abbildung einspricht und dass es ein Homeomorphismus ist.
+    \end{smallproof}
+
+    Für einen beliebigen kritishcen Punkt $c$ funktioniert der Beweis ähnlich.
 \end{bigproof}
 
 \begin{theorem}[Morse-Homologie ist zelluläre Homologie]
     \label{satz: morse-homologie ist zellulaere homologie}
-    Der zelluläre Kettenkomplex \\ $(K_{\ast}, \del)$, der durch die CW-Zerlegung in instabilen 
-    Mannigfaltigkeiten durch Proposition~\ref{prop: cw-zerlegung} gegeben ist, ist isomorph zum 
-    Morse-Komplex $(C_{\ast}(M, (f, X)), \del_X)$, also es existieren lineare Isomorphismen
-    \[ F \colon C_k(M, (f, X)) \longto K_k \]
-    für jedes $k \in \N$, sodass das folgende Diagramm kommutiert:
-    \[ \begin{tikzcd}[column sep = 5ex]
-        \cdots \arrow[r, "\del_X"] & 
-            C_{k + 1}(M, (f, X)) \arrow[r, "\del_X"] \arrow[d, "F"] & 
-            C_k(M, (f, X)) \arrow[r, "\del_X"] \arrow[d, "F"] &
-            C_{k - 1}(M, (f, X)) \arrow[r, "\del_X"] \arrow[d, "F"] & \cdots \\
-        \cdots \arrow[r, "\del"] & 
-            K_{k + 1} \arrow[r, shorten <= 2em, shorten >= 2em, "\del"] & 
-            K_k \arrow[r, shorten <= 2em, shorten >= 2em, "\del"] &
-            K_{k - 1} \arrow[r, "\del"] & \cdots
-    \end{tikzcd} \] 
+    Es existiert eine Isomrphie von Kettenkomplexen zwischen dem zelluläre Kettenkomplex 
+    $(K_{\ast}, \del)$, der durch die CW-Zerlegung in instabilen Mannigfaltigkeiten durch 
+    Proposition~\ref{prop: cw-zerlegung} gegeben ist, und dem Morse-Komplex 
+    $(C_{\ast}(M, (f, X)), \del_X)$.
 \end{theorem}
 
 \begin{proof}
@@ -149,15 +251,15 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     Da $\Lt (p, q)$ $0$-dimensional ist, gilt $\Lb (p, q) = \Lt (p, q)$ und dann befinden sich im 
     Rand von $\clunst (p)$, also 
     \[ \bigcup_{c \in \Crit (f)} \Lb (p, c) \times \unst (c) \isom S^{k - 1} , \] 
-    genau $\# \Lt (p, q)$ disjunkte Kopien von $\unst (q) \isom U^{k - 1}$. Jede dieser Kopien 
+    genau $\# \Lt (p, q)$ disjunkte Kopien von $\unst (q) \isom B^{k - 1}$. Jede dieser Kopien 
     wird mit der Anbringungsabbildung $\phi_{\unst (p)}$ via der Inklusion auf die Zelle $\unst (q)$
     geschickt. Wenn wir nun $M$ mit der Abbildung $\psi_{\unst (q)}$ kollabieren, dann ist 
     $\psi_{\unst (q)} (M)$ die $1$-Punkt-Kompaktifizierung von $\unst (q)$ und 
     \[ \phi_{\unst (p)} \circ \psi_{\unst (q)} |_{ \{ \lambda \} \times \unst (q) } \]
-    Ist die Inklusion von $\unst (q)$ in ihre $1$-Punkt kompaktifizierung. Wir wissen, dass 
+    Ist die Inklusion von $\unst (q)$ in ihre $1$-Punkt-Kompaktifizierung. Wir wissen, dass 
     $\unst (q) \isom B^{k - 1}$, und dass die Kopien $\{ \ell \} \times \unst (q)$ in 
     $\del \clunst (p)$ disjunkt sind, wir haben also die folgende Situation:
-    Eine Abbildung $\Phi \colon S^{k - 1} \to S^{k - 1}$, endlich viele disjunkte Kopien 
+    Eine stetige Abbildung $\Phi \colon S^{k - 1} \to S^{k - 1}$, endlich viele disjunkte Kopien 
     $(\ell, B^{k - 1}) \subseteq S^{k - 1}$, sodass ein Punkt $\ast$ in $S^{k - 1}$ existiert, sodass
     \[ \Phi \colon (\ell, B^{k - 1}) \to S^{k - 1} - \{ \ast \} \]
     für jedes $\ell$ ein Homeomorphismus ist und sodass
@@ -175,7 +277,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     Damit ist die Aussage gezeigt.
 \end{proof}
 
-Zum Beispiel bei Hatcher \cite{hatcher} kann man nachlesen, wie für einen toipologischen Raum die 
+Zum Beispiel bei Hatcher \cite{hatcher} kann man nachlesen, wie für einen topologischen Raum die 
 singuläre Homologie $H_{\ast} (X)$ definiert wird. Insbesondere hängt diese nur vom topologischen 
 $X$ Raum ab. Hatcher zeigt auch: 
 
@@ -189,10 +291,10 @@ Die zelluläre Homologie ist also nicht von der gewählten CW-Zerlegung abhägig
 \[ HC_{\ast} (X) := HC_{\ast} (X, \mathcal{E}) \]
 
 Da aber für eine kompakte Mannigfaltigkeit $M$ und ein Morse-Smale Paar $(f, X)$ gilt 
-\[ HM_k(M, (f, X)) \isom HC_k(X) . \]
-Es folgt direkt:
+\[ HM_k(M, (f, X)) \isom HC_k(X) , \]
+folgt direkt:
 
 \begin{theorem}
-    Die Morse Homologie ist nicht vom gewählten Morse-Smale Paar abhängig, und wir können schreiben
+    Die Morse-Homologie ist nicht vom gewählten Morse-Smale Paar abhängig, und wir können schreiben
     \[ HM_{\ast} (M) := HM_{\ast}(M, (f, X)) \]
 \end{theorem}

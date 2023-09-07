@@ -24,10 +24,11 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
 \begin{proof}
     Sei $Y$ ein Pseudo-Gradientenfeld von $f$. Es existiert eine kompakte Umgebung $K \in M$ von 
     $f^{-1}[a, b]$, in der keine kritischen Punkte enthalten sind, das folgt zum Beispiel aus 
-    Whitneys Einbettungssatz und dem Satz von Heine-Borel. Sei $\rho: M \to \R$ eine glatte, 
+    Whitneys Einbettungssatz (siehe \cite{whitney}) und dem Satz von Heine-Borel. 
+    Sei $\rho: M \to \R$ eine glatte, 
     positive Funktion, sodass
     \[ \rho(p) = - \frac{1}{\opd f (p) (Y (p))} \]
-    für alle $p \in f^{-1}[b, a]$ und die außerhalb von $K$ verschwindet und für
+    für alle $p \in f^{-1}[a, b]$ und die außerhalb von $K$ verschwindet und für
     die für alle $p \in K$, die keine kritischen Punkte sind, gilt: 
     \[ 0 \leq \rho(p) \leq - \frac{1}{\opd f (p) (Y (p))} . \]
     Bemerke dass $\rho$ innerhalb von $K$ wohldefiniert ist, da sich keine kritischen Punkte in $K$ 
@@ -41,8 +42,8 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
     $f \circ \varphi_{\bullet}(p): \R \to \R$.
     
     \begin{claim*} 
-        Für alle $p \in M$, $t_0 \in \R$ und $q = \varphi_{t_0}(q)$
-        ist $\derive{t} f \circ \varphi_{\bullet}(p) (t_0) \in [-1, 0]$ und falls 
+        Für alle $p \in M$, $t_0 \in \R$ und für $q = \varphi_{t_0}(q)$
+        ist $\derive{t} (f \circ \varphi_{\bullet}(p)) (t_0) \in [-1, 0]$ und falls 
         $f(\varphi_t(q)) \in [a, b]$ gilt sogar $\derive{t} f \circ \varphi_{\bullet}(q) (t_0) = -1$.
     \end{claim*}
 
@@ -60,13 +61,12 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
     \end{smallproof}
 
     Man zeigt dann leicht, dass für $p \in f^{-1}(b)$, $t_0 \in [0, b - a]$ gilt 
-    $f(\varphi_{t_0}(p)) \in [b, a]$.
+    $f(\varphi_{t_0}(p)) \in [a, b]$.
 
     Dann ist für $p \in f^{-1}(b)$ die Abbildung $f \circ \phi_{\bullet}(p)$ im Intervall $
     [0, b - a]$ linear mit Steigung $- 1$ und es gilt 
-
-    \[ f(\varphi_{b - a}(p)) = f(\varphi_{0}(p)) + (b - a) = b \]
-    Genauso für $q \in f^{-1}(b)$: $f(\varphi_{a - b}(q)) = a$, also 
+    \[ f(\varphi_{b - a}(p)) = f(\varphi_{0}(p)) - (b - a) = a \]
+    Genauso für $q \in f^{-1}(a)$: $f(\varphi_{a - b}(q)) = b$, also 
     $\varphi_{b - a}(f^{-1}(a)) = f^{-1}(b)$.
 
     Dann haben wir $\varphi_{b - a} (M^b) = M^a$, also ist $\varphi_{b - a}|_{M^b}$ ein 
@@ -103,32 +103,84 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\linewidth]{../resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
-        \label{fig:me-diagram5}
-        \caption{Die Niveaumengen von $f$ (links) und $F$ (rechts)}
+        \subfloat{
+            \includegraphics[width=0.5\linewidth]{../resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
+        } \\
+        \subfloat{
+            \begin{tikzpicture}
+                % Include the image in a node
+                \node [
+                    above right,
+                    inner sep=0] (image) at (0,0) {\includegraphics[width=0.3\textwidth]{../resources/subniveaumengen-parametrisiert.jpeg}};
+                    
+                % Create scope with normalized axes
+                \begin{scope}[
+                x={($0.02*(image.south east)$)},
+                y={($0.05*(image.north west)$)}]
+
+                \node at (12.5, 9.5) {\tiny $p$};
+                \node[text=white] at (38.5, 9.55) {\tiny $p$};
+                
+                %\draw[lightgray,step=1] (image.south west) grid (image.north east);
+                \end{scope}
+            \end{tikzpicture}
+        }
+        \caption{die Subniveaumengen von $f$ (links) und $F$ (rechts)}
     \end{figure}
 
     Wir wollen also, dass $M^{c + \varepsilon} = F^{-1}(- \infty, c + \varepsilon]$ 
     gilt und $F^{-1}(-\infty, c - \varepsilon]$ fast dasselbe ist wie 
-    $M^{c - \varepsilon}$, nur dass $F^{-1}(-\infty, c - \varepsilon]$ einen "Henkel"
+    $M^{c - \varepsilon}$, nur dass $F^{-1}(-\infty, c - \varepsilon]$ einen \say{Henkel}
     enthält der den kritischen Punkt $p$ enthält.
 
     Wir benutzen das Morse-Lemma~\ref{satz: morse-lemma}:
     Wir finden lokale Koordinaten $\phi = (u_1, \dots, u_n)$ in einer Umgebung $U$ von $p$, sodass 
-    \[ f = c - u_1 - \dots - u_k + u_{k + 1} + \dots + u_n \]
-    und
-    \[ u_1 (p) = \dots = u_n(p) = 0 . \]
+    \[ f = c - u_1 - \dots - u_k + u_{k + 1} + \dots + u_n
+     \text{ und } u_1 (p) = \dots = u_n(p) = 0 . \]
     Sei $\eps$ ohne Beschränkung der Allgemeinheit klein genug, sodass $f^{-1}[c - \eps, c + \eps]$ 
     kompakt ist und die Kreisscheibe $\{ x \in \R^n : \| x \|^2 \leq 2 \eps \}$ im Bild von $\phi$ 
     enthalten ist. Wähle nun die $k$-Zelle 
     \[ e^k := \{ q \in M : u_1^2 (q) + \dots + u_k^2 (q) \leq \eps \text{ und }
         u_{k + 1} (q) = \dots = u_n (q) = 0 \} . \]
     Wir bekommen folgende Situation:
+    
+    % \begin{figure}[H]
+    %     \centering
+    %     % \label{fig:me-diagram6}
+    %     \begin{tikzpicture}
+    %         % Include the image in a node
+    %         \node [
+    %             above right,
+    %             inner sep=0] (image) at (0,0) {\includegraphics[width=0.4\textwidth]{../resources/subniveaumengen-mit-zelle.jpeg}};
+                
+    %         % Create scope with normalized axes
+    %         \begin{scope}[
+    %         x={($0.04*(image.south east)$)},
+    %         y={($0.05*(image.north west)$)}]
+
+    %         \node at (2, 5.1) {\tiny $- \sqrt{\eps}$};
+    %         \node at (2, 10) {\tiny $0$};
+    %         \node at (2, 14.9) {\tiny $\sqrt{\eps}$};
+
+    %         \node at (7.5, 1.2) {\tiny $- \sqrt{\eps}$};
+    %         \node at (12.5, 1.2) {\tiny $0$};
+    %         \node at (17.1, 1.2) {\tiny $\sqrt{\eps}$};
+            
+    %         \node[text=white] at (38.5, 9.55) {\tiny $p$};
+    %         \node[text=white] at (13, 9.5) {\tiny $p$};
+    %         \node[text=white] at (9, 9.5) {\tiny $e^k$};
+            
+    %         %\draw[lightgray,step=1] (image.south west) grid (image.north east);
+    %         \end{scope}
+    %     \end{tikzpicture}
+    %     \caption{some label}
+    % \end{figure}
+
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\linewidth]{../resources/Me-Diagram6-U-parameterized.png}
-        \label{fig:me-diagram6}
+        \includegraphics[width=0.3\textwidth]{../resources/subniveaumengen-parametrisiert2.png}
     \end{figure}
+
     $F$ wird nun so definiert, dass eine Umgebung der $k$-Zelle $e^k$ ein wenig abgesenkt wird.
     Sei $\mu \colon \R \to \R$ eine glatte Funktion mit den Eigenschaften
     \begin{enumerate}
@@ -144,18 +196,22 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
         \item $F^{-1}(- \infty, c - \eps]$ ist Deformationsretrakt von $M^{c + \eps}$,
         \item $M^{c - \eps} \cup e^k$ ist Deformationsretrakt von $F^{-1}(- \infty, c - \eps]$.
     \end{enumerate}
-    Die zweite Behauptung folgt aus dem ersten Deformationslemma.
+    Die zweite Behauptung folgt aus dem ersten 
+    Deformationslemma~\ref{satz: erstes deformationslemma}.
     
-    Den detaillierten Beweis findet man zum Beispiel in \cite{milnor}.
+    Den detaillierten Beweis findet man zum Beispiel bei Milnor \cite{milnor}.
 \end{proof}
 
-Mit diesen beiden Aussagen kommt man schon sehr weit. Die berühmten Morse- \\Ungleichungen 
+Die beiden Deformationslemmata sind genau die beiden Aussagen, die wir am Anfang des Kapitels schon
+als Vermutung aufgestellt haben!
+
+Mit den beiden Aussagen kommt man schon sehr weit. Die berühmten Morse-\\Ungleichungen 
 (Satz~\ref{satz: morse-ungleichungen}) lassen
 sich mit ein bisschen linearer Algebra an exakten Sequenzen leicht daraus folgern. Man kann sogar
-zeigen, dass jede Mannigfaltigkeit den Homotopietypen eines CW-Komplexes 
-(siehe Def.~\ref{def: cw-komplex}) besitzt, wie es zum Beispiel Milnor tut. Die folgenden Kapitel 
-geben eine etwas eleganterere Sicht auf die Thematik, die in gewisser Hinsicht stärkere Aussagen
-liefert:
+zeigen, dass jede Mannigfaltigkeit den Homotopietypen eines \textit{CW-Komplexes}
+(siehe Def.~\ref{def: cw-komplex}) besitzt, wie es zum Beispiel Milnor  in \cite{milnor} tut. Die 
+folgenden Kapitel geben eine etwas eleganterere Sicht auf die Thematik, die in gewisser Hinsicht 
+stärkere Aussagen liefert:
 
 \textit{Kompakte} Mannigfaltigkeiten haben nicht nur den selben Homotopie-Typen eines CW-Komplexes, 
 sondern sie sind sogar CW-Komplexe, und wir können uns die zelluläre Homologie, die aus der 

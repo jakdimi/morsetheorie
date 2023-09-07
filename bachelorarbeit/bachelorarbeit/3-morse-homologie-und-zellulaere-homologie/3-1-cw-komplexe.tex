@@ -9,13 +9,12 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     \begin{enumerate}
         \item Die Elemente in $\mathcal{E}$ sind paarweise disjunkt.
         \item Alle $e \in \mathcal{E}$ sind homeomorph zu offenen Kreisscheiben. \\
-            Wir nennen $X^n$ die Vereinigung aller $e \in \mathcal{E}$, die Homeomorph zu einer
+            $X^n$ ist die Vereinigung aller $e \in \mathcal{E}$, die Homeomorph zu einer
             $k$-dimensionalen offenen Kreisscheibe mit $k \leq n$ sind.
         \item Für jedes Element $e \in \mathcal{E}$ existiert eine stetige Abbildung
-            $\Phi_e \colon (B^n, S^{n - 1}) \to (X^n \cup e, X^n)$, sodass 
-            $\Phi_e \colon B^n - S^n \to e$ ein Homeomorphismus ist. $B^n$ ist die abgeschlossene 
-            $n$-dimiensionale Kresscheibe.
-        \item Der Abschluss $\overline{e}$ enthält nur endlich viele Elemente aus $\mathcal{E}$.
+            $\Phi_e \colon (D^n, S^{n - 1}) \to (X^n \cup e, X^n)$, sodass 
+            $\Phi_e \colon B^n - S^n \to e$ ein Homeomorphismus ist. 
+        \item $\overline{e} \cap d = \varnothing$ für fast alle $d \in \mathcal{E}$.
         \item Eine Teilmenge $U$ ist offen in $X$ genau dann, wenn für alle $e \in \mathcal{E}$ die
             Menge $U \cap \overline{e}$ offen in $\overline{e}$ ist. 
     \end{enumerate}
@@ -25,8 +24,8 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     Wir nennen die $k$-dimensionalen $e \in \mathcal{E}$ $k$-Zellen, die Abbildung $\Phi_e$
     heißt charakteristische Abbildung von $e$, die Abbildung 
     $\phi_e := \Phi_e|_{S^{n - 1}} \colon S^{n - 1} \to X^{n - 1}$ heißt Anheftungsabbildung.
-    $X^n$ heißt $n$-Skelett von $X$. Existiert ein $n$, sodass $X^n = X$, dann ist $n$ die 
-    Dimension des CW-Komplexes. Existiert kein solchens $n$, dann ist die Dimiension $\infty$.
+    $X^n$ heißt $n$-Skelett von $X$. Existiert ein $n \in \N$, sodass $X^n = X$, dann heißt
+    $X$ \textit{endlich dimensional}.
 \end{definition}
 
 \begin{remark}
@@ -43,7 +42,7 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     ist $d$ eine $k - 1$-Zelle, dann bekommen wir außerdem eine Abbildung 
     \[ \psi_d \colon X^{k - 1} / X^{k - 2} \longto S^{k - 1} , \]
     die alle Sphären in dem Quotienten außer die, die aus $\Ima (\Phi_d)$ entstanden ist
-    auf den Klebepunkt abbildet.
+    auf den Klebepunkt des Wedge-Produktes abbildet.
 
     Sei dann $N(e, d)$ der Grad$\mod 2$ der Abbildung
     \[ \psi_d \circ \phi_c \colon S^{k - 1} \longto S^{k - 1} . \]
@@ -69,16 +68,16 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
             zweier offener Kreisschebien der Dimension $k$. So findet man induktiv eine CW-Zerlegung
             von $S^n$ mit zwei $k$-Zellen für jedes $k$ zwischen $0$ und $n$.
             \todo{Zeichnung}
-        \item der Torus ist (zum Beispiel) auf folgende Art ein CW-Komplex:
-            \todo{Zeichnung}
-            Wir haben also eine $0$-Zelle, zwei $1$-Zellen und eine $2$-Zelle.
+        \item Auf dem Torus $T = [0, 1]^2 / \sim$ finden wir eine CW-Struktur:
+            Der Eckpunkt ist eine $0$-Zelle, die Kanten sind zwei $1$-Zellen und das Innere des 
+            Quadrats ist eine $2$-Zelle.
     \end{itemize}
 \end{example}
 
 \begin{definition}[zelluläre Homologie]
-    Die zelluläre Homologie des zellulären Kettenkomplexes $(K, \del)$ ist wie die Morse-Homologie 
-    für 
-    \[ \del^k := \del \colon K_k \longto K_{k - 1} \]
-    gegeben durch 
+    Die zelluläre Homologie des ist die Homologie des zellulären Kettenkomplexes $(K_{\ast}, \del)$.
+    Ist also
+    \[ \del^k := \del \colon K_k \longto K_{k - 1} , \]
+    dann ist die zelluläre Homologie gegeben durch 
     \[ HC_k = \frac{ \Ker \, \del^k }{ \Ima \, \del^{k + 1} } \]
 \end{definition}
