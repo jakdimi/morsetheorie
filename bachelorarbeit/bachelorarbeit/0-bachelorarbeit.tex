@@ -34,11 +34,39 @@
     \includegraphics[width=0.2\textwidth]{../resources/WWU_Logo.png}
 \end{titlepage}
 
+\begin{titlepage}
+    \centering
+
+    \vspace*{5cm}
+    Bachelorarbeit Mathematik \\
+    \color{Black}\Huge Der Morse-Komplex und Morse-Homologie \\[14pt]
+    \color{Black}
+
+    \vfill
+    \small
+
+    \textit{eingereicht von}
+    \hfill
+    \textit{beaufsichtigt von} \\
+    Jakob Dimigen
+    \hfill
+    Prof. Ursula Ludwig
+
+    \vspace{2cm}
+
+    Universität Münster \\
+    \vspace{0.02cm}
+    \includegraphics[width=0.2\textwidth]{../resources/WWU_Logo.png}
+    \vspace{5cm}
+\end{titlepage}
+
+\cleardoublepage
+
 \section*{Vorwort}
 
-\subsection*{Geschichte der Morse Theorie}
+\subsection*{Geschichte der Morse-Theorie}
 
-Die Morse-Theorie ist Teil der Differential-Topologie. Sie lässt Aussagen zu, die von lokalen 
+Die Morse-Theorie ist Teil der Differentialtopologie. Sie lässt Aussagen zu, die von lokalen 
 Eigenschaften auf globale Eigenschaften von Mannigfaltigkeiten schließen lassen. Insbesondere schließt man
 von den Eingenschaften kritischer Punkte von bestimmten Funktionen $f \colon M \to \R$ auf topologische 
 Eigenschaften von $M$. 
@@ -56,8 +84,8 @@ isomorph zu einem zellulären Kettenkomplex ist. Damit ist die \textit{Morse-Hom
 zellulären Struktur abhängt. Wir folgen dem ersten Teil des Buches 
 \textit{Morse Theory and Fleur Homology} \cite{audin}. 
 
-Im ersten Kapitel wird ein grundlegender Einblick in die Morse-Theorie gegeben. Wichtiges Ergebnis ist
-das \textit{Morse-Lemma}, das einen konkrete Vorstellung des Verhaltens von Morse-Funktionen in der Nähe 
+Im ersten Kapitel wird ein grundlegender Einblick in die Morse-Theorie gegeben. Ein wichtiges Ergebnis ist
+das \textit{Morse-Lemma}, das eine konkrete Vorstellung des Verhaltens von Morse-Funktionen in der Nähe 
 kritischer Punkte liefert. Weitere wichtige Ergebnisse sind die beiden 
 \textit{Deformations-Lemmata}~\ref{satz: erstes deformationslemma} und~\ref{satz: zweites deformationslemma},
 die eine erste Verbindung zwischen den Eigenschaften kritischer Punkte und den topologischen Eigenschaften
@@ -65,21 +93,22 @@ der Mannigfaltigkeit herstellen.
 
 Im zweiten Kapitel untersuchen wir erst die \textit{stabile- und instabile Mannigfaltigkeit} und 
 definieren den \textit{Raum der Trajektorien}. Die Trajektorien sind Flüsse eines Pseudo-Gradien\-ten\-feldes.
-Diese starten und enden immer in kritischen Punkten. Das $k$-te Glied des Morse-Komplexes ist dann das
-$\F_2$-Modul, welches von den kritischen Punkten mit Index $k$ erzeugt wird, und das Differenzial wird dann 
-über die Anzahl der Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index 
-$k - 1$ definiert. Wir zeigen, dass dieser Komplex wohldefiniert ist und dass es ein Kettenkomplex ist. 
+Diese starten und enden immer in kritischen Punkten. Wie definieren dann den Morse-Komplex.
+Das $k$-te Glied des Morse-Komplexes ist dann das $\F_2$-Modul, welches von den kritischen 
+Punkten mit Index $k$ erzeugt wird, und das Differenzial wird dann über die Anzahl der 
+Trajektorien von kritischen Punkten mit Index $k$ zu kritischen Punkten mit Index $k - 1$ 
+definiert. Wir zeigen, dass dieser Komplex wohldefiniert ist und dass es ein Kettenkomplex ist. 
 
 Im dritten Kapitel konstruieren wir anhand der erarbeiteten Theorie eine zelluläre Struktur auf kompakten 
 Mannigfaltigkeiten und zeigen, dass der durch diese Struktur induzierte zelluläre Kettenkomplex 
-isomorph zum Morse-Komplex ist. Wir geben außerdem ein Paar schöne Anwendungen der Morse-Homologie.
+isomorph zum Morse-Komplex ist. Wir geben außerdem zwei schöne Anwendungen der Morse-Homologie.
 
 \subsection*{Vorraussetzungen}
 
 Wir setzen vorraus, dass die Leser\textit{in} sich mit mehrdimensionaler Analysis auskennt und weiß, was 
-Mannigfaltigkeiten und eine Untermannigfaltigkeiten ist und was Glattheit bedeutet. Außerdem sollte 
+Mannigfaltigkeiten und Untermannigfaltigkeiten sind und was Glattheit bedeutet. Außerdem sollte 
 Mengentopologie einigermaßen vertraut sein. In Satz~\ref{satz: erstes deformationslemma}
-und Satz~\ref{satz: zweites deformationslemma} , sowie im letzten Kapitel wird der Begriff
+und Satz~\ref{satz: zweites deformationslemma}, sowie im letzten Kapitel wird der Begriff
 \textit{Deformationsretrakt} ohne Erklärung benutzt. Im Beweis von 
 Satz~\ref{satz: morse-homologie ist zellulaere homologie} wird ein bisschen Wissen über 
 \textit{algebraische Topologie}, insbesondere relative Homologie und die lokale Grad Formel 
@@ -93,9 +122,9 @@ Folgende Notationen werden benutzt:
     \item $\isom$ für eine Vektorraum-Isomorphie oder eine Homeomorphie, $\diffeo$ für einen Diffeomorphismus
         und $\simeq$ für eine Homotopie-Äquivalenz.
     \item Die Tangentialräume werden immer als die Menge der Derivationen betrachtet.
-    \item Einin Vektorfeld ist eine glatte Abbildung $X \colon M \to TM$ mit 
+    \item Ein Vektorfeld ist eine glatte Abbildung $X \colon M \to TM$ mit 
         $p \mapsto X(p) \in T_pM$ (anstatt $X_p$).
-    \item Ist $f \colon M \to \N$ eine glatte Abbiildung, dann ist die Tangentialabbildung
+    \item Ist $f \colon M \to \N$ eine glatte Abbildung, dann ist die Tangentialabbildung
         von $f$ im Punkt $p$ die Abbildung $\opd f (p) \colon T_pM \to T_{f(p)}N$.
     \item $B^k \subseteq \R^k$ ist die offene Kreisscheibe mit Radius $1$, und $D^k$
         die abgeschlossene.
@@ -104,6 +133,7 @@ Folgende Notationen werden benutzt:
 
 \tableofcontents
 
+\cleardoublepage
 
 \chapter{Morse-Funktionen und Pseudo-Gradienten}
 
@@ -133,7 +163,7 @@ zum Beispiel folgendermaßen aussehen:
 \end{figure}
 
 Wir betracheten den Torus $T$, der aufrecht auf einer Ebene steht und die Abbildung 
-$f \colon T \to \R$, der jedem Punkt seinen Abstand zur Ebene zuordnet.
+$f \colon T \to \R$, die jedem Punkt seinen Abstand zur Ebene zuordnet.
 Die \textit{Subniveaumengen} von $f$ sind $M^a = f^{-1} (-\infty, a]$. Wir untersuchen $M^a$:
 
 \begin{figure}[H]
@@ -161,7 +191,7 @@ Wir bemerken:
         $M^b$ diffeomorph.
     \item Gibt es in $f^{-1}[a, b]$ genau einen kritischen Punkt, dann hat $M^b$ 
         den Homotopie-Typ von $M^a$ mit einer $k$-Zelle angebracht, wobei 
-        $k \in \N_0$
+        $k \in \N_0$.
 \end{itemize}
 
 Diese beiden Aussagen können wir am Ende dieses Kapitels konkretisieren.
@@ -179,7 +209,8 @@ Diese beiden Aussagen können wir am Ende dieses Kapitels konkretisieren.
 %\chapter{Der Morse-Komplex}
 
 In diesem Kapitel wird der Morse Komplex definiert und gezeigt, dass der 
-Morse-Komplex ein Kettenkomplex ist.
+Morse-Komplex ein Kettenkomplex ist. Das Kapitel orientiert sich stark an Abschnitt 3.1 und 3.2 von 
+\cite{audin}.
 
 \input{2-der-morse-komplex/2-1-die-stabile-und-instabile-mannigfaltigkeit}
 \input{2-der-morse-komplex/2-2-der-morse-komplex}
@@ -189,20 +220,31 @@ Morse-Komplex ein Kettenkomplex ist.
 \chapter{Morse-Homologie und zelluläre Homologie}
 \endgroup
 
-%\chapter{Morse-Homologie und zelluläre Homologie}
-
 In diesem Kapitel wird aus einem Morse-Smale Paar auf einer Mannigfaltigkeit
 eine zelluläre Struktur dieser Mannigfaltigkeit konstruiert. Dann werden wir 
 sehen, dass der Kettenkomplex, der von dieser zellulären Struktur induziert wird schon mit
 dem Morse-Komplex übereinstimmt. Somit stimmt die Morse-Homologie mit der 
 zellulären Homologie überein, also auch mit der singulären Homologie.
+Wir folgen dem Anhang von Kapitel 4 in \cite{audin}.
 
 \input{3-morse-homologie-und-zellulaere-homologie/3-1-cw-komplexe}
 \input{3-morse-homologie-und-zellulaere-homologie/3-2-morse-homologie-ist-zellulaere-homologie}
 \input{3-morse-homologie-und-zellulaere-homologie/3-3-anwendungen}
 
-\section*{Nachwort}
 
+\begingroup
+\let\clearpage\relax
+\chapter{Nachwort}
+\endgroup
+
+In dieser Arbeit haben wir nur die Homologie von kompakten Mannigfaltigkeiten untersucht. Man kann
+eine mit einer ähnlichen Konstruktion die Morse-Homologie für nicht-kompakte Mannigfaltigkeiten 
+und sogar für endlich dimensionale Mannigfaltigkeiten erweitern \cite{mercuri}.
+
+Audin und Damian beschäftigen sich in \cite{audin} mit der \textit{simplektischer Geometrie},
+in der Mannigfaltigkeiten zusammen mit einer geschlossenen $2$-Formen betrachtet werden. Man kann 
+dann für solche Mannigfaltigkeiten die \textit{Fleur-Homologie} definieren. Diese wird benutzt
+um die Arnold-Vermutung zu beweisen.
 
 Die Morse-Theorie bietet eine Fülle an Methoden, und sie benutzt auch Methoden aus vielen Ecken der 
 Mathematik. Alleine in dieser Arbeit haben wir Methoden der Algebraische Topologie,
@@ -214,7 +256,7 @@ darauf spezialisiert topologische Invarianten, die von kritischen Punkten abhän
 anzunähern \cite{mercuri}. Wie in dieser Arbeit gesehen haben wir genau das getan:
 
 Die Homologie, Betti-Zahlen und Euler-Charakteristik sind topologische Invarianten, die wir anhand 
-der Indizes der kritischen Punkte berechnen oder annähern können. 
+von Eigenschaften der kritischen Punkte berechnen oder annähern können. 
 
 % \appendix
 
@@ -232,7 +274,7 @@ der Indizes der kritischen Punkte berechnen oder annähern können.
 \vspace{-6cm}
 
 \normalsize Hiermit versichere ich, dass die vorliegende Arbeit über 
-\textit{\say{Morse-Theorie und \\ Morse-Homoloige}} selbstständig von mir und ohne fremde Hilfe verfasst 
+\textit{\say{Der Morse-Komplex und Morse-Ho\-mo\-lo\-gie}} selbstständig von mir und ohne fremde Hilfe verfasst 
 worden ist, dass keine anderen Quellen und Hilfsmittel als die angegebenen benutzt worden sind und 
 dass die Stellen der Arbeit, die anderen Werken - auch elektrionischen Medien - dem Wortlaut oder 
 Sinn nach entnommen wurden, auf jeden Fall unter Angabe der Quelle als Entlehnung kenntlich gemacht 

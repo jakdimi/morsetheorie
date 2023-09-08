@@ -58,7 +58,7 @@ Offensichtlich gilt:
 \end{itemize}
 Tatsächlich sind die beiden letzten Fälle die, die wir am meisten untersuchen werden.
 Wir werden sehen, dass man, wie mit der Notation angedeutet, $\Lb (p, q)$ mit einer Topologie 
-ausstatten kann, sodass es die Kompaktifizierung von $\Lt (p, q)$ ist. (In der Tat ist ja 
+ausstatten kann, sodass es eine Kompaktifizierung von $\Lt (p, q)$ ist. (In der Tat ist ja 
 $\Lt (p, q) \subseteq \Lb (p, q)$).
 
 \begin{definition}[Topologie von $\Lb (p, q)$]
@@ -69,12 +69,13 @@ $\Lt (p, q) \subseteq \Lb (p, q)$).
     Es sei
     \[ \ell = (\lambda_1, \dots, \lambda_k) 
         \in \Lt (p, c_1) \times \dots \times \Lt(c_{k - 1}, q) \subseteq \Lb (p, q) . \]
-    Seien $U_i = \Omega(c_i)$ (nict unbedingt endgültig gewählte) Morse Umgebungen von $c_i$ 
-    und $U_0$ und $U_k$ Morse Umgebungen von $p$ und $q$. $\lambda_i \cap \del_+ U_i$ ist der 
+    Seien $U_i = \Omega(c_i)$ (nicht unbedingt endgültig gewählte) Morse-Umgebungen von $c_i$ 
+    und $U_0$ und $U_k$ Morse-Umgebungen von $p$ und $q$. $\lambda_i \cap \del_+ U_i$ ist der 
     Punkt, an dem $\lambda_i$ in $U_i$ eintritt, und $\lambda_{i + 1} \cap \del_- U_i$ der 
     Punkt, an dem $\lambda_{i + 1}$ die Umgebung $U_i$ verlässt. Es sei $U_i^-$ eine Umgebung von 
     $\lambda_i \cap \del_+ U_i$ in 
-    $\del_+ U$ und $U_i^-$ eine Umgebung von $\lambda_{i + 1} \cap \del_- U_i$ in $\del_- U_i$. 
+    $\del_+ U$ und $U_i^-$ eine Umgebung von $\lambda_{i + 1} \cap \del_- U_i$ in $\del_- U_i$
+    (siehe Abb.~\ref{fig: gebrochene trajektorien}). 
     Seien dann $U^- = \bigcup U_i^-$ und $U^+ = \bigcup U_i^+$. Dann definiere ein Element
     $\mathcal{U} (\ell, U^-, U^+)$ aus der Basis wie folgt:
 
@@ -128,7 +129,7 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
     \[ \lim_{n \to \infty} \ell_n^- = p^- \text{ und } \lim_{n \to \infty} \ell_n^+ = q^+ . \]
     Sei $\phi$ die von $X$ erzeugte 1-Parameter Gruppe aus Diffeomorphismen, dann ist 
     $\gamma = \phi_{\bullet}(p^-)$ die Trajektorie von $p^-$. Sei 
-    $c = \lim_{n \to \infty} \phi_t(p^-)$. Der Punkt $c$ ist nach 
+    $c = \lim_{t \to \infty} \phi_t(p^-)$. Der Punkt $c$ ist nach 
     Proposition~\ref{prop: trajektorien enden in kritischen punkten} ein kritischer Punkt,
     also ist $\gamma \in \Lt (p, c)$.  Es sei $d^+$ der Punkt, an dem $\gamma$ in $\Omega (c)$ 
     eintritt. Da $\phi$ glatt ist, muss wegen der gewählten Topologie 
@@ -156,12 +157,12 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
     kritischen Punkt $q$ endet, also liegt dann $\lim \ell_n$ in $\Lt (p, c) \times \Lt (c, q)$.
     \todo{können wir das wirklich?}
 
-    Jetzt fehlt uns noch der allgemeine Fall. Wir müssen also für eine Folge $(\ell_n)_n$ in 
-    $\Lb (p, q)$ zeine konvergente Teilfolge finden. Wegen der Glattheit von $\phi$ können wir annehmen,
-    dass für $n$ groß genug alle $\ell_n$ die Form 
+    Wir müssen noch zeigen, dass eine Folge $(\ell_n)_n$ in $\Lb (p, q)$ eine konvergente 
+    Teilfolge hat. Wegen der Glattheit von $\phi$ können wir annehmen, dass für $n$ groß 
+    genug alle $\ell_n$ die Form 
     \[ \ell_n = (\ell^1_n, \dots, \ell^k_n) \in \Lt (p, c_1) \times \dots \times \Lt (c_{k - 1}, q) \]
     haben. Wir finden mit der vorheringen Überlegung komponentenweise eine Teilfolge, sodass wir 
-    für den grenzwert maximal noch $k - 1$ kritische Punkte als \glqq Zwischenstopp\grqq{} einfügen
+    für den Grenzwert maximal noch $k - 1$ kritische Punkte als \glqq Zwischenstopp\grqq{} einfügen
     müssen. 
 \end{proof}
 
@@ -169,7 +170,7 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
     Sind nun $p$ und $q$ kritische Punkte von $f$ mit $\Index (p) = \Index (q) + 1$, dann ist 
     $\Lt(p, q)$ $0$-dimensionale Mannigfaltigkeit. Außerdem ist $\Lt (p, q)$ eine Abgeschlossene
     Teilmenge von $\Lb (p, q)$, und wie wir in der letzten Proposition~\ref{prop: Lb ist kompakt}
-    gezeigt haben, ist $\Lb(p, q)$ kompakt, also auch $\Lt(p, q)$, also ist $\Lt (p, q)$ endlich.
+    gezeigt haben, ist $\Lb(p, q)$ kompakt, also ist auch $\Lt(p, q)$, und somit endlich.
     Damit ist schon mal $n_X (p, q)< \infty$, also $C_k(M (f, X))$ wohldefiniert.
 \end{remark}
 
@@ -214,7 +215,9 @@ Wir benutzen die folgende Aussage, ohne sie zu beweisen:
 
 Mit dieser Proposition folgt dann mit der Kalssifizierung von $1$-Mannigfaltigkeiten mit 
 Rand~\ref{satz: klassifizierung kompakter 1-mannigfaltigkeiten} schon, dass der Morse Komplex ein
-Kettenkomplex ist.
+Kettenkomplex ist, denn dann ist 
+\[ \# \left( \bigcup_{c \in \Crit (f)} \Lt (p, c) \times \Lt (c, q) \right) = \del \Lb (p, q) \]
+gerade.
 
 \begin{bigproof}
     Wir wissen schon, dass $\Lt (p, q) \subseteq \Lb(p, q)$ eine $1$-dimensionale Mannigfaltigkeit ist. 
@@ -226,19 +229,19 @@ Kettenkomplex ist.
     $U \subseteq \Lb (p, q)$ von $(\lambda_1, \lambda_2)$, ein $\delta > 0$ und eine (topologische)
     Einbettung $\psi \colon [0, \delta) \to U$, sodass gelten: 
     \begin{enumerate}
-        \item $\psi|_{(0, \delta)}$ ist glatt.
+        \item $\psi|_{(0, \delta)}$ ist glatt eine glatte Einbettung.
         \item $\psi(0) = (\lambda_1, \lambda_2)$.
         \item $\psi((0, \delta)) \subseteq \Lt (p, q)$.
         \item Für jede Folge $(\ell_n)_n$ in $\Lt (p, q)$ die gegen $(\lambda_1, \lambda_2)$ konvergiert 
             gilt $\ell_n \in \Ima \psi$ für $n$ groß genug.
     \end{enumerate} 
     Die letzte Bedingung stellt sicher, dass sich in $(\lambda_1, \lambda_2)$ keine 
-    \say{Kreuzung} befindet (wie zum Beispiel der Klebepunkt bei $S^1 \wedge S^1$).
+    \say{Kreuzung} befindet (wie zum Beispiel der Klebepunkt bei $S^1 \vee S^1$).
     Wir begeben uns also auf die (recht lange) Suche nach einer solchen Abbildung $\psi$. 
 
     Wir machen ein Paar Konstruktionen. Sei $\alpha := f(c)$ und $(V, \kappa)$ eine Morse Karte von
     $c$, $\Omega(c)$ wie in der Notation zu Morse Umgebungen~\ref{def: notation morse umgebung}. 
-    Dann sind $f(\del_+ \Omega) = \alpha + \eps$ und $f(\del_- \Omega) = \alpha - \eps$ für ein 
+    Dann sind $f(\del_+ \Omega (c)) = \alpha + \eps$ und $f(\del_- \Omega (c)) = \alpha - \eps$ für ein 
     $\eps > 0$. Außerdem setze
     \begin{align*}
         S_+ (c) := & \stab (c) \cap f^{-1}(\alpha + \eps) \diffeo S^{n - k - 1} \\
@@ -257,7 +260,7 @@ Kettenkomplex ist.
     mit Proposition~\ref{prop: schnitt von transversalen untermannigfaltigkeiten} eine 
     Untermannigfaltigkeit der Dimenion $k + (n - k - 1) - (n - 1) = 0$. Offensichtlich gilt 
     $a_1 \in P \cap S_+ (c)$. Es sei $B^k_{\delta} = \{ x \in \R^k : \| x \| < \delta \}$. Dann 
-    existiert eine Umgebung D von $a_1$ in $P$ und ein Diffeomorphismus 
+    existiert eine Umgebung $B$ von $a_1$ in $P$ und ein Diffeomorphismus 
     $\Psi : B \longto B^k_{\delta}$ mit $\Psi(a_1) = 0$, sodass $B \cap S_+ (c) = a_1$ 
     und $B \subseteq \del_+ \Omega (c)$. Wir versuchen die Kernidee des Beweises zu verstehen:
 
@@ -316,7 +319,7 @@ Kettenkomplex ist.
     Wir versuchen, die Menge $B - a_1$ entlang der Trajektorien von $X$ auf $\del_- \Omega(c)$ via einer 
     Abbildung $\Phi$ einzubetten. Wir werden sehen, dass $Q = \Ima (\Phi) \cup S_+(c)$ eine 
     Mannigfaltigkeit mit Rand ist, und dass dann $Q \cap \stab (q)$ eine $1$-dimensionale
-    Mannigfaltigkeit mit Rand ist, und $a_2 \in \del Q \cap \unst (q)$. Wie 
+    Mannigfaltigkeit mit Rand ist, und $a_2 \in \del (Q \cap \unst (q))$. Wie 
     in~\ref{prop: wohldefiniertheit von Lt} ist $Q \cap \stab (q) - a_2$ eine Teilmenge von 
     $\Lt (p, q)$, und $a_2 \in \Lt (c, q)$, wenn wir also $a_2 \in \lambda_2$ mit 
     $(\lambda_1, \lambda_2)$ identifizieren, dann bekommen wir unsere Parametrisierung 
@@ -359,13 +362,14 @@ Kettenkomplex ist.
     \end{claim}
 
     \begin{smallproof}
-        Wieder spielt sich alles via $\kappa$ im $\R^n$ ab.
+        Wieder spielt sich alles via $\kappa$ im $\R^n$ ab. Sei wie 
+        in~\ref{def: notation morse umgebung} $U = \kappa^{-1}(\Omega (c))$.
         Man betrachte die Projektion
         \[ \pi \colon \R^k \times \R^{n - k} ; \pi (x_-, x_+) = x_- . \]
         und ihre Einschränkung $\del_+ U \to B_{\eta}^k$.
         \todo{weiß net ob das stimmt, naja} Da $S_+ := \kappa(S_+(c)) = (\pi|_{\del_+U})^{-1}(0)$
         und $B \pitchfork S_+$, ist $0$ ein regulärer Wert von $\pi|_{\del_+U}$.
-        Also ist $\opd \pi|_{\del_+U} (0)$ surjektiv, und da dim $\del_+U = k = \dim B^k_{\delta}$ ist
+        Also ist $\opd ( \pi|_{\del_+U} )(0)$ surjektiv, und da dim $\del_+U = k = \dim B^k_{\delta}$ ist
         das Differential auch invertierbar. Jetzt können wir den Satz über die Umkehrfunktion anwenden 
         bekommen lokal ein Inverses der Abbildung $\pi|_{\del_+U}$. Es existiert also ein 
         $\delta' \leq \eta$, sodass das Inverse von $\pi|_{\del_+U}$ auf $B^k_{\delta'}$ definiert 
@@ -399,7 +403,7 @@ Kettenkomplex ist.
     \end{smallproof}
 
     Wir wissen, dass für $f(q) < \alpha - \eps < f(c)$ gilt 
-    $\Lt (c, q) \diffeo (\unst (c) \cap \stab (q)) \cap f^{-1}(\alpha - \eps)$. 
+    $\Lt (c, q) \diffeo \mathcal{M} (p, q) \cap f^{-1}(\alpha - \eps)$. 
     
     Außerdem gilt $\stab (q) \pitchfork \Ima \Phi$ und $\stab (q) \pitchfork S_-(c)$ in 
     $f^{-1}(\alpha - \eps)$, also ist mit 
@@ -427,11 +431,11 @@ Kettenkomplex ist.
     Offensichtlich ist $\psi$ bijektiv. $\psi$ ist stetig, denn ist $(x_n)_n$ eine Folge in 
     $(0, \delta)$, die gegen $0$ konvergiert, dann konvergiert die Folge $(\chi(x_n))_n$ in 
     $\stab (q) \cap Q \subseteq \del_- \Omega (c)$ gegen $a_2$. Dann folgt aus dem 
-    Lemma~\ref{lemma: konvergenz einer folge}, dass die  Folge $(y_n)_n$ in $\stab (q) \cap (D - a_1)$
+    Lemma~\ref{lemma: konvergenz einer folge}, dass die  Folge $(y_n)_n$ in $\stab (q) \cap (B - a_1)$
     mit $y_n = \Phi^{-1}(\chi(x_n))$ gegen $a_1$ konvergiert, also konvergiert $\psi(x_n)$ gegen
     $(\lambda_1, \lambda_2)$. Genau dasselbe gilt für die Umkehrabbildung:
 
-    Ist $(x_n)_n$ eine Folge in $\stab (q) \cap D$, die gegen $a_1$ konvergiert, dann konvergiert
+    Ist $(x_n)_n$ eine Folge in $\stab (q) \cap B$, die gegen $a_1$ konvergiert, dann konvergiert
     $\Phi (x_n)$ gegen $a_2$, also $\chi^{-1} (\Phi(x_n))$ gegen $0$.
     Also ist die Abbildung $\psi$ ein Homeomorphismus, und die drei Bedingungen, die an $\psi$ gestellt
     werden, sind offensichtlich aufgrund der Konstruktion erfüllt. 
@@ -449,6 +453,7 @@ Kettenkomplex ist.
     Für $n$ groß genug gilt also $\ell_n^- \in D - a_1$, also $\ell_n^+ \in Q$. Sowieso gilt schon, dass
     $\ell_n^+ \in \stab (q)$, also 
     \[ \ell_n^- \in Q \cap \stab (q) = \Ima \chi . \]
+    Hier betrachten wir wieder $\Lt (p, q)$ als $\mathcal{M} (p, q) \cap f^{-1} (\alpha + \eps)$.
     Außerdem ist $\Phi^{-1}(\ell_n^+) = \ell_n^-$, also $\ell_n \in \Ima (\psi)$.
 \end{bigproof}
 
@@ -460,9 +465,15 @@ Kettenkomplex ist.
     \[ HM_k (M, (f, X)) = \frac{\Ker \, \del_X^k}{\Ima \, \del_X^{k + 1}} \]
 \end{definition}
 
+Wir haben gezeigt, dass $(C_{\ast}(M, (f, X)), \del_X)$ ein Kettenkomplex ist, also ist die 
+Morse-Homologie wohldefiniert.
+
 \begin{example}
     Wir können uns wieder unser Bespiel einer Morse-Funktion auf dem Torus, die die Smale-Bedingung 
     erfüllt anschauen, also die mit Vorschrift $f(x, y) = -\cos (\pi \cdot x) - \cos(\pi \cdot y)$.
+    Zwar ist der Gradient kein Pseudo-Gradientenfeld, denn er erfüllt nicht die zweite Bedingung,
+    aber wir könnten $f$ leicht verändern, sodass der Gradient ein Pseudo-Gradient ist, und sodass
+    sich die anderen Untersuchten Eigenschaften nicht wesentlich verändern.
     Hier noch einmal die Höhenlinien und der Fluss des Gradientens:
     \begin{figure}[H]
         \centering
@@ -484,9 +495,6 @@ Kettenkomplex ist.
             \F_2^2 & \text{ falls } k = 1
         \end{cases} \]
 \end{example}
-
-Wir haben gezeigt, dass $(C_{\ast}(M, (f, X)), \del_X)$ ein Kettenkomplex ist, also ist die 
-Morse-Homologie wohldefiniert.
 
 % \subsection*{Der Morse Komplex über \texorpdfstring{$\Z$}{TEXT}}
 

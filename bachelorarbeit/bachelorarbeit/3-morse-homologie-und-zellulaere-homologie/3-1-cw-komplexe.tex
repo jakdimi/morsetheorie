@@ -25,12 +25,12 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
     heißt charakteristische Abbildung von $e$, die Abbildung 
     $\phi_e := \Phi_e|_{S^{n - 1}} \colon S^{n - 1} \to X^{n - 1}$ heißt Anheftungsabbildung.
     $X^n$ heißt $n$-Skelett von $X$. Existiert ein $n \in \N$, sodass $X^n = X$, dann heißt
-    $X$ \textit{endlich dimensional}.
+    $(X, \mathcal{E})$ \textit{endlich dimensional}.
 \end{definition}
 
 \begin{remark}
-    Ist $X$ kompakt mit einer CW-Zerlegung $\mathcal{E}$, dann ist $\mathcal{E}$ endlich dimensional, 
-    und die Bedingungen 4. und 5. sind sowieso erfüllt.
+    Ist $X$ kompakt mit einer CW-Zerlegung $\mathcal{E}$, dann ist $(X, \mathcal{E})$ endlich 
+    dimensional, und die Bedingungen 4. und 5. sind sowieso erfüllt.
 \end{remark}
 
 \begin{definition}[Zellulärer Kettenkomplex]
@@ -46,7 +46,8 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
 
     Sei dann $N(e, d)$ der Grad$\mod 2$ der Abbildung
     \[ \psi_d \circ \phi_c \colon S^{k - 1} \longto S^{k - 1} . \]
-    Dann ist das $k$-te Glied $K_k$ des \textit{zellulären Komplexes} $(K_{\ast}, \del)$ das 
+    Dann ist das $k$-te Glied $C^{Cell}(X, \mathcal{E})_k$ des \textit{zellulären Komplexes} 
+    $(C^{Cell}(X, \mathcal{E})_{\ast}, \del)$ das 
     $\F_2$-Modul, das von den $k$-Zellen in $\mathcal{E}$ erzeugt wird, und das Differential ist für 
     eine $k$-Zelle $e$ gegeben durch
     \[ \del (e) = \sum_{d \in K_{k  - 1}} N(e, d) \cdot d \] 
@@ -71,6 +72,8 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
         \item Auf dem Torus $T = [0, 1]^2 / \sim$ finden wir eine CW-Struktur:
             Der Eckpunkt ist eine $0$-Zelle, die Kanten sind zwei $1$-Zellen und das Innere des 
             Quadrats ist eine $2$-Zelle.
+            ( Wir bemerken: die Zellen stimmen mit den instabilen Mannigfaltigkeiten unserer 
+            \say{schönen} Morse-Funktion auf dem Torus überein.)
     \end{itemize}
 \end{example}
 

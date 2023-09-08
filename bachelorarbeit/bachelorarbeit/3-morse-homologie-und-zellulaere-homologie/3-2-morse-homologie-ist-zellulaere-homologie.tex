@@ -7,7 +7,8 @@ Wir kennen schon eine disjunkte Zerlegung von $M$ in offene Kreisscheiben, näml
 \[ \mathcal{E} = \{ \unst (p): p \in \Crit (f) \} . \]
 Tatsächlich ist jede instabile Mannigfaltigkeit eine offene Kreisscheibe und jeder Punkt in 
 $ p \in M$ wird von $\phi_{\bullet}(p)$ für $t \to - \infty$ genau auf einen kritischen Punkt 
-transportiert (siehe Prop.~\ref{prop: trajektorien enden in kritischen punkten}).
+transportiert (siehe Prop.~\ref{prop: trajektorien enden in kritischen punkten}), also ist 
+$\mathcal{E}$ eine disjunkte Überdeckung.
 
 \begin{prop}
     \label{prop: cw-zerlegung}
@@ -172,7 +173,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
             \node[text=LightBlue] at (3.5, 17) {\small $B - B'$};
             \node[text=DarkGray] at (15.7, 18.8) {\small $U$};
 
-            \draw[lightgray,step=1] (image.south west) grid (image.north east);
+            % \draw[lightgray,step=1] (image.south west) grid (image.north east);
             \end{scope}
         \end{tikzpicture}
         \caption{Definition von $\chi$}
@@ -188,7 +189,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     \[ P = \{ (x, \lambda) \in \clunst (p, \alpha + \eps) : x \in \unst (c) \} . \]
     Außerhalb von einer Umgebung von $P$ können wir 
     \[ \chi \colon \clunst (p, \alpha + \eps) \longto \clunst (p, \alpha - \eps) \]
-    wie oben angedeutet definieren.
+    wie in Behauptung 1 angedeutet definieren.
 
    Wir zeigen dies nur für den einfachsten Fall:
 
@@ -217,30 +218,34 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
         aus der Smale-Bedingung. Außerdem wählen wir eine weitere kleinere Kreisscheibe $B'$, 
         die die selben Eigenschaften wie $B$ und sodass gilt $B' \subsetneq B$. 
 
-        Die Scheibe in der Mitte vom Bild ist $\unst (c) \cap f^{-1} [\alpha - \eps, \infty)$. 
+        Die graue Scheibe in der Mitte vom Bild ist $\unst (c) \cap f^{-1} [\alpha - \eps, \infty)$. 
         Wir identifizieren diese Kreisscheibe mit 
         \[ \{ \ell \} \times \unst (c) \cap f^{-1} [\alpha - \eps, \infty) \subseteq 
             \clunst (c, \alpha - \eps) . \]
         Wenn wir unsere Umgebung nun entlang der angedeuteten Pfeile ähnlich wie im Beweis 
         von~\ref{satz: erstes deformationslemma} \say{nach unten ziehen}, sodass 
         $B - B'$ auf den gefärbten Zylinderabschnitt $\Ima (\Phi)$ und $B'$ auf die mittlere Kreisscheibe 
-        abgebildet wird. Es ist möglich diese Abbildung so zu wählen, dass sie am Rand der Umgebung der 
+        abgebildet wird. $\Phi$ ist wie im Beweis 
+        von~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}. 
+        Es ist möglich diese Abbildung so zu wählen, dass sie am Rand der Umgebung der 
         oben gewählten Abbildung einspricht und dass es ein Homeomorphismus ist.
     \end{smallproof}
 
-    Für einen beliebigen kritishcen Punkt $c$ funktioniert der Beweis ähnlich.
+    Für einen beliebigen kritischen Punkt $c$ funktioniert der Beweis ähnlich.
 \end{bigproof}
 
 \begin{theorem}[Morse-Homologie ist zelluläre Homologie]
     \label{satz: morse-homologie ist zellulaere homologie}
     Es existiert eine Isomrphie von Kettenkomplexen zwischen dem zelluläre Kettenkomplex 
-    $(K_{\ast}, \del)$, der durch die CW-Zerlegung in instabilen Mannigfaltigkeiten durch 
+    $(C^{Cell}(X, \mathcal{E})_{\ast}, \del)$, der durch die CW-Zerlegung in instabilen 
+    Mannigfaltigkeiten durch 
     Proposition~\ref{prop: cw-zerlegung} gegeben ist, und dem Morse-Komplex 
     $(C_{\ast}(M, (f, X)), \del_X)$.
 \end{theorem}
 
 \begin{proof}
-    Es sei $F \colon C_k (M, (f, X)) \to K_k$ die lineare Abbildung, die den kritischen Punkt $p$
+    Es sei $F \colon C_k (M, (f, X)) \to C^{Cell}(X, \mathcal{E})$ die lineare Abbildung, 
+    die den kritischen Punkt $p$
     auf die Zelle $\unst (p)$ schickt. Dann bildet $F$ Erzeuger auf Erzeuger ab, ist also 
     offensichtlich ein linearer Isomorphismus. Wir wollen zeigen, dass 
     $F \circ \del_X = \del \circ F$. Wir zeigen sogar, dass für kritische Punkte $p$ und $q$ mit 

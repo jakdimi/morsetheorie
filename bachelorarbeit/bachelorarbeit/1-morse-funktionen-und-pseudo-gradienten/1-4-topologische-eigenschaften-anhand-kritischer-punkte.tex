@@ -2,12 +2,11 @@
 \label{sec: topologische eigenschaften anhand kritischer punkte}
 
 Wir wollen die beiden Deformations-Lemmata beweisen, die eine Verbindung zwischen den topologischen
-Eingeschaften einer Mannigfaltigkeit und den kritischen Punkten einer Morse Funktion herstellt.
-Ist $f \colon M \to \R$ eine glatte Abbildung, dann ist die Subniveaumenge von $f$ bezüglich 
-einer reellen Zahl $c$ die Menge $M^c := f^{-1}(- \infty, c]$. Sind $a < b$ reelle Zahlen, dann
-stellen die Deformationslemmata die Topologien von $M^a$ und $M^b$ in Relation: Das erste beschreibt, 
-was passiert \textit{wenn kein} kritischer Wert überschritten wird, und das zweite beschreibt, was 
-passiert \textit{wenn ein} kritischer Wert überschritten wird. Die Beweise folgen Milnors Buch 
+Eingeschaften einer Mannigfaltigkeit und den kritischen Punkten einer Morse-Funktion herstellt.
+Sind $a < b$ reelle Zahlen, dann stellen die Deformationslemmata die Topologien von $M^a$ und $M^b$ 
+in Relation: Das erste beschreibt, was passiert \textit{wenn kein} kritischer Wert überschritten wird, 
+und das zweite beschreibt, was passiert \textit{wenn ein} kritischer Wert überschritten wird. Die 
+Beweise folgen Milnors Buch 
 \cite{morse}. \\
 
 \begin{theorem}[Erstes Deformationslemma]
@@ -19,7 +18,7 @@ passiert \textit{wenn ein} kritischer Wert überschritten wird. Die Beweise folg
 \end{theorem}
 
 Die Idee des Beweises ist es, $M^b$ entlang eines Pseudo-Gradientenfeldes von $f$ mit einem 
-Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{-1}(a)$.
+Diffeomorphismus $\varphi$ \say{nach unten zu ziehen}, bis $\varphi(f^{-1}(b)) = f^{-1}(a)$.
 
 \begin{proof}
     Sei $Y$ ein Pseudo-Gradientenfeld von $f$. Es existiert eine kompakte Umgebung $K \in M$ von 
@@ -98,20 +97,20 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
 
 \begin{proof}
     Die Idee für den Beweis ist, sich eine neue Funktion $F: M \to \R$ zu definieren,
-    die Außerhalb von einer kleinen Umgebung von $p$ $f$ entspricht und in der 
+    die Außerhalb von einer kleinen Umgebung von $p$ $f$ entspricht und in dieser 
     Umgebung etwas kleiner ist. Dann bekommen wir die folgende Situation:
 
     \begin{figure}[H]
         \centering
         \subfloat{
-            \includegraphics[width=0.5\linewidth]{../resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
+            \includegraphics[width=0.4\linewidth]{../resources/Me-Diagram5-sublevelsets-of-f-and-F.jpeg}
         } \\
         \subfloat{
             \begin{tikzpicture}
                 % Include the image in a node
                 \node [
                     above right,
-                    inner sep=0] (image) at (0,0) {\includegraphics[width=0.3\textwidth]{../resources/subniveaumengen-parametrisiert.jpeg}};
+                    inner sep=0] (image) at (0,0) {\includegraphics[width=0.4\textwidth]{../resources/subniveaumengen-parametrisiert.jpeg}};
                     
                 % Create scope with normalized axes
                 \begin{scope}[
@@ -131,7 +130,7 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
     Wir wollen also, dass $M^{c + \varepsilon} = F^{-1}(- \infty, c + \varepsilon]$ 
     gilt und $F^{-1}(-\infty, c - \varepsilon]$ fast dasselbe ist wie 
     $M^{c - \varepsilon}$, nur dass $F^{-1}(-\infty, c - \varepsilon]$ einen \say{Henkel}
-    enthält der den kritischen Punkt $p$ enthält.
+    enthält, der den kritischen Punkt $p$ enthält.
 
     Wir benutzen das Morse-Lemma~\ref{satz: morse-lemma}:
     Wir finden lokale Koordinaten $\phi = (u_1, \dots, u_n)$ in einer Umgebung $U$ von $p$, sodass 
@@ -205,7 +204,7 @@ Diffeomorphismus $\varphi$ "nach unten zu ziehen", bis $\varphi(f^{-1}(b)) = f^{
 Die beiden Deformationslemmata sind genau die beiden Aussagen, die wir am Anfang des Kapitels schon
 als Vermutung aufgestellt haben!
 
-Mit den beiden Aussagen kommt man schon sehr weit. Die berühmten Morse-\\Ungleichungen 
+Mit den beiden Aussagen kommt man schon sehr weit. Die berühmten Morse-\-Un\-glei\-chun\-gen 
 (Satz~\ref{satz: morse-ungleichungen}) lassen
 sich mit ein bisschen linearer Algebra an exakten Sequenzen leicht daraus folgern. Man kann sogar
 zeigen, dass jede Mannigfaltigkeit den Homotopietypen eines \textit{CW-Komplexes}

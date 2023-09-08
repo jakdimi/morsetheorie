@@ -5,7 +5,7 @@
     Es sei $f \colon M \to \R$ eine Morse-Funktion, $p$ ein kritischer Punkt von $f$ und $X$ ein
     Pseudo-Gradientenfeld von $f$. Die stabile Mannigfaltigkeit von $p$ ist die Menge
     \[ \stab (p) = \left\{ q \in M : \lim_{t \to + \infty} \phi_t(q) = p \right\} \]
-    und die instabile Mannigfltigkeit ist
+    und die instabile Mannigfaltigkeit ist
     \[ \unst (p) = \left\{ q \in M : \lim_{t \to - \infty} \phi_t(q) = p \right\} . \]
     (\say{s} wie \say{stable}, \say{u} wie \say{unstable})
 \end{definition}
@@ -16,7 +16,7 @@ Vorstellung von Morse-Umgebungen wichtig.
 
 \begin{definition}[Notationen zu Morse Umgebungen]
     \label{def: notation morse umgebung}
-    Zuerst untersuchen wir eine quadratische Formin $\R^n$, die die Form hat wie Funktionen in Morse
+    Zuerst untersuchen wir eine quadratische Form in $\R^n$, die die Form hat wie Funktionen in Morse
     Umgebungen, also $Q \colon \R^n \to \R$ mit
     \[ Q(x_1, \dots, x_n) = - x_1^2 - \dots - x_k^2 + x_{k + 1}^2 + \dots + x_n^2 \]
     für ein $1 \leq k \leq n$.
@@ -86,7 +86,7 @@ Vorstellung von Morse-Umgebungen wichtig.
 
     Links eine Morse Umgebung um ein Minimum, also einen kritischen Punkt mit Index $0$ einer 
     Morse-Funktion aus einer $2$-dimenisionalen Mannigfaltigkeit, in der Mitte eine Morse Umgebung 
-    eines Sattelpunktes, also eines kritischen Punktes mit Index $2$, und rechts eine Morse-Umgebung 
+    eines Sattelpunktes, also eines kritischen Punktes mit Index $1$, und rechts eine Morse-Umgebung 
     eines kritischen Punktes mit Index $1$ einer Morse Funktion aus einer $3$-dimensionalen 
     Mannigfaltigkeit.
 
@@ -98,7 +98,7 @@ Vorstellung von Morse-Umgebungen wichtig.
     $\eps$ und $\eta$ werden häufig in der Notation ausgelassen.
 \end{definition}
 
-Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage beweisen.
+Mit dieser Vorstellungen von Morse-Funktionen können wir die folgende Aussage beweisen.
 
 \begin{prop}
     Ist $f \colon M \to \R$ eine Morse Funktion und $p$ ein kritischer Punkt von $f$, dann sind
@@ -128,9 +128,9 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
     \label{prop: trajektorien enden in kritischen punkten}
     Es sei $f \colon M \to \R$ eine Morse-Funktion und $X$ ein Pseudo-\\Gradientenfeld von $f$. 
     Sei außerdem $M$ kompakt. Ist dann $\phi$ der Fluss von $X$, dann existieren für jeden Punkt 
-    $p \in M$ kritische Punkte $q$ und $r$ von $f$, sodass
-    \[ \lim_{t \to + \infty} \phi_t(p) = q \;\;\; 
-    \text{ und } \;\;\; \lim_{t \to -\infty} \phi_t(p) = r \]
+    $q \in M$ kritische Punkte $p$ und $r$ von $f$, sodass
+    \[ \lim_{t \to + \infty} \phi_t(q) = p \;\;\; 
+    \text{ und } \;\;\; \lim_{t \to -\infty} \phi_t(q) = r \]
 \end{prop}
 
 \begin{proof}
@@ -139,13 +139,14 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
     der Fluss $\phi_{\bullet}(q)$ den Punkt $q$ irgendwann in die Umgebung 
     $\del_+ \Omega (p) \cap \stab(p)$ transportiert. Angenommen $\phi_{\bullet}(q)$ transportiert
     $q$ nie zu einem kritischen Punkt. Jedes mal wenn $\phi_{\bullet}(q)$ also ins Innere einer
-    Morse-Umgebung $U_q$ gerät, muss diese Umgebung auch wieder verlassen werden. Da 
+    Morse-Umgebung $\Omega(p)$ gerät, muss diese Umgebung auch wieder verlassen werden. Da 
     $f \circ \phi_{\bullet}(q)$ monoton ist, kann nachdem $\phi_{\bullet}(q)$ die Morse-Umgebung 
     $\Omega (p)$ verlassen hat, nie wieder zu dieser zurückgekehrt werden.
     Sei also 
     \[ \Omega = \bigcup_{p \in \Crit(f)} \Omega (p) \]
     und $t_0$ der Zeitpunkt an dem $\phi_{\bullet} (q)$ die Umgebung $\Omega$ das letzte mal verlässt.
-    Da $M - \Omega$ keine kritischen Punkte von $f$ enthält existiert ein $\eps_0 > 0$, sodass für 
+    Da $M - \Omega$ keine kritischen Punkte von $f$ enthält und kompakt ist existiert ein 
+    $\eps_0 > 0$, sodass für 
     alle $x \in M - U$ gilt 
     \[ \opd f (x) ((X(x))) \leq - \eps_ . \]
     Wir rechnen also: Für jedes $t \geq t_0$ gilt
@@ -156,12 +157,11 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
         \leq & - \eps_0 (t - t_0) . 
     \end{align*}
     Also für $t \to + \infty$ gilt $f(\phi_t(p)) \to - \infty$. Das kann aber nicht sein, denn da 
-    $M$ kompakt ist und $\R$ Hausdorff, ist $f$ eigentlich, also ist $\Ima f$ kompakt. 
-    \todo{stimmt das?} Also kann $\phi_{\bullet}(p)$ 
-    nicht alle $U_q$ verlassen. aber dann ist 
+    $M$ kompakt ist und $\R$ Hausdorff, ist $f$ eigentlich, also ist $\Ima (f)$ kompakt. 
+    Also kann $\phi_{\bullet}(p)$ nicht alle $U_q$ verlassen. aber dann ist 
     \[ \lim_{t \to + \infty} \phi_t(q) = p \]
     für einen kritischen Punkt $p$.
-    Genauso zeigt man, dass $\lim_{t \to - \infty} \phi_t(p) = r$ für einen kritischen Punkt $r$.
+    Genauso zeigt man, dass $\lim_{t \to - \infty} \phi_t(q) = r$ für einen kritischen Punkt $r$.
 \end{proof}
 
 \begin{definition}[Smale-Bedingung]
@@ -190,40 +190,45 @@ Mit dieser Vorstellungen von Morse-Funktinoen können wir die folgende Aussage b
 \end{prop}
 
 \begin{proof}
-    Es sei $p \in U_1 \cap U_2$. Da $U_1$ und $U_2$ Untermannigfaltigkeiten sind existieren 
-    Karten $(\phi_1, V_1)$ und $(\phi_2, V_2)$ von $M$, sodass 
-    \[ \phi_1 = (\phi_1', \phi_1'') \colon V_1 \to 
-        \Omega_1 \times \Omega_1' \subseteq \R^{d_1} \times \R^{n - d_1} \]
-    mit $\phi_1(V_1 \cap U_1) = \Omega_1 \times \{ 0 \}$ und 
-    \[ \phi_2 = (\phi_2', \phi_2'')\colon V_2 \to 
-        \Omega_2 \times \Omega_2' \subseteq \R^{d_2} \times \R^{n - d_2} \]
-    mit $\phi_2(V_2 \cap U_2) = \Omega_2 \times \{ 0 \}$. Definiere 
-    \[ \phi = (\phi_1'', \phi_2'') \colon 
-        M \supseteq V_1 \cap V_2 \to \R^{n - d_1} \times \R^{n - d_2}. \]
-    Dann ist 
-    $(\phi)^{-1}(0) = (U_1 \cap V_1) \cap (U_2 \cap V_2) = (U_1 \cap U_2) \cap (V_1 \cap V_2) := V$.
-    Wir wollen nun den Satz über reguläre Werte anwenden, aber dafür müssen wir zeigen, dass 
-    $\opd \phi (p)$ surjektiv ist. Bemerke, dass 
-    $\opd \phi (p) = \opd (\phi''_1, \phi''_2) (p) = (\opd \phi''_1 (p), \opd \phi''_2 (p))$.
-    Es sei $v \in T_p \R^{n - d_1}$ und $w \in T_p\R^{n - d_2}$. Da $\opd \phi''_1 (p)$ und 
-    $\opd \phi''_2 (p)$ surjektiv sind, und da $U_1$ und $U_2$ transversal sind, 
-    existieren $v_1' + v_2', w_1' + w_2' \in T_pU_1 + T_pU_2$, sodass 
-    $\opd \phi''_1 (p) (v_1 + v_2) = \opd \phi''_1 (p) (v_2) = v$ und 
-    $\opd \phi''_2 (p) (w_1 + w_2) = \opd \phi''_2 (p) (w_1) = w$.
-    Die ersten Gleichheiten gelten, da $T_p U_1$ der Kern von $\opd \phi''_1 (p)$ und 
-    $T_p U_2$ der Kern von $\opd \phi''_2 (p)$ sind. Dann gilt
-    \[ \opd \phi (p) (w_1' + v_2')  = 
-        ( \opd \phi''_1 (p) (v_2'), \opd \phi''_2 (p) (w_1')) = (v, w) . \]
-    Wir können also den Satz über reguläre Werte anwenden, dann ist $V$ eine Untermannigfaltigkeit
-    mit Dimension $n - ((n - d_1) + (n - d_2)) = d_1 + d_2 - n$. Dann ist auch $U_1 \cap U_2$
-    eine Untermannigfaltigkeit von Dimension $d_1 + d_2 - n$.
+    Diese Tatsache folgt leicht aus der Definition von Untermannigfaltigkeiten und dem Satz über 
+    reguläre Werte.
 \end{proof}
+
+% \begin{proof}
+%     Es sei $p \in U_1 \cap U_2$. Da $U_1$ und $U_2$ Untermannigfaltigkeiten sind existieren 
+%     Karten $(\phi_1, V_1)$ und $(\phi_2, V_2)$ von $M$, sodass 
+%     \[ \phi_1 = (\phi_1', \phi_1'') \colon V_1 \to 
+%         \Omega_1 \times \Omega_1' \subseteq \R^{d_1} \times \R^{n - d_1} \]
+%     mit $\phi_1(V_1 \cap U_1) = \Omega_1 \times \{ 0 \}$ und 
+%     \[ \phi_2 = (\phi_2', \phi_2'')\colon V_2 \to 
+%         \Omega_2 \times \Omega_2' \subseteq \R^{d_2} \times \R^{n - d_2} \]
+%     mit $\phi_2(V_2 \cap U_2) = \Omega_2 \times \{ 0 \}$. Definiere 
+%     \[ \phi = (\phi_1'', \phi_2'') \colon 
+%         M \supseteq V_1 \cap V_2 \to \R^{n - d_1} \times \R^{n - d_2}. \]
+%     Dann ist 
+%     $(\phi)^{-1}(0) = (U_1 \cap V_1) \cap (U_2 \cap V_2) = (U_1 \cap U_2) \cap (V_1 \cap V_2) := V$.
+%     Wir wollen nun den Satz über reguläre Werte anwenden, aber dafür müssen wir zeigen, dass 
+%     $\opd \phi (p)$ surjektiv ist. Bemerke, dass 
+%     $\opd \phi (p) = \opd (\phi''_1, \phi''_2) (p) = (\opd \phi''_1 (p), \opd \phi''_2 (p))$.
+%     Es sei $v \in T_p \R^{n - d_1}$ und $w \in T_p\R^{n - d_2}$. Da $\opd \phi''_1 (p)$ und 
+%     $\opd \phi''_2 (p)$ surjektiv sind, und da $U_1$ und $U_2$ transversal sind, 
+%     existieren $v_1' + v_2', w_1' + w_2' \in T_pU_1 + T_pU_2$, sodass 
+%     $\opd \phi''_1 (p) (v_1 + v_2) = \opd \phi''_1 (p) (v_2) = v$ und 
+%     $\opd \phi''_2 (p) (w_1 + w_2) = \opd \phi''_2 (p) (w_1) = w$.
+%     Die ersten Gleichheiten gelten, da $T_p U_1$ der Kern von $\opd \phi''_1 (p)$ und 
+%     $T_p U_2$ der Kern von $\opd \phi''_2 (p)$ sind. Dann gilt
+%     \[ \opd \phi (p) (w_1' + v_2')  = 
+%         ( \opd \phi''_1 (p) (v_2'), \opd \phi''_2 (p) (w_1')) = (v, w) . \]
+%     Wir können also den Satz über reguläre Werte anwenden, dann ist $V$ eine Untermannigfaltigkeit
+%     mit Dimension $n - ((n - d_1) + (n - d_2)) = d_1 + d_2 - n$. Dann ist auch $U_1 \cap U_2$
+%     eine Untermannigfaltigkeit von Dimension $d_1 + d_2 - n$.
+% \end{proof}
 
 Dann folgt direkt:
 
 \begin{prop}
     Es sei $f \colon M \to \R$ eine Morse Funktion und $p$ und $q$ kritische Punkte von $f$ mit 
-    Index $k_1$ und $k_2$ respektive. Falls $X$ die Smale-Bedingung erfüllt ist
+    Index $k_1$ und $k_2$. Falls $X$ die Smale-Bedingung erfüllt ist
     \[ \mathcal{M} (p, q) := \unst (p) \cap \stab (q) = 
         \left\{ r \in M : \lim_{t \to - \infty} \phi_t(p) \text{ und } 
         \lim_{t \to + \infty} \phi_t(q) \right\} \]
@@ -238,7 +243,7 @@ Punkten $p$ und $q$ liegen.
 \begin{prop}
     \label{prop: wohldefiniertheit von Lt}
     $\R$ wirkt via $(p, t) \mapsto \phi_t(p)$ auf $\mathcal{M}(p, q)$. Sind $p$ und $q$ kritische 
-    Punkte mit $p \neq q$ und Indizes $k_1$ und $k_2$, dann ist 
+    Punkte mit $p \neq q$ und Index $k_1$ und $k_2$, dann ist 
     \[ \Lt (p, q) = \mathcal{M} (p, q) / \R \]
     eine $k_1 - k_2 - 1$-dimensionale Mannigfaltigkeit und es gilt 
     \[ \Lt (p, q) \diffeo \mathcal{M} (p, q) \cap f^{-1}(c) \]
@@ -254,9 +259,9 @@ Punkten $p$ und $q$ liegen.
 
     Es sei nun $c$ ein regulärer Wert zwischen $f(p)$ und $f(q)$. $f^{-1}(c)$ ist eine 
     $n - 1$-dimensionale Mannigfaltigkeit, und für das Pseudo-Gradientenfeld $X$ gilt 
-    $X \pitchfork f^{-1}(c)$, und da für jeden Punkt $a$ gilt $X(a) \in T_a \mathcal{M} (p, q)$
-    ist $f^{-1}(c) \cap \mathcal{M} (p, q)$ eine $k_1 - k_2 - 1$-dimensionale Mannigfaltigkeit.
-    Sei 
+    $X \pitchfork f^{-1}(c)$, und da für jeden Punkt $a \in \mathcal{M}(p, q)$ 
+    gilt $X(a) \in T_a \mathcal{M} (p, q)$, ist $f^{-1}(c) \cap \mathcal{M} (p, q)$ 
+    eine $k_1 - k_2 - 1$-dimensionale Mannigfaltigkeit. Sei 
     \[ \iota \colon \mathcal{M} (p, q) \cap f^{-1}(c) \to \mathcal{M}(p, q)\] 
     die Inklusion und 
     \[ p \colon \mathcal{M} (p, q) \to \Lt (p, q) \] 
@@ -273,11 +278,11 @@ Die Smale-Bedingung ist also für unsere Zwecke wichtig.
 
 \begin{example}
     Wir haben vorher schon zwei Beispiele für Morse Funktionen auf dem Torus gesehen. 
-    Die Höhenfunktion ist erfüllt die Smale-Bedingung nicht - tatsächlich führen die Trajektorien 
+    Die Höhenfunktion erfüllt die Smale-Bedingung nicht - tatsächlich führen die Trajektorien 
     vom oberen Sattelpunkt direkt zum unteren Sattelpunkt.
 
-    Die Funktion mit $f(x, y) = - \cos(x) - \cos(y)$ ist eine Morse Funktion und erfüllt auch die 
-    Smale-Bedingung.
+    Die Funktion mit $f(x, y) = - \cos(\pi \cdot x) - \cos(\pi \cdot y)$ ist eine Morse 
+    Funktion und erfüllt auch die Smale-Bedingung.
 \end{example}
 
 Wir gewinnen auch eine wichtige Erkenntnis: 

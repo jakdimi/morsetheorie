@@ -8,7 +8,7 @@ In diesem Abschnitt untersuchen wir \textit{Morse-Funktionen}:
     $f \colon M \to \R$, deren kritische Punkte alle nicht degeneriert sind.
 \end{definition}
 
-Insbesondere zeigen wir, dass Morse Funktionen nichts besonderes sind. Dafür zeigen wir, dass für 
+Insbesondere sehen wir, dass Morse-Funktionen allgegenwertig sind. Dafür zeigen wir, dass für 
 eine Untermannigfaltigkeit $M \subseteq \R^n$ und einen Punkt $p \in \R^n$ die Abbildung
 $x \mapsto \| x - p \|^2$ nur für $p$, die so gennanten \textit{Brennpunkte}
 sind, keine Morse Funktion ist, und dass die Menge der Brennpunkte eine Nullmenge ist. Dann werden
@@ -71,6 +71,9 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
     Nullmenge ist. Intuitiv sind die Brennpunkte einer Untermannigfaltigkeit die Punkte im 
     $\R^n$, an denen sich die Normalen von nahe aneinanderliegenden Punkten schneiden.
 \end{remark}
+
+Brennpunkte und das Normalenbündel werden hier nur für den Beweis von 
+Proposition~\ref{prop: existenz morse-funktionen} genutzt, geben aber eine schöne Intuition.
 
 \begin{lemma}
     \label{lemma: char. von Brennpunkten}
@@ -150,22 +153,7 @@ Funktion ist. Dieser Abschnitt folgt zu großen Teilen \cite{milnor} und \cite{a
 \end{prop}
 
 \begin{proof}
-    Wir wählen eine für ein beliebiges $n$, das groß genug ist eine Einbettung 
-    $h' \colon M \to \R^{n - 1}$. Dann ist 
-    \[ h \colon M \longto \R^n \; ; \; h(x) = (f(x), h'(x)) \]
-    eine Einbettung von $M$ in $\R^n$. Seien $c, \eps_1, \dots, \eps_n > 0$, sodass für \\
-    $p = (c - \eps_1, \eps_2, \dots, \eps_n)$ die Funktion $f_p$ eine Morse Funktion ist.
-    Setze nun 
-    \[ g(x) = \frac{f_p(x) - c^2}{2c} . \]
-    $g$ ist offensichtlich eine Morse-Funktion. Wir rechnen mit einem $x \in M$:
-    \begin{align*}
-        g(h(x)) = & \frac{1}{2c} \left( (f(x) + c - \eps_1)^2 + (h_1(x) - \eps_2)^2 
-            + \dots + (h_{n-1}(x) - \eps_n)^2 - c^2 \right) \\
-        = & f(x) + \frac{f(x)^2 + \sum h_i(x)^2}{2c} - \frac{\eps_1 f(x) 
-            + \sum \eps_i h_{i - 1}(x)}{c} + \sum \eps_i^2 - \eps_1
-    \end{align*}
-    Man kann nun $c$ beliebig groß und $\eps_1, \dots, \eps_n$ beliebig klein wählen,
-    sodass $g$ beliebig nah an $f$ ist.
+    Den Beweis findet man bei Audin und Damian in \cite{audin}.
 \end{proof}
 
 Die meiste Zeit werden wir uns in dieser Arbeit kompakte Mannigfaltigkeiten untersuchen,
