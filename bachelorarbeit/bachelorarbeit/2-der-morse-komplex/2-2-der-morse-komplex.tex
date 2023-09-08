@@ -15,7 +15,7 @@ $n_X(p, q) = \# \Lt (p, q) \mod 2$. Dann definiere für einen kritischen Punkt $
 \[ \del_X (p) := \sum_{q \, \in \, \Crit_{k}(f)} n_X(p, q)p . \]
 
 Das Ziel dieses Abschnittes ist es zu zeigen, dass der Komplex $C_{\ast}(M, (f, X))$ wohldefiniert
-ist, also dass gilt $n_X (p, q) < \infty$, und dass es ein Kettenkomple ist, also dass 
+ist, also dass gilt $n_X (p, q) < \infty$, und dass es ein Kettenkomplex ist, also dass 
 $\del_X \circ \del_X = 0$. 
 % Sobald das gezeigt wurde ist es recht leicht, den Komplex auch über die 
 % ganzen Zahlen zu definieren.
@@ -168,7 +168,7 @@ Um diese Proposition zu beweisen benötigen wir noch ein Lemma:
 
 \begin{remark}
     Sind nun $p$ und $q$ kritische Punkte von $f$ mit $\Index (p) = \Index (q) + 1$, dann ist 
-    $\Lt(p, q)$ $0$-dimensionale Mannigfaltigkeit. Außerdem ist $\Lt (p, q)$ eine Abgeschlossene
+    $\Lt(p, q)$ $0$-dimensionale Mannigfaltigkeit. Außerdem ist $\Lt (p, q)$ eine abgeschlossene
     Teilmenge von $\Lb (p, q)$, und wie wir in der letzten Proposition~\ref{prop: Lb ist kompakt}
     gezeigt haben, ist $\Lb(p, q)$ kompakt, also ist auch $\Lt(p, q)$, und somit endlich.
     Damit ist schon mal $n_X (p, q)< \infty$, also $C_k(M (f, X))$ wohldefiniert.
@@ -213,7 +213,7 @@ Wir benutzen die folgende Aussage, ohne sie zu beweisen:
     Innere von $\Lb (p, q)$ ist $\Lt (p, q)$.
 \end{theorem}
 
-Mit dieser Proposition folgt dann mit der Kalssifizierung von $1$-Mannigfaltigkeiten mit 
+Mit dieser Proposition folgt dann mit der Klassifizierung von $1$-Mannigfaltigkeiten mit 
 Rand~\ref{satz: klassifizierung kompakter 1-mannigfaltigkeiten} schon, dass der Morse Komplex ein
 Kettenkomplex ist, denn dann ist 
 \[ \# \left( \bigcup_{c \in \Crit (f)} \Lt (p, c) \times \Lt (c, q) \right) = \del \Lb (p, q) \]
@@ -371,7 +371,7 @@ gerade.
         und $B \pitchfork S_+$, ist $0$ ein regulärer Wert von $\pi|_{\del_+U}$.
         Also ist $\opd ( \pi|_{\del_+U} )(0)$ surjektiv, und da dim $\del_+U = k = \dim B^k_{\delta}$ ist
         das Differential auch invertierbar. Jetzt können wir den Satz über die Umkehrfunktion anwenden 
-        bekommen lokal ein Inverses der Abbildung $\pi|_{\del_+U}$. Es existiert also ein 
+        und bekommen lokal ein Inverses der Abbildung $\pi|_{\del_+U}$. Es existiert also ein 
         $\delta' \leq \eta$, sodass das Inverse von $\pi|_{\del_+U}$ auf $B^k_{\delta'}$ definiert 
         ist. Dann ist 
         \begin{align*}
@@ -479,7 +479,7 @@ Morse-Homologie wohldefiniert.
         \centering
         \includegraphics[width=0.4\textwidth]{../resources/morse-funktion-torus.jpeg}
     \end{figure}
-    Der Punkt $p = (\sfrac{1}{2}, \sfrac{1}{2})$ ist ewin Maximum, die beiden Punkte 
+    Der Punkt $p = (\sfrac{1}{2}, \sfrac{1}{2})$ ist ein Maximum, die beiden Punkte 
         $c_1 = (0, \sfrac{1}{2}) = (1, \sfrac{1}{2})$ und $c_2 = (\sfrac{1}{2}, 0) = (\sfrac{1}{2}, 1)$
         sind Sattelpunkte und der Eckpunkt $q$ ist ein Minimum. Von $p$ gehen zwei Trajektorien jeweils
         zu $c_1$ und $c_2$ und von $c_1$ und $c_2$ gehen jeweils zwei Trajektorien zu $q$. Der Morse-

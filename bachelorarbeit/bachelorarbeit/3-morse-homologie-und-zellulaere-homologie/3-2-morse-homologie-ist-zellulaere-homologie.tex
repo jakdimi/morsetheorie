@@ -115,12 +115,12 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
 
 \begin{bigproof}
     Wir geben nur eine grobe Beweisidee. Den detaillierten Beweis findet man in \cite{audin}.
-    Für Elemete $(\lambda, x) \in \clunst (p)$ gilt sobieso schon, dass $f(x) \leq f(p)$. Definiere
+    Für Elemente $(\lambda, x) \in \clunst (p)$ gilt sowieso schon, dass $f(x) \leq f(p)$. Definiere
     \[ \clunst (p, \alpha) = 
         \{ (\lambda, x) \in \clunst (p) - \{ p \} : f(x) \geq \alpha \}  \cup \{ p \} . \]
     Für $\alpha = f(c) - \eps$ und $\eps$ klein genug gilt 
     \[ \clunst (p, \alpha) = \unst (p) \cap \Omega (p, \eps, \eta) . \]
-    Für ein belibiges $\eta$. $\Omega (p, \eps, \eta)$ ist wie in der Notation zu 
+    Für ein beliebiges $\eta$. $\Omega (p, \eps, \eta)$ ist wie in der Notation zu 
     Morse-Umgebungen~\ref{def: notation morse umgebung}. Dies ist via einer Morse-Karte homeomorph 
     zu $V^- \cap U(\eps, \eta)$, also zur abgeschlossenen $\Index (p)$-dimensionalen Kreisscheibe.
     Da $M$ kompakt ist besitzt $f$ ein Minimum, und falls gilt $\alpha < \min (f)$, dann gilt 
@@ -228,7 +228,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
         abgebildet wird. $\Phi$ ist wie im Beweis 
         von~\ref{satz: gebrochene trajektorien sind 1-dim mannigfaltigkeit}. 
         Es ist möglich diese Abbildung so zu wählen, dass sie am Rand der Umgebung der 
-        oben gewählten Abbildung einspricht und dass es ein Homeomorphismus ist.
+        oben gewählten Abbildung entspricht und dass es ein Homeomorphismus ist.
     \end{smallproof}
 
     Für einen beliebigen kritischen Punkt $c$ funktioniert der Beweis ähnlich.
@@ -236,7 +236,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
 
 \begin{theorem}[Morse-Homologie ist zelluläre Homologie]
     \label{satz: morse-homologie ist zellulaere homologie}
-    Es existiert eine Isomrphie von Kettenkomplexen zwischen dem zelluläre Kettenkomplex 
+    Es existiert eine Isomorphie von Kettenkomplexen zwischen dem zelluläre Kettenkomplex 
     $(C^{Cell}(X, \mathcal{E})_{\ast}, \del)$, der durch die CW-Zerlegung in instabilen 
     Mannigfaltigkeiten durch 
     Proposition~\ref{prop: cw-zerlegung} gegeben ist, und dem Morse-Komplex 
@@ -269,7 +269,7 @@ Wie im letzten Kapitel geben wir für $\clunst (p)$ eine Topologie:
     \[ \Phi \colon (\ell, B^{k - 1}) \to S^{k - 1} - \{ \ast \} \]
     für jedes $\ell$ ein Homeomorphismus ist und sodass
     \[ \Phi \left( S^{k - 1} - \bigcup_{\ell} \left( \ell, B^{k - 1} \right) \right) = \{ \ast \} . \]
-    Es sei $m$ die Anzahl der kopien von $B^{k - 1}$ in $S^{k - 1}$
+    Es sei $m$ die Anzahl der Kopien von $B^{k - 1}$ in $S^{k - 1}$
     Wir benutzen die lokale Grad Formel (siehe zum Beispiel \cite{hatcher}): 
     
     Wähle einen von $\ast$ verschiedenen Punkt $y$ in $S^{k - 1}$. Dann ist 
@@ -292,7 +292,7 @@ $X$ Raum ab. Hatcher zeigt auch:
     \[ H_k (X) \isom HC_k (X, \mathcal{E}) . \]
 \end{theorem}
 
-Die zelluläre Homologie ist also nicht von der gewählten CW-Zerlegung abhägig und wir können schreiben
+Die zelluläre Homologie ist also nicht von der gewählten CW-Zerlegung abhängig und wir können schreiben
 \[ HC_{\ast} (X) := HC_{\ast} (X, \mathcal{E}) \]
 
 Da aber für eine kompakte Mannigfaltigkeit $M$ und ein Morse-Smale Paar $(f, X)$ gilt 
