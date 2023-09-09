@@ -46,20 +46,20 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
 
     Sei dann $N(e, d)$ der Grad$\mod 2$ der Abbildung
     \[ \psi_d \circ \phi_c \colon S^{k - 1} \longto S^{k - 1} . \]
-    Dann ist das $k$-te Glied $C^{Cell}(X, \mathcal{E})_k$ des \textit{zellulären Komplexes} 
-    $(C^{Cell}(X, \mathcal{E})_{\ast}, \del)$ das 
+    Dann ist das $k$-te Glied $C^{Cell}_k(X, \mathcal{E})$ des \textit{zellulären Komplexes} 
+    $(C^{Cell}_{\ast}(X, \mathcal{E}), \del)$ das 
     $\F_2$-Modul, das von den $k$-Zellen in $\mathcal{E}$ erzeugt wird, und das Differential ist für 
     eine $k$-Zelle $e$ gegeben durch
-    \[ \del (e) = \sum_{d \in K_{k  - 1}} N(e, d) \cdot d \] 
+    \[ \del (e) = \sum_{d \in \mathcal{E} \text{ ist } k-1\text{-Zelle}} N(e, d) \cdot d \] 
 \end{definition}
 
 \begin{remark}
-    Man zeigt, dass $\del \circ \del = 0$, also dass $(K_{\ast}, \del)$ ein Kettenkomplex ist. 
-    Siehe \cite{dold}. Außerdem ist die Homologie des zellulären Kettenkomplexes isomorph zur 
-    singulären Homologie, und damit unabhängig von der gewählten CW-Zerlegung (\cite{hatcher}). 
-    Wie schon vorher angedeutet, gibt es nicht für jeden topologischen Raum eine CW-Zerlegung,
-    aber es ist tatsächlich gar nicht leicht einen topologischen Raum zu konstruieren, der 
-    kein CW-Komplex ist.
+    Man zeigt, dass $\del \circ \del = 0$, also dass $(C^{Cell}_{\ast}(X, \mathcal{E}), \del)$ 
+    ein Kettenkomplex ist. Siehe \cite{dold}. Außerdem ist die Homologie des zellulären 
+    Kettenkomplexes isomorph zur singulären Homologie, und damit unabhängig von der gewählten 
+    CW-Zerlegung (\cite{hatcher}). Wie schon vorher angedeutet, gibt es nicht für jeden 
+    topologischen Raum eine CW-Zerlegung, aber es ist tatsächlich gar nicht leicht einen 
+    topologischen Raum zu konstruieren, der kein CW-Komplex ist.
 \end{remark}
 
 \begin{example}
@@ -78,9 +78,10 @@ Die folgenden Definitionen sind in \cite{dold} zu finden.
 \end{example}
 
 \begin{definition}[zelluläre Homologie]
-    Die zelluläre Homologie des ist die Homologie des zellulären Kettenkomplexes $(K_{\ast}, \del)$.
+    Die zelluläre Homologie des ist die Homologie des zellulären Kettenkomplexes 
+    $(C^{Cell}_{\ast}(X, \mathcal{E}), \del)$.
     Ist also
-    \[ \del^k := \del \colon K_k \longto K_{k - 1} , \]
+    \[ \del^k := \del \colon C^{Cell}_k(X, \mathcal{E}) \longto C^{Cell}_{k - 1}(X, \mathcal{E}) , \]
     dann ist die zelluläre Homologie gegeben durch 
-    \[ HC_k = \frac{ \Ker \, \del^k }{ \Ima \, \del^{k + 1} } \]
+    \[ HC_k (X, \mathcal{E}) = \frac{ \Ker \, \del^k }{ \Ima \, \del^{k + 1} } \]
 \end{definition}
